@@ -1,0 +1,15 @@
+/node_modules
+/specs
+/.firebase
+/dist
+/build
+/bin
+.firebaserc
+firebase.json
+.DS_Store
+*.log
+.idea
+.vscode
+.cache
+.eslintcache
+package-lock.json
