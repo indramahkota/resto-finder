@@ -1,0 +1,128 @@
+/**
+ * @author Indra Mahkota
+ * @email indramahkota1@gmail.com
+ * @create date 2020-08-26 21:36:26
+ * @modify date 2020-08-27 00:35:36
+ * @desc [description]
+ */
+.header {
+  width: 100%;
+  min-height: 56px;
+  display: flex; /* default direction: row */
+  position: fixed; /* posisi selalu tetap */
+  padding: 20px 5%; /* top-bottom, left-right */
+  margin: 0px auto; /* top-bottom, left-right */
+  z-index: 1000; /* posisi selalu diatas */
+  align-items: center; /* align flex item to vertical center */
+  justify-content: space-between; /* memberikan spasi otomatis setiap item */
+  background-color: lightgreen;
+}
+
+/* start menu button
+  ---------------------------------------------- */
+
+.header .menu-btn {
+  padding: 20px 20px; /* top-bottom, left-right */
+  border: none;
+  background: none;
+  user-select: none;
+  text-decoration: none;
+  margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* membuat 1 hamburger icon dengan class .navicon
+       dengan class tsb, diberi before dan after menjadi 3 buah navicon |||
+       navicon before dan after diberi rotasi 45deg
+    */
+
+.header .menu-btn .navicon {
+  background: #333;
+  display: block; /* Membuat baris baru */
+  position: relative;
+  width: 18px;
+  height: 2px;
+}
+
+.header .menu-btn .navicon:before,
+.header .menu-btn .navicon:after {
+  background: #333;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-btn .navicon:before {
+  top: 5px;
+}
+
+.header .menu-btn .navicon:after {
+  top: -5px;
+}
+
+/* start logo
+  ---------------------------------------------- */
+
+/* 1.5em = 1.5 * 16px = 24px */
+.header .logo {
+  border: none;
+  background: none;
+  user-select: none;
+  text-decoration: none;
+  padding: 0 20px; /* top-bottom, left-right */
+  font-size: 1.5em;
+  min-width: 44px;
+  min-height: 44px;
+  font-style: oblique;
+}
+
+.header .logo-name {
+  font-weight: bold;
+  font-variant-ligatures: no-common-ligatures;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+}
+
+/* start list menu
+  ---------------------------------------------- */
+
+.header .menu {
+  display: flex;
+  max-height: 0;
+  max-width: 0;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px; /* top-bottom, left-right */
+  color: black;
+  text-decoration: none;
+}
+
+.header li a:hover {
+  background-color: #f4f4f4;
+}
+
+/* start media query
+  ---------------------------------------------- */
+
+/* 48em = 768px || 48 * 16 = 768 untuk ukuran diatas 768*/
+@media (min-width: 48em) {
+  .header .menu {
+    max-height: none;
+    max-width: none;
+  }
+  .header .menu-btn {
+    display: none;
+  }
+}
