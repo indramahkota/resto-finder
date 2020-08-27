@@ -2,15 +2,15 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:32:11
- * @modify date 2020-08-26 21:34:14
+ * @modify date 2020-08-27 13:56:08
  * @desc [description]
  */
-const base = require("./base");
 const { merge } = require("webpack-merge");
+const common = require("./webpack.common");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = merge(base, {
+module.exports = merge(common, {
   mode: "production",
   devtool: false,
   optimization: {
@@ -38,6 +38,10 @@ module.exports = merge(base, {
         canPrint: true,
       }),
     ],
+    splitChunks: {
+      chunks: 'all',
+      name: false,
+    },
   },
   module: {
     rules: [

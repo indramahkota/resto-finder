@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:36:26
- * @modify date 2020-08-27 00:35:36
+ * @modify date 2020-08-27 12:58:45
  * @desc [description]
  */
 .header {
@@ -15,7 +15,6 @@
   z-index: 1000; /* posisi selalu diatas */
   align-items: center; /* align flex item to vertical center */
   justify-content: space-between; /* memberikan spasi otomatis setiap item */
-  background-color: lightgreen;
 }
 
 /* start menu button
