@@ -2,27 +2,66 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-08-27 13:59:53
+ * @modify date 2020-08-28 17:42:07
  * @desc [description]
  */
-const path = require("path");
+const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackInjector = require("html-webpack-injector");
+
+const webcomponentsjs = "node_modules/@webcomponents/webcomponentsjs";
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/index.js"),
+  entry: {
+    cElEs5Adapter_head: resolve(
+      __dirname,
+      `${webcomponentsjs}/custom-elements-es5-adapter.js`
+    ),
+    cElEsOlderBrowser_head: resolve(
+      __dirname,
+      `${webcomponentsjs}/webcomponents-loader.js`
+    ),
+    bundle: resolve(__dirname, "src/index.js"),
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: resolve(__dirname, "dist"),
     filename: "[name].[contenthash:8].js",
     chunkFilename: "[name].chunk.js",
   },
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.css|\.s([ca])ss$/,
+        exclude: resolve(__dirname, "src/styles"),
+        use: [
+          {
+            loader: "lit-scss-loader",
+            options: {
+              minify: true,
+            },
+          },
+          "extract-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.css|\.s([ca])ss$/,
+        exclude: resolve(__dirname, "src/scripts/presentations/components"),
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: "/node_modules/",
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif|webp|ico|svg)$/i,
@@ -33,31 +72,27 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.html$/i,
-        loader: "html-loader",
-        options: {
-          minimize: true,
-        },
-      },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[name].[contenthash:8].css",
-      chunkFilename: "[name].chunk.css",
-    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.resolve(__dirname, "public/index.html"),
+      template: resolve(__dirname, "public/index.html"),
+      inject: true,
+      chunks: ["cElEs5Adapter_head", "cElEsOlderBrowser_head", "bundle"],
+      chunksConfig: {
+        async: ["cElEs5Adapter_head", "cElEsOlderBrowser_head"],
+        defer: ["bundle"],
+      },
       minify: { collapseWhitespace: true, removeComments: true },
     }),
+    /* inject script di head atau body dengan menambahkan suffix _head */
+    new HtmlWebpackInjector(),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "public/"),
-          to: path.resolve(__dirname, "dist/"),
+          from: resolve(__dirname, "public/"),
+          to: resolve(__dirname, "dist/"),
         },
       ],
     }),
