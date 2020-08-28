@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:36:26
- * @modify date 2020-08-27 21:38:12
+ * @modify date 2020-08-28 11:19:40
  * @desc [description]
  */
 
@@ -26,13 +26,13 @@
   background-color: #fff;
 }
 
-/* start menu button (input type checkbox)
+/* start humburger button
   ---------------------------------------------- */
 
-/* button menggunakan input checkbox yang akan menjadi parent hamburger icon
+/* hamburger__btn akan menjadi parent hamburger__icon
     override standar style button dengan min-width-height 44px
  */
-.header .menu-btn {
+.hamburger__btn {
   padding: 20px 20px;
   border: none;
   background: none;
@@ -43,13 +43,13 @@
   min-height: 44px;
 }
 
-/* membuat persegi panjang dengan nama class .navicon
-    class tsb diberi before dan after agar menjadi 3 buah objek hamburger icon
+/* membuat persegi panjang dengan nama class .hamburger__icon
+    class tsb diberi before dan after agar menjadi 3 buah objek
     position relative menyediakan property top, right, bottom, and left
     untuk memposisikan element relative terhadap posisi awal/normalnya
-    memberikan .navicon transisi dengan definisi background
+    memberikan .hamburger__icon transisi background
  */
-.header .menu-btn .navicon {
+.hamburger__icon {
   display: block;
   position: relative;
   background: #333;
@@ -61,10 +61,10 @@
 /* override position menjadi absolute untuk objek before dan after
     karena parent posisi relative, maka absolutnya terhadap parent
     memberikan nilai top agar terlihat diatas/bawah
-    memberikan .navicon:after/before transisi dengan definisi all
+    memberikan .hamburger__icon:after/before transisi all
  */
-.header .menu-btn .navicon:before,
-.header .menu-btn .navicon:after {
+.hamburger__icon:before,
+.hamburger__icon:after {
   content: "";
   display: block;
   position: absolute;
@@ -74,32 +74,32 @@
   transition: all 0.2s ease-out;
 }
 
-.header .menu-btn .navicon:before {
+.hamburger__icon:before {
   top: 5px;
 }
 
-.header .menu-btn .navicon:after {
+.hamburger__icon:after {
   top: -5px;
 }
 
-/* css selector > mencari semua element .navicon dengan parent
-    yang memiliki class .menu-btn dan .change dan mengubah stylenya
+/* css selector > mencari semua element .hamburger__icon dengan parent
+    yang memiliki class .hamburger__btn dan .change dan mengubah stylenya
     style default sudah didefinisikan diatas
  */
-.header .menu-btn.change > .navicon {
+.hamburger__btn.change > .hamburger__icon {
   background: transparent;
 }
 
-.header .menu-btn.change > .navicon:before {
+.hamburger__btn.change > .hamburger__icon:before {
   transform: rotate(-45deg);
 }
 
-.header .menu-btn.change > .navicon:after {
+.hamburger__btn.change > .hamburger__icon:after {
   transform: rotate(45deg);
 }
 
-.header .menu-btn.change > .navicon:before,
-.header .menu-btn.change > .navicon:after {
+.hamburger__btn.change > .hamburger__icon:before,
+.hamburger__btn.change > .hamburger__icon:after {
   top: 0;
 }
 
@@ -111,37 +111,27 @@
     padding bawah 4px untuk menyesuaikan font aja, seperti tidak sejajar dengan elemen lain
     memberikan display flex dan direction column agar .logo-name (child) bisa ketengah secara vertikal
  */
-.header .logo {
+.header__logo {
   display: flex;
   font-size: 1.5em;
   min-height: 44px;
+  font-weight: bold;
   padding-bottom: 4px;
   flex-direction: column;
   justify-content: center;
-  line-height: normal;
   text-decoration: none;
 }
 
 /* check untuk melihat bagaimana font-variant-ligatures bekerja
     https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures#:~:text=The%20font%2Dvariant%2Dligatures%20CSS,forms%20in%20the%20resulting%20text.
  */
-.header .logo-name {
-  font-weight: bold;
+.header__logo > .logo-name {
   font-variant-ligatures: no-common-ligatures;
   -webkit-font-variant-ligatures: no-common-ligatures;
 }
 
 /* start list menu
   ---------------------------------------------- */
-
-/* default flex -> direction row
-    max-height dan width 0 agar tidak tampil dahulu (mobile first)
-*/
-.header .menu {
-  display: flex;
-  max-height: 0;
-  max-width: 0;;
-}
 
 .header ul {
   margin: 0;
@@ -150,14 +140,23 @@
   overflow: hidden;
 }
 
-.header li a {
+/* default flex -> direction row
+    max-height dan width 0 agar tidak tampil dahulu (mobile first)
+*/
+.header__menu {
+  display: flex;
+  max-height: 0;
+  max-width: 0;
+}
+
+.header__menu li a {
   display: block;
   padding: 10px 20px;
   color: black;
   text-decoration: none;
 }
 
-.header li a:hover {
+.header__menu li a:hover {
   background-color: #f4f4f4;
 }
 
@@ -166,11 +165,11 @@
 
 /* 48em = 768px || 48 * 16 = 768 untuk ukuran diatas 768*/
 @media screen and (min-width: 48em) {
-  .header .menu {
+  .header__menu {
     max-height: none;
     max-width: none;
   }
-  .header .menu-btn {
+  .hamburger__btn {
     display: none;
   }
 }
