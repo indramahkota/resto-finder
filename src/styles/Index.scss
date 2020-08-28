@@ -1,0 +1,55 @@
+/**
+ * @author Indra Mahkota
+ * @email indramahkota1@gmail.com
+ * @create date 2020-08-26 21:36:17
+ * @modify date 2020-08-28 11:24:19
+ * @desc [description]
+ */
+@font-face {
+    font-family: "Montserrat";
+    src: local("Montserrat"),
+        url("../assets/fonts/Montserrat-Regular.ttf") format("woff");
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+
+    body {
+        background-color: #f1f1f1;
+        // ukuran static font-size: 19px, line-height: 23px;
+        font: 19px / 23px Montserrat, "Montserrat", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        #root {
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+}
+
+/* Media Query */
+/* Ukuran viewport dibawah 1380px */
+@media (max-width: 1380px) {
+
+    html,
+    body {
+        font-size: 16px;
+        // ukuran static yang akan jadi acuan ukuran em di child
+        line-height: normal;
+    }
+}
