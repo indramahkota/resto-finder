@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-08-28 17:42:07
+ * @modify date 2020-08-28 18:20:44
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -80,10 +80,6 @@ module.exports = {
       template: resolve(__dirname, "public/index.html"),
       inject: true,
       chunks: ["cElEs5Adapter_head", "cElEsOlderBrowser_head", "bundle"],
-      chunksConfig: {
-        async: ["cElEs5Adapter_head", "cElEsOlderBrowser_head"],
-        defer: ["bundle"],
-      },
       minify: { collapseWhitespace: true, removeComments: true },
     }),
     /* inject script di head atau body dengan menambahkan suffix _head */
