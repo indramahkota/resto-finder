@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:36:17
- * @modify date 2020-08-26 22:43:09
+ * @modify date 2020-08-28 11:24:19
  * @desc [description]
  */
 @font-face {
@@ -11,7 +11,6 @@
     url("../assets/fonts/Montserrat-Regular.ttf") format("woff");
   font-display: swap;
 }
-/* Mengatur seluruh dimensi elemen agar sudah termasuk padding, margin, dll. */
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +30,9 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  font: 19px / 23px Montserrat, "Montserrat", sans-serif; /* ukuran static font-size: 19px, line-height: 23px; */
+  background-color: #f1f1f1;
+  /* ukuran static font-size: 19px, line-height: 23px; */
+  font: 19px / 23px Montserrat, "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
