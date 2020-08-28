@@ -1,0 +1,38 @@
+/**
+ * @author Indra Mahkota
+ * @email indramahkota1@gmail.com
+ * @create date 2020-08-27 22:49:01
+ * @modify date 2020-08-28 10:36:53
+ * @desc [description]
+ */
+
+.hero__background {
+  display: flex;
+  width: 100%;
+  min-height: 380px;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* CSS Gradient Generator https://cssgradient.io/ */
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.1) 80%
+    ),
+    url("../assets/images/heros/hero-image.jpg");
+}
+
+.hero__placeholder {
+  color: white;
+  width: 100%;
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hero__placeholder > h1 {
+  font-size: 3em;
+}
