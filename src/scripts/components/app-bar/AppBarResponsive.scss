@@ -1,0 +1,18 @@
+/**
+ * @author [author]
+ * @email [example@mail.com]
+ * @create date 2020-08-28 22:44:43
+ * @modify date 2020-08-28 23:22:38
+ * @desc [description]
+ */
+@media screen and (min-width: 820px) {
+    .header {
+        .header__menu {
+            max-height: none;
+            max-width: none;
+        }
+        .hamburger__btn {
+            display: none;
+        }
+    }
+}

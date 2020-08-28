@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:36:26
- * @modify date 2020-08-28 21:27:23
+ * @modify date 2020-08-28 23:22:35
  * @desc [description]
  */
 
@@ -13,6 +13,9 @@
     align-items mengikuti direction -> horizontal center
     justify-content akan memberikan spasi otomatis kiri-kanan setiap objek child
   */
+:host {
+  display: block;
+}
 
 .header {
   width: 100%;
@@ -26,16 +29,15 @@
   justify-content: space-between;
   background-color: #fff;
 
-  // 1.5em <=> 1.5 * 16px = 24px
   // mengubah default style anchor <a>
   // padding bawah 4px untuk menyesuaikan font aja, seperti tidak sejajar dengan elemen lain
   // memberikan display flex dan direction column agar .logo-name (child) bisa ketengah secara vertikal
   .header__logo {
     display: flex;
-    font-size: 1.5em;
+    font-size: 1.3em;
     min-height: 44px;
     font-weight: bold;
-    padding-bottom: 6px;
+    padding-bottom: 4px;
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
@@ -142,16 +144,5 @@
 
   .header__menu li a:hover {
     background-color: #f4f4f4;
-  }
-}
-
-/* 48em = 768px || 48 * 16 = 768 untuk ukuran diatas 768*/
-@media screen and (min-width: 48em) {
-  .header__menu {
-    max-height: none;
-    max-width: none;
-  }
-  .hamburger__btn {
-    display: none;
   }
 }
