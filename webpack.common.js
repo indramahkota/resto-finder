@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-08-28 18:20:44
+ * @modify date 2020-08-28 22:38:23
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.css|\.s([ca])ss$/,
-        exclude: resolve(__dirname, "src/scripts/presentations/components"),
+        exclude: resolve(__dirname, "src/scripts/components"),
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
