@@ -5,40 +5,37 @@
  * @modify date 2020-08-28 11:24:19
  * @desc [description]
  */
-@font-face {
-    font-family: "Montserrat";
-    src: local("Montserrat"), url("../assets/fonts/Montserrat-Regular.ttf") format("woff");
-    font-display: swap;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    margin: 0;
-    padding: 0;
+html,
+body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     scroll-behavior: smooth;
+}
+html {
+    overflow: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    /* ukuran static font-size: 19px, line-height: 23px; */
+    font: 19px / 23px Montserrat, "Montserrat", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-    body {
-        display: flex;
-        flex-direction: column;
+    #content {
+        margin-top: 86px;
         overflow-x: hidden;
         overflow-y: auto;
-        background-color: #f1f1f1;
-        // ukuran static font-size: 19px, line-height: 23px;
-        font: 19px / 23px Montserrat, "Montserrat", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     }
 }
 
-/* Media Query */
 /* Ukuran viewport dibawah 1380px */
 @media (max-width: 1380px) {
     html,

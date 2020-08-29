@@ -12,14 +12,11 @@ import './scripts/components';
 
 /* body
     noscript
-    #root
-        header (app-bar)---------------------|-----> satu komponen
-        main (main-container)----------------|-----> satu komponen
-            .hero (hero-element)-------------|----------------------> imported komponen
-            .content (article-container)-----|----------------------> imported komponen
-                article (card-element)-------|----------------------> imported komponen
-            footer (foot-bar)----------------|----------------------> imported komponen
-        aside (side-bar)---------------------|-----> satu komponen
+    header (app-bar) & aside (side-bar)--|-----> satu komponen
+    hero (hero-element)------------------|-----> satu komponen
+    main --------------------------------|
+        article (card-element)-----------|-----> satu komponen
+    footer (foot-bar)--------------------|-----> satu komponen
 */
 
 import App from "./scripts/App.js";
