@@ -34,20 +34,17 @@
   // memberikan display flex dan direction column agar .logo-name (child) bisa ketengah secara vertikal
   .header__logo {
     display: flex;
-    font-size: 1.3em;
     min-height: 44px;
-    font-weight: bold;
     padding-bottom: 4px;
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
-
     // check untuk melihat bagaimana font-variant-ligatures bekerja
     // https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures#:~:text=The%20font%2Dvariant%2Dligatures%20CSS,forms%20in%20the%20resulting%20text.
-    .header__logo > .logo-name {
-      font-variant-ligatures: no-common-ligatures;
-      -webkit-font-variant-ligatures: no-common-ligatures;
-    }
+    font-size: 1.3em;
+    font-family: 'Pacifico', cursive;
+    font-variant-ligatures: no-common-ligatures;
+    -webkit-font-variant-ligatures: no-common-ligatures;
   }
 
   // hamburger__btn akan menjadi parent hamburger__icon
@@ -137,7 +134,7 @@
 
   .header__menu li a {
     display: block;
-    padding: 10px 20px;
+    padding: 10px 15px;
     color: black;
     text-decoration: none;
   }

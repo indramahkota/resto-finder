@@ -30,9 +30,7 @@ class AppBar extends CommonElement {
         const { _title } = this;
         return html`
             <header class="header">
-                <a href="/" class="header__logo">
-                    <span class="logo__name">${_title}</span>
-                </a>
+                <a href="/" class="header__logo">${_title}</a>
 
                 <button id="header-hamburger" class="hamburger__btn ${this._isDrawerOpen ? 'change' : ''}" @click="${this.onHamburgerClick}">
                     <span class="hamburger__icon"></span>
