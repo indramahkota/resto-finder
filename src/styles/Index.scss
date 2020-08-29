@@ -5,6 +5,23 @@
  * @modify date 2020-08-28 11:24:19
  * @desc [description]
  */
+
+@import "./utilities/variables";
+
+//under development :: default light
+//under development :: default light
+:root {
+    --color-text: #{$light-for-text};
+    --color-article-background: #{$light-for-card};
+    --color-page-background: #{$light-for-background};
+}
+
+.dark {
+    --color-text: #{$dark-for-text};
+    --color-article-background: #{$dark-for-card};
+    --color-page-background: #{$dark-for-background};
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +40,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #f1f1f1;
+    background-color: var(--color-page-background);
     /* ukuran static font-size: 19px, line-height: 23px; */
     font: 19px / 23px Montserrat, "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;

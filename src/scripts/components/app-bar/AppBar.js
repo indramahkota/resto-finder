@@ -10,6 +10,7 @@ class AppBar extends CommonElement {
             _isDrawerOpen: { type: Boolean },
             _pageActive: { type: String },
             _navData: { type: Array },
+            _toggleDark: {type: Boolean}
         };
     }
 
@@ -23,6 +24,10 @@ class AppBar extends CommonElement {
         this._title = AppConfig.APP_NAME;
         this._isDrawerOpen = false;
         this._pageActive = window.location.hash;
+        this._isLightTheme = true;
+        if(window.localStorage.getItem(AppConfig.THEME_LOCAL_STORAGE_NAME) === 'dark') {
+            this._isLightTheme = false;
+        }
     }
 
     onHamburgerClick() {
@@ -31,14 +36,33 @@ class AppBar extends CommonElement {
 
     onNavigateClick(event) {
         this._pageActive =  event.path[0].hash;
+        if(this._isDrawerOpen)
+            this.onHamburgerClick();
+    }
+
+    onSwitchChange(event) {
+        if(event.currentTarget.checked) {
+            window.document.body.classList.remove('dark');
+            window.localStorage.setItem(AppConfig.THEME_LOCAL_STORAGE_NAME, "light");
+        } else {
+            window.document.body.classList.add('dark');
+            window.localStorage.setItem(AppConfig.THEME_LOCAL_STORAGE_NAME, "dark");
+        }
     }
 
     render() {
-        const { _title, _navData } = this;
-        //fungsi render dipanggil setiap ada perubahan properties
+        const { _title, _navData, _isLightTheme } = this;
         return html`
             <header class="header">
                 <a href="/" class="header__logo">${_title}</a>
+
+                <label class="switch">
+                    ${_isLightTheme === true ? 
+                        html`<input @change="${this.onSwitchChange}" type="checkbox" checked>` :
+                        html`<input @change="${this.onSwitchChange}" type="checkbox">`}
+                    <span class="slider round"></span>
+                    <span>Gelap</span>
+                </label>
 
                 <button id="header-hamburger" class="hamburger__btn ${this._isDrawerOpen ? 'change' : ''}" @click="${this.onHamburgerClick}">
                     <span class="hamburger__icon"></span>

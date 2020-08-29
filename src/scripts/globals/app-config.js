@@ -9,7 +9,8 @@ const NAV_DATA = [
 const AppConfig = {
     APP_NAME: 'Ponti Resto Finder',
     APP_HERO_IMAGE: HERO_IMAGE_URL,
-    APP_NAV_DATA: NAV_DATA
+    APP_NAV_DATA: NAV_DATA,
+    THEME_LOCAL_STORAGE_NAME: 'ponti-resto-finder-indramahkota-theme-mode'
 };
 
 export default AppConfig;
