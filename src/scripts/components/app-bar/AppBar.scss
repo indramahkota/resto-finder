@@ -2,68 +2,45 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:36:26
- * @modify date 2020-08-28 23:22:35
+ * @modify date 2020-08-29 19:14:00
  * @desc [description]
  */
 
-/* default flex -> direction row
-    min-height 56px agar dapat menampung objek klik > standar 44px
-    posisi selalu tetap dan selalu berada diatas
-    margin dan padding aa bb, top-bottom left-right
-    align-items mengikuti direction -> horizontal center
-    justify-content akan memberikan spasi otomatis kiri-kanan setiap objek child
-  */
 :host {
   display: block;
 }
 
 .header {
   width: 100%;
-  min-height: 56px;
+  height: 80px;
   display: flex;
   position: fixed;
-  padding: 20px 5%;
-  margin: 0px auto;
+  padding: 0 5%;
   z-index: 1000;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: white;
 
-  // mengubah default style anchor <a>
-  // padding bawah 4px untuk menyesuaikan font aja, seperti tidak sejajar dengan elemen lain
-  // memberikan display flex dan direction column agar .logo-name (child) bisa ketengah secara vertikal
   .header__logo {
-    display: flex;
     min-height: 44px;
     padding-bottom: 4px;
-    flex-direction: column;
-    justify-content: center;
     text-decoration: none;
-    // check untuk melihat bagaimana font-variant-ligatures bekerja
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures#:~:text=The%20font%2Dvariant%2Dligatures%20CSS,forms%20in%20the%20resulting%20text.
     font-size: 1.3em;
-    font-family: 'Pacifico', cursive;
+    font-family: "Pacifico", cursive;
     font-variant-ligatures: no-common-ligatures;
     -webkit-font-variant-ligatures: no-common-ligatures;
   }
 
-  // hamburger__btn akan menjadi parent hamburger__icon
-  // override standar style button dengan min-width-height 44px
   .hamburger__btn {
+    min-width: 44px;
+    min-height: 44px;
     padding: 20px 20px;
     border: none;
     background: none;
     user-select: none;
     text-decoration: none;
     margin-left: auto;
-    min-width: 44px;
-    min-height: 44px;
 
-    // membuat persegi panjang dengan nama class .hamburger__icon
-    // class tsb diberi before dan after agar menjadi 3 buah objek
-    // position relative menyediakan property top, right, bottom, and left
-    // untuk memposisikan element relative terhadap posisi awal/normalnya
-    // memberikan .hamburger__icon transisi background
     .hamburger__icon {
       display: block;
       position: relative;
@@ -73,10 +50,6 @@
       transition: background 0.2s ease-out;
     }
 
-    // override position menjadi absolute untuk objek before dan after
-    // karena parent posisi relative, maka absolutnya terhadap parent
-    // memberikan nilai top agar terlihat diatas/bawah
-    // memberikan .hamburger__icon:after/before transisi all
     .hamburger__icon:before,
     .hamburger__icon:after {
       content: "";
@@ -97,49 +70,75 @@
     }
   }
 
-  // css selector > mencari semua element .hamburger__icon dengan parent
-  // yang memiliki class .hamburger__btn dan .change dan mengubah stylenya
-  // style default sudah didefinisikan diatas
-  .hamburger__btn.change > .hamburger__icon {
-    background: transparent;
+  .hamburger__btn.change {
+    .hamburger__icon {
+      background: transparent;
+    }
+
+    .hamburger__icon:before {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .hamburger__icon:after {
+      top: 0;
+      transform: rotate(45deg);
+    }
   }
 
-  .hamburger__btn.change > .hamburger__icon:before {
-    transform: rotate(-45deg);
-  }
-
-  .hamburger__btn.change > .hamburger__icon:after {
-    transform: rotate(45deg);
-  }
-
-  .hamburger__btn.change > .hamburger__icon:before,
-  .hamburger__btn.change > .hamburger__icon:after {
-    top: 0;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .navigation__drawer {
+    top: 80px;
+    right: -300px;
+    min-width: 300px;
+    min-height: 100vh;
     overflow: hidden;
+    position: absolute;
+    background-color: white;
+    transition: all 0.2s ease-out;
+    border-style: solid;
+    border-color: red;
+    border-width: 0 0 0 0.12em;
+
+    ul {
+      list-style: none;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 44px;
+
+        a {
+          padding: 10px 15px;
+          color: black;
+          text-decoration: none;
+          position: relative;
+
+          .chevron {
+            width: 0.45em;
+            height: 0.45em;
+            border-style: solid;
+            border-width: 0.12em 0.12em 0 0;
+            display: inline-block;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 1em;
+            right: 1em;
+          }
+        }
+
+        a.active {
+          background-color: #f4f4f4;
+        }
+
+        a:hover {
+          background-color: #f4f4f4;
+        }
+      }
+    }
   }
 
-  // default flex -> direction row
-  // max-height dan width 0 agar tidak tampil dahulu (mobile first)
-  .header__menu {
-    display: flex;
-    max-height: 0;
-    max-width: 0;
-  }
-
-  .header__menu li a {
-    display: block;
-    padding: 10px 15px;
-    color: black;
-    text-decoration: none;
-  }
-
-  .header__menu li a:hover {
-    background-color: #f4f4f4;
+  .navigation__drawer.change {
+    right: 0;
   }
 }

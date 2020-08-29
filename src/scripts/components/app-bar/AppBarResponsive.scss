@@ -2,17 +2,36 @@
  * @author [author]
  * @email [example@mail.com]
  * @create date 2020-08-28 22:44:43
- * @modify date 2020-08-28 23:22:38
+ * @modify date 2020-08-29 19:14:06
  * @desc [description]
  */
 @media screen and (min-width: 768px) {
     .header {
-        .header__menu {
-            max-height: none;
-            max-width: none;
-        }
         .hamburger__btn {
             display: none;
+        }
+
+        .navigation__drawer {
+            position: static;
+            min-width: auto;
+            min-height: auto;
+            border: none;
+            background-color: transparent;
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                li {
+                    a {
+                        .chevron {
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }
