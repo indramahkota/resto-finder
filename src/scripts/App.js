@@ -8,7 +8,7 @@
 import AppConfig from '../scripts/globals/app-config.js'
 
 const App = () => {
-    if(window.localStorage.getItem(AppConfig.THEME_LOCAL_STORAGE_NAME) === 'dark') {
+    if(window.localStorage.getItem(AppConfig.LOCAL_STORAGE_NAME_FOR_THEME) === 'dark') {
         window.document.body.classList.add('dark');
     } else {
         window.document.body.classList.remove('dark');
