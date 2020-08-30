@@ -2,13 +2,13 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:34:28
- * @modify date 2020-08-28 23:22:09
+ * @modify date 2020-08-30 18:50:41
  * @desc [description]
  */
 import 'regenerator-runtime';
-import './styles/Index.scss';
+// import './styles/Index.scss';
 
-import './scripts/components';
+// import './scripts/components';
 
 /* body
     noscript
@@ -19,5 +19,7 @@ import './scripts/components';
     footer (foot-bar)--------------------|-----> satu komponen
 */
 
-import App from "./scripts/App.js";
-document.addEventListener("DOMContentLoaded", App);
+console.log('Hello TS World');
+
+// import App from "./scripts/App.js";
+// document.addEventListener("DOMContentLoaded", App);

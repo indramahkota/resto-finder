@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "noImplicitAny": true,
+        "target": "es2017",
+        "module": "es2015",
+        "lib": [
+            "es2017",
+            "dom",
+            "dom.iterable"
+        ],
+        "allowJs": false,
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src",
+        "src/custom.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
