@@ -6,20 +6,23 @@
  * @desc [description]
  */
 
-@import "./utilities/variables";
+@import './utilities/variables';
 
-//under development :: default light
 //under development :: default light
 :root {
     --color-text: #{$light-for-text};
+    --color-text-hero: #{$dark-for-hero-background};
     --color-article-background: #{$light-for-card};
     --color-page-background: #{$light-for-background};
+    --color-hero-background: #{$light-for-hero-background};
 }
 
 .dark {
     --color-text: #{$dark-for-text};
+    --color-text-hero: #{$light-for-text};
     --color-article-background: #{$dark-for-card};
     --color-page-background: #{$dark-for-background};
+    --color-hero-background: #{$dark-for-hero-background};
 }
 
 * {

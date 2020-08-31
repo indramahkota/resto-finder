@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-08-30 18:50:38
+ * @modify date 2020-08-31 13:08:04
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -68,7 +68,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({

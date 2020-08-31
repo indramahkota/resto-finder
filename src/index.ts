@@ -6,20 +6,25 @@
  * @desc [description]
  */
 import 'regenerator-runtime';
-// import './styles/Index.scss';
-
-// import './scripts/components';
+import './styles/Index.scss';
+import './scripts/components';
 
 /* body
     noscript
-    header (app-bar) & aside (side-bar)--|-----> satu komponen
-    hero (hero-element)------------------|-----> satu komponen
-    main --------------------------------|
-        article (card-element)-----------|-----> satu komponen
-    footer (foot-bar)--------------------|-----> satu komponen
+    header (app-bar) & aside (side-bar)----------|-----> satu komponen
+        .content
+            hero (hero-element)------------------|-----> satu komponen
+            main --------------------------------|
+                article (card-element)-----------|-----> satu komponen
+            footer (foot-bar)--------------------|-----> satu komponen
 */
-
-console.log('Hello TS World');
 
 // import App from "./scripts/App.js";
 // document.addEventListener("DOMContentLoaded", App);
+
+import AppConfig from './scripts/globals/appConfig';
+if (window.localStorage.getItem(AppConfig.LCS_THEME) === 'dark') {
+    window.document.body.classList.add('dark');
+} else {
+    window.document.body.classList.remove('dark');
+}

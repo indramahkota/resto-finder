@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-27 22:49:01
- * @modify date 2020-08-28 10:36:53
+ * @modify date 2020-08-31 16:01:10
  * @desc [description]
  */
 
@@ -21,11 +21,15 @@
   background-repeat: no-repeat;
 
   .hero__placeholder {
-    color: white;
+    color: var(--color-text);
     width: 100%;
     padding: 20px;
     font-weight: bold;
     text-align: center;
+
+    h1, h2 {
+      background-color: var(--color-hero-background);
+    }
 
     h1 {
       font-size: 3em;

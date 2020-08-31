@@ -8,7 +8,11 @@
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "karma start"
   },
-  "keywords": ["Typescript", "Polymer", "Web Component"],
+  "keywords": [
+    "Typescript",
+    "Polymer",
+    "Web Component"
+  ],
   "author": "Indra Mahkota <indramahkota1@gmail.com>",
   "license": "ISC",
   "devDependencies": {
