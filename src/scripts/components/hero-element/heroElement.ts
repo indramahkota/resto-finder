@@ -15,7 +15,7 @@ render(html`
     <hero-element
         background=${AppConfig.APP_HERO_IMAGE}
         greeting=${AppConfig.TEXT_GREETING}
-        name=${AppConfig.APP_NAME}>
+        name=${AppConfig.APP_NAME}
     </hero-element>
 `, document.body); */
 

@@ -17,7 +17,7 @@ render(html`
     <app-bar
         title=${menuData[1].name}
         .data=${menuData}
-        active=${menuData[1].url}>
+        active=${menuData[1].url}
     </app-bar>
 `, document.body); */
 
