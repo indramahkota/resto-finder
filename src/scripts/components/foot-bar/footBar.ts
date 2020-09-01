@@ -13,7 +13,7 @@ import AppConfig from './scripts/globals/appConfig';
 
 render(html`
     <foot-bar
-        text=${AppConfig.TEXT_FOOTER}
+        text=${AppConfig.TEXT_FOOTER} >
     </foot-bar>
 `, document.body); */
 
