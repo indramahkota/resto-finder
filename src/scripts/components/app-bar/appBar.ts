@@ -57,18 +57,10 @@ class AppBar extends CommonElement {
 
     constructor() {
         super();
-
         this.title = AppConfig.APP_NAME;
         this.data = AppConfig.APP_NAV_DATA;
-        this.active = window.location.hash;
-        
+        this.active = AppConfig.APP_NAV_DATA[0].url;
         this._darkMode = AppConfig.SUPPORT_DARK_MODE;
-        if(window.localStorage.getItem(AppConfig.LCS_DRAWER) === 'open') {
-            this._isOpen = true;
-        }
-        if(window.localStorage.getItem(AppConfig.LCS_THEME) === 'dark') {
-            this._isLight = false;
-        }
     }
 
     protected _onHamburgerClick() {
@@ -95,6 +87,16 @@ class AppBar extends CommonElement {
         } else {
             window.document.body.classList.add('dark');
             window.localStorage.setItem(AppConfig.LCS_THEME, "dark");
+        }
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        if(window.localStorage.getItem(AppConfig.LCS_THEME) === 'dark') {
+            this._isLight = false;
+        }
+        if(window.localStorage.getItem(AppConfig.LCS_DRAWER) === 'open') {
+            this._isOpen = true;
         }
     }
 
