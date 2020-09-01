@@ -113,7 +113,7 @@ class AppBar extends CommonElement {
                     ` : nothing
                 }
 
-                <button id="header-hamburger" class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClick}">
+                <button class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClick}">
                     <span class="hamburger__icon"></span>
                 </button>
 
