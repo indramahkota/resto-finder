@@ -28,6 +28,7 @@
     text-align: center;
 
     h1, h2 {
+      transition: all 0.2s ease-out;
       background-color: var(--color-hero-background);
     }
 

@@ -43,6 +43,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
+    transition: all 0.2s ease-out;
     background-color: var(--color-page-background);
     /* ukuran static font-size: 19px, line-height: 23px; */
     font: 19px / 23px Montserrat, "Montserrat", sans-serif;

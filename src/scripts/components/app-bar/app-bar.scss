@@ -23,6 +23,7 @@
   z-index: 1000;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.2s ease-out;
   background-color: var(--color-article-background);
 
   .header__logo {
