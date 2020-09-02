@@ -23,5 +23,6 @@ render(html`
     <a class="skip-link" href="#content">Skip to Content</a>
     <app-bar></app-bar>
     <app-content id="content"></app-content>
+    <my-profile></my-profile>
     <foot-bar></foot-bar>
 `, document.body);
