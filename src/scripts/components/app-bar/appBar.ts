@@ -106,7 +106,8 @@ class AppBar extends CommonElement {
             <header class="header">
                 <a href="/" class="header__logo">${this.title}</a>
 
-                ${this._darkMode ? html`
+                ${
+                    this._darkMode ? html`
                         <label class="toggle__switch">                    
                             <input @change="${this._onSwitchChange}" type="checkbox" ?checked=${this._isLight}>
                             <span class="slider round"></span>
