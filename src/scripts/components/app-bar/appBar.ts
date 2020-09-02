@@ -26,6 +26,7 @@ import { customElement, property, internalProperty } from 'lit-element';
 
 import { INavigation } from '../../interfaces/interfaces';
 import CommonElement from '../_base_/commonElement';
+import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
 
 import style from './app-bar.scss';
@@ -66,9 +67,9 @@ class AppBar extends CommonElement {
     protected _onHamburgerClick() {
         this._isOpen = !this._isOpen;
         if(this._isOpen) {
-            window.localStorage.setItem(AppConfig.LCS_DRAWER, "open");
+            Utils.setLCS(AppConfig.LCS_DRAWER, "open");
         } else {
-            window.localStorage.setItem(AppConfig.LCS_DRAWER, "close");
+            Utils.setLCS(AppConfig.LCS_DRAWER, "close");
         }
     }
 
@@ -83,19 +84,19 @@ class AppBar extends CommonElement {
         const path = event.composedPath();
         if((path[0] as HTMLInputElement).checked) {
             window.document.body.classList.remove('dark');
-            window.localStorage.setItem(AppConfig.LCS_THEME, "light");
+            Utils.setLCS(AppConfig.LCS_THEME, "light");
         } else {
             window.document.body.classList.add('dark');
-            window.localStorage.setItem(AppConfig.LCS_THEME, "dark");
+            Utils.setLCS(AppConfig.LCS_THEME, "dark");
         }
     }
 
     connectedCallback() {
         super.connectedCallback();
-        if(window.localStorage.getItem(AppConfig.LCS_THEME) === 'dark') {
+        if(Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
             this._isLight = false;
         }
-        if(window.localStorage.getItem(AppConfig.LCS_DRAWER) === 'open') {
+        if(Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
             this._isOpen = true;
         }
     }
