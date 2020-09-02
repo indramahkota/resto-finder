@@ -1,11 +1,14 @@
+import { Icon } from "@fortawesome/fontawesome-svg-core";
+
 export interface INavigation {
     name: string,
     url: string
 }
 
-export interface ISosialMedia {
+export interface ISocialMedia {
     name: string,
     url: string,
-    icon: string,
+    icon: Icon,
+    color: string,
     isEmail: boolean
 }
