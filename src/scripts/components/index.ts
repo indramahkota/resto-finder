@@ -1,3 +1,3 @@
 import './app-bar/appBar';
-import './hero-element/heroElement';
+import './app-content/appContent';
 import './foot-bar/footBar';

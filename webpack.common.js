@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-08-31 13:08:04
+ * @modify date 2020-09-02 13:29:02
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -73,7 +73,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: resolve(__dirname, "public/index.html"),
+      template: resolve(__dirname, "src/index.html"),
       minify: { collapseWhitespace: true, removeComments: true }
     }),
     new CopyWebpackPlugin({

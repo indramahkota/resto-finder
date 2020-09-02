@@ -1,10 +1,11 @@
 /**
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
- * @create date 2020-09-01 17:49:40
- * @modify date 2020-09-01 17:50:42
+ * @create date 2020-09-01 20:13:05
+ * @modify date 2020-09-01 20:13:07
  * @desc [description]
  */
+
 
 /*
 // Penggunaan
@@ -12,23 +13,24 @@ import {html, render} from 'lit-html';
 import AppConfig from './scripts/globals/appConfig';
 
 render(html`
-    <foot-bar
-        text=${AppConfig.TEXT_FOOTER} >
-    </foot-bar>
+    <sosial-media
+        .data=${menuData}
+    </sosial-media>
 `, document.body); */
 
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
+import { ISosialMedia } from '../../interfaces/interfaces';
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
 
-import style from './foot-bar.scss';
+import style from './sosial-media.scss';
 
-@customElement('foot-bar')
-class FootBar extends CommonElement {
-    @property({ type: String, attribute: true })
-    text: string;
+@customElement('sosial-media')
+class SosialMedia extends CommonElement {
+    @property({ type: Array, attribute: true })
+    data: Array<ISosialMedia>;
 
     static get styles() {
         return [...super.styles, style];
@@ -36,20 +38,18 @@ class FootBar extends CommonElement {
 
     constructor() {
         super();
-        this.text = AppConfig.TEXT_FOOTER;
+        this.data = AppConfig.APP_SOSIAL_MEDIA;
     }
 
     render() {
         return html`
-            <footer class="footer">
-                <p>${this.text}</p>
-            </footer>
+            
         `;
     }
 }
 
 declare global {
     interface HTMLElementTagNameMap {
-        'foot-bar': FootBar;
+        'sosial-media': SosialMedia;
     }
 }
