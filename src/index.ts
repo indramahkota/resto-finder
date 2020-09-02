@@ -9,22 +9,23 @@ import 'regenerator-runtime';
 import './styles/Index.scss';
 import './scripts/components';
 
-/* body
-    noscript
-    header (app-bar) & aside (side-bar)----------|-----> satu komponen
-        .content
-            hero (hero-element)------------------|-----> satu komponen
-            main --------------------------------|
-                article (card-element)-----------|-----> satu komponen
-            footer (foot-bar)--------------------|-----> satu komponen
-*/
-
-// import App from "./scripts/App.js";
-// document.addEventListener("DOMContentLoaded", App);
-
+import { html, render } from 'lit-html';
 import AppConfig from './scripts/globals/appConfig';
+
 if (window.localStorage.getItem(AppConfig.LCS_THEME) === 'dark') {
     window.document.body.classList.add('dark');
 } else {
     window.document.body.classList.remove('dark');
 }
+
+//this will replace <noscript> tag if javascript allowed otherwise will show <noscript> element.
+render(html`
+    <a class="skip-link" href="#content">Skip to Content</a>
+    <app-bar></app-bar>
+    <div id='content'>
+        <hero-element></hero-element>
+        <main>
+            <foot-bar></foot-bar>
+        </main>
+    </div>
+`, document.body);

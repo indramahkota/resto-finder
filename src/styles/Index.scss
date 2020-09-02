@@ -6,7 +6,7 @@
  * @desc [description]
  */
 
-@import './utilities/variables';
+@import "./utilities/variables";
 
 //under development :: default light
 :root {
@@ -45,24 +45,28 @@ body {
     flex-direction: column;
     transition: all 0.2s ease-out;
     background-color: var(--color-page-background);
-    /* ukuran static font-size: 19px, line-height: 23px; */
-    font: 19px / 23px Montserrat, "Montserrat", sans-serif;
+    /* ukuran static font-size: 16px, line-height: normal; */
+    font: 16px / normal Montserrat, "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background-color: #bf1722;
+        color: white;
+        padding: 8px;
+        z-index: 1001;
+    }
+
+    .skip-link:focus {
+        top: 0;
+    }
 
     #content {
         margin-top: 60px;
         overflow-x: hidden;
         overflow-y: auto;
-    }
-}
-
-/* Ukuran viewport dibawah 1380px */
-@media (max-width: 1380px) {
-    html,
-    body {
-        font-size: 16px;
-        // ukuran static yang akan jadi acuan ukuran em di child
-        line-height: normal;
     }
 }
