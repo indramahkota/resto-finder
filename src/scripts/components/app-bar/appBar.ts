@@ -63,7 +63,8 @@ class AppBar extends CommonElement {
     protected _onLogoClickHandler() {
         const logoClicked = new CustomEvent(EventType.LOGO_CLICKED, {
             detail: {
-                message: 'Logo Clicked'
+                message: 'Logo Clicked',
+                hash: '#greeting'
             },
             bubbles: true, 
             composed: true
@@ -83,7 +84,7 @@ class AppBar extends CommonElement {
     protected _onNavigationClickHandler(event: Event) {
         const path = event.composedPath();
         const hash = (path[0] as HTMLAnchorElement).hash
-        this._dataShouldUpdate(hash);
+        this.dataShouldUpdate(hash);
 
         const navClicked = new CustomEvent(EventType.NAVIGATION_CLICKED, {
             detail: {
@@ -110,14 +111,14 @@ class AppBar extends CommonElement {
         }
     }
 
-    protected _dataShouldUpdate(hash: string) {
+    dataShouldUpdate(hash: string) {
         this.data = this.data.map(nav => {
             if(nav.url !== hash) {
-                nav['isActive'] = false
+                nav['isActive'] = false;
                 return nav;
             }
             else {
-                nav['isActive'] = true
+                nav['isActive'] = true;
                 return nav;
             }
         })
@@ -132,7 +133,7 @@ class AppBar extends CommonElement {
             this._isOpen = true;
         }
         if(window.location.hash !== '')
-            this._dataShouldUpdate(window.location.hash);
+            this.dataShouldUpdate(window.location.hash);
     }
 
     render() {

@@ -31,8 +31,9 @@ render(html`
 `, document.body);
 
 window.addEventListener('DOMContentLoaded', async () => {
-    window.addEventListener(EventType.LOGO_CLICKED, () => {
+    window.addEventListener(EventType.LOGO_CLICKED, (event: Event) => {
         document.querySelector('app-content')?.greetingElement?.scrollIntoView();
+        document.querySelector('app-bar')?.dataShouldUpdate((event as CustomEvent).detail.hash);
     });
     window.addEventListener(EventType.NAVIGATION_CLICKED, (event: Event) => {
         switch ((event as CustomEvent).detail.hash) {
