@@ -5,6 +5,7 @@
  * @modify date 2020-08-30 18:50:41
  * @desc [description]
  */
+
 import 'regenerator-runtime';
 import './styles/Index.scss';
 import './scripts/components';
@@ -21,7 +22,7 @@ if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
 }
 
 render(html`
-    <a class="skip-link" href="#greeting">Skip to Content</a>
+    <a id="go-to-greeting" class="skip-link" href="#greeting">Skip to Content</a>
     <app-bar></app-bar>
     <app-content></app-content>
     <section id="indramahkota">
@@ -45,4 +46,11 @@ window.addEventListener('DOMContentLoaded', async () => {
                 break;
         }
     });
+
+    document.getElementById('go-to-greeting')?.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            document.getElementById('go-to-greeting')?.blur();
+            document.querySelector('app-content')?.greetingElement?.scrollIntoView();
+        }
+    })
 });
