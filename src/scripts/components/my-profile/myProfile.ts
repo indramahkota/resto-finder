@@ -14,49 +14,80 @@ import AppConfig from './scripts/globals/appConfig';
 
 render(html`
     <my-profile
-        .data=${menuData}
+        title='DEVELOPER'
+        name='Indra Mahkota'
+        location='Pontianak, Indonesia'
+        hirable='Yes'
+        image='image url'
     </my-profile>
 `, document.body); */
 
 import { html } from 'lit-html';
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 
+import { Icon, icon } from '@fortawesome/fontawesome-svg-core';
 import CommonElement from '../_base_/commonElement';
 import "../sosial-media/socialMedia";
 
 import style from './my-profile.scss';
+import responsive from './my-profile-responsive.scss';
+import Utils from '../../globals/appUtilities';
+import AppConfig from '../../globals/appConfig';
 
 @customElement('my-profile')
 class MyProfile extends CommonElement {
+    @property({ type: String, attribute: true })
+    title: string;
+
+    @property({ type: String, attribute: true })
+    name: string;
+
+    @property({ type: String, attribute: true })
+    location: string;
+
+    @property({ type: String, attribute: true })
+    hirable: string;
+
+    @property({ type: String, attribute: true })
+    image: string;
+
+
+    private _mapMarkericon: Icon;
 
     static get styles() {
-        return [...super.styles, style];
+        return [...super.styles, style, responsive];
     }
 
     constructor() {
         super();
+        this.title = 'DEVELOPER';
+        this.name = AppConfig.DEV_NAME;
+        this.location = AppConfig.DEV_LOCATION;
+        this.hirable = AppConfig.DEV_HIRABLE;
+        this.image = AppConfig.DEV_IMAGE;
+        this._mapMarkericon = icon({ prefix: 'fas', iconName: 'map-marker-alt' });
     }
 
     render() {
         return html`
-            <div class="profile__container">
-                <h1 class="profile__title">Developer</h1>
+            <div id="indramahkota" class="profile__container">
+                <h1 class="profile__title">${this.title}</h1>
                 <div class="profile__content">
-                    <h2 class="profile__name">Indra Mahkota</h2>
-                    <div class="profile__location">
-                        <svg viewBox="0 0 12 16" version="1.1" width="20" height="18" aria-hidden="true">
-                            <path fillRule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path>
-                        </svg>
-                        <span>Pontianak, Indonesia</span>
-                    </div>
-                    <div class="profile__hirable">
-                        <p>Open for opportunities: Yes</p>
-                    </div>
-                    <div>
-                        <social-media></social-media>
+                    <div class="profile__desc_container">
+                        <h2 class="profile__name">${this.name}</h2>
+                        <div class="profile__location">
+                            ${Utils.genSVG(this._mapMarkericon)}
+                            <span>${this.location}</span>
+                        </div>
+                        <div class="profile__hirable">
+                            <p>Open for opportunities: ${this.hirable}</p>
+                        </div>
+                        <div class="profile__mediasocial">
+                            <social-media></social-media>
+                        </div>
                     </div>
                     <div class="profile__image_container">
-                        <img class="profile__image" src='https://avatars2.githubusercontent.com/u/34052126?u=be2dbdd5d9df2a0b1d53848b878b4171f79f9c77&v=4' alt='Indra Mahkota'/>
+                        <img class="profile__image" src='${this.image}' alt='Indra Mahkota'/>
                     </div>
                 </div>
             </div>

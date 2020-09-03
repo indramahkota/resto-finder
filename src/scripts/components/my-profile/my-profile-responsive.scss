@@ -1,0 +1,19 @@
+@media screen and (min-width: 768px) {
+    .profile__container {
+        .profile__content {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+            padding: 0 5%;
+
+            .profile__desc_container {
+                order: 1;
+            }
+
+            .profile__image_container {
+                order: 2;
+                margin-left: auto;
+            }
+        }
+    }
+}

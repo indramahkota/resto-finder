@@ -15,6 +15,7 @@
     --color-article-background: #{$light-for-card};
     --color-page-background: #{$light-for-background};
     --color-hero-background: #{$light-for-hero-background};
+    --color-background-shadow: #{$light-for-background-shadow};
 }
 
 .dark {
@@ -23,6 +24,7 @@
     --color-article-background: #{$dark-for-card};
     --color-page-background: #{$dark-for-background};
     --color-hero-background: #{$dark-for-hero-background};
+    --color-background-shadow: #{$dark-for-background-shadow};
 }
 
 * {
