@@ -46,11 +46,4 @@ window.addEventListener('DOMContentLoaded', async () => {
                 break;
         }
     });
-
-    document.getElementById('go-to-greeting')?.addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') {
-            document.getElementById('go-to-greeting')?.blur();
-            document.querySelector('app-content')?.greetingElement?.scrollIntoView();
-        }
-    })
 });
