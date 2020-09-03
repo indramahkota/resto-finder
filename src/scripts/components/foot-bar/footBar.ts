@@ -42,7 +42,7 @@ class FootBar extends CommonElement {
     render() {
         return html`
             <footer class="footer">
-                <p>${this.text}</p>
+                <p tabindex="0">${this.text}</p>
             </footer>
         `;
     }

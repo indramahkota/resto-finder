@@ -139,27 +139,27 @@ class AppBar extends CommonElement {
     render() {
         return html`
             <header class="header">
-                <a tabindex="1" href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
+                <a href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`
                         <label class="toggle__switch">
-                            <input tabindex="2" aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
+                            <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
                             <span class="slider round"></span>
                         </label>
                     ` : nothing
                 }
 
-                <button tabindex="3" aria-label="Toggle Menu Button" class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
+                <button aria-label="Toggle Menu Button" class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
                     <span class="hamburger__icon"></span>
                 </button>
 
                 <nav class="navigation__drawer ${this._isOpen ? 'change' : ''}">
                     <ul>
-                        ${this.data.map((nav, i) =>
+                        ${this.data.map(nav =>
                                 html`
                                     <li>
-                                        <a tabindex="${i + 4}" href="${nav.url}" @click="${this._onNavigationClickHandler}"
+                                        <a href="${nav.url}" @click="${this._onNavigationClickHandler}"
                                             class="${ nav.isActive ? 'active' : ''}">
                                             ${nav.name}
                                             <span class="chevron"></span>

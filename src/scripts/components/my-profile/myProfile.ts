@@ -71,16 +71,16 @@ class MyProfile extends CommonElement {
     render() {
         return html`
             <div class="profile__container">
-                <h1 class="profile__title">${this.title}</h1>
+                <h1 tabindex="0" class="profile__title">${this.title}</h1>
                 <div class="profile__content">
                     <div class="profile__desc_container">
-                        <h2 class="profile__name">${this.name}</h2>
+                        <h2 tabindex="0" class="profile__name">${this.name}</h2>
                         <div class="profile__location">
                             ${Utils.genSVG(this._mapMarkericon)}
-                            <span>${this.location}</span>
+                            <span tabindex="0">${this.location}</span>
                         </div>
                         <div class="profile__hirable">
-                            <p>Open for opportunities: ${this.hirable}</p>
+                            <p tabindex="0">Open for opportunities: ${this.hirable}</p>
                         </div>
                         <div class="profile__mediasocial">
                             <social-media></social-media>
