@@ -70,7 +70,7 @@ class MyProfile extends CommonElement {
 
     render() {
         return html`
-            <div id="indramahkota" class="profile__container">
+            <div class="profile__container">
                 <h1 class="profile__title">${this.title}</h1>
                 <div class="profile__content">
                     <div class="profile__desc_container">
