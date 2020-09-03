@@ -55,8 +55,8 @@ class HeroElement extends CommonElement {
         return html`
             <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')">
                 <div class="hero__placeholder">
-                    <h2>${this.greeting}</h2>
-                    <h1>${this.name}</h1>
+                    <h2 tabindex="7">${this.greeting}</h2>
+                    <h1 tabindex="8">${this.name}</h1>
                 </div>
             </div>
         `;

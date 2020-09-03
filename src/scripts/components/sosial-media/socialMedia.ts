@@ -47,7 +47,7 @@ class SocialMedia extends CommonElement {
                         this.data.map((sm) =>
                             html`
                                 <li>
-                                    <a href="${sm.url}" class="${sm.name}" target="_blank" rel="noopener noreferrer">
+                                    <a aria-label="This is the ${sm.isEmail ? "Email" : "Social media page" } who created this website." href="${sm.url}" class="${sm.name}" target="_blank" rel="noopener noreferrer">
                                         ${Utils.genSVG(sm.icon)}
                                     </a>
                                 </li>
