@@ -12,6 +12,7 @@ import './scripts/components';
 import { html, render } from 'lit-html';
 import Utils from './scripts/globals/appUtilities';
 import AppConfig from './scripts/globals/appConfig';
+import EventType from './scripts/globals/eventType';
 
 if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
     window.document.body.classList.add('dark');
@@ -22,11 +23,25 @@ if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
 render(html`
     <a class="skip-link" href="#greeting">Skip to Content</a>
     <app-bar></app-bar>
-    <section id="greeting">
-        <app-content></app-content>
-    </section>
+    <app-content></app-content>
     <section id="indramahkota">
         <my-profile></my-profile>
     </section>
     <foot-bar></foot-bar>
 `, document.body);
+
+window.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener(EventType.LOGO_CLICKED, () => {
+        document.querySelector('app-content')?.greetingElement?.scrollIntoView();
+    });
+    window.addEventListener(EventType.NAVIGATION_CLICKED, (event: Event) => {
+        switch ((event as CustomEvent).detail.hash) {
+            case '#find':
+                document.querySelector('app-content')?.findElement?.scrollIntoView();
+                break;
+
+            default:
+                break;
+        }
+    });
+});

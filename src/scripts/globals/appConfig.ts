@@ -30,9 +30,9 @@ export default class AppConfig {
     static readonly LCS_DRAWER: string = 'resto-finder-indramahkota-drawer-mode';
 
     static readonly APP_NAV_DATA: INavigation[] = [
-        { name: 'Find Resto', url: '#find' },
-        { name: 'My Favorites', url: '#my' },
-        { name: 'Developer', url: '#indramahkota' }
+        { name: 'Find Resto', url: '#find', isActive: false },
+        { name: 'My Favorites', url: '#my', isActive: false },
+        { name: 'Developer', url: '#indramahkota', isActive: false }
     ];
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [

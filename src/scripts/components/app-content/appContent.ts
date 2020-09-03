@@ -9,40 +9,48 @@
 
 import { html } from 'lit-html';
 import { customElement } from 'lit-element';
+
 import "../hero-element/heroElement";
+import "../resto-container/restoContainer";
 import CommonElement from '../_base_/commonElement';
 
 @customElement('app-content')
 export default class AppContent extends CommonElement {
+    private _greetingElement: HTMLElement | null | undefined;
+    get greetingElement() {
+        return this._greetingElement;
+    }
+
+    private _findElement: HTMLElement | null | undefined;
+    get findElement() {
+        return this._findElement;
+    }
 
     constructor() {
         super();
+        this._greetingElement = null;
+        this._findElement = null;
     }
 
     render() {
         return html`
-            <hero-element></hero-element>
+            <section id="greeting">
+                <hero-element></hero-element>
+            </section>
+            <section id="find">
+                <resto-container></resto-container>
+            </section>
         `;
     }
 
-    /* //this will replace <noscript> tag if javascript allowed otherwise will show <noscript> element.
-    renderDefault() {
-        return html`
-            <a class="skip-link" href="#content">Skip to Content</a>
-            <!-- <app-bar></app-bar> -->
-            
-            <div id='content'>
-                <hero-element></hero-element>
-                <main>
-                    <foot-bar></foot-bar>
-                </main>
-            </div>
-        `;
-    } */
+    updated() {
+        this._greetingElement = this.shadowRoot?.getElementById('greeting');
+        this._findElement = this.shadowRoot?.getElementById('find');
+    }
 }
 
 declare global {
     interface HTMLElementTagNameMap {
-      'app-content': AppContent;
+        'app-content': AppContent;
     }
 }

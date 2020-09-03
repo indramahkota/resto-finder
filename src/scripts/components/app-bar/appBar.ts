@@ -16,8 +16,7 @@ const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
 render(html`
     <app-bar
         title=${menuData[1].name}
-        .data=${menuData}
-        active=${menuData[1].url} >
+        .data=${menuData} >
     </app-bar>
 `, document.body); */
 
@@ -31,6 +30,7 @@ import AppConfig from '../../globals/appConfig';
 
 import style from './app-bar.scss';
 import responsive from './app-bar-responsive.scss';
+import EventType from '../../globals/eventType';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
@@ -40,9 +40,6 @@ class AppBar extends CommonElement {
     @property({ type: Array, attribute: true })
     data: Array<INavigation>;
 
-    @property({ type: String, attribute: true })
-    active: string;
-    
     @internalProperty()
     protected _darkMode: boolean;
 
@@ -60,29 +57,51 @@ class AppBar extends CommonElement {
         super();
         this.title = AppConfig.APP_NAME;
         this.data = AppConfig.APP_NAV_DATA;
-        this.active = AppConfig.APP_NAV_DATA[0].url;
         this._darkMode = AppConfig.SUPPORT_DARK_MODE;
     }
 
-    protected _onHamburgerClick() {
+    protected _onLogoClickHandler() {
+        const logoClicked = new CustomEvent(EventType.LOGO_CLICKED, {
+            detail: {
+                message: 'Logo Clicked'
+            },
+            bubbles: true, 
+            composed: true
+        });
+        this.dispatchEvent(logoClicked);
+    }
+
+    protected _onHamburgerClickHandler() {
         this._isOpen = !this._isOpen;
-        if(this._isOpen) {
+        if (this._isOpen) {
             Utils.setLCS(AppConfig.LCS_DRAWER, "open");
         } else {
             Utils.setLCS(AppConfig.LCS_DRAWER, "close");
         }
     }
 
-    protected _onNavigateClick(event: Event) {
+    protected _onNavigationClickHandler(event: Event) {
         const path = event.composedPath();
-        this.active = (path[0] as HTMLAnchorElement).hash;
-        if(this._isOpen)
-            this._onHamburgerClick();
+        const hash = (path[0] as HTMLAnchorElement).hash
+        this._dataShouldUpdate(hash);
+
+        const navClicked = new CustomEvent(EventType.NAVIGATION_CLICKED, {
+            detail: {
+                message: 'Navigation Clicked',
+                hash: hash
+            },
+            bubbles: true, 
+            composed: true
+        });
+        this.dispatchEvent(navClicked);
+
+        if (this._isOpen)
+            this._onHamburgerClickHandler();
     }
 
-    protected _onSwitchChange(event: Event) {
+    protected _onSwitchChangeHandler(event: Event) {
         const path = event.composedPath();
-        if((path[0] as HTMLInputElement).checked) {
+        if ((path[0] as HTMLInputElement).checked) {
             window.document.body.classList.remove('dark');
             Utils.setLCS(AppConfig.LCS_THEME, "light");
         } else {
@@ -91,42 +110,56 @@ class AppBar extends CommonElement {
         }
     }
 
+    protected _dataShouldUpdate(hash: string) {
+        this.data = this.data.map(nav => {
+            if(nav.url !== hash) {
+                nav['isActive'] = false
+                return nav;
+            }
+            else {
+                nav['isActive'] = true
+                return nav;
+            }
+        })
+    }
+
     connectedCallback() {
         super.connectedCallback();
-        if(Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
+        if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
             this._isLight = false;
         }
-        if(Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
+        if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
             this._isOpen = true;
         }
+        if(window.location.hash !== '')
+            this._dataShouldUpdate(window.location.hash);
     }
 
     render() {
         return html`
             <header class="header">
-                <a href="/" class="header__logo">${this.title}</a>
+                <a href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`
                         <label class="toggle__switch">                    
-                            <input @change="${this._onSwitchChange}" type="checkbox" ?checked=${this._isLight}>
+                            <input @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
                             <span class="slider round"></span>
                         </label>
                     ` : nothing
                 }
 
-                <button class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClick}">
+                <button class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
                     <span class="hamburger__icon"></span>
                 </button>
 
                 <nav class="navigation__drawer ${this._isOpen ? 'change' : ''}">
                     <ul>
-                        ${
-                            this.data.map((nav, i) =>
+                        ${this.data.map((nav) =>
                                 html`
                                     <li>
-                                        <a href="${nav.url}" @click="${this._onNavigateClick}"
-                                            class="${ (i === 0 && this.active === '') || this.active === nav.url ? 'active' : ''}">
+                                        <a href="${nav.url}" @click="${this._onNavigationClickHandler}"
+                                            class="${ nav.isActive ? 'active' : ''}">
                                             ${nav.name}
                                             <span class="chevron"></span>
                                         </a>
@@ -143,6 +176,6 @@ class AppBar extends CommonElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-      'app-bar': AppBar;
+        'app-bar': AppBar;
     }
 }
