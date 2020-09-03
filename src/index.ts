@@ -20,9 +20,13 @@ if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
 }
 
 render(html`
-    <a class="skip-link" href="#content">Skip to Content</a>
+    <a class="skip-link" href="#greeting">Skip to Content</a>
     <app-bar></app-bar>
-    <app-content id="content"></app-content>
-    <my-profile id="indramahkota"></my-profile>
+    <section id="greeting">
+        <app-content></app-content>
+    </section>
+    <section id="indramahkota">
+        <my-profile></my-profile>
+    </section>
     <foot-bar></foot-bar>
 `, document.body);
