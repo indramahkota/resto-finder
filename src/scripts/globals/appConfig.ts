@@ -7,8 +7,8 @@
  */
 
 import { INavigation, ISocialMedia } from '../interfaces/interfaces';
-import devImageUrl from '../../assets/images/profile.png';
-import heroImageUrl from '../../assets/images/heros/hero-image.jpg';
+import devImageUrl from '../../assets/images/profile.webp';
+import heroImageUrl from '../../assets/images/heros/hero-image.webp';
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
