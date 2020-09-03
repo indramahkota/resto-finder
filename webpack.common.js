@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-02 13:29:02
+ * @modify date 2020-09-03 20:02:58
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -13,12 +13,12 @@ const webcomponents_vendor_url = "node_modules/@webcomponents/webcomponentsjs";
 const fileToCopy = [
   {
     from: resolve(`${webcomponents_vendor_url}/custom-elements-es5-adapter.js`),
-    to: 'vendors',
+    to: 'static/vendors',
     flatten: true
   },
   {
     from: resolve(`${webcomponents_vendor_url}/webcomponents-loader.js`),
-    to: 'vendors',
+    to: 'static/vendors',
     flatten: true
   }
 ];
@@ -61,7 +61,7 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: { name: "assets/[name].[contenthash:8].[ext]" }
+            options: { name: "static/images/[name].[contenthash:8].[ext]" }
           }
         ]
       }
