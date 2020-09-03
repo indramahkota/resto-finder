@@ -7,9 +7,9 @@
             "dom",
             "dom.iterable"
         ],
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
+        "declaration": false,//true: dev/prod: false
+        "declarationMap": false,//true: dev/prod: false
+        "sourceMap": false,//true: dev/prod: false
         "outDir": "./dist",
         "rootDir": "./src",
         "strict": true,
