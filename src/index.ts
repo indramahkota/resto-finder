@@ -15,23 +15,23 @@ import Utils from './scripts/globals/appUtilities';
 import AppConfig from './scripts/globals/appConfig';
 import EventType from './scripts/globals/eventType';
 
-if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
-    window.document.body.classList.add('dark');
-} else {
-    window.document.body.classList.remove('dark');
-}
+window.addEventListener('DOMContentLoaded', () => {
+    if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
+        window.document.body.classList.add('dark');
+    } else {
+        window.document.body.classList.remove('dark');
+    }
 
-render(html`
-    <a id="go-to-greeting" class="skip-link" href="#greeting">Skip to Content</a>
-    <app-bar></app-bar>
-    <app-content></app-content>
-    <section id="indramahkota">
-        <my-profile></my-profile>
-    </section>
-    <foot-bar></foot-bar>
-`, document.body);
+    render(html`
+        <a class="skip-link" href="#greeting">Skip to Content</a>
+        <app-bar></app-bar>
+        <app-content></app-content>
+        <section id="indramahkota">
+            <my-profile></my-profile>
+        </section>
+        <foot-bar></foot-bar>
+    `, document.body);
 
-window.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener(EventType.LOGO_CLICKED, (event: Event) => {
         document.querySelector('app-content')?.greetingElement?.scrollIntoView();
         document.querySelector('app-bar')?.dataShouldUpdate((event as CustomEvent).detail.hash);
