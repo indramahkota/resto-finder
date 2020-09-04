@@ -17,6 +17,6 @@ export default class AppIcons {
     static readonly LINKEDIN = icon({ prefix: 'fab', iconName: 'linkedin-in' });
     static readonly GOOGLE = icon({ prefix: 'fab', iconName: 'google' });
     static readonly GITLAB = icon({ prefix: 'fab', iconName: 'gitlab' });
-    static readonly FACEBOOK = icon({ prefix: 'fab', iconName: 'facebook' });
+    static readonly FACEBOOK = icon({ prefix: 'fab', iconName: 'facebook-f' });
     static readonly MARKER = icon({ prefix: 'fas', iconName: 'map-marker-alt' });
 }
