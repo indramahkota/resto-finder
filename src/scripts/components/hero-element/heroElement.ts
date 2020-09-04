@@ -51,9 +51,10 @@ class HeroElement extends CommonElement {
     }
 
     /* CSS Gradient Generator https://cssgradient.io/ */
+    /* <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')"> */
     render() {
         return html`
-            <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')">
+            <div class="hero__background" style="background-image: url('${this.background}')">
                 <div class="hero__placeholder">
                     <h2 tabindex="0">${this.greeting}</h2>
                     <h1 tabindex="0">${this.name}</h1>

@@ -87,7 +87,7 @@ class MyProfile extends CommonElement {
                         </div>
                     </div>
                     <div class="profile__image_container">
-                        <img class="profile__image" src='${this.image}' alt='Indra Mahkota'/>
+                        <img class="profile__image" src='${this.image}' alt='Indra Mahkota, Developer who build this website'/>
                     </div>
                 </div>
             </div>
