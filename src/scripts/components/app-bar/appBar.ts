@@ -31,6 +31,8 @@ import AppConfig from '../../globals/appConfig';
 import style from './app-bar.scss';
 import responsive from './app-bar-responsive.scss';
 import EventType from '../../globals/eventType';
+import AppIcons from '../../globals/appIcons';
+import { Icon } from '@fortawesome/fontawesome-svg-core';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
@@ -49,6 +51,9 @@ class AppBar extends CommonElement {
     @internalProperty()
     protected _isOpen = false;
 
+    private _moonIcon: Icon;
+    private _sunIcon: Icon;
+
     static get styles() {
         return [...super.styles, style, responsive];
     }
@@ -58,6 +63,8 @@ class AppBar extends CommonElement {
         this.title = AppConfig.APP_NAME;
         this.data = AppConfig.APP_NAV_DATA;
         this._darkMode = AppConfig.SUPPORT_DARK_MODE;
+        this._moonIcon = AppIcons.MOON;
+        this._sunIcon = AppIcons.SUN;
     }
 
     protected _onLogoClickHandler() {
@@ -143,10 +150,14 @@ class AppBar extends CommonElement {
 
                 ${
                     this._darkMode ? html`
-                        <label class="toggle__switch">
-                            <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
-                            <span class="slider round"></span>
-                        </label>
+                        <div class="toggle__container">
+                            <label class="toggle__switch">
+                                <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
+                                <span class="slider round"></span>
+                                ${Utils.genSVG(this._moonIcon)}
+                                ${Utils.genSVG(this._sunIcon)}
+                            </label>
+                        </div>
                     ` : nothing
                 }
 

@@ -6,23 +6,14 @@
  * @desc [description]
  */
 
-@media screen and (min-width: 360px) {
-    .header {
-        .toggle__switch {
-            display: inline-block;
-        }
-    }
-}
-
 @media screen and (min-width: 768px) {
     .header {
         .hamburger__btn {
             display: none;
         }
 
-        .toggle__switch {
+        .toggle__container {
             margin-left: 0;
-            display: inline-block;
         }
 
         .navigation__drawer {
