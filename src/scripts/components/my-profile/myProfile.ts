@@ -52,7 +52,7 @@ class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
     image: string;
 
-    private _mapMarkericon: Icon;
+    private _mapMarkerIcon: Icon;
 
     static get styles() {
         return [...super.styles, style, responsive];
@@ -65,7 +65,7 @@ class MyProfile extends CommonElement {
         this.location = AppConfig.DEV_LOCATION;
         this.hirable = AppConfig.DEV_HIRABLE;
         this.image = AppConfig.DEV_IMAGE;
-        this._mapMarkericon = AppIcons.MARKER;
+        this._mapMarkerIcon = AppIcons.MARKER;
     }
 
     render() {
@@ -76,7 +76,7 @@ class MyProfile extends CommonElement {
                     <div class="profile__desc_container">
                         <h2 tabindex="0" class="profile__name">${this.name}</h2>
                         <div class="profile__location">
-                            ${Utils.genSVG(this._mapMarkericon)}
+                            ${Utils.genSVG(this._mapMarkerIcon)}
                             <span tabindex="0">${this.location}</span>
                         </div>
                         <div class="profile__hirable">
