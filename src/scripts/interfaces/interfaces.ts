@@ -13,3 +13,16 @@ export interface ISocialMedia {
     color: string,
     isEmail: boolean
 }
+
+export interface IRestaurant {
+    id: string,
+    name: string,
+    description: string,
+    pictureId: string,
+    city: string,
+    rating: number
+}
+
+export interface IRestaurants {
+    restaurants: IRestaurant[];
+}
