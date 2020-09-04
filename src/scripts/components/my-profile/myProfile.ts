@@ -25,7 +25,7 @@ render(html`
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import { Icon, icon } from '@fortawesome/fontawesome-svg-core';
+import { Icon } from '@fortawesome/fontawesome-svg-core';
 import CommonElement from '../_base_/commonElement';
 import "../sosial-media/socialMedia";
 
@@ -33,6 +33,7 @@ import style from './my-profile.scss';
 import responsive from './my-profile-responsive.scss';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
+import AppIcons from '../../globals/appIcons';
 
 @customElement('my-profile')
 class MyProfile extends CommonElement {
@@ -51,7 +52,6 @@ class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
     image: string;
 
-
     private _mapMarkericon: Icon;
 
     static get styles() {
@@ -65,7 +65,7 @@ class MyProfile extends CommonElement {
         this.location = AppConfig.DEV_LOCATION;
         this.hirable = AppConfig.DEV_HIRABLE;
         this.image = AppConfig.DEV_IMAGE;
-        this._mapMarkericon = icon({ prefix: 'fas', iconName: 'map-marker-alt' });
+        this._mapMarkericon = AppIcons.MARKER;
     }
 
     render() {

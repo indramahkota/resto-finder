@@ -9,11 +9,7 @@
 import { INavigation, ISocialMedia } from '../interfaces/interfaces';
 import devImageUrl from '../../assets/images/profile.webp';
 import heroImageUrl from '../../assets/images/heros/hero-image.webp';
-
-import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedinIn, faGoogle, faGitlab, faFacebookF } from '@fortawesome/free-brands-svg-icons';
-library.add(faMapMarkerAlt, faGithub, faLinkedinIn, faGoogle, faGitlab, faFacebookF);
+import AppIcons from './appIcons';
 
 export default class AppConfig {
     static readonly APP_NAME: string = 'Resto Finder';
@@ -36,11 +32,11 @@ export default class AppConfig {
     ];
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [
-        { name: 'github', url: 'https://github.com/indramahkota', isEmail: false, color: '#333', icon: icon({ prefix: 'fab', iconName: 'github' }) },
-        { name: 'linkedin', url: 'https://www.linkedin.com/in/indramahkota', isEmail: false, color: '#0e76a8', icon: icon({ prefix: 'fab', iconName: 'linkedin-in' }) },
-        { name: 'google', url: 'mailto:indramahkota1@gmail.com', isEmail: true, color: '#ea4335',  icon: icon({ prefix: 'fab', iconName: 'google' }) },
-        { name: 'gitlab', url: 'https://gitlab.com/indramahkota', isEmail: false, color: '#fca326', icon: icon({ prefix: 'fab', iconName: 'gitlab' }) },
-        { name: 'facebook', url: 'https://www.facebook.com/indramahkota.id', isEmail: false, color: '#3b5998', icon: icon({ prefix: 'fab', iconName: 'facebook-f' }) }
+        { name: 'github', url: 'https://github.com/indramahkota', isEmail: false, color: '#333', icon: AppIcons.GITHUB },
+        { name: 'linkedin', url: 'https://www.linkedin.com/in/indramahkota', isEmail: false, color: '#0e76a8', icon: AppIcons.LINKEDIN },
+        { name: 'google', url: 'mailto:indramahkota1@gmail.com', isEmail: true, color: '#ea4335',  icon: AppIcons.GOOGLE },
+        { name: 'gitlab', url: 'https://gitlab.com/indramahkota', isEmail: false, color: '#fca326', icon: AppIcons.GITLAB },
+        { name: 'facebook', url: 'https://www.facebook.com/indramahkota.id', isEmail: false, color: '#3b5998', icon: AppIcons.FACEBOOK }
     ];
 
     static readonly SUPPORT_DARK_MODE: boolean = true;
