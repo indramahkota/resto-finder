@@ -154,8 +154,8 @@ class AppBar extends CommonElement {
                             <label class="toggle__switch">
                                 <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
                                 <span class="slider round"></span>
-                                ${Utils.genSVG(this._moonIcon)}
                                 ${Utils.genSVG(this._sunIcon)}
+                                ${Utils.genSVG(this._moonIcon)}
                             </label>
                         </div>
                     ` : nothing
