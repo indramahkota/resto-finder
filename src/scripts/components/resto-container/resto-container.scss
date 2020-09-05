@@ -1,9 +1,19 @@
 .resto__container {
     width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    .resto__title {
+        margin: 10px 0;
+        color: var(--color-text);
+    }
 
     .resto__items {
         margin: 32px auto 8px auto;
+        width: 90%;
         max-width: 1400px;
         display: grid;
         grid-template-columns: 1fr;
