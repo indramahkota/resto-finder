@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-05 20:19:53
+ * @modify date 2020-09-05 22:29:28
  * @desc [description]
  */
 const { merge } = require("webpack-merge");
@@ -26,7 +26,7 @@ module.exports = merge(common, {
           },
           mangle: true
         },
-        sourceMap: true,
+        sourceMap: false,
         extractComments: true
       }),
       new OptimizeCssAssetsPlugin({
