@@ -17,8 +17,8 @@
             "dom",
             "dom.iterable"
         ],
-        "declarationMap": true, //true: dev | prod: false
-        "sourceMap": true, //true: dev | prod: false
+        "declarationMap": true,
+        "sourceMap": true,
         "outDir": "./dist",
         "rootDir": "./src",
         "moduleResolution": "node",
