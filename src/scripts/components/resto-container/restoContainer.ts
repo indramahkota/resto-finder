@@ -1,4 +1,5 @@
-/**
+
+import "../resto-card/restoCard";/**
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-09-03 13:00:26
@@ -21,19 +22,13 @@ import LocalDataSource from '../../data/sources/local/localDataSource';
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
     @property({ type: String, attribute: true })
-    url: string;
+    url: string = AppConfig.JSON_RESTO_DATA_URL;
 
     @internalProperty()
-    protected _dataJson: IRestaurants | null;
+    protected _dataJson: IRestaurants | null = null;
 
     static get styles() {
         return [...super.styles, style, responsive];
-    }
-
-    constructor() {
-        super();
-        this.url = AppConfig.JSON_RESTO_DATA_URL;
-        this._dataJson = null;
     }
 
     connectedCallback() {
@@ -45,7 +40,13 @@ export default class RestoContainer extends CommonElement {
 
     render() {
         return html`
-            ${this._dataJson?.restaurants.map(res => html`<p>${res.name}</p>`)}
+            <div class="resto__container">
+                <div class="resto__items">
+                    ${this._dataJson?.restaurants.map(res => html`
+                        <resto-card .data=${res}></resto-card>
+                    `)}
+                </div>
+            </div>
         `;
     }
 }
