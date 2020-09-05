@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-03 20:02:58
+ * @modify date 2020-09-05 19:51:40
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -31,6 +31,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -68,7 +73,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
   plugins: [
     new HtmlWebpackPlugin({

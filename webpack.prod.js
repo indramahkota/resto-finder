@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-05 14:30:14
+ * @modify date 2020-09-05 19:52:05
  * @desc [description]
  */
 const { merge } = require("webpack-merge");

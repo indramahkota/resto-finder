@@ -1,24 +1,27 @@
 {
     "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "esModuleInterop": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+        "declarationDir": "dist/types",
+        "declaration": true,
         "target": "es2017",
         "module": "es2015",
+        "strict": true,
         "lib": [
             "es2017",
             "dom",
             "dom.iterable"
         ],
-        "declaration": true,//true: dev | prod: false
-        "declarationMap": true,//true: dev | prod: false
-        "sourceMap": true,//true: dev | prod: false
+        "declarationMap": true, //true: dev | prod: false
+        "sourceMap": true, //true: dev | prod: false
         "outDir": "./dist",
         "rootDir": "./src",
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "plugins": [
@@ -28,6 +31,11 @@
             }
         ]
     },
-    "include": ["src/**/*.ts"],
-    "exclude": []
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
