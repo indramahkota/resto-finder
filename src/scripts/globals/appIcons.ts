@@ -7,10 +7,10 @@
  */
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faMapMarkerAlt, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faMoon, faSun, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn, faGoogle, faGitlab, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faMapMarkerAlt, faMoon, faSun, faGithub, faLinkedinIn, faGoogle, faGitlab, faFacebookF);
+library.add(faMapMarkerAlt, faMoon, faSun, faStar, faGithub, faLinkedinIn, faGoogle, faGitlab, faFacebookF);
 
 export default class AppIcons {
     static readonly GITHUB = icon({ prefix: 'fab', iconName: 'github' });
@@ -21,4 +21,5 @@ export default class AppIcons {
     static readonly MARKER = icon({ prefix: 'fas', iconName: 'map-marker-alt' });
     static readonly MOON = icon({ prefix: 'fas', iconName: 'moon' });
     static readonly SUN = icon({ prefix: 'fas', iconName: 'sun' });
+    static readonly STAR = icon({ prefix: 'fas', iconName: 'star' });
 }

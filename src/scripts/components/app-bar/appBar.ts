@@ -23,7 +23,6 @@ render(html`
 import { html, nothing } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 
-import { INavigation } from '../../interfaces/interfaces';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
@@ -32,42 +31,32 @@ import style from './app-bar.scss';
 import responsive from './app-bar-responsive.scss';
 import EventType from '../../globals/eventType';
 import AppIcons from '../../globals/appIcons';
-import { Icon } from '@fortawesome/fontawesome-svg-core';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
     @property({ type: String, attribute: true })
-    title: string;
+    title = AppConfig.APP_NAME;
 
     @property({ type: Array, attribute: true })
-    data: Array<INavigation>;
+    data = AppConfig.APP_NAV_DATA;
 
     @internalProperty()
-    protected _darkMode: boolean;
+    private _darkMode = AppConfig.SUPPORT_DARK_MODE;
 
     @internalProperty()
-    protected _isLight = true;
+    private _isLight = true;
 
     @internalProperty()
-    protected _isOpen = false;
+    private _isOpen = false;
 
-    private _moonIcon: Icon;
-    private _sunIcon: Icon;
+    private _moonIcon = AppIcons.MOON;
+    private _sunIcon = AppIcons.SUN;
 
     static get styles() {
         return [...super.styles, style, responsive];
     }
 
-    constructor() {
-        super();
-        this.title = AppConfig.APP_NAME;
-        this.data = AppConfig.APP_NAV_DATA;
-        this._darkMode = AppConfig.SUPPORT_DARK_MODE;
-        this._moonIcon = AppIcons.MOON;
-        this._sunIcon = AppIcons.SUN;
-    }
-
-    protected _onLogoClickHandler() {
+    private _onLogoClickHandler() {
         const logoClicked = new CustomEvent(EventType.LOGO_CLICKED, {
             detail: {
                 message: 'Logo Clicked',
@@ -79,7 +68,7 @@ class AppBar extends CommonElement {
         this.dispatchEvent(logoClicked);
     }
 
-    protected _onHamburgerClickHandler() {
+    private _onHamburgerClickHandler() {
         this._isOpen = !this._isOpen;
         if (this._isOpen) {
             Utils.setLCS(AppConfig.LCS_DRAWER, "open");
@@ -88,7 +77,7 @@ class AppBar extends CommonElement {
         }
     }
 
-    protected _onNavigationClickHandler(event: Event) {
+    private _onNavigationClickHandler(event: Event) {
         const path = event.composedPath();
         const hash = (path[0] as HTMLAnchorElement).hash
         this.dataShouldUpdate(hash);
@@ -107,7 +96,7 @@ class AppBar extends CommonElement {
             this._onHamburgerClickHandler();
     }
 
-    protected _onSwitchChangeHandler(event: Event) {
+    private _onSwitchChangeHandler(event: Event) {
         const path = event.composedPath();
         if ((path[0] as HTMLInputElement).checked) {
             window.document.body.classList.remove('dark');

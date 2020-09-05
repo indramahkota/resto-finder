@@ -18,7 +18,6 @@ render(html`
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import { ISocialMedia } from '../../interfaces/interfaces';
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
 
@@ -28,15 +27,10 @@ import Utils from '../../globals/appUtilities';
 @customElement('social-media')
 class SocialMedia extends CommonElement {
     @property({ type: Array, attribute: true })
-    data: Array<ISocialMedia>;
+    data = AppConfig.APP_SOCIAL_MEDIA;
 
     static get styles() {
         return [...super.styles, style];
-    }
-
-    constructor() {
-        super();
-        this.data = AppConfig.APP_SOCIAL_MEDIA;
     }
 
     render() {

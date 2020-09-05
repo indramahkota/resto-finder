@@ -31,27 +31,20 @@ import responsive from './hero-element-responsive.scss';
 @customElement('hero-element')
 class HeroElement extends CommonElement {
     @property({ type: String, attribute: true })
-    background: string;
+    background = AppConfig.APP_HERO_IMAGE;
 
     @property({ type: String, attribute: true })
-    greeting: string;
+    greeting = AppConfig.TEXT_GREETING;
 
     @property({ type: String, attribute: true })
-    name: string;
+    name = AppConfig.APP_NAME;
 
     static get styles() {
         return [...super.styles, style, responsive];
     }
 
-    constructor() {
-        super();
-        this.background = AppConfig.APP_HERO_IMAGE;
-        this.greeting = AppConfig.TEXT_GREETING;
-        this.name = AppConfig.APP_NAME;
-    }
-
     /* CSS Gradient Generator https://cssgradient.io/ */
-    /* <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')"> */
+    /* opsional <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')"> */
     render() {
         return html`
             <div class="hero__background" style="background-image: url('${this.background}')">

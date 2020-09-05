@@ -26,12 +26,6 @@ export default class AppContent extends CommonElement {
         return this._findElement;
     }
 
-    constructor() {
-        super();
-        this._greetingElement = null;
-        this._findElement = null;
-    }
-
     render() {
         return html`
             <section id="greeting">
@@ -43,7 +37,7 @@ export default class AppContent extends CommonElement {
         `;
     }
 
-    updated() {
+    firstUpdated() {
         this._greetingElement = this.shadowRoot?.getElementById('greeting');
         this._findElement = this.shadowRoot?.getElementById('find');
     }

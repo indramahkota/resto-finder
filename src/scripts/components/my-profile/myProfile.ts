@@ -25,7 +25,6 @@ render(html`
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import { Icon } from '@fortawesome/fontawesome-svg-core';
 import CommonElement from '../_base_/commonElement';
 import "../sosial-media/socialMedia";
 
@@ -38,34 +37,24 @@ import AppIcons from '../../globals/appIcons';
 @customElement('my-profile')
 class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
-    title: string;
+    title = 'DEVELOPER';
 
     @property({ type: String, attribute: true })
-    name: string;
+    name = AppConfig.DEV_NAME;
 
     @property({ type: String, attribute: true })
-    location: string;
+    location = AppConfig.DEV_LOCATION;
 
     @property({ type: String, attribute: true })
-    hirable: string;
+    hirable = AppConfig.DEV_HIRABLE;
 
     @property({ type: String, attribute: true })
-    image: string;
+    image = AppConfig.DEV_IMAGE;
 
-    private _mapMarkerIcon: Icon;
+    private _mapMarkerIcon = AppIcons.MARKER;
 
     static get styles() {
         return [...super.styles, style, responsive];
-    }
-
-    constructor() {
-        super();
-        this.title = 'DEVELOPER';
-        this.name = AppConfig.DEV_NAME;
-        this.location = AppConfig.DEV_LOCATION;
-        this.hirable = AppConfig.DEV_HIRABLE;
-        this.image = AppConfig.DEV_IMAGE;
-        this._mapMarkerIcon = AppIcons.MARKER;
     }
 
     render() {

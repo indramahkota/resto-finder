@@ -28,15 +28,10 @@ import style from './foot-bar.scss';
 @customElement('foot-bar')
 class FootBar extends CommonElement {
     @property({ type: String, attribute: true })
-    text: string;
+    text = AppConfig.TEXT_FOOTER;
 
     static get styles() {
         return [...super.styles, style];
-    }
-
-    constructor() {
-        super();
-        this.text = AppConfig.TEXT_FOOTER;
     }
 
     render() {

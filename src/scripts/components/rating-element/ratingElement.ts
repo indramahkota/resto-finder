@@ -14,27 +14,25 @@ import "../resto-container/restoContainer";
 import CommonElement from '../_base_/commonElement';
 import AppIcons from '../../globals/appIcons';
 import Utils from '../../globals/appUtilities';
-import { Icon } from '@fortawesome/fontawesome-svg-core';
 
 import style from './rating-element.scss';
 
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })
-    rating: number;
+    rating: number = 0;
 
-    private _starIcon: Icon;
+    private _starIcon = AppIcons.STAR;
 
     static get styles() {
         return [...super.styles, style];
     }
 
-    constructor() {
-        super();
-        this.rating = 0;
-        this._starIcon = AppIcons.STAR;
-    }
-
+    /* 
+        Bisa menggunakan karakter
+        ☆☆☆☆☆
+        ★★★★★
+    */
     render() {
         return html`
             <div class="rating__container">
