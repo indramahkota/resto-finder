@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-04 12:59:18
+ * @modify date 2020-09-05 14:30:14
  * @desc [description]
  */
 const { merge } = require("webpack-merge");
@@ -23,7 +23,9 @@ module.exports = merge(common, {
           },
           compress: {
             drop_console: true
-          }
+          },
+          mangle: true,
+          compress: true,
         },
         extractComments: true
       }),
