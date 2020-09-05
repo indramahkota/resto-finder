@@ -17,6 +17,13 @@ import Utils from '../../globals/appUtilities';
 
 import style from './rating-element.scss';
 
+/*
+// Penggunaan
+import {html, render} from 'lit-html';
+
+render(html`
+    <rating-element rating="0.4"></rating-element>
+`, document.body); */
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })

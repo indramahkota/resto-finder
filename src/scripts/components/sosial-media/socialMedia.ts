@@ -9,10 +9,9 @@
 /*
 // Penggunaan
 import {html, render} from 'lit-html';
-import AppConfig from './scripts/globals/appConfig';
 
 render(html`
-    <sosial-media .data=${menuData}></sosial-media>
+    <sosial-media .data=${{object data}}></sosial-media>
 `, document.body); */
 
 import { html } from 'lit-html';

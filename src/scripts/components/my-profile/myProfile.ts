@@ -10,7 +10,6 @@
 /*
 // Penggunaan
 import {html, render} from 'lit-html';
-import AppConfig from './scripts/globals/appConfig';
 
 render(html`
     <my-profile
