@@ -31,7 +31,7 @@ export default class RestoCard extends CommonElement {
             <div class="card__container">
                 <img src="${ifDefined(this.data?.pictureId)}" alt="${ifDefined(this.data?.name)}">
                 <div class="card__content">
-                    <h4><b>${this.data?.name}</b></h4>
+                    <p class="card__name"><b>${this.data?.name}</b></p>
                     <p class="card__city">${this.data?.city}</p>
                     <rating-element rating=${ifDefined(this.data?.rating)}></rating-element>
                     <p class="card__description">${this.data?.description}</p> 
