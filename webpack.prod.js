@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-05 22:29:28
+ * @modify date 2020-09-06 14:17:28
  * @desc [description]
  */
 const { merge } = require("webpack-merge");
@@ -18,9 +18,6 @@ module.exports = merge(common, {
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          output: {
-            comments: /@license/i,
-          },
           compress: {
             drop_console: true
           },
