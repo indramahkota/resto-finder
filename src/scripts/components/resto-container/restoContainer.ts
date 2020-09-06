@@ -1,5 +1,4 @@
-
-import "../resto-card/restoCard";/**
+/**
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-09-03 13:00:26
@@ -7,17 +6,27 @@ import "../resto-card/restoCard";/**
  * @desc [description]
  */
 
+/*
+// Penggunaan
+import {html, render} from 'lit-html';
+
+render(html`
+    <resto-container url=${url}></resto-container>
+`, document.body); */
+
 import { html } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 
+import "../resto-card/restoCard";
 import "../hero-element/heroElement";
+
+import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
+import { IRestaurants } from '../../interfaces/interfaces';
+import LocalDataSource from '../../data/sources/local/localDataSource';
 
 import style from './resto-container.scss';
 import responsive from './resto-container-responsive.scss';
-import AppConfig from '../../globals/appConfig';
-import { IRestaurants } from '../../interfaces/interfaces';
-import LocalDataSource from '../../data/sources/local/localDataSource';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {

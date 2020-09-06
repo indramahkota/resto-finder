@@ -6,16 +6,25 @@
  * @desc [description]
  */
 
+/*
+// Penggunaan
+import {html, render} from 'lit-html';
+
+render(html`
+    <resto-card .data=${{object data}}></resto-card>
+`, document.body); */
+
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import "../hero-element/heroElement";
 import "../rating-element/ratingElement";
+
 import CommonElement from '../_base_/commonElement';
+import { IRestaurant } from "../../interfaces/interfaces";
 
 import style from './resto-card.scss';
-import { IRestaurant } from "../../interfaces/interfaces";
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {

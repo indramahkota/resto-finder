@@ -26,11 +26,11 @@ import { customElement, property, internalProperty } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
+import EventType from '../../globals/eventType';
+import AppIcons from '../../globals/appIcons';
 
 import style from './app-bar.scss';
 import responsive from './app-bar-responsive.scss';
-import EventType from '../../globals/eventType';
-import AppIcons from '../../globals/appIcons';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {

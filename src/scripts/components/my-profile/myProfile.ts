@@ -1,4 +1,3 @@
-
 /**
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
@@ -24,14 +23,15 @@ render(html`
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import CommonElement from '../_base_/commonElement';
 import "../sosial-media/socialMedia";
+
+import Utils from '../../globals/appUtilities';
+import AppIcons from '../../globals/appIcons';
+import AppConfig from '../../globals/appConfig';
+import CommonElement from '../_base_/commonElement';
 
 import style from './my-profile.scss';
 import responsive from './my-profile-responsive.scss';
-import Utils from '../../globals/appUtilities';
-import AppConfig from '../../globals/appConfig';
-import AppIcons from '../../globals/appIcons';
 
 @customElement('my-profile')
 class MyProfile extends CommonElement {

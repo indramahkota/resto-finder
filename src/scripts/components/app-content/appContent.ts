@@ -1,4 +1,3 @@
-
 /**
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
@@ -7,11 +6,12 @@
  * @desc [description]
  */
 
-import { html } from 'lit-html';
+ import { html } from 'lit-html';
 import { customElement } from 'lit-element';
 
 import "../hero-element/heroElement";
 import "../resto-container/restoContainer";
+
 import CommonElement from '../_base_/commonElement';
 
 @customElement('app-content')
