@@ -2,10 +2,11 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-05 19:51:40
+ * @modify date 2020-09-06 15:18:02
  * @desc [description]
  */
 const { resolve } = require("path");
+const { minify } = require("terser");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -14,12 +15,18 @@ const fileToCopy = [
   {
     from: resolve(`${webcomponents_vendor_url}/custom-elements-es5-adapter.js`),
     to: 'static/vendors',
-    flatten: true
+    flatten: true,
+    transform: function (fileContent) {
+      return minify(fileContent.toString()).code;
+    }
   },
   {
     from: resolve(`${webcomponents_vendor_url}/webcomponents-loader.js`),
     to: 'static/vendors',
-    flatten: true
+    flatten: true,
+    transform: function (fileContent) {
+      return minify(fileContent.toString()).code;
+    }
   }
 ];
 
