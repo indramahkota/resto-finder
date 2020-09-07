@@ -9,13 +9,6 @@
 .rating__container {
     display: inline-block;
     position: relative;
-    width: fit-content;
-
-    svg {
-        width: 16px;
-        height: auto;
-        color: #f1f1f1;
-    }
 
     .gold__rating__item {
         top: 0;
@@ -24,11 +17,5 @@
         overflow: hidden;
         position: absolute;
         white-space: nowrap;
-
-        svg {
-            width: 16px;
-            height: auto;
-            color: gold;
-        }
     }
 }
