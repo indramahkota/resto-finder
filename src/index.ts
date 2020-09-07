@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <section id="content">
             <app-content></app-content>
         </section>
-        <section id="footer">
+        <section id="indramahkota">
             <my-profile></my-profile>
         </section>
         <foot-bar></foot-bar>
