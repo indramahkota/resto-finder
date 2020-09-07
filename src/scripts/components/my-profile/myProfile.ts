@@ -16,7 +16,7 @@ render(html`
         name='Indra Mahkota'
         location='Pontianak, Indonesia'
         hirable='Yes'
-        image='image url'
+        image='image url'>
     </my-profile>
 `, document.body); */
 

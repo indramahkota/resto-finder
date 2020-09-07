@@ -6,7 +6,7 @@
  * @desc [description]
  */
 
- import { html } from 'lit-html';
+import { html } from 'lit-html';
 import { customElement } from 'lit-element';
 
 import "../hero-element/heroElement";
