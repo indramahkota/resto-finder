@@ -28,13 +28,12 @@
             list-style: none;
 
             li {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                min-height: 44px;
-
                 a {
-                    padding: 10px 10px;
+                    display: flex;
+                    padding: 0px 20px 0px 10px;
+                    align-items: center;
+                    justify-content: space-between;
+                    min-height: 50px;
                     color: var(--color-text);
                     text-decoration: none;
                     position: relative;
@@ -52,11 +51,7 @@
                         height: 0.45em;
                         border-style: solid;
                         border-width: 0.12em 0.12em 0 0;
-                        display: inline-block;
                         transform: rotate(45deg);
-                        position: absolute;
-                        top: 1em;
-                        right: 1em;
                     }
                 }
             }

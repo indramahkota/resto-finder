@@ -23,10 +23,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     render(html`
-        <a class="skip-link" href="#greeting">Skip to Content</a>
+        <a id="skip-to-content" class="skip-link" href="#content">Skip to Content</a>
         <app-bar></app-bar>
-        <app-content></app-content>
-        <section id="indramahkota">
+        <section id="content">
+            <app-content></app-content>
+        </section>
+        <section id="footer">
             <my-profile></my-profile>
         </section>
         <foot-bar></foot-bar>
