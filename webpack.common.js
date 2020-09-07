@@ -2,7 +2,7 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-06 15:18:02
+ * @modify date 2020-09-08 00:11:17
  * @desc [description]
  */
 const { resolve } = require("path");
@@ -69,7 +69,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif|webp|ico|svg)$/i,
+        test: /\.(png|jpe?g|gif|webp|svg)$/i,
         use: [
           {
             loader: "file-loader",
