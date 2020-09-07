@@ -6,9 +6,9 @@
  * @desc [description]
  */
 
-@import "../../../styles/components/toggle-switch";
-@import "../../../styles/components/hamburger-btn";
-@import "../../../styles/components/navigation-drawer";
+@use "../../../styles/components/toggle";
+@use "../../../styles/components/hamburger";
+@use "../../../styles/components/drawer";
 
 :host {
   display: block;
@@ -38,9 +38,9 @@
     -webkit-font-variant-ligatures: no-common-ligatures;
   }
 
-  @include toggle-switch;
+  @include toggle.all;
 
-  @include hamburger-btn;
+  @include hamburger.all;
 
-  @include navigation-drawer;
+  @include drawer.all;
 }

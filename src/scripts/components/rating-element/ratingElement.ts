@@ -22,18 +22,10 @@ import "../resto-container/restoContainer";
 
 import CommonElement from '../_base_/commonElement';
 
-import style from './rating-element.scss';
-
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })
     rating: number = 0;
-
-    // private _starIcon = AppIcons.STAR;
-
-    static get styles() {
-        return [...super.styles, style];
-    }
     
     render() {
         return html`

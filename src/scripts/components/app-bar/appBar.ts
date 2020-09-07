@@ -29,9 +29,6 @@ import AppConfig from '../../globals/appConfig';
 import EventType from '../../globals/eventType';
 import AppIcons from '../../globals/appIcons';
 
-import style from './app-bar.scss';
-import responsive from './app-bar-responsive.scss';
-
 @customElement('app-bar')
 class AppBar extends CommonElement {
     @property({ type: String, attribute: true })
@@ -51,10 +48,6 @@ class AppBar extends CommonElement {
 
     private _moonIcon = AppIcons.MOON;
     private _sunIcon = AppIcons.SUN;
-
-    static get styles() {
-        return [...super.styles, style, responsive];
-    }
 
     private _onLogoClickHandler() {
         const logoClicked = new CustomEvent(EventType.LOGO_CLICKED, {

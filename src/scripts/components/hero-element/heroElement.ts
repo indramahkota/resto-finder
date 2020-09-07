@@ -25,9 +25,6 @@ import { customElement, property } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
 
-import style from './hero-element.scss';
-import responsive from './hero-element-responsive.scss';
-
 @customElement('hero-element')
 class HeroElement extends CommonElement {
     @property({ type: String, attribute: true })
@@ -38,10 +35,6 @@ class HeroElement extends CommonElement {
 
     @property({ type: String, attribute: true })
     name = AppConfig.APP_NAME;
-
-    static get styles() {
-        return [...super.styles, style, responsive];
-    }
 
     /* CSS Gradient Generator https://cssgradient.io/ */
     /* opsional <div class="hero__background" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('${this.background}')"> */

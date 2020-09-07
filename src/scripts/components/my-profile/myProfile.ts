@@ -30,9 +30,6 @@ import AppIcons from '../../globals/appIcons';
 import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
-import style from './my-profile.scss';
-import responsive from './my-profile-responsive.scss';
-
 @customElement('my-profile')
 class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
@@ -51,10 +48,6 @@ class MyProfile extends CommonElement {
     image = AppConfig.DEV_IMAGE;
 
     private _mapMarkerIcon = AppIcons.MARKER;
-
-    static get styles() {
-        return [...super.styles, style, responsive];
-    }
 
     render() {
         return html`

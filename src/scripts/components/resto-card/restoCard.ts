@@ -24,16 +24,10 @@ import "../rating-element/ratingElement";
 import CommonElement from '../_base_/commonElement';
 import { IRestaurant } from "../../interfaces/interfaces";
 
-import style from './resto-card.scss';
-
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })
     data: IRestaurant | undefined;
-
-    static get styles() {
-        return [...super.styles, style];
-    }
 
     render() {
         return html`

@@ -23,16 +23,10 @@ import { customElement, property } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
 
-import style from './foot-bar.scss';
-
 @customElement('foot-bar')
 class FootBar extends CommonElement {
     @property({ type: String, attribute: true })
     text = AppConfig.TEXT_FOOTER;
-
-    static get styles() {
-        return [...super.styles, style];
-    }
 
     render() {
         return html`

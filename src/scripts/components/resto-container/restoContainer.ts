@@ -25,9 +25,6 @@ import CommonElement from '../_base_/commonElement';
 import { IRestaurants } from '../../interfaces/interfaces';
 import LocalDataSource from '../../data/sources/local/localDataSource';
 
-import style from './resto-container.scss';
-import responsive from './resto-container-responsive.scss';
-
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
     @property({ type: String, attribute: true })
@@ -35,10 +32,6 @@ export default class RestoContainer extends CommonElement {
 
     @internalProperty()
     protected _dataJson: IRestaurants | null = null;
-
-    static get styles() {
-        return [...super.styles, style, responsive];
-    }
 
     connectedCallback() {
         super.connectedCallback();

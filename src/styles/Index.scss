@@ -64,4 +64,6 @@ body {
     .skip-link:focus {
         top: 0;
     }
+
+    @import './../scripts/components/index.scss';
 }

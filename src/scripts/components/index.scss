@@ -1,0 +1,35 @@
+/**
+ * @author Indra Mahkota
+ * @email indramahkota1@gmail.com
+ * @create date 2020-09-07 22:48:14
+ * @modify date 2020-09-07 22:48:14
+ * @desc [description]
+ */
+
+/* AppBar Style */
+@import './app-bar/app-bar.scss';
+@import './app-bar/app-bar-responsive.scss';
+
+/* HeroElement style */
+@import './hero-element/hero-element.scss';
+@import './hero-element/hero-element-responsive.scss';
+
+/* RestoContainer style */
+@import './resto-container/resto-container.scss';
+@import './resto-container/resto-container-responsive.scss';
+
+/* RestoCard style */
+@import './resto-card/resto-card.scss';
+
+/* RatingElement style */
+@import './rating-element/rating-element.scss';
+
+/* MyProfile style */
+@import './my-profile/my-profile.scss';
+@import './my-profile/my-profile-responsive.scss';
+
+/* SocialMedia style */
+@import './sosial-media/social-media.scss';
+
+/* FootBar style */
+@import './foot-bar/foot-bar.scss';
