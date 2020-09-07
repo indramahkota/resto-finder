@@ -35,17 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
     `, document.body);
 
     window.addEventListener(EventType.LOGO_CLICKED, (event: Event) => {
-        document.querySelector('app-content')?.greetingElement?.scrollIntoView();
         document.querySelector('app-bar')?.dataShouldUpdate((event as CustomEvent).detail.hash);
-    });
-    window.addEventListener(EventType.NAVIGATION_CLICKED, (event: Event) => {
-        switch ((event as CustomEvent).detail.hash) {
-            case '#find':
-                document.querySelector('app-content')?.findElement?.scrollIntoView();
-                break;
-
-            default:
-                break;
-        }
     });
 });

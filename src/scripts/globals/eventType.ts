@@ -8,5 +8,4 @@
 
 export default class EventType {
     static readonly LOGO_CLICKED: string = 'appbar::logoclicked';
-    static readonly NAVIGATION_CLICKED: string = 'appbar::navigationclicked';
 }

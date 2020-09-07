@@ -55,8 +55,7 @@ class AppBar extends CommonElement {
                 message: 'Logo Clicked',
                 hash: '#greeting'
             },
-            bubbles: true, 
-            composed: true
+            bubbles: true
         });
         this.dispatchEvent(logoClicked);
     }
@@ -74,16 +73,6 @@ class AppBar extends CommonElement {
         const path = event.composedPath();
         const hash = (path[0] as HTMLAnchorElement).hash
         this.dataShouldUpdate(hash);
-
-        const navClicked = new CustomEvent(EventType.NAVIGATION_CLICKED, {
-            detail: {
-                message: 'Navigation Clicked',
-                hash: hash
-            },
-            bubbles: true, 
-            composed: true
-        });
-        this.dispatchEvent(navClicked);
 
         if (this._isOpen)
             this._onHamburgerClickHandler();
