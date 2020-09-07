@@ -117,11 +117,11 @@ class AppBar extends CommonElement {
     render() {
         return html`
             <header class="header">
-                <a href="#greeting" @click="${this._onLogoClickHandler}" class="logo">${this.title}</a>
+                <a href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`
-                        <label class="toggle">
+                        <label class="header__toggle">
                             <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
                             <span class="slider round"></span>
                             ${Utils.genSVG(this._sunIcon)}
@@ -130,11 +130,11 @@ class AppBar extends CommonElement {
                     ` : nothing
                 }
 
-                <button aria-label="Toggle Menu Button" class="hamburger ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
-                    <span class="icon"></span>
+                <button aria-label="Toggle Menu Button" class="header__button ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
+                    <span class="humburger"></span>
                 </button>
 
-                <nav class="drawer ${this._isOpen ? 'change' : ''}">
+                <nav class="header__drawer ${this._isOpen ? 'change' : ''}">
                     <ul>
                         ${this.data.map(nav =>
                                 html`

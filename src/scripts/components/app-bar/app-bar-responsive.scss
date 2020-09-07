@@ -8,15 +8,15 @@
 
 @media screen and (min-width: 768px) {
     .header {
-        .hamburger {
+        .header__button {
             display: none;
         }
 
-        .toggle {
+        .header__toggle {
             margin-left: 0;
         }
 
-        .drawer {
+        .header__drawer {
             position: static;
             min-width: auto;
             min-height: auto;
