@@ -7,79 +7,80 @@
  */
 
 @mixin all {
-    .toggle__container {
+    .toggle {
         display: flex;
         margin-left: auto;
         align-items: center;
         justify-content: space-between;
+        width: 84px;
+        height: 38px;
+        position: relative;
+        margin: 0 10px;
+        border-radius: 34px;
 
-        .toggle__switch {
-            width: 84px;
-            height: 38px;
-            position: relative;
-            margin: 0 10px;
-            border-radius: 34px;
+        input {
+            width: 0;
+            height: 0;
+            opacity: 0;
 
-            input {
-                width: 0;
-                height: 0;
-                opacity: 0;
-
-                &:checked + .slider {
-                    background-color: #2196f3;
-                }
-
-                &:checked + .slider:before {
-                    -webkit-transform: translateX(46px);
-                    -ms-transform: translateX(46px);
-                    transform: translateX(46px);
-                }
+            &:checked + .slider {
+                background-color: #2196f3;
             }
 
-            svg {
-                width: 24px;
-                margin: 7px;
-                height: auto;
-                position: absolute;
-                z-index: 1;
-                color: yellow;
-
-                & + svg {
-                    left: 46px;
-                }
+            &:checked + .slider:before {
+                -webkit-transform: translateX(46px);
+                -ms-transform: translateX(46px);
+                transform: translateX(46px);
             }
 
-            .slider {
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+            &:focus + .slider {
+                background-color: lawngreen;
+            }
+        }
+
+        svg {
+            width: 24px;
+            margin: 7px;
+            height: auto;
+            position: absolute;
+            z-index: 1;
+            color: yellow;
+
+            & + svg {
+                left: 46px;
+            }
+        }
+
+        .slider {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            cursor: pointer;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border: 2px solid white;
+
+            &:before {
+                content: "";
                 position: absolute;
-                cursor: pointer;
+                margin: 4px;
+                right: 46px;
+                width: 26px;
+                height: 26px;
+                z-index: 2;
+                background-color: white;
                 -webkit-transition: 0.4s;
                 transition: 0.4s;
-                border: 2px solid white;
+            }
 
-                &:before {
-                    content: "";
-                    position: absolute;
-                    margin: 4px;
-                    right: 46px;
-                    width: 26px;
-                    height: 26px;
-                    z-index: 2;
-                    background-color: white;
-                    -webkit-transition: 0.4s;
-                    transition: 0.4s;
-                }
+            &.round {
+                border-radius: 34px;
+            }
 
-                &.round {
-                    border-radius: 34px;
-                }
-
-                &.round:before {
-                    border-radius: 50%;
-                }
+            &.round:before {
+                border-radius: 50%;
             }
         }
     }

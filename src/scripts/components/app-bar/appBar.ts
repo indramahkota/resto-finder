@@ -128,26 +128,24 @@ class AppBar extends CommonElement {
     render() {
         return html`
             <header class="header">
-                <a href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
+                <a href="#greeting" @click="${this._onLogoClickHandler}" class="logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`
-                        <div class="toggle__container">
-                            <label class="toggle__switch">
-                                <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
-                                <span class="slider round"></span>
-                                ${Utils.genSVG(this._sunIcon)}
-                                ${Utils.genSVG(this._moonIcon)}
-                            </label>
-                        </div>
+                        <label class="toggle">
+                            <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
+                            <span class="slider round"></span>
+                            ${Utils.genSVG(this._sunIcon)}
+                            ${Utils.genSVG(this._moonIcon)}
+                        </label>
                     ` : nothing
                 }
 
-                <button aria-label="Toggle Menu Button" class="hamburger__btn ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
-                    <span class="hamburger__icon"></span>
+                <button aria-label="Toggle Menu Button" class="hamburger ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
+                    <span class="icon"></span>
                 </button>
 
-                <nav class="navigation__drawer ${this._isOpen ? 'change' : ''}">
+                <nav class="drawer ${this._isOpen ? 'change' : ''}">
                     <ul>
                         ${this.data.map(nav =>
                                 html`

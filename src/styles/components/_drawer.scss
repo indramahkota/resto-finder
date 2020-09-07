@@ -7,18 +7,18 @@
  */
 
 @mixin all {
-    .navigation__drawer {
+    .drawer {
         top: 60px;
         right: -300px;
         min-width: 300px;
         min-height: 100vh;
         overflow: hidden;
         position: absolute;
-        background-color: var(--color-article-background);
-        transition: all 0.2s ease-out;
         border-style: solid;
         border-color: red;
         border-width: 0 0 0 0.12em;
+        transition: all 0.2s ease-out;
+        background-color: var(--color-article-background);
 
         &.change {
             right: 0;
@@ -28,12 +28,14 @@
             list-style: none;
 
             li {
+                margin: 10px;
+
                 a {
                     display: flex;
-                    padding: 0px 20px 0px 10px;
+                    padding: 0 10px;
+                    min-height: 44px;
                     align-items: center;
                     justify-content: space-between;
-                    min-height: 50px;
                     color: var(--color-text);
                     text-decoration: none;
                     position: relative;
