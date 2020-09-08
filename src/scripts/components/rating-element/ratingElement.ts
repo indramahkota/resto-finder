@@ -30,9 +30,17 @@ export default class RatingElement extends CommonElement {
     render() {
         return html`
             <div class="rating__container">
-                ★★★★★
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
                 <div class="gold__rating__item" style="width: ${(this.rating/5)*100}%;">
-                    ★★★★★
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
             </div>
         `;
