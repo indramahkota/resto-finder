@@ -2,11 +2,12 @@
  * @author Indra Mahkota
  * @email indramahkota1@gmail.com
  * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-08 00:11:17
+ * @modify date 2020-09-08 21:31:17
  * @desc [description]
  */
 const { resolve } = require("path");
 const { minify } = require("terser");
+// const workboxPlugin = require("workbox-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -96,6 +97,11 @@ module.exports = {
           to: resolve(__dirname, "dist/")
         }
       ]
-    })
+    }),
+    /* new workboxPlugin.InjectManifest({
+      swSrc: "./src/service-worker.js",
+      swDest: "sw.js",
+      maximumFileSizeToCacheInBytes: 5000000
+    }) */
   ]
 };

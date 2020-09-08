@@ -25,11 +25,20 @@ window.addEventListener('DOMContentLoaded', () => {
         <a id="skip-to-content" class="skip-link" href="#content">Skip to Content</a>
         <app-bar></app-bar>
         <section id="content">
-            <app-content></app-content>
+            <section id="greeting">
+                <hero-element></hero-element>
+            </section>
+            <section id="find">
+                <resto-container></resto-container>
+            </section>
+            <section id="favorites">
+                <resto-container title="FAVORITES"></resto-container>
+            </section>
+            <section id="user">
+                <my-profile></my-profile>
+            </section>
+            <foot-bar></foot-bar>
         </section>
-        <section id="user">
-            <my-profile></my-profile>
-        </section>
-        <foot-bar></foot-bar>
+        
     `, document.body);
 });
