@@ -55,7 +55,7 @@ class AppBar extends CommonElement {
     }
 
     private _onUserClickHandler() {
-        this.dataShouldUpdate("#indramahkota");
+        this.dataShouldUpdate("#user");
         this._userFocus = !this._userFocus;
         if (this._isOpen)
             this._onHamburgerClickHandler();
@@ -115,6 +115,8 @@ class AppBar extends CommonElement {
         if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
             this._isOpen = true;
         }
+        if(window.location.hash === '#user')
+            this._userFocus = true;
         if(window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
     }
@@ -159,7 +161,7 @@ class AppBar extends CommonElement {
                         }
 
                         <li>
-                            <a href="#indramahkota" class="header__user ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
+                            <a href="#user" class="header__user ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
                                 <img class="header__user__image" src='${this._userImage}' alt='Indra Mahkota, Developer who build this website'/>
                                 <p class="header__user__name">Indra Mahkota</p>
                                 <span class="chevron"></span>
