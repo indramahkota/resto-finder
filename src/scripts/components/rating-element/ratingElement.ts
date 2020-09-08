@@ -31,7 +31,7 @@ export default class RatingElement extends CommonElement {
         return html`
             <div class="rating__container">
                 ★★★★★
-                <div class="gold__rating__item" style="color: gold; width: ${(this.rating/5)*100}%;">
+                <div class="gold__rating__item" style="width: ${(this.rating/5)*100}%;">
                     ★★★★★
                 </div>
             </div>
