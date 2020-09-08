@@ -50,6 +50,7 @@ class HeroElement extends CommonElement {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
       'hero-element': HeroElement;

@@ -25,7 +25,7 @@ import CommonElement from '../_base_/commonElement';
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })
-    rating: number = 0;
+    rating = 0;
     
     render() {
         return html`

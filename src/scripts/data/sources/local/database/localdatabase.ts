@@ -21,27 +21,27 @@ const getDatabase = async () => {
 }
 
 export default class LocalDatabase {
-    static async createFavorite(data: IRestaurant) {
+    static async createFavorite(data: IRestaurant): Promise<string> {
         const db = await getDatabase();
         return await db.add("restaurants", data);
     }
 
-    static async getFavoriteById(id: string) {
+    static async getFavoriteById(id: string): Promise<IRestaurant | undefined> {
         const db = await getDatabase();
         return await db.get("restaurants", id);
     }
 
-    static async getAllFavorite() {
+    static async getAllFavorite(): Promise<IRestaurant[]> {
         const db = await getDatabase();
         return await db.getAll("restaurants");
     }
 
-    static async updateFavorite(data: IRestaurant) {
+    static async updateFavorite(data: IRestaurant): Promise<string> {
         const db = await getDatabase();
         return await db.put("restaurants", data);
     }
 
-    static async deleteFavorite(id: string) {
+    static async deleteFavorite(id: string): Promise<void> {
         const db = await getDatabase();
         return await db.delete("restaurants", id);
     }

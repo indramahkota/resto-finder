@@ -14,7 +14,7 @@ render(html`
     <resto-card .data=${{object data}}></resto-card>
 `, document.body); */
 
-import { html } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
@@ -29,7 +29,7 @@ export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })
     data: IRestaurant | undefined;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <div class="card__container">
                 <img src="${ifDefined(this.data?.pictureId)}" alt="${ifDefined(this.data?.name)}">
@@ -44,6 +44,7 @@ export default class RestoCard extends CommonElement {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
         'resto-card': RestoCard;
