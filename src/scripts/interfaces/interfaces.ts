@@ -4,6 +4,14 @@ export interface INavigation {
     isActive: boolean
 }
 
+export interface IUser {
+    name: string,
+    status: string
+    location: string,
+    image: string,
+    roundImage: string
+}
+
 export interface ISocialMedia {
     name: string,
     url: string,

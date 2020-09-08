@@ -6,9 +6,9 @@
  * @desc [description]
  */
 
-import { INavigation, ISocialMedia } from '../interfaces/interfaces';
-import devImageUrl from '../../assets/images/profile.webp';
-import devImageUrlRound from '../../assets/images/profile-round-60.webp';
+import { INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
+import userImageUrl from '../../assets/images/profile.webp';
+import userImageUrlRound from '../../assets/images/profile-round-60.webp';
 import heroImageUrl from '../../assets/images/heros/hero-image.webp';
 
 export default class AppConfig {
@@ -17,18 +17,20 @@ export default class AppConfig {
     static readonly TEXT_GREETING: string = 'Selamat Datang!';
     static readonly TEXT_FOOTER: string = 'Copyright © 2020 Resto Finder. All rights reserved.';
 
-    static readonly DEV_NAME: string = 'Indra Mahkota';
-    static readonly DEV_LOCATION: string = 'Pontianak, Indonesia';
-    static readonly DEV_HIRABLE: string = 'Yes';
-    static readonly DEV_IMAGE: string = devImageUrl;
-    static readonly DEV_IMAGE_ROUND: string = devImageUrlRound;
-
     static readonly LCS_THEME: string = 'resto-finder-indramahkota-theme-mode';
     static readonly LCS_DRAWER: string = 'resto-finder-indramahkota-drawer-mode';
 
+    static readonly STATIC_USER: IUser = {
+        name: 'Indra Mahkota',
+        status: 'Open for opportunities: Yes',
+        location: 'Pontianak, Indonesia',
+        image: userImageUrl,
+        roundImage: userImageUrlRound
+    }
+
     static readonly APP_NAV_DATA: INavigation[] = [
         { name: 'Find Resto', url: '#find', isActive: false },
-        { name: 'My Favorites', url: '#my', isActive: false }
+        { name: 'My Favorites', url: '#favorites', isActive: false }
     ];
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [

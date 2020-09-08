@@ -28,6 +28,9 @@ import LocalDataSource from '../../data/sources/local/localDataSource';
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
     @property({ type: String, attribute: true })
+    title: string = 'RESTAURANTS';
+
+    @property({ type: String, attribute: true })
     url: string = AppConfig.JSON_RESTO_DATA_URL;
 
     @internalProperty()
@@ -43,7 +46,7 @@ export default class RestoContainer extends CommonElement {
     render() {
         return html`
             <div class="resto__container">
-                <h1 tabindex="0" class="resto__title">RESTAURANTS</h1>
+                <h1 tabindex="0" class="resto__title">${this.title}</h1>
                 <div class="resto__items">
                     ${this._dataJson?.restaurants.map(res => html`
                         <resto-card .data=${res}></resto-card>

@@ -15,7 +15,7 @@ import AppConfig from './scripts/globals/appConfig';
 const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
 render(html`
     <app-bar
-        title=${menuData[1].name}
+        title=${AppConfig.APP_NAME}
         .data=${menuData} >
     </app-bar>
 `, document.body); */
@@ -36,7 +36,7 @@ class AppBar extends CommonElement {
     data = AppConfig.APP_NAV_DATA;
 
     @internalProperty()
-    private _userImage = AppConfig.DEV_IMAGE_ROUND;
+    private _userImage = AppConfig.STATIC_USER.roundImage;
 
     @internalProperty()
     private _userFocus = false;

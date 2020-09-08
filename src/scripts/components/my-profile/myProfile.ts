@@ -33,17 +33,8 @@ class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
     title = 'PROFILE';
 
-    @property({ type: String, attribute: true })
-    name = AppConfig.DEV_NAME;
-
-    @property({ type: String, attribute: true })
-    location = AppConfig.DEV_LOCATION;
-
-    @property({ type: String, attribute: true })
-    hirable = AppConfig.DEV_HIRABLE;
-
-    @property({ type: String, attribute: true })
-    image = AppConfig.DEV_IMAGE;
+    @property({ type: Object, attribute: true })
+    data = AppConfig.STATIC_USER;
 
     render() {
         return html`
@@ -51,20 +42,20 @@ class MyProfile extends CommonElement {
                 <h1 tabindex="0" class="profile__title">${this.title}</h1>
                 <div class="profile__content">
                     <div class="profile__desc_container">
-                        <h2 tabindex="0" class="profile__name">${this.name}</h2>
+                        <h2 tabindex="0" class="profile__name">${this.data.name}</h2>
                         <div class="profile__location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span tabindex="0">${this.location}</span>
+                            <span tabindex="0">${this.data.location}</span>
                         </div>
                         <div class="profile__hirable">
-                            <p tabindex="0">Open for opportunities: ${this.hirable}</p>
+                            <p tabindex="0">${this.data.status}</p>
                         </div>
                         <div class="profile__mediasocial">
                             <social-media></social-media>
                         </div>
                     </div>
                     <div class="profile__image_container">
-                        <img class="profile__image" src='${this.image}' alt='Indra Mahkota, Developer who build this website'/>
+                        <img class="profile__image" src='${this.data.image}' alt='Indra Mahkota, Developer who build this website'/>
                     </div>
                 </div>
             </div>
