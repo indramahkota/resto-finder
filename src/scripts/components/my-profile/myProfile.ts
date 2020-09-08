@@ -25,8 +25,6 @@ import { customElement, property } from 'lit-element';
 
 import "../sosial-media/socialMedia";
 
-import Utils from '../../globals/appUtilities';
-import AppIcons from '../../globals/appIcons';
 import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
@@ -47,8 +45,6 @@ class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
     image = AppConfig.DEV_IMAGE;
 
-    private _mapMarkerIcon = AppIcons.MARKER;
-
     render() {
         return html`
             <div class="profile__container">
@@ -57,7 +53,7 @@ class MyProfile extends CommonElement {
                     <div class="profile__desc_container">
                         <h2 tabindex="0" class="profile__name">${this.name}</h2>
                         <div class="profile__location">
-                            ${Utils.genSVG(this._mapMarkerIcon)}
+                            <i class="fas fa-map-marker-alt"></i>
                             <span tabindex="0">${this.location}</span>
                         </div>
                         <div class="profile__hirable">
