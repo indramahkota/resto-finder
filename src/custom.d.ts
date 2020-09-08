@@ -4,6 +4,6 @@ declare module '*.webp' {
 }
 
 declare module '*.scss' {
-    const value: any;
+    const value: string;
     export default value;
 }

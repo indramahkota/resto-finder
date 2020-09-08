@@ -75,7 +75,7 @@ class AppBar extends CommonElement {
 
     private _onNavigationClickHandler(event: Event) {
         const path = event.composedPath();
-        const hash = (path[0] as HTMLAnchorElement).hash
+        const { hash } = path[0] as HTMLAnchorElement;
         this.dataShouldUpdate(hash);
 
         this._icoNavFocus = false;
@@ -85,7 +85,7 @@ class AppBar extends CommonElement {
 
     private _onSwitchChangeHandler(event: Event) {
         const path = event.composedPath();
-        const input = (path[0] as HTMLInputElement);
+        const input = path[0] as HTMLInputElement;
 
         if (input.checked) {
             window.document.body.classList.remove('dark');

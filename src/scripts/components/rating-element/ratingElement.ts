@@ -14,7 +14,7 @@ render(html`
     <rating-element rating="0.4"></rating-element>
 `, document.body); */
 
-import { html } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import "../hero-element/heroElement";
@@ -27,7 +27,7 @@ export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })
     rating = 0;
     
-    render() {
+    render(): TemplateResult {
         return html`
             <div class="rating__container">
                 <i class="fas fa-star"></i>
@@ -47,6 +47,7 @@ export default class RatingElement extends CommonElement {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
         'rating-element': RatingElement;

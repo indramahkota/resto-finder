@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
-    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:eslint": "eslint ./src/**/*.ts",
     "lint:lit-analyzer": "lit-analyzer",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
