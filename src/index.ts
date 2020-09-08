@@ -13,7 +13,6 @@ import './scripts/components';
 import { html, render } from 'lit-html';
 import Utils from './scripts/globals/appUtilities';
 import AppConfig from './scripts/globals/appConfig';
-import EventType from './scripts/globals/eventType';
 
 window.addEventListener('DOMContentLoaded', () => {
     if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
@@ -33,8 +32,4 @@ window.addEventListener('DOMContentLoaded', () => {
         </section>
         <foot-bar></foot-bar>
     `, document.body);
-
-    window.addEventListener(EventType.LOGO_CLICKED, (event: Event) => {
-        document.querySelector('app-bar')?.dataShouldUpdate((event as CustomEvent).detail.hash);
-    });
 });

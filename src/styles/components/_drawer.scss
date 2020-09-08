@@ -56,6 +56,18 @@
                         transform: rotate(45deg);
                     }
                 }
+
+                .header__user {
+                    .header__user__image {
+                        width: 34px;
+                        height: 34px;
+                    }
+
+                    .header__user__name {
+                        margin-right: auto;
+                        padding: 0 10px;
+                    }
+                }
             }
         }
     }

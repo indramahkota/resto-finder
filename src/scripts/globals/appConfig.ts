@@ -8,6 +8,7 @@
 
 import { INavigation, ISocialMedia } from '../interfaces/interfaces';
 import devImageUrl from '../../assets/images/profile.webp';
+import devImageUrlRound from '../../assets/images/profile-round-60.webp';
 import heroImageUrl from '../../assets/images/heros/hero-image.webp';
 import AppIcons from './appIcons';
 
@@ -21,14 +22,14 @@ export default class AppConfig {
     static readonly DEV_LOCATION: string = 'Pontianak, Indonesia';
     static readonly DEV_HIRABLE: string = 'Yes';
     static readonly DEV_IMAGE: string = devImageUrl;
+    static readonly DEV_IMAGE_ROUND: string = devImageUrlRound;
 
     static readonly LCS_THEME: string = 'resto-finder-indramahkota-theme-mode';
     static readonly LCS_DRAWER: string = 'resto-finder-indramahkota-drawer-mode';
 
     static readonly APP_NAV_DATA: INavigation[] = [
         { name: 'Find Resto', url: '#find', isActive: false },
-        { name: 'My Favorites', url: '#my', isActive: false },
-        { name: 'Developer', url: '#indramahkota', isActive: false }
+        { name: 'My Favorites', url: '#my', isActive: false }
     ];
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [

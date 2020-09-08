@@ -26,7 +26,6 @@ import { customElement, property, internalProperty } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
-import EventType from '../../globals/eventType';
 import AppIcons from '../../globals/appIcons';
 
 @customElement('app-bar')
@@ -36,6 +35,12 @@ class AppBar extends CommonElement {
 
     @property({ type: Array, attribute: true })
     data = AppConfig.APP_NAV_DATA;
+
+    @internalProperty()
+    private _userImage = AppConfig.DEV_IMAGE_ROUND;
+
+    @internalProperty()
+    private _userFocus = false;
 
     @internalProperty()
     private _darkMode = AppConfig.SUPPORT_DARK_MODE;
@@ -50,14 +55,14 @@ class AppBar extends CommonElement {
     private _sunIcon = AppIcons.SUN;
 
     private _onLogoClickHandler() {
-        const logoClicked = new CustomEvent(EventType.LOGO_CLICKED, {
-            detail: {
-                message: 'Logo Clicked',
-                hash: '#greeting'
-            },
-            bubbles: true
-        });
-        this.dispatchEvent(logoClicked);
+        this.dataShouldUpdate("#greeting");
+    }
+
+    private _onUserClickHandler() {
+        this.dataShouldUpdate("#indramahkota");
+        this._userFocus = !this._userFocus;
+        if (this._isOpen)
+            this._onHamburgerClickHandler();
     }
 
     private _onHamburgerClickHandler() {
@@ -74,6 +79,7 @@ class AppBar extends CommonElement {
         const hash = (path[0] as HTMLAnchorElement).hash
         this.dataShouldUpdate(hash);
 
+        this._userFocus = false;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
@@ -121,12 +127,14 @@ class AppBar extends CommonElement {
 
                 ${
                     this._darkMode ? html`
-                        <label class="header__toggle">
-                            <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
-                            <span class="slider round"></span>
-                            ${Utils.genSVG(this._sunIcon)}
-                            ${Utils.genSVG(this._moonIcon)}
-                        </label>
+                        <div class="toggle__container">
+                            <label class="toggle__label">
+                                <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
+                                <span class="slider round"></span>
+                                ${Utils.genSVG(this._sunIcon)}
+                                ${Utils.genSVG(this._moonIcon)}
+                            </label>
+                        </div>
                     ` : nothing
                 }
 
@@ -148,6 +156,14 @@ class AppBar extends CommonElement {
                                 `
                             )
                         }
+
+                        <li>
+                            <a href="#indramahkota" class="header__user ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
+                                <img class="header__user__image" src='${this._userImage}' alt='Indra Mahkota, Developer who build this website'/>
+                                <p class="header__user__name">Indra Mahkota</p>
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>
