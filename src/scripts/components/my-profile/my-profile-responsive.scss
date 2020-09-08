@@ -11,7 +11,9 @@
         .profile__content {
             flex-direction: row;
             justify-content: space-between;
-            padding: 0 5%;
+            padding: 20px 5%;
+            max-width: 1400px;
+            text-align: left;
 
             .profile__desc_container {
                 order: 1;

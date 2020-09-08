@@ -12,26 +12,31 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 20px 0;
 
     .profile__title {
-        margin: 10px 0;
         color: var(--color-text);
     }
 
     .profile__content {
-        width: 100%;
-        max-width: 900px;
+        width: 90%;
+        margin: 20px 0;
+        padding: 20px 0;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         text-align: center;
-        margin: 10px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
+        background-color: var(--color-article-background);
+
+        &:hover {
+            box-shadow: 0 4px 16px -8px var(--color-background-shadow);
+            transition: all 0.3s ease-out;
+        }
 
         .profile__desc_container {
             order: 2;
-            margin: 10px 0;
 
             .profile__name {
                 margin: 10px 0;
@@ -57,7 +62,6 @@
 
         .profile__image_container {
             order: 1;
-            margin: 10px 0;
 
             .profile__image {
                 max-width: 200px;
