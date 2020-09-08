@@ -15,7 +15,7 @@ import AppConfig from './scripts/globals/appConfig';
 const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
 render(html`
     <app-bar
-        title=${title}
+        .navLogo=${data}
         .navData=${data}
         .iconNavData=${data} >
     </app-bar>
@@ -27,11 +27,12 @@ import { customElement, property, internalProperty } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
+import { IIconNavigation, INavigation } from '../../interfaces/interfaces';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
-    @property({ type: String, attribute: true })
-    title = AppConfig.APP_NAME;
+    @property({ type: Object, attribute: true })
+    navLogo = AppConfig.APP_LOGO_NAVIGATION;
 
     @property({ type: Array, attribute: true })
     navData = AppConfig.APP_NAVIGATION;
@@ -40,7 +41,7 @@ class AppBar extends CommonElement {
     iconNavData = AppConfig.APP_ICON_NAVIGATION;
 
     @internalProperty()
-    private _userFocus = false;
+    private _icoNavFocus = false;
 
     @internalProperty()
     private _darkMode = AppConfig.SUPPORT_DARK_MODE;
@@ -52,12 +53,13 @@ class AppBar extends CommonElement {
     private _isOpen = false;
 
     private _onLogoClickHandler() {
-        this.dataShouldUpdate("#greeting");
+        this._icoNavFocus = false;
+        this.dataShouldUpdate(this.navLogo.url);
     }
 
-    private _onUserClickHandler() {
-        this.dataShouldUpdate("#user");
-        this._userFocus = !this._userFocus;
+    private _onIconNavClickHandler() {
+        this.dataShouldUpdate(this.iconNavData.url);
+        this._icoNavFocus = !this._icoNavFocus;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
@@ -76,7 +78,7 @@ class AppBar extends CommonElement {
         const hash = (path[0] as HTMLAnchorElement).hash
         this.dataShouldUpdate(hash);
 
-        this._userFocus = false;
+        this._icoNavFocus = false;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
@@ -97,7 +99,7 @@ class AppBar extends CommonElement {
 
     dataShouldUpdate(hash: string) {
         this.navData = this.navData.map(nav => {
-            if(nav.url !== hash) {
+            if (nav.url !== hash) {
                 nav['isActive'] = false;
                 return nav;
             }
@@ -108,6 +110,24 @@ class AppBar extends CommonElement {
         })
     }
 
+    setNavLogo(data: INavigation) {
+        const oldVal = this.navLogo;
+        this.navLogo = data;
+        this.requestUpdate('navLogo', oldVal);
+    }
+
+    setNavData(data: INavigation[]) {
+        const oldVal = this.navData;
+        this.navData = data;
+        this.requestUpdate('navData', oldVal);
+    }
+
+    setIconNavData(data: IIconNavigation) {
+        const oldVal = this.iconNavData;
+        this.iconNavData = data;
+        this.requestUpdate('iconNavData', oldVal);
+    }
+
     connectedCallback() {
         super.connectedCallback();
         if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
@@ -116,16 +136,16 @@ class AppBar extends CommonElement {
         if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
             this._isOpen = true;
         }
-        if(window.location.hash === '#user')
-            this._userFocus = true;
-        if(window.location.hash !== '')
+        if (window.location.hash === this.iconNavData.url)
+            this._icoNavFocus = true;
+        if (window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
     }
 
     render() {
         return html`
             <header class="header">
-                <a href="#greeting" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
+                <a href="${this.navLogo.url}" @click="${this._onLogoClickHandler}" class="header__logo">${this.navLogo.name}</a>
 
                 ${
                     this._darkMode ? html`
@@ -162,7 +182,7 @@ class AppBar extends CommonElement {
                         }
 
                         <li>
-                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
+                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._icoNavFocus ? 'active' : ''}" @click="${this._onIconNavClickHandler}">
                                 <img class="anchor__icon" src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
                                 <p class="anchor__name">${this.iconNavData.name}</p>
                                 <span class="chevron"></span>

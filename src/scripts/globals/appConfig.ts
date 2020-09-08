@@ -33,6 +33,12 @@ export default class AppConfig {
         { name: 'My Favorites', url: '#favorites', isActive: false }
     ];
 
+    static readonly APP_LOGO_NAVIGATION: INavigation = {
+        name: AppConfig.APP_NAME,
+        url: '#greeting',
+        isActive: false
+    }
+
     static readonly APP_ICON_NAVIGATION: IIconNavigation = {
         name: 'Indra Mahkota',
         url: '#user',
