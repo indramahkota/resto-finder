@@ -86,13 +86,16 @@ class AppBar extends CommonElement {
 
     private _onSwitchChangeHandler(event: Event) {
         const path = event.composedPath();
-        if ((path[0] as HTMLInputElement).checked) {
+        const input = (path[0] as HTMLInputElement);
+
+        if (input.checked) {
             window.document.body.classList.remove('dark');
             Utils.setLCS(AppConfig.LCS_THEME, "light");
         } else {
             window.document.body.classList.add('dark');
             Utils.setLCS(AppConfig.LCS_THEME, "dark");
         }
+        input.blur();
     }
 
     dataShouldUpdate(hash: string) {
