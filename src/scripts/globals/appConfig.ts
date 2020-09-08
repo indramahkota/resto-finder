@@ -6,7 +6,7 @@
  * @desc [description]
  */
 
-import { INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
+import { IIconNavigation, INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
 import userImageUrl from '../../assets/images/profile.webp';
 import userImageUrlRound from '../../assets/images/profile-round-60.webp';
 import heroImageUrl from '../../assets/images/heros/hero-image.webp';
@@ -28,10 +28,18 @@ export default class AppConfig {
         roundImage: userImageUrlRound
     }
 
-    static readonly APP_NAV_DATA: INavigation[] = [
+    static readonly APP_NAVIGATION: INavigation[] = [
         { name: 'Find Resto', url: '#find', isActive: false },
         { name: 'My Favorites', url: '#favorites', isActive: false }
     ];
+
+    static readonly APP_ICON_NAVIGATION: IIconNavigation = {
+        name: 'Indra Mahkota',
+        url: '#user',
+        isActive: false,
+        imageUrl: userImageUrlRound,
+        imageAlt: 'User Name Indra Mahkota'
+    }
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [
         { name: 'github', url: 'https://github.com/indramahkota', isEmail: false, color: '#333', icon: 'fab fa-github' },

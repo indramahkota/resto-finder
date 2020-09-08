@@ -4,6 +4,11 @@ export interface INavigation {
     isActive: boolean
 }
 
+export interface IIconNavigation extends INavigation {
+    imageUrl: string,
+    imageAlt: string
+}
+
 export interface IUser {
     name: string,
     status: string

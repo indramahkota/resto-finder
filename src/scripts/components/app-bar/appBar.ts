@@ -15,8 +15,9 @@ import AppConfig from './scripts/globals/appConfig';
 const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
 render(html`
     <app-bar
-        title=${AppConfig.APP_NAME}
-        .data=${menuData} >
+        title=${title}
+        .navData=${data}
+        .iconNavData=${data} >
     </app-bar>
 `, document.body); */
 
@@ -33,10 +34,10 @@ class AppBar extends CommonElement {
     title = AppConfig.APP_NAME;
 
     @property({ type: Array, attribute: true })
-    data = AppConfig.APP_NAV_DATA;
+    navData = AppConfig.APP_NAVIGATION;
 
-    @internalProperty()
-    private _userImage = AppConfig.STATIC_USER.roundImage;
+    @property({ type: Object, attribute: true })
+    iconNavData = AppConfig.APP_ICON_NAVIGATION;
 
     @internalProperty()
     private _userFocus = false;
@@ -95,7 +96,7 @@ class AppBar extends CommonElement {
     }
 
     dataShouldUpdate(hash: string) {
-        this.data = this.data.map(nav => {
+        this.navData = this.navData.map(nav => {
             if(nav.url !== hash) {
                 nav['isActive'] = false;
                 return nav;
@@ -147,7 +148,7 @@ class AppBar extends CommonElement {
 
                 <nav class="header__drawer ${this._isOpen ? 'change' : ''}">
                     <ul>
-                        ${this.data.map(nav =>
+                        ${this.navData.map(nav =>
                                 html`
                                     <li>
                                         <a href="${nav.url}" @click="${this._onNavigationClickHandler}"
@@ -161,9 +162,9 @@ class AppBar extends CommonElement {
                         }
 
                         <li>
-                            <a href="#user" class="header__user ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
-                                <img class="header__user__image" src='${this._userImage}' alt='Indra Mahkota, Developer who build this website'/>
-                                <p class="header__user__name">Indra Mahkota</p>
+                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._userFocus ? 'active' : ''}" @click="${this._onUserClickHandler}">
+                                <img class="anchor__icon" src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
+                                <p class="anchor__name">${this.iconNavData.name}</p>
                                 <span class="chevron"></span>
                             </a>
                         </li>
