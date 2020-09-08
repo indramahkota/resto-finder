@@ -26,7 +26,6 @@ import { customElement, property, internalProperty } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
-import AppIcons from '../../globals/appIcons';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
@@ -50,9 +49,6 @@ class AppBar extends CommonElement {
 
     @internalProperty()
     private _isOpen = false;
-
-    private _moonIcon = AppIcons.MOON;
-    private _sunIcon = AppIcons.SUN;
 
     private _onLogoClickHandler() {
         this.dataShouldUpdate("#greeting");
@@ -134,8 +130,10 @@ class AppBar extends CommonElement {
                             <label class="toggle__label">
                                 <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
                                 <span class="slider round"></span>
-                                ${Utils.genSVG(this._sunIcon)}
-                                ${Utils.genSVG(this._moonIcon)}
+                                <div class="toggle__icon">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </div>
                             </label>
                         </div>
                     ` : nothing
