@@ -33,7 +33,7 @@ import CommonElement from '../_base_/commonElement';
 @customElement('my-profile')
 class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
-    title = 'DEVELOPER';
+    title = 'PROFILE';
 
     @property({ type: String, attribute: true })
     name = AppConfig.DEV_NAME;
