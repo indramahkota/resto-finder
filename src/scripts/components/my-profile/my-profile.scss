@@ -30,11 +30,6 @@
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
         background-color: var(--color-article-background);
 
-        &:hover {
-            box-shadow: 0 4px 16px -8px var(--color-background-shadow);
-            transition: all 0.3s ease-out;
-        }
-
         .profile__desc_container {
             order: 2;
 
@@ -70,7 +65,7 @@
                 border: 0.5rem solid #6c63ff;
 
                 &:hover {
-                    box-shadow: var(--color-background-shadow) 0 30px 30px -30px;
+                    box-shadow: 0 4px 16px -8px var(--color-background-shadow);
                     transition: all 0.3s ease-out;
                 }
             }
