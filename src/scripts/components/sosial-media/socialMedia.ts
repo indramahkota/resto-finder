@@ -19,7 +19,6 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
-import Utils from '../../globals/appUtilities';
 
 @customElement('social-media')
 class SocialMedia extends CommonElement {
@@ -34,8 +33,8 @@ class SocialMedia extends CommonElement {
                         this.data.map((sm) =>
                             html`
                                 <li>
-                                    <a aria-label="This is the ${sm.isEmail ? "Email" : "Social media page" } who created this website." href="${sm.url}" class="${sm.name}" target="_blank" rel="noopener noreferrer">
-                                        ${Utils.genSVG(sm.icon)}
+                                    <a style="background-color: ${sm.color}" aria-label="This is the ${sm.isEmail ? "Email" : "Social media page" } who created this website." href="${sm.url}" target="_blank" rel="noopener noreferrer">
+                                        <i class="${sm.icon}"></i>
                                     </a>
                                 </li>
                             `

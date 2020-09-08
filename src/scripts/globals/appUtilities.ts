@@ -6,8 +6,6 @@
  * @desc [description]
  */
 
-import { Icon } from "@fortawesome/fontawesome-svg-core";
-
 export default class Utils {
     static setLCS(key: string, value: string) {
         window.localStorage.setItem(key, value);
@@ -15,9 +13,5 @@ export default class Utils {
 
     static getLCS(key: string): string | null {
         return window.localStorage.getItem(key);
-    }
-
-    static genSVG(data: Icon) {
-        return Array.from(data.node).map(n => n);
     }
 }

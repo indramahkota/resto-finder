@@ -1,5 +1,3 @@
-import { Icon } from "@fortawesome/fontawesome-svg-core";
-
 export interface INavigation {
     name: string,
     url: string,
@@ -9,7 +7,7 @@ export interface INavigation {
 export interface ISocialMedia {
     name: string,
     url: string,
-    icon: Icon,
+    icon: string,
     color: string,
     isEmail: boolean
 }

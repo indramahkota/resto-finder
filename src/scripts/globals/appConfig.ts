@@ -10,7 +10,6 @@ import { INavigation, ISocialMedia } from '../interfaces/interfaces';
 import devImageUrl from '../../assets/images/profile.webp';
 import devImageUrlRound from '../../assets/images/profile-round-60.webp';
 import heroImageUrl from '../../assets/images/heros/hero-image.webp';
-import AppIcons from './appIcons';
 
 export default class AppConfig {
     static readonly APP_NAME: string = 'Resto Finder';
@@ -33,11 +32,11 @@ export default class AppConfig {
     ];
 
     static readonly APP_SOCIAL_MEDIA: ISocialMedia[] = [
-        { name: 'github', url: 'https://github.com/indramahkota', isEmail: false, color: '#333', icon: AppIcons.GITHUB },
-        { name: 'linkedin', url: 'https://www.linkedin.com/in/indramahkota', isEmail: false, color: '#0e76a8', icon: AppIcons.LINKEDIN },
-        { name: 'google', url: 'mailto:indramahkota1@gmail.com', isEmail: true, color: '#ea4335',  icon: AppIcons.GOOGLE },
-        { name: 'gitlab', url: 'https://gitlab.com/indramahkota', isEmail: false, color: '#fca326', icon: AppIcons.GITLAB },
-        { name: 'facebook', url: 'https://www.facebook.com/indramahkota.id', isEmail: false, color: '#3b5998', icon: AppIcons.FACEBOOK }
+        { name: 'github', url: 'https://github.com/indramahkota', isEmail: false, color: '#333', icon: 'fab fa-github' },
+        { name: 'linkedin', url: 'https://www.linkedin.com/in/indramahkota', isEmail: false, color: '#0e76a8', icon: 'fab fa-linkedin-in' },
+        { name: 'google', url: 'mailto:indramahkota1@gmail.com', isEmail: true, color: '#ea4335',  icon: 'fab fa-google' },
+        { name: 'gitlab', url: 'https://gitlab.com/indramahkota', isEmail: false, color: '#fca326', icon: 'fab fa-gitlab' },
+        { name: 'facebook', url: 'https://www.facebook.com/indramahkota.id', isEmail: false, color: '#3b5998', icon: 'fab fa-facebook-f' }
     ];
 
     static readonly SUPPORT_DARK_MODE: boolean = true;
