@@ -41,7 +41,7 @@ class AppBar extends CommonElement {
     iconNavData = AppConfig.APP_ICON_NAVIGATION;
 
     @internalProperty()
-    private _icoNavFocus = false;
+    private _iconNavFocus = false;
 
     @internalProperty()
     private _darkMode = AppConfig.SUPPORT_DARK_MODE;
@@ -53,13 +53,13 @@ class AppBar extends CommonElement {
     private _isOpen = false;
 
     private _onLogoClickHandler() {
-        this._icoNavFocus = false;
+        this._iconNavFocus = false;
         this.dataShouldUpdate(this.navLogo.url);
     }
 
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
-        this._icoNavFocus = !this._icoNavFocus;
+        this._iconNavFocus = !this._iconNavFocus;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
@@ -78,7 +78,7 @@ class AppBar extends CommonElement {
         const { hash } = path[0] as HTMLAnchorElement;
         this.dataShouldUpdate(hash);
 
-        this._icoNavFocus = false;
+        this._iconNavFocus = false;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
@@ -137,7 +137,7 @@ class AppBar extends CommonElement {
             this._isOpen = true;
         }
         if (window.location.hash === this.iconNavData.url)
-            this._icoNavFocus = true;
+            this._iconNavFocus = true;
         if (window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
     }
@@ -182,7 +182,7 @@ class AppBar extends CommonElement {
                         }
 
                         <li>
-                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._icoNavFocus ? 'active' : ''}" @click="${this._onIconNavClickHandler}">
+                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._iconNavFocus ? 'active' : ''}" @click="${this._onIconNavClickHandler}">
                                 <img class="anchor__icon" src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
                                 <p class="anchor__name">${this.iconNavData.name}</p>
                                 <span class="chevron"></span>
