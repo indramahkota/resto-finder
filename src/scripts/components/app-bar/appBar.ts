@@ -15,7 +15,6 @@ import AppConfig from './scripts/globals/appConfig';
 const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
 render(html`
     <app-bar
-        .navLogo=${data}
         .navData=${data}
         .iconNavData=${data} >
     </app-bar>
@@ -31,8 +30,8 @@ import { IIconNavigation, INavigation } from '../../interfaces/interfaces';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
-    @property({ type: Object, attribute: true })
-    navLogo = AppConfig.APP_LOGO_NAVIGATION;
+    @property({ type: String, attribute: true })
+    title = AppConfig.APP_NAME;
 
     @property({ type: Array, attribute: true })
     navData = AppConfig.APP_NAVIGATION;
@@ -54,7 +53,7 @@ class AppBar extends CommonElement {
 
     private _onLogoClickHandler() {
         this._iconNavFocus = false;
-        this.dataShouldUpdate(this.navLogo.url);
+        this.dataShouldUpdate('/');
     }
 
     private _onIconNavClickHandler() {
@@ -110,12 +109,6 @@ class AppBar extends CommonElement {
         })
     }
 
-    setNavLogo(data: INavigation) {
-        const oldVal = this.navLogo;
-        this.navLogo = data;
-        this.requestUpdate('navLogo', oldVal);
-    }
-
     setNavData(data: INavigation[]) {
         const oldVal = this.navData;
         this.navData = data;
@@ -145,7 +138,7 @@ class AppBar extends CommonElement {
     render() {
         return html`
             <header class="header">
-                <a href="${this.navLogo.url}" @click="${this._onLogoClickHandler}" class="header__logo">${this.navLogo.name}</a>
+                <a href="/" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`
