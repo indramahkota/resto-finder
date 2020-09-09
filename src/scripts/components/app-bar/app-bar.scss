@@ -27,6 +27,12 @@
   border-bottom: 1px solid var(--color-page-background);
   background-color: var(--color-article-background);
 
+  &.hide {
+    -webkit-transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    transform: translateY(-60px);
+  }
+
   .header__logo {
     min-height: 44px;
     padding-bottom: 4px;
