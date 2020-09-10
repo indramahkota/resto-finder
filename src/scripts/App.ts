@@ -42,8 +42,10 @@ export default class RestoFinder extends CommonElement {
         return html`
             <app-bar></app-bar>
             <div id="content">
-                ${new Route('', () => this.home(), false).mount()}
-                ${new Route('/home', () => this.home(), false).mount()}
+                ${new Route('/', () => this.home(), true).mount()}
+                ${new Route('/home', () => this.home(), true).mount()}
+                ${new Route('/find', () => this.find(), true).mount()}
+                ${new Route('/favorites', () => this.favorites(), true).mount()}
             </div>
             <section id="user">
                 <my-profile></my-profile>
