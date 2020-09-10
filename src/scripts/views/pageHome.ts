@@ -16,7 +16,7 @@ export default class PageHome extends CommonElement {
                 <hero-element></hero-element>
             </section>
             <section id="top">
-                <resto-container></resto-container>
+                <resto-container title="TOP RESTAURANTS"></resto-container>
             </section>
             <section id="map">
             
