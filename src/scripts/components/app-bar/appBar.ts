@@ -51,11 +51,6 @@ class AppBar extends CommonElement {
     @internalProperty()
     private _isOpen = false;
 
-    private _onLogoClickHandler() {
-        this._iconNavFocus = false;
-        this.dataShouldUpdate('/');
-    }
-
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
         this._iconNavFocus = !this._iconNavFocus;
@@ -138,7 +133,7 @@ class AppBar extends CommonElement {
     render() {
         return html`
             <header class="header">
-                <a href="/" @click="${this._onLogoClickHandler}" class="header__logo">${this.title}</a>
+                <a href="/" class="header__logo">${this.title}</a>
 
                 ${
                     this._darkMode ? html`

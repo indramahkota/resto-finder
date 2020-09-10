@@ -29,15 +29,9 @@ export default class AppConfig {
     }
 
     static readonly APP_NAVIGATION: INavigation[] = [
-        { name: 'Find Resto', url: '#find', isActive: false },
-        { name: 'My Favorites', url: '#favorites', isActive: false }
+        { name: 'Find Resto', url: '#/find', isActive: false },
+        { name: 'My Favorites', url: '#/favorites', isActive: false }
     ];
-
-    static readonly APP_LOGO_NAVIGATION: INavigation = {
-        name: AppConfig.APP_NAME,
-        url: '#greeting',
-        isActive: false
-    }
 
     static readonly APP_ICON_NAVIGATION: IIconNavigation = {
         name: 'Indra Mahkota',
