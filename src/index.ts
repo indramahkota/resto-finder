@@ -8,11 +8,12 @@
 
 import 'regenerator-runtime';
 import './styles/Index.scss';
-import './scripts/components';
 
 import { html, render } from 'lit-html';
 import Utils from './scripts/globals/appUtilities';
 import AppConfig from './scripts/globals/appConfig';
+
+import "./scripts/App";
 
 window.addEventListener('DOMContentLoaded', () => {
     if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
@@ -21,24 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
         window.document.body.classList.remove('dark');
     }
 
-    render(html`
+    const App = () => html`
         <a id="skip-to-content" class="skip-link" href="#content">Skip to Content</a>
-        <app-bar></app-bar>
-        <section id="content">
-            <section id="greeting">
-                <hero-element></hero-element>
-            </section>
-            <section id="find">
-                <resto-container></resto-container>
-            </section>
-            <section id="favorites">
-                <resto-container title="FAVORITES"></resto-container>
-            </section>
-            <section id="user">
-                <my-profile></my-profile>
-            </section>
-            <foot-bar></foot-bar>
-        </section>
-        
-    `, document.body);
+        <rstf-app></rstf-app>
+    `;
+
+    render(App(), document.body);
 });
