@@ -50,7 +50,7 @@ export class Route {
     }
 
     mount(): TemplateResult | void {
-        const match = this.match(); console.log(`match path: ${JSON.stringify(match)}`); //debug
+        const match = this.match(); // console.log(`match path: ${JSON.stringify(match)}`); //debug
         if (match)
             return this.render(match);
         return;
@@ -68,6 +68,9 @@ export function matchPath(pathname: string, options: MatchPathOptions): MatchObj
             params: []
         }
     }
+
+    if (pathname === '')
+        pathname = '/';
 
     const match = new RegExp(`^/${pathWithoutParameters(path)}`).exec(pathname);
 
