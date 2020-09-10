@@ -1,5 +1,5 @@
 {
-  "name": "pontianak-resto-finder",
+  "name": "resto-finder",
   "version": "1.0.0",
   "description": "Mudah menemukan Restaurant di sekitar Pontianak dengan Pontianak Resto Finder",
   "main": "index.js",
@@ -69,7 +69,6 @@
     "workbox-webpack-plugin": "^5.1.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@webcomponents/webcomponentsjs": "^2.4.4",
     "idb": "^5.0.4",
     "lit-element": "^2.4.0",

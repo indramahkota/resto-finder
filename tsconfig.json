@@ -10,7 +10,7 @@
         "declarationDir": "dist/types",
         "declaration": true,
         "target": "es2017",
-        "module": "es2015",
+        "module": "es2020",
         "strict": true,
         "lib": [
             "es2017",
