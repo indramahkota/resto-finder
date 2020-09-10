@@ -42,7 +42,7 @@ export default class RestoFinder extends CommonElement {
         return html`
             <app-bar></app-bar>
             <div id="content">
-                ${new Route('/', () => this.home(), false).mount()}
+                ${new Route('', () => this.home(), false).mount()}
                 ${new Route('/home', () => this.home(), false).mount()}
             </div>
             <section id="user">

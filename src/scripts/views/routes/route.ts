@@ -3,23 +3,20 @@ import { TemplateResult } from "lit-html";
 type Create = (data?: MatchObject) => TemplateResult | void;
 
 export interface IParam {
-    key: string,
-    value: string
+    key: string;
+    value: string;
 }
 
 export interface MatchObject {
     path: string | null;
     url: string;
+    isExact: boolean;
     params: IParam[];
 }
 
 export interface MatchPathOptions {
     path: string;
     exact: boolean | undefined;
-}
-
-export interface MatchPathResult extends MatchObject {
-    isExact: boolean;
 }
 
 /*  Kasus Penggunaan
@@ -60,7 +57,7 @@ export class Route {
     }
 }
 
-export function matchPath(pathname: string, options: MatchPathOptions): MatchPathResult | null {
+export function matchPath(pathname: string, options: MatchPathOptions): MatchObject | null {
     const { exact = false, path } = options;
 
     if (!path) {
