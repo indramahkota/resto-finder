@@ -26,7 +26,6 @@ import { customElement, property, internalProperty } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
 import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
-import { IIconNavigation, INavigation } from '../../interfaces/interfaces';
 
 @customElement('app-bar')
 class AppBar extends CommonElement {
@@ -50,6 +49,28 @@ class AppBar extends CommonElement {
 
     @internalProperty()
     private _isOpen = false;
+
+    private header: HTMLElement | null = null;
+
+    private current_scroll_position = 0;
+    private last_known_scroll_position = 0;
+    private ticking = false;
+
+    private _onScrollHandler = () => {
+        this.current_scroll_position = window.scrollY;
+
+        window.setTimeout(() => {
+            this.last_known_scroll_position = window.scrollY;
+        }, 150);
+
+        if (!this.ticking) {
+            window.requestAnimationFrame(() => {
+                this.hideOrShowHeader();
+                this.ticking = false;
+            });
+            this.ticking = true;
+        }
+    }
 
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
@@ -104,18 +125,6 @@ class AppBar extends CommonElement {
         })
     }
 
-    setNavData(data: INavigation[]) {
-        const oldVal = this.navData;
-        this.navData = data;
-        this.requestUpdate('navData', oldVal);
-    }
-
-    setIconNavData(data: IIconNavigation) {
-        const oldVal = this.iconNavData;
-        this.iconNavData = data;
-        this.requestUpdate('iconNavData', oldVal);
-    }
-
     connectedCallback() {
         super.connectedCallback();
         if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
@@ -128,11 +137,36 @@ class AppBar extends CommonElement {
             this._iconNavFocus = true;
         if (window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
+
+        window.addEventListener('scroll', this._onScrollHandler, false);
+    }
+
+    hideOrShowHeader() {
+        if(this.current_scroll_position < 120) {
+            this.header?.classList.remove('hide');
+            return;
+        }
+        const hideHeader = this.current_scroll_position > this.last_known_scroll_position;
+        if(hideHeader) {
+            this._isOpen = false;
+            this.header?.classList.add('hide');
+        } else {
+            this.header?.classList.remove('hide');
+        }
+    }
+
+    disconnectedCallback() {
+        window.removeEventListener('scroll', this._onScrollHandler, false);
+        super.disconnectedCallback();
+    }
+
+    firstUpdated() {
+        this.header = document.getElementById("rstf-header");
     }
 
     render() {
         return html`
-            <header class="header">
+            <header id="rstf-header" class="header">
                 <a href="/" class="header__logo">${this.title}</a>
 
                 ${
