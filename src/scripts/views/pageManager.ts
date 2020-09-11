@@ -36,8 +36,6 @@ export default class PageManager extends CommonElement {
     render(): TemplateResult {
         return html`
             ${new Route('/', () => this.home(), true).mount()}
-            ${new Route('/home', () => this.home(), true).mount()}
-            ${new Route('/find', () => this.find(), true).mount()}
             ${new Route('/favorites', () => this.favorites(), true).mount()}
         `;
     }

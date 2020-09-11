@@ -13,7 +13,9 @@ export default class RestoFinder extends CommonElement {
     render(): TemplateResult {
         return html`
             <app-bar></app-bar>
-            <rstf-pm></rstf-pm>
+            <section id="content">
+                <rstf-pm></rstf-pm>
+            </section>
             <section id="user">
                 <my-profile></my-profile>
             </section>

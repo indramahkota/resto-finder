@@ -13,8 +13,8 @@ export default class PageHome extends CommonElement {
             <section id="greeting">
                 <hero-element></hero-element>
             </section>
-            <section id="top-resto">
-                <resto-container title="TOP RESTAURANTS"></resto-container>
+            <section id="find">
+                <resto-container title="RESTAURANTS"></resto-container>
             </section>
         `;
     }

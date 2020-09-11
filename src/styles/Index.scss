@@ -65,5 +65,9 @@ body {
         top: 0;
     }
 
+    #content {
+        padding-top: 60px;
+    }
+
     @import './../scripts/components/index.scss';
 }
