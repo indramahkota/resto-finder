@@ -5,7 +5,6 @@ import CommonElement from '../_base_/commonElement';
 
 @customElement('search-bar')
 export default class SearchBar extends CommonElement {
-
     render(): TemplateResult {
         return html`
             <div class="search__floater">

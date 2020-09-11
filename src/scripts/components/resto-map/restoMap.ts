@@ -6,7 +6,6 @@ import CommonElement from '../_base_/commonElement';
 
 @customElement('resto-map')
 export default class RestoMap extends CommonElement {
-
     render(): TemplateResult {
         return html`
             <div id="rstfmap" style="width:90%;height:450px;margin:20px auto;border-radius:8px;"></div>
