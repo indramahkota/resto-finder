@@ -1,7 +1,9 @@
+
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
 
 import "../components/hero-element/heroElement";
+import "../components/search-bar/searchBar";
 import "../components/resto-container/restoContainer";
 import CommonElement from '../components/_base_/commonElement';
 
@@ -16,6 +18,7 @@ export default class PageHome extends CommonElement {
             <section id="top-resto">
                 <resto-container title="TOP RESTAURANTS"></resto-container>
             </section>
+            <search-bar></search-bar>
         `;
     }
 }
