@@ -14,7 +14,7 @@ export default class PageFind extends CommonElement {
                 
             </section>
             <section id="find">
-                <resto-container></resto-container>
+                <resto-container  title="FIND RESTAURANTS"></resto-container>
             </section>
         `;
     }

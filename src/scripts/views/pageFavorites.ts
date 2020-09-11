@@ -14,7 +14,7 @@ export default class PageFavorites extends CommonElement {
                 
             </section>
             <section id="favorites">
-                <resto-container></resto-container>
+                <resto-container title="FAVORITES RESTAURANTS"></resto-container>
             </section>
         `;
     }

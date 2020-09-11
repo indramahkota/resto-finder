@@ -16,14 +16,14 @@ export default class PageManager extends CommonElement {
     connectedCallback(): void {
         super.connectedCallback();
         window.addEventListener('hashchange', () => {
-            if(window.location.hash.includes('#/'))           
+            if (window.location.hash.includes('#/'))
                 this.forceUpdate = this.randomText();
         });
     }
 
     disconnectedCallback(): void {
         window.removeEventListener('hashchange', () => {
-            if(window.location.hash.includes('#/'))           
+            if (window.location.hash.includes('#/'))
                 this.forceUpdate = this.randomText();
         });
         super.disconnectedCallback();
