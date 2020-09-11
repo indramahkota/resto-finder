@@ -2,7 +2,7 @@ import { TemplateResult } from "lit-html";
 
 type Create = (data?: MatchObject) => TemplateResult | void;
 
-export interface IParam {
+interface IParam {
     key: string;
     value: string;
 }
@@ -14,7 +14,7 @@ export interface MatchObject {
     params: IParam[];
 }
 
-export interface MatchPathOptions {
+interface MatchPathOptions {
     path: string;
     exact: boolean | undefined;
 }
@@ -28,7 +28,7 @@ export interface MatchPathOptions {
     url (/find/:id)  | isExact=true                            | isExact=false
     -------------------------------------------------------------------------------------------------
     /find            | Yes ([{key: 'id', value: undefined}])   | Yes ([{key: 'id', value: undefined}])    
-    /find/yRXcb88    | No                                      | Yes ([{key: 'id', value: 'hAD654vv'}])
+    /find/yRXcb88    | No                                      | Yes ([{key: 'id', value: 'yRXcb88'}])
 */
 
 export class Route {
@@ -50,24 +50,15 @@ export class Route {
     }
 
     mount(): TemplateResult | void {
-        const match = this.match(); // console.log(`match path: ${JSON.stringify(match)}`); //debug
+        const match = this.match();
         if (match)
             return this.render(match);
         return;
     }
 }
 
-export function matchPath(pathname: string, options: MatchPathOptions): MatchObject | null {
+function matchPath(pathname: string, options: MatchPathOptions): MatchObject | null {
     const { exact = false, path } = options;
-
-    if (!path) {
-        return {
-            path: null,
-            url: pathname,
-            isExact: true,
-            params: []
-        }
-    }
 
     if (pathname === '')
         pathname = '/';
@@ -90,7 +81,7 @@ export function matchPath(pathname: string, options: MatchPathOptions): MatchObj
     return { path, url, isExact, params }
 }
 
-// '#/agaga/iiii/:id/:test/:hhhh' -> ['id', 'test', 'hhh']
+// '#/agaga/:id & #/agaga/hAD654vv' -> ([{key: 'id', value: 'hAD654vv'}])
 function returnParameters(path: string, pathname: string): IParam[] {
     const params: IParam[] = [];
     const paramNames = path.split('/');
