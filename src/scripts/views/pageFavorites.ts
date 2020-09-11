@@ -8,7 +8,6 @@ import CommonElement from '../components/_base_/commonElement';
 
 @customElement('rstf-favorites')
 export default class PageFavorites extends CommonElement {
-
     render(): TemplateResult {
         return html`
             

@@ -29,8 +29,7 @@ export default class AppConfig {
     }
 
     static readonly APP_NAVIGATION: INavigation[] = [
-        { name: 'Home', url: '#/home', isActive: true },
-        { name: 'Find Resto', url: '#/find', isActive: false },
+        { name: 'Find Resto', url: '#/home', isActive: true },
         { name: 'My Favorites', url: '#/favorites', isActive: false }
     ];
 

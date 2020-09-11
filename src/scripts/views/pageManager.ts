@@ -1,32 +1,30 @@
 
-import "../components/my-profile/myProfile";import { html, TemplateResult } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../components/_base_/commonElement';
 
 import "./pageHome";
-import "./pageFind";
 import "./pageFavorites";
+import "../components/my-profile/myProfile";
 
 @customElement('rstf-pm')
 export default class PageManager extends CommonElement {
-
     @property({ type: String, attribute: true })
     forceUpdate = '-f';
 
+    private _forceUpdateHandler = () => {
+        if (window.location.hash.includes('#/'))
+            this.forceUpdate = this.randomText();
+    }
+
     connectedCallback(): void {
         super.connectedCallback();
-        window.addEventListener('hashchange', () => {
-            if (window.location.hash.includes('#/'))
-                this.forceUpdate = this.randomText();
-        });
+        window.addEventListener('hashchange', this._forceUpdateHandler, false);
     }
 
     disconnectedCallback(): void {
-        window.removeEventListener('hashchange', () => {
-            if (window.location.hash.includes('#/'))
-                this.forceUpdate = this.randomText();
-        });
+        window.removeEventListener('hashchange', this._forceUpdateHandler, false);
         super.disconnectedCallback();
     }
 
@@ -39,7 +37,6 @@ export default class PageManager extends CommonElement {
             ${new Route('/', () => this.home(), true).mount()}
             ${new Route('/user', () => this.user(), true).mount()}
             ${new Route('/home', () => this.home(), true).mount()}
-            ${new Route('/find', () => this.find(), true).mount()}
             ${new Route('/favorites', () => this.favorites(), true).mount()}
         `;
     }
@@ -56,14 +53,6 @@ export default class PageManager extends CommonElement {
         return html`
             <section id="home">
                 <rstf-home></rstf-home>
-            </section>
-        `;
-    }
-
-    find(): TemplateResult {
-        return html`
-            <section id="find">
-                <rstf-find></rstf-find>
             </section>
         `;
     }
