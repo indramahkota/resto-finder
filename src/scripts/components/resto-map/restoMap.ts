@@ -8,6 +8,7 @@ import CommonElement from '../_base_/commonElement';
 export default class RestoMap extends CommonElement {
     render(): TemplateResult {
         return html`
+            <h1 tabindex="0" style="width:fit-content;margin:20px auto;padding-top:10px;padding-bottom:20px;color:var(--color-text);">NEARBY RESTAURANTS</h1>
             <div id="rstfmap" style="width:90%;height:450px;margin:20px auto;border-radius:8px;"></div>
         `;
     }
