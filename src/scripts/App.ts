@@ -16,9 +16,6 @@ export default class RestoFinder extends CommonElement {
             <section id="content">
                 <rstf-pm></rstf-pm>
             </section>
-            <section id="user">
-                <my-profile></my-profile>
-            </section>
             <foot-bar></foot-bar>
         `;
     }

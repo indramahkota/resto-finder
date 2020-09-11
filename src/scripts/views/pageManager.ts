@@ -1,4 +1,5 @@
-import { html, TemplateResult } from 'lit-html';
+
+import "../components/my-profile/myProfile";import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../components/_base_/commonElement';
@@ -36,25 +37,42 @@ export default class PageManager extends CommonElement {
     render(): TemplateResult {
         return html`
             ${new Route('/', () => this.home(), true).mount()}
+            ${new Route('/user', () => this.user(), true).mount()}
+            ${new Route('/home', () => this.home(), true).mount()}
+            ${new Route('/find', () => this.find(), true).mount()}
             ${new Route('/favorites', () => this.favorites(), true).mount()}
+        `;
+    }
+
+    user(): TemplateResult {
+        return html`
+            <section id="user">
+                <my-profile></my-profile>
+            </section>
         `;
     }
 
     home(): TemplateResult {
         return html`
-            <rstf-home></rstf-home>
+            <section id="home">
+                <rstf-home></rstf-home>
+            </section>
         `;
     }
 
     find(): TemplateResult {
         return html`
-            <rstf-find></rstf-find>
+            <section id="find">
+                <rstf-find></rstf-find>
+            </section>
         `;
     }
 
     favorites(): TemplateResult {
         return html`
-            <rstf-favorites></rstf-favorites>
+            <section id="favorites">
+                <rstf-favorites></rstf-favorites>
+            </section>
         `;
     }
 

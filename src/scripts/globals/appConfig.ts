@@ -29,13 +29,14 @@ export default class AppConfig {
     }
 
     static readonly APP_NAVIGATION: INavigation[] = [
+        { name: 'Home', url: '#/home', isActive: true },
         { name: 'Find Resto', url: '#/find', isActive: false },
         { name: 'My Favorites', url: '#/favorites', isActive: false }
     ];
 
     static readonly APP_ICON_NAVIGATION: IIconNavigation = {
         name: 'Indra Mahkota',
-        url: '#user',
+        url: '#/user',
         isActive: false,
         imageUrl: userImageUrlRound,
         imageAlt: 'User Name Indra Mahkota'
