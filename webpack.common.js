@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { resolve } = require("path");
 const { minify } = require("terser");
 // const workboxPlugin = require("workbox-webpack-plugin");
