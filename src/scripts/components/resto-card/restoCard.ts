@@ -23,6 +23,7 @@ import "../rating-element/ratingElement";
 
 import CommonElement from '../_base_/commonElement';
 import { IRestaurant } from "../../interfaces/interfaces";
+import AppConfig from '../../globals/appConfig';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
@@ -32,7 +33,7 @@ export default class RestoCard extends CommonElement {
     render(): TemplateResult {
         return html`
             <div class="card__container">
-                <img src="${ifDefined(this.data?.pictureId)}" alt="${ifDefined(this.data?.name)}">
+                <img src="${ifDefined(this.checkImgSrcValue(this.data?.pictureId))}" alt="${ifDefined(this.data?.name)}">
                 <div class="card__content">
                     <a href="#" class="card__name"><b>${this.data?.name}</b></a>
                     <p tabindex="0" class="card__city">${this.data?.city}</p>
@@ -41,6 +42,13 @@ export default class RestoCard extends CommonElement {
                 </div>
             </div>
         `;
+    }
+
+    checkImgSrcValue(val?: string): string | undefined {
+        if(val !== undefined) {
+            return AppConfig.BASE_IMAGE_URL + val;
+        }
+        return undefined;
     }
 }
 
