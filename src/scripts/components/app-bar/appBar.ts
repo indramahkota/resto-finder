@@ -1,25 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:36:26
- * @modify date 2020-08-30 13:13:12
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-import { INavigation } from './scripts/interfaces/interfaces';
-import AppConfig from './scripts/globals/appConfig';
-
-const menuData: INavigation[] = AppConfig.APP_NAV_DATA;
-render(html`
-    <app-bar
-        .navData=${data}
-        .iconNavData=${data} >
-    </app-bar>
-`, document.body); */
-
 import { html, nothing } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 

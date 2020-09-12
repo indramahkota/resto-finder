@@ -1,4 +1,3 @@
-
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { MatchObject, Route } from './routes/route';

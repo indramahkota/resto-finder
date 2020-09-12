@@ -1,22 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-01 17:49:40
- * @modify date 2020-09-01 17:50:42
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-import AppConfig from './scripts/globals/appConfig';
-
-render(html`
-    <foot-bar
-        text=${AppConfig.TEXT_FOOTER} >
-    </foot-bar>
-`, document.body); */
-
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 

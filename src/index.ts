@@ -1,11 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:34:28
- * @modify date 2020-08-30 18:50:41
- * @desc [description]
- */
-
 import 'regenerator-runtime';
 import './styles/Index.scss';
 

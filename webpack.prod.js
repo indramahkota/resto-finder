@@ -1,10 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-06 14:17:28
- * @desc [description]
- */
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 const TerserPlugin = require("terser-webpack-plugin");

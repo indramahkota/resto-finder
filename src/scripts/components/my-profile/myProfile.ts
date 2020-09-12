@@ -1,25 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-01 20:10:05
- * @modify date 2020-09-02 18:36:34
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-
-render(html`
-    <my-profile
-        title='DEVELOPER'
-        name='Indra Mahkota'
-        location='Pontianak, Indonesia'
-        hirable='Yes'
-        image='image url'>
-    </my-profile>
-`, document.body); */
-
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 

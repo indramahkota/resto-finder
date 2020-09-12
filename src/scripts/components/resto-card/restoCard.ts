@@ -1,19 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-05 23:57:18
- * @modify date 2020-09-05 23:57:18
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-
-render(html`
-    <resto-card .data=${{object data}}></resto-card>
-`, document.body); */
-
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';

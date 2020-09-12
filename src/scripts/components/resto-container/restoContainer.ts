@@ -1,19 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-03 13:00:26
- * @modify date 2020-09-03 13:00:26
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-
-render(html`
-    <resto-container url=${url}></resto-container>
-`, document.body); */
-
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 
@@ -25,7 +9,6 @@ import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 import RemoteDataSource from '../../data/sources/remote/remoteDataSource';
 import { IRestaurants } from '../../interfaces/interfaces';
-// import LocalDataSource from '../../data/sources/local/localDataSource';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
@@ -49,14 +32,6 @@ export default class RestoContainer extends CommonElement {
             .catch(er => console.log(er));
     }
 
-    //<resto-card .data=${res}></resto-card>
-    //
-
-    /* ${
-                        this._dataJson?.restaurants.map(res => html`
-                            <resto-card .data=${res}></resto-card>
-                        `)
-                    } */
     render(): TemplateResult {
         return html`
             <div class="resto__container">

@@ -1,24 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-27 21:49:01
- * @modify date 2020-08-30 13:15:52
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-import AppConfig from './scripts/globals/appConfig';
-
-render(html`
-    <hero-element
-        background=${AppConfig.APP_HERO_IMAGE}
-        greeting=${AppConfig.TEXT_GREETING}
-        name=${AppConfig.APP_NAME} >
-    </hero-element>
-`, document.body); */
-
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 

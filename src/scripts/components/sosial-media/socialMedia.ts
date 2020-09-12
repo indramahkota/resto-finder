@@ -1,19 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-01 20:13:05
- * @modify date 2020-09-01 20:13:07
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-
-render(html`
-    <sosial-media .data=${{object data}}></sosial-media>
-`, document.body); */
-
 import { html } from 'lit-html';
 import { customElement, property } from 'lit-element';
 

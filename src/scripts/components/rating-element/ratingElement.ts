@@ -1,19 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-09-05 09:57:09
- * @modify date 2020-09-06 20:56:01
- * @desc [description]
- */
-
-/*
-// Penggunaan
-import {html, render} from 'lit-html';
-
-render(html`
-    <rating-element rating="0.4"></rating-element>
-`, document.body); */
-
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 

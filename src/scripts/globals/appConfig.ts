@@ -1,11 +1,3 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 20:34:28
- * @modify date 2020-09-01 20:37:36
- * @desc [description]
- */
-
 import { IIconNavigation, INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
 import userImageUrl from '../../assets/images/profile.webp';
 import userImageUrlRound from '../../assets/images/profile-round-60.webp';
