@@ -14,24 +14,43 @@ export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })
     data: IRestaurant | undefined;
 
-    firstUpdated(): void {
-        if(this.data === undefined)
+    private _imgLoaded = false;
+
+    private _lazyLoad = () => {
+        if(this.data === undefined || this._imgLoaded)
             return;
-            
+        
         const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
 
-        const imageHelper = new Image();
-        imageHelper.src = this.checkImgSrcValue(this.data.pictureId);
-        imageHelper.onload = () => {
-            if(image === null)
-                return;
-            
-            /* #WARNING# Sebaiknya jangan:::Supaya nampak loadingnya aja wkwk */
-            setTimeout(() => {
-                image.src = imageHelper.src;
+        const scrollTop = window.pageYOffset;
+        if(image.offsetTop < (window.innerHeight + scrollTop)) {
+            image.src = this.checkImgSrcValue(this.data.pictureId);
+            image.onload = () => {
+                this._imgLoaded = true;
                 image.classList.add('complete');
-            }, 1000);
+                document.removeEventListener("scroll", this._lazyLoad, false);
+                window.removeEventListener("resize", this._lazyLoad, false);
+                window.removeEventListener("orientationChange", this._lazyLoad, false);
+            }
         }
+    }
+
+    connectedCallback(): void {
+        super.connectedCallback();
+        document.addEventListener("scroll", this._lazyLoad, false);
+        window.addEventListener("resize", this._lazyLoad, false);
+        window.addEventListener("orientationChange", this._lazyLoad, false);
+    }
+
+    disconnectedCallback(): void {
+        document.removeEventListener("scroll", this._lazyLoad, false);
+        window.removeEventListener("resize", this._lazyLoad, false);
+        window.removeEventListener("orientationChange", this._lazyLoad, false);
+        super.disconnectedCallback();
+    }
+
+    firstUpdated(): void {
+        this._lazyLoad();
     }
 
     render(): TemplateResult {
@@ -41,8 +60,8 @@ export default class RestoCard extends CommonElement {
                     <img id="${ifDefined(this.data?.pictureId)}" src="${AppConfig.URL_LOADING_SVG}" alt="${ifDefined(this.data?.name)} Image Name">
                 </div>
                 <div class="card__content">
+                    <p tabindex="0" class="card__city">${this.data?.city.toUpperCase()}</p>
                     <a href="#" class="card__name"><b>${this.data?.name}</b></a>
-                    <p tabindex="0" class="card__city">${this.data?.city}</p>
                     <rating-element rating=${ifDefined(this.data?.rating)}></rating-element>
                     <p tabindex="0" class="card__description">${this.data?.description}</p> 
                 </div>

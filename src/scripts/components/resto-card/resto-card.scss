@@ -29,10 +29,14 @@
         padding: 8px 16px;
         max-height: 250px;
         color: var(--color-text);
+        display: flex;
+        flex-direction: column;
 
         .card__name {
             text-decoration: none;
             color: inherit;
+            padding: 2px 0 8px 0;
+            // background-color: aqua;
         }
 
         .card__city {
@@ -41,6 +45,7 @@
         }
 
         .card__description {
+            padding-top: 4px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
