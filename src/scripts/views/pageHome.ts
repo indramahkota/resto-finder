@@ -4,7 +4,6 @@ import { customElement, internalProperty } from 'lit-element';
 import "../components/hero-element/heroElement";
 import "../components/search-bar/searchBar";
 import "../components/resto-container/restoContainer";
-import "../components/resto-map/restoMap";
 import CommonElement from '../components/_base_/commonElement';
 import RemoteDataSource from '../data/sources/remote/remoteDataSource';
 import { IRestaurants } from '../interfaces/interfaces';
@@ -39,7 +38,6 @@ export default class PageHome extends CommonElement {
             <section id="top-resto">
                 <resto-container title="TOP RESTAURANTS" .data=${this._restoData}></resto-container>
             </section>
-            <resto-map></resto-map>
             <search-bar></search-bar>
         `;
     }

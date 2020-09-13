@@ -3,7 +3,6 @@ import { customElement } from 'lit-element';
 
 import "../components/hero-element/heroElement";
 import "../components/resto-container/restoContainer";
-import "../components/resto-map/restoMap";
 import CommonElement from '../components/_base_/commonElement';
 
 @customElement('rstf-favorites')
