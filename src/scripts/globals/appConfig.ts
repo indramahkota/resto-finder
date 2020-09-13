@@ -1,12 +1,10 @@
 import { IIconNavigation, INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
 import userImageUrl from '../../assets/images/profile.webp';
 import userImageUrlRound from '../../assets/images/profile-round-60.webp';
-import heroImageUrl from '../../assets/images/heros/hero-image.webp';
 import loadingImageSvgUrl from '../../assets/images/loading.svg';
 
 export default class AppConfig {
     static readonly APP_NAME: string = 'Resto Finder';
-    static readonly APP_HERO_IMAGE: string = heroImageUrl;
     static readonly TEXT_GREETING: string = 'Selamat Datang!';
     static readonly TEXT_FOOTER: string = 'Copyright © 2020 Resto Finder. All rights reserved.';
 

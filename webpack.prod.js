@@ -59,12 +59,7 @@ module.exports = merge(common, {
       {
         test: /\.css|\.s([ca])ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true
-            }
-          },
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
