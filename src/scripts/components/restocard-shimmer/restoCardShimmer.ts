@@ -10,10 +10,12 @@ import CommonElement from '../_base_/commonElement';
 export default class RestoCardShimmer extends CommonElement {
     render(): TemplateResult {
         return html`
-            <div class="card br">
+            <div class="restocard__shimmer">
                 <div class="wrapper">
                     <div class="pic animate din"></div>
-                    <div class="comment br animate w80"></div>
+                    <div class="comment br animate w40"></div>
+                    <div class="comment br animate"></div>
+                    <div class="comment br animate"></div>
                     <div class="comment br animate"></div>
                     <div class="comment br animate"></div>
                 </div>

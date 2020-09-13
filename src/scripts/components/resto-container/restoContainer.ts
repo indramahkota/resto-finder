@@ -37,7 +37,7 @@ export default class RestoContainer extends CommonElement {
             <div class="resto__container">
                 <h1 tabindex="0" class="resto__title">${this.title}</h1>
                 <div class="resto__items">
-                    ${
+                ${
                         this._dataJson !== null ?
                             this._dataJson.restaurants.map(res => html`
                                 <resto-card .data=${res}></resto-card>
