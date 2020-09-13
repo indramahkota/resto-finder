@@ -38,32 +38,12 @@ module.exports = {
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'babel-loader'
       },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.css|\.s([ca])ss$/,
-        exclude: resolve(__dirname, "src/styles"),
-        use: [
-          {
-            loader: "lit-scss-loader",
-            options: {
-              minify: true
-            }
-          },
-          "extract-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.css|\.s([ca])ss$/,
-        exclude: resolve(__dirname, "src/scripts/components"),
-        use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
