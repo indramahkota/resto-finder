@@ -17,13 +17,12 @@
 
         .comment {
             height: 10px;
-            background: #777;
             margin-top: 20px;
         }
 
         .animate {
             animation: shimmer 2s infinite linear;
-            background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+            background: linear-gradient(to right, var(--color-shimmer-gradient) 4%, var(--color-page-background) 25%, var(--color-shimmer-gradient) 36%);
             background-size: 1000px 100%;
         }
     }
