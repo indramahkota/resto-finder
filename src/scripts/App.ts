@@ -16,7 +16,7 @@ export default class RestoFinder extends CommonElement {
     
     private _timeOutId: number | null = null;
 
-    private _showToastHandler = async (event: Event) => {
+    private _showToastHandler = (event: Event) => {
         const details = (event as CustomEvent).detail;
 
         if (this._timeOutId !== null)
@@ -25,10 +25,7 @@ export default class RestoFinder extends CommonElement {
         if (details.message === undefined)
             return;
 
-        const oldValue = this._toastMessage;
         this._toastMessage = details.message;
-
-        await this.requestUpdate('_toastMessage', oldValue);
 
         this._timeOutId = window.setTimeout(() => {
             this._toastMessage = null;
