@@ -14,10 +14,32 @@ export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })
     data: IRestaurant | undefined;
 
+    firstUpdated(): void {
+        if(this.data === undefined)
+            return;
+            
+        const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
+
+        const imageHelper = new Image();
+        imageHelper.src = this.checkImgSrcValue(this.data.pictureId);
+        imageHelper.onload = () => {
+            if(image === null)
+                return;
+            
+            /* #WARNING# Sebaiknya jangan:::Supaya nampak loadingnya aja wkwk */
+            setTimeout(() => {
+                image.src = imageHelper.src;
+                image.classList.add('complete');
+            }, 1000);
+        }
+    }
+
     render(): TemplateResult {
         return html`
             <div class="card__container">
-                <img src="${ifDefined(this.checkImgSrcValue(this.data?.pictureId))}" alt="${ifDefined(this.data?.name)}">
+                <div class="image__content">
+                    <img id="${ifDefined(this.data?.pictureId)}" src="${AppConfig.URL_LOADING_SVG}" alt="${ifDefined(this.data?.name)} Image Name">
+                </div>
                 <div class="card__content">
                     <a href="#" class="card__name"><b>${this.data?.name}</b></a>
                     <p tabindex="0" class="card__city">${this.data?.city}</p>
@@ -28,11 +50,8 @@ export default class RestoCard extends CommonElement {
         `;
     }
 
-    checkImgSrcValue(val?: string): string | undefined {
-        if(val !== undefined) {
-            return AppConfig.BASE_IMAGE_URL + val;
-        }
-        return undefined;
+    checkImgSrcValue(val?: string): string {
+        return AppConfig.BASE_IMAGE_URL + val;
     }
 }
 

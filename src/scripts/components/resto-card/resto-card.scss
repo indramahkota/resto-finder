@@ -11,11 +11,20 @@
         transition: all 0.3s ease-out;
     }
 
-    img {
-        width: 100%;
-        max-height: 200px;
-        object-fit: cover;
-        object-position: center;
+    .image__content {
+        display: flex;
+
+        img {
+            margin: auto;
+    
+            &.complete {
+                width: 100%;
+                min-width: 300px;
+                height: 200px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
     }
 
     .card__content {
