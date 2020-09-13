@@ -59,7 +59,7 @@ export default class SearchBar extends CommonElement {
             <div id="search-bar" class="search__floater">
                 <div class="search__anchor">
                     <form id="search-form" action="get">
-                        <input type="text" class="search__bar" placeholder="Search Resto">
+                        <input aria-label="Search to Find Resto" type="text" class="search__bar" placeholder="Find Resto">
                         <input class="search__submit" type="submit">
                         <div class="search__toggler"></div>
                     </form>
