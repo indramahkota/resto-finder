@@ -1,4 +1,4 @@
-import { html, nothing } from 'lit-html';
+import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
@@ -6,7 +6,7 @@ import Utils from '../../globals/appUtilities';
 import AppConfig from '../../globals/appConfig';
 
 @customElement('app-bar')
-class AppBar extends CommonElement {
+export default class AppBar extends CommonElement {
     @property({ type: String, attribute: true })
     title = AppConfig.APP_NAME;
 
@@ -90,7 +90,7 @@ class AppBar extends CommonElement {
         input.blur();
     }
 
-    dataShouldUpdate(hash: string) {
+    dataShouldUpdate(hash: string): void {
         this.navData = this.navData.map(nav => {
             if (nav.url !== hash) {
                 nav['isActive'] = false;
@@ -103,7 +103,7 @@ class AppBar extends CommonElement {
         })
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         super.connectedCallback();
         if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
             this._isLight = false;
@@ -119,7 +119,7 @@ class AppBar extends CommonElement {
         window.addEventListener('scroll', this._onScrollHandler, false);
     }
 
-    hideOrShowHeader() {
+    hideOrShowHeader(): void {
         if(this.current_scroll_position < 120) {
             this.header?.classList.remove('hide');
             return;
@@ -133,16 +133,16 @@ class AppBar extends CommonElement {
         }
     }
 
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         window.removeEventListener('scroll', this._onScrollHandler, false);
         super.disconnectedCallback();
     }
 
-    firstUpdated() {
+    firstUpdated(): void {
         this.header = document.getElementById("rstf-header");
     }
 
-    render() {
+    render(): TemplateResult {
         return html`
             <header id="rstf-header" class="header">
                 <a href="/" class="header__logo">${this.title}</a>

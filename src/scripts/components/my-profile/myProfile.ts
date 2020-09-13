@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import "../sosial-media/socialMedia";
@@ -7,14 +7,14 @@ import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
 @customElement('my-profile')
-class MyProfile extends CommonElement {
+export default class MyProfile extends CommonElement {
     @property({ type: String, attribute: true })
     title = 'PROFILE';
 
     @property({ type: Object, attribute: true })
     data = AppConfig.STATIC_USER;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <div class="profile__container">
                 <h1 tabindex="0" class="profile__title">${this.title}</h1>

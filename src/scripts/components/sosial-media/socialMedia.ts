@@ -1,15 +1,15 @@
-import { html } from 'lit-html';
+import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
 
 @customElement('social-media')
-class SocialMedia extends CommonElement {
+export default class SocialMedia extends CommonElement {
     @property({ type: Array, attribute: true })
     data = AppConfig.APP_SOCIAL_MEDIA;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <div class="social__media">
                 <ul>
