@@ -8,7 +8,8 @@
     --color-page-background: #{$light-for-background};
     --color-hero-background: #{$light-for-hero-background};
     --color-background-shadow: #{$light-for-background-shadow};
-    --color-shimmer-gradient: #{$light-for-gradient-weak};
+    --color-shimmer-gradient-weak: #{$light-for-gradient-weak};
+    --color-shimmer-gradient-strong: #{$light-for-gradient-strong};
 }
 
 .dark {
@@ -18,7 +19,8 @@
     --color-page-background: #{$dark-for-background};
     --color-hero-background: #{$dark-for-hero-background};
     --color-background-shadow: #{$dark-for-background-shadow};
-    --color-shimmer-gradient: #{$dark-for-gradient-weak};
+    --color-shimmer-gradient-weak: #{$dark-for-gradient-weak};
+    --color-shimmer-gradient-strong: #{$dark-for-gradient-strong};
 }
 
 * {

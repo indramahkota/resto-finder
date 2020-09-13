@@ -22,7 +22,7 @@
 
         .animate {
             animation: shimmer 2s infinite linear;
-            background: linear-gradient(to right, var(--color-shimmer-gradient) 4%, var(--color-page-background) 25%, var(--color-shimmer-gradient) 36%);
+            background: linear-gradient(to right, var(--color-shimmer-gradient-weak) 4%, var(--color-shimmer-gradient-strong) 25%, var(--color-shimmer-gradient-weak) 36%);
             background-size: 1000px 100%;
         }
     }
