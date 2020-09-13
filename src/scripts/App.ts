@@ -13,8 +13,7 @@ import "./views/pageManager";
 export default class RestoFinder extends CommonElement {
     @internalProperty()
     private _toastMessage: string | null = null;
-
-    @internalProperty()
+    
     private _timeOutId: number | null = null;
 
     private _showToastHandler = async (event: Event) => {
