@@ -5,7 +5,7 @@ import loadingImageSvgUrl from '../../assets/images/loading.svg';
 
 export default class AppConfig {
     static readonly APP_NAME: string = 'Resto Finder';
-    static readonly TEXT_GREETING: string = 'Selamat Datang';
+    static readonly TEXT_GREETING: string = 'Welcome to';
     static readonly TEXT_FOOTER: string = 'Copyright © 2020 Resto Finder. All rights reserved.';
 
     static readonly LCS_THEME: string = 'resto-finder-indramahkota-theme-mode';

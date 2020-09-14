@@ -2,13 +2,19 @@
     .hero__background {
         .hero__placeholder {
             width: 80%;
-
             h1 {
                 font-size: 4em;
             }
+        }
+    }
+}
 
-            h2 {
-                font-size: 3em;
+@media screen and (min-width: 900px) {
+    .hero__background {
+        .hero__placeholder {
+            width: 70%;
+            h1 {
+                font-size: 6em;
             }
         }
     }

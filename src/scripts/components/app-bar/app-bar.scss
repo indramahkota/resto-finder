@@ -27,9 +27,10 @@
 
   .header__logo {
     min-height: 44px;
-    padding-bottom: 4px;
+    padding-top: 4px;
     text-decoration: none;
-    color: var(--color-text);
+    color:  rgba(246, 205, 97);
+    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 1.3em;
     font-family: "Pacifico", cursive;
     font-variant-ligatures: no-common-ligatures;

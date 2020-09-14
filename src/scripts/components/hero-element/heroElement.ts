@@ -52,8 +52,7 @@ export default class HeroElement extends CommonElement {
         return html`
             <div class="hero__background">
                 <div id="hero-greeting" class="hero__placeholder">
-                    <h1 tabindex="0">${this.greeting}</h1>
-                    <h2 tabindex="0">di ${this.name}</h2>
+                    <h1 tabindex="0">${this.greeting}<br><span class="medium">${this.name}</span></h1>
                 </div>
             </div>
         `;
