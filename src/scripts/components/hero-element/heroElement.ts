@@ -62,7 +62,8 @@ export default class HeroElement extends CommonElement {
         `;
     }
 
-    private _onButtonClickHandler(_event: Event): void {
+    private _onButtonClickHandler(): void {
+        this._heroButton?.blur();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
     }
 }
