@@ -57,11 +57,6 @@
                 height: auto;
                 border-radius: 50%;
                 border: 0.5rem solid #6c63ff;
-
-                &:hover {
-                    box-shadow: 0 4px 16px -8px var(--color-background-shadow);
-                    transition: all 0.3s ease-out;
-                }
             }
         }
     }

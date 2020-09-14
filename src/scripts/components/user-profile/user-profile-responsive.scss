@@ -18,3 +18,18 @@
         }
     }
 }
+
+@media (hover: hover) {
+    .profile__container {
+        .profile__content {
+            .profile__image_container {
+                .profile__image {
+                    &:hover {
+                        box-shadow: 0 4px 16px -8px var(--color-background-shadow);
+                        transition: all 0.3s ease-out;
+                    }
+                }
+            }
+        }
+    }
+}
