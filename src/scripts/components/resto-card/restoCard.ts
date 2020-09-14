@@ -30,10 +30,16 @@ export default class RestoCard extends CommonElement {
         this._timeOutId = window.setTimeout(() => {
             const scrollTop = window.pageYOffset;
             if(image.offsetTop < (window.innerHeight + scrollTop)) {
-                image.src = this.checkImgSrcValue(this.data?.pictureId);
-                image.onload = () => {
+                const imageHelper: HTMLImageElement | null = new Image();
+                imageHelper.src = this.checkImgSrcValue(this.data?.pictureId);
+                imageHelper.onload = () => {
+                    if(image === null)
+                        return;
+
                     this._imgLoaded = true;
                     image.classList.add('complete');
+                    image.src = imageHelper.src;
+
                     document.removeEventListener("scroll", this._lazyLoad, false);
                     window.removeEventListener("resize", this._lazyLoad, false);
                     window.removeEventListener("orientationChange", this._lazyLoad, false);
