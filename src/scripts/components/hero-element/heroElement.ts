@@ -32,7 +32,7 @@ export default class HeroElement extends CommonElement {
     hideOrShowHeader(): void {
         if (this._heroGreeting === null || this._heroButton === null)
             return;
-        this._heroGreeting.style.transform = `translateY(${this._currScrollPos / 4}px)`;
+        this._heroGreeting.style.transform = `translateY(${(this._currScrollPos * 2) / 7}px)`;
         this._heroButton.style.transform = `translateY(${this._currScrollPos / 3}px)`;
     }
 
@@ -57,7 +57,7 @@ export default class HeroElement extends CommonElement {
                 <div id="hero-greeting" class="hero__placeholder">
                     <h1 tabindex="0">${this.greeting}<br><span class="medium">${this.name}</span></h1>
                 </div>
-                <button id="find-button" aria-label="Let's Find Button" class="hero__button" @click="${this._onButtonClickHandler}">Let's Find</button>
+                <button id="find-button" aria-label="Let's Find Button" class="hero__button" @click="${this._onButtonClickHandler}">Let's Find Resto</button>
             </div>
         `;
     }
