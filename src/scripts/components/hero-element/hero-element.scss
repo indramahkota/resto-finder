@@ -10,15 +10,6 @@
   justify-content: center;
   /* #WARNING# sass loader mengkonversi ke css mentah-mentah, bisa jadi url gambar tidak bisa di resolve */
   background: center / cover no-repeat url("../assets/images/heros/hero-image.webp");
-  /* CSS Gradient Generator https://cssgradient.io/ */
-  /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 80%), url('../path-ke-image.png')" */
-  /*  #WARNING# Laggg... */
-  // background-attachment: fixed; /* Comment jika tidak ingin lag/fixed position */
-  // -webkit-transform: translateZ(0);
-  // -moz-transform: translateZ(0);
-  // -ms-transform: translateZ(0);
-  // -o-transform: translateZ(0);
-  // transform: translateZ(0);
 
   .hero__placeholder {
     color: var(--color-text);
