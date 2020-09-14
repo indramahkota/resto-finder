@@ -15,6 +15,8 @@ export default class PageManager extends CommonElement {
     forceUpdate = '-f';
 
     private _forceUpdateHandler = () => {
+        if(window.location.hash === '#content')
+            return;
         this.forceUpdate = this.randomText();
     }
 
