@@ -8,15 +8,10 @@ export default class SearchBar extends CommonElement {
     private searchBar: HTMLElement | null = null;
 
     private _currScrollPos = 0;
-    private _lastScrollPos = 0;
     private _ticking = false;
 
     private _onScrollHandler = () => {
         this._currScrollPos = window.scrollY;
-
-        window.setTimeout(() => {
-            this._lastScrollPos = window.scrollY;
-        }, 150);
 
         if (!this._ticking) {
             window.requestAnimationFrame(() => {
@@ -31,14 +26,8 @@ export default class SearchBar extends CommonElement {
         if(this._currScrollPos < ((3/4) * window.screen.height)) {
             this.searchBar?.classList.add('hide');
             return;
-        }
-
-        const hidesearchBar = this._currScrollPos > this._lastScrollPos;
-        if(hidesearchBar) {
-            this.searchBar?.classList.remove('hide');
         } else {
-            this.searchBar?.querySelectorAll('input').forEach(elm => elm.blur());
-            this.searchBar?.classList.add('hide');
+            this.searchBar?.classList.remove('hide');
         }
     }
 
