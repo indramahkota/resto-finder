@@ -6,8 +6,11 @@
 
     //box shadow generator https://www.cssmatic.com/box-shadow
     &:hover {
-        box-shadow: 0 4px 16px -8px var(--color-background-shadow);
         transition: all 0.3s ease-out;
+        -webkit-transform: translateY(-8px);
+        -ms-transform: translateY(-8px);
+        transform: translateY(-8px);
+        box-shadow: 0 4px 16px -8px var(--color-background-shadow);
     }
 
     .image__content {
@@ -15,7 +18,7 @@
 
         img {
             margin: auto;
-    
+
             &.complete {
                 width: 100%;
                 max-height: 200px;
