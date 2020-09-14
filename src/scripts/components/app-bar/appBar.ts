@@ -39,7 +39,7 @@ export default class AppBar extends CommonElement {
 
         window.setTimeout(() => {
             this._lastScrollPos = window.scrollY;
-        }, 150);
+        }, 50);
 
         if (!this._ticking) {
             window.requestAnimationFrame(() => {
@@ -124,11 +124,12 @@ export default class AppBar extends CommonElement {
             this._header?.classList.remove('hide');
             return;
         }
-        const hideHeader = this._currScrollPos > this._lastScrollPos;
-        if(hideHeader) {
+
+        const hideHeader = this._currScrollPos - this._lastScrollPos;
+        if(hideHeader > 0) {
             this._isOpen = false;
             this._header?.classList.add('hide');
-        } else {
+        } else if(hideHeader < -10){
             this._header?.classList.remove('hide');
         }
     }
