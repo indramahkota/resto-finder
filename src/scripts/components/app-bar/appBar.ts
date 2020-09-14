@@ -28,25 +28,25 @@ export default class AppBar extends CommonElement {
     @internalProperty()
     private _isOpen = false;
 
-    private header: HTMLElement | null = null;
+    private _header: HTMLElement | null = null;
 
-    private current_scroll_position = 0;
-    private last_known_scroll_position = 0;
-    private ticking = false;
+    private _currScrollPos = 0;
+    private _lastScrollPos = 0;
+    private _ticking = false;
 
     private _onScrollHandler = () => {
-        this.current_scroll_position = window.scrollY;
+        this._currScrollPos = window.scrollY;
 
         window.setTimeout(() => {
-            this.last_known_scroll_position = window.scrollY;
+            this._lastScrollPos = window.scrollY;
         }, 150);
 
-        if (!this.ticking) {
+        if (!this._ticking) {
             window.requestAnimationFrame(() => {
                 this.hideOrShowHeader();
-                this.ticking = false;
+                this._ticking = false;
             });
-            this.ticking = true;
+            this._ticking = true;
         }
     }
 
@@ -120,16 +120,16 @@ export default class AppBar extends CommonElement {
     }
 
     hideOrShowHeader(): void {
-        if(this.current_scroll_position < 120) {
-            this.header?.classList.remove('hide');
+        if(this._currScrollPos < 120) {
+            this._header?.classList.remove('hide');
             return;
         }
-        const hideHeader = this.current_scroll_position > this.last_known_scroll_position;
+        const hideHeader = this._currScrollPos > this._lastScrollPos;
         if(hideHeader) {
             this._isOpen = false;
-            this.header?.classList.add('hide');
+            this._header?.classList.add('hide');
         } else {
-            this.header?.classList.remove('hide');
+            this._header?.classList.remove('hide');
         }
     }
 
@@ -139,7 +139,7 @@ export default class AppBar extends CommonElement {
     }
 
     firstUpdated(): void {
-        this.header = document.getElementById("rstf-header");
+        this._header = document.getElementById("rstf-header");
     }
 
     render(): TemplateResult {
