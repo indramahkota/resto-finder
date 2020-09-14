@@ -1,4 +1,5 @@
-import { html, TemplateResult } from 'lit-html';
+
+import "./pageDetails";import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../components/_base_/commonElement';
@@ -6,6 +7,7 @@ import CommonElement from '../components/_base_/commonElement';
 import "./pageHome";
 import "./pageFavorites";
 import "../components/my-profile/myProfile";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 @customElement('rstf-pm')
 export default class PageManager extends CommonElement {
@@ -13,8 +15,7 @@ export default class PageManager extends CommonElement {
     forceUpdate = '-f';
 
     private _forceUpdateHandler = () => {
-        if (window.location.hash.includes('#/'))
-            this.forceUpdate = this.randomText();
+        this.forceUpdate = this.randomText();
     }
 
     connectedCallback(): void {
@@ -36,6 +37,7 @@ export default class PageManager extends CommonElement {
             ${new Route('/', () => this.home(), true).mount()}
             ${new Route('/user', () => this.user(), true).mount()}
             ${new Route('/home', () => this.home(), true).mount()}
+            ${new Route('/details/:id', (data) => this.details(data), false).mount()}
             ${new Route('/favorites', () => this.favorites(), true).mount()}
         `;
     }
@@ -64,9 +66,9 @@ export default class PageManager extends CommonElement {
         `;
     }
 
-    details(_match?: MatchObject): TemplateResult {
+    details(data?: MatchObject): TemplateResult {
         return html`
-            <!-- <rstf-details></rstf-details> -->
+            <rstf-details detailsId=${ifDefined(data?.params[0].value)}></rstf-details>
         `;
     }
 }
