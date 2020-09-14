@@ -68,7 +68,7 @@ export default class RestoCard extends CommonElement {
                 </div>
                 <div class="card__content">
                     <p tabindex="0" class="card__city">${this.data?.city.toUpperCase()}</p>
-                    <a href="#" class="card__name"><b>${this.data?.name}</b></a>
+                    <a href="#/details/${this.data?.id}" class="card__name"><b>${this.data?.name}</b></a>
                     <rating-element rating=${ifDefined(this.data?.rating)}></rating-element>
                     <p tabindex="0" class="card__description">${this.data?.description}</p> 
                 </div>
