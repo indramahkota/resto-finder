@@ -8,7 +8,7 @@ import './hero-element/heroElement';
 import './resto-container/restoContainer';
 
 /* MyProfile component */
-import './my-profile/myProfile';
+import './user-profile/userProfile';
 
 /* FootBar component */
 import './foot-bar/footBar';

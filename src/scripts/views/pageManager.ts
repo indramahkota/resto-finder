@@ -6,7 +6,7 @@ import CommonElement from '../components/_base_/commonElement';
 
 import "./pageHome";
 import "./pageFavorites";
-import "../components/my-profile/myProfile";
+import "../components/user-profile/userProfile";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 @customElement('rstf-pm')
@@ -45,7 +45,7 @@ export default class PageManager extends CommonElement {
     user(): TemplateResult {
         return html`
             <section id="user">
-                <my-profile></my-profile>
+                <user-profile></user-profile>
             </section>
         `;
     }

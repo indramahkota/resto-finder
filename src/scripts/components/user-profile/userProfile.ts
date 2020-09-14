@@ -6,8 +6,8 @@ import "../sosial-media/socialMedia";
 import AppConfig from '../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
-@customElement('my-profile')
-export default class MyProfile extends CommonElement {
+@customElement('user-profile')
+export default class UserProfile extends CommonElement {
     @property({ type: String, attribute: true })
     title = 'PROFILE';
 
@@ -44,6 +44,6 @@ export default class MyProfile extends CommonElement {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
-        'my-profile': MyProfile;
+        'user-profile': UserProfile;
     }
 }

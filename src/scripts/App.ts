@@ -6,7 +6,6 @@ import EventType from './globals/eventType';
 import "./components/app-toast/appToast";
 import "./components/app-bar/appBar";
 import "./components/foot-bar/footBar";
-import "./components/my-profile/myProfile";
 import "./views/pageManager";
 
 @customElement('rstf-app')
