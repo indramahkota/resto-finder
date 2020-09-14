@@ -28,15 +28,17 @@ export default class SearchBar extends CommonElement {
     }
 
     hideOrShowsearchBar(): void {
-        if(this.current_scroll_position < 120) {
-            this.searchBar?.classList.remove('hide');
+        if(this.current_scroll_position < ((3/4) * window.screen.height)) {
+            this.searchBar?.classList.add('hide');
             return;
         }
+
         const hidesearchBar = this.current_scroll_position > this.last_known_scroll_position;
         if(hidesearchBar) {
-            this.searchBar?.classList.add('hide');
-        } else {
             this.searchBar?.classList.remove('hide');
+        } else {
+            this.searchBar?.querySelectorAll('input').forEach(elm => elm.blur());
+            this.searchBar?.classList.add('hide');
         }
     }
 
@@ -56,7 +58,7 @@ export default class SearchBar extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div id="search-bar" class="search__floater">
+            <div id="search-bar" class="search__floater hide">
                 <div class="search__anchor">
                     <form id="search-form" action="get">
                         <input aria-label="Search to Find Resto" type="text" class="search__bar" placeholder="Find Resto">
