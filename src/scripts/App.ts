@@ -43,7 +43,6 @@ export default class RestoFinder extends CommonElement {
     }
 
     render(): TemplateResult {
-        console.log('update');
         return html`
             <app-bar></app-bar>
             <section id="content">
