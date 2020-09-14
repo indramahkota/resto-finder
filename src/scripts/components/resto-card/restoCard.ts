@@ -15,6 +15,7 @@ export default class RestoCard extends CommonElement {
     data: IRestaurant | undefined;
 
     private _imgLoaded = false;
+    private _timeOutId: number | null = null;
 
     private _lazyLoad = () => {
         if(this.data === undefined || this._imgLoaded)
@@ -22,17 +23,23 @@ export default class RestoCard extends CommonElement {
         
         const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
 
-        const scrollTop = window.pageYOffset;
-        if(image.offsetTop < (window.innerHeight + scrollTop)) {
-            image.src = this.checkImgSrcValue(this.data.pictureId);
-            image.onload = () => {
-                this._imgLoaded = true;
-                image.classList.add('complete');
-                document.removeEventListener("scroll", this._lazyLoad, false);
-                window.removeEventListener("resize", this._lazyLoad, false);
-                window.removeEventListener("orientationChange", this._lazyLoad, false);
+        if(this._timeOutId !== null)
+            clearTimeout(this._timeOutId);
+
+        /* #WARNING# Sebaiknya jangan pakai setTimeout() */
+        this._timeOutId = window.setTimeout(() => {
+            const scrollTop = window.pageYOffset;
+            if(image.offsetTop < (window.innerHeight + scrollTop)) {
+                image.src = this.checkImgSrcValue(this.data?.pictureId);
+                image.onload = () => {
+                    this._imgLoaded = true;
+                    image.classList.add('complete');
+                    document.removeEventListener("scroll", this._lazyLoad, false);
+                    window.removeEventListener("resize", this._lazyLoad, false);
+                    window.removeEventListener("orientationChange", this._lazyLoad, false);
+                }
             }
-        }
+        }, 50);
     }
 
     connectedCallback(): void {
