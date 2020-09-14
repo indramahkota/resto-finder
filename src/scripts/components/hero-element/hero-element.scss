@@ -10,6 +10,13 @@
   justify-content: center;
   /* #WARNING# sass loader mengkonversi ke css mentah-mentah, bisa jadi url gambar tidak bisa di resolve */
   background: center / cover no-repeat url("../assets/images/heros/hero-image.webp");
+  /*  #WARNING# Laggg... */
+  background-attachment: fixed; /* Comment jika tidak ingin lag/fixed position */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 
   .hero__placeholder {
     color: var(--color-text);
@@ -20,7 +27,8 @@
 
     h1,
     h2 {
-      transition: all 0.2s ease-out;
+      transition: 0s linear;
+      transition-property: transform;
       background-color: var(--color-hero-background);
     }
 
