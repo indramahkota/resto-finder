@@ -20,13 +20,13 @@ export default class PageHome extends CommonElement {
         RemoteDataSource.getAllRestaurant<IRestaurants>()
             .then(res => this._restoData = res)
             .catch(err => {
-                const navClicked = new CustomEvent(EventType.SHOW_TOAST, {
+                const showToast = new CustomEvent(EventType.SHOW_TOAST, {
                     detail: {
                         message: `Failed fetch data: ${err}`
                     },
                     bubbles: true
                 });
-                this.dispatchEvent(navClicked);
+                this.dispatchEvent(showToast);
             });
     }
 
