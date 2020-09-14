@@ -13,25 +13,27 @@ export default class HeroElement extends CommonElement {
     name = AppConfig.APP_NAME;
 
     /*  #WARNING# Laggg... */
-    private hero_greeting: HTMLElement | null = null;
-    private current_scroll_position = 0;
-    private ticking = false;
+    private _heroGreeting: HTMLElement | null = null;
+    private _heroButton: HTMLElement | null = null;
+    private _currScrollPos = 0;
+    private _ticking = false;
 
     private _onScrollHandler = () => {
-        this.current_scroll_position = window.scrollY;
-        if (!this.ticking) {
+        this._currScrollPos = window.scrollY;
+        if (!this._ticking) {
             window.requestAnimationFrame(() => {
                 this.hideOrShowHeader();
-                this.ticking = false;
+                this._ticking = false;
             });
-            this.ticking = true;
+            this._ticking = true;
         }
     }
 
     hideOrShowHeader(): void {
-        if (this.hero_greeting === null)
+        if (this._heroGreeting === null || this._heroButton === null)
             return;
-        this.hero_greeting.style.transform = `translateY(${this.current_scroll_position / 3}px)`;
+        this._heroGreeting.style.transform = `translateY(${this._currScrollPos / 4}px)`;
+        this._heroButton.style.transform = `translateY(${this._currScrollPos / 3}px)`;
     }
 
     connectedCallback(): void {
@@ -45,7 +47,8 @@ export default class HeroElement extends CommonElement {
     }
 
     firstUpdated(): void {
-        this.hero_greeting = document.getElementById('hero-greeting');
+        this._heroGreeting = document.getElementById('hero-greeting');
+        this._heroButton = document.getElementById('find-button');
     }
 
     render(): TemplateResult {
@@ -54,8 +57,13 @@ export default class HeroElement extends CommonElement {
                 <div id="hero-greeting" class="hero__placeholder">
                     <h1 tabindex="0">${this.greeting}<br><span class="medium">${this.name}</span></h1>
                 </div>
+                <button id="find-button" aria-label="Let's Find Button" class="hero__button" @click="${this._onButtonClickHandler}">Let's Find</button>
             </div>
         `;
+    }
+
+    private _onButtonClickHandler(_event: Event): void {
+        document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
     }
 }
 

@@ -19,3 +19,15 @@
         }
     }
 }
+
+@media (hover: hover) {
+    .hero__background {
+        .hero__button {
+            &:hover {
+                background-color: #ffffff;
+                color: black;
+                transition: ease-in 0.3s;
+            }
+        }
+    }
+}
