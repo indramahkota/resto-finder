@@ -12,6 +12,46 @@ export default class HeroElement extends CommonElement {
     @property({ type: String, attribute: true })
     name = AppConfig.APP_NAME;
 
+    /*  #WARNING# Laggg... */
+    /* private hero_background: HTMLElement | null = null;
+    private hero_greeting: HTMLElement | null = null;
+    private current_scroll_position = 0;
+    private ticking = false;
+
+    private _onScrollHandler = () => {
+        this.current_scroll_position = window.scrollY;
+
+        if (!this.ticking) {
+            window.requestAnimationFrame(() => {
+                this.hideOrShowHeader();
+                this.ticking = false;
+            });
+            this.ticking = true;
+        }
+    }
+
+    hideOrShowHeader(): void {
+        if(this.hero_background === null || this.hero_greeting === null)
+            return;
+        this.hero_background.style.transform = `translateY(${-1 * this.current_scroll_position/4}px)`;
+        this.hero_greeting.style.transform = `translateY(${-1 * this.current_scroll_position/3}px)`;
+    }
+
+    connectedCallback(): void {
+        super.connectedCallback();
+        window.addEventListener('scroll', this._onScrollHandler, false);
+    }
+
+    disconnectedCallback(): void {
+        window.removeEventListener('scroll', this._onScrollHandler, false);
+        super.disconnectedCallback();
+    }
+
+    firstUpdated(): void {
+        this.hero_background = document.getElementById('hero-hero_background');
+        this.hero_greeting = document.getElementById('hero-greeting');
+    } */
+
     render(): TemplateResult {
         return html`
             <div class="hero__background">
