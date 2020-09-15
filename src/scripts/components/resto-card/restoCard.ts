@@ -6,13 +6,13 @@ import "../hero-element/heroElement";
 import "../rating-element/ratingElement";
 
 import CommonElement from '../_base_/commonElement';
-import { IRestaurant } from "../../interfaces/interfaces";
 import AppConfig from '../../globals/appConfig';
+import { Restaurant } from '../../data/entity/RestaurantEntity';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })
-    data: IRestaurant | undefined;
+    data: Restaurant | undefined;
 
     private _imgLoaded = false;
     private _timeOutId: number | null = null;

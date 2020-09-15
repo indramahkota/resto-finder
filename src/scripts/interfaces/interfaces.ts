@@ -1,15 +1,15 @@
-export interface INavigation {
+export interface Navigation {
     name: string;
     url: string;
     isActive: boolean;
 }
 
-export interface IIconNavigation extends INavigation {
+export interface IconNavigation extends Navigation {
     imageUrl: string;
     imageAlt: string;
 }
 
-export interface IUser {
+export interface User {
     name: string;
     status: string;
     location: string;
@@ -17,23 +17,10 @@ export interface IUser {
     roundImage: string;
 }
 
-export interface ISocialMedia {
+export interface SocialMedia {
     name: string;
     url: string;
     icon: string;
     color: string;
     isEmail: boolean;
-}
-
-export interface IRestaurant {
-    id: string;
-    name: string;
-    description: string;
-    pictureId: string;
-    city: string;
-    rating: number;
-}
-
-export interface IRestaurants {
-    restaurants: IRestaurant[];
 }

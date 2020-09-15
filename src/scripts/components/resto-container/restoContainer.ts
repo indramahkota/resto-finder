@@ -6,7 +6,7 @@ import "../hero-element/heroElement";
 import "../restocard-shimmer/restoCardShimmer";
 
 import CommonElement from '../_base_/commonElement';
-import { IRestaurants } from '../../interfaces/interfaces';
+import { RestaurantResponse } from '../../data/entity/RestaurantResponse';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
@@ -14,7 +14,7 @@ export default class RestoContainer extends CommonElement {
     title = 'RESTAURANTS';
 
     @property({ type: Object, attribute: true })
-    data: IRestaurants | null = null;
+    data: RestaurantResponse | null = null;
 
     render(): TemplateResult {
         return html`

@@ -6,13 +6,13 @@ import "../components/search-bar/searchBar";
 import "../components/resto-container/restoContainer";
 import CommonElement from '../components/_base_/commonElement';
 import RemoteDataSource from '../data/sources/remote/remoteDataSource';
-import { IRestaurants } from '../interfaces/interfaces';
 import EventType from '../globals/eventType';
+import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 @customElement('rstf-home')
 export default class PageHome extends CommonElement {
     @internalProperty()
-    private _restoData: IRestaurants | null = null;
+    private _restoData: RestaurantResponse | null = null;
 
     private _gotoRestaurants = () => {
         document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
@@ -22,7 +22,7 @@ export default class PageHome extends CommonElement {
         super.connectedCallback();
         this.addEventListener(EventType.LETS_FIND, this._gotoRestaurants, false);
 
-        RemoteDataSource.getAllRestaurant<IRestaurants>()
+        RemoteDataSource.getAllRestaurant<RestaurantResponse>()
             .then(res => this._restoData = res)
             .catch(err => {
                 const showToast = new CustomEvent(EventType.SHOW_TOAST, {
