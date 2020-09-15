@@ -48,6 +48,8 @@ export default class PageHome extends CommonElement {
             <section id="top-resto">
                 <resto-container title="TOP RESTAURANTS" .data=${this._restoData}></resto-container>
             </section>
+            
+            <!-- Fitur belum difungsikan -->
             <search-bar></search-bar>
         `;
     }
