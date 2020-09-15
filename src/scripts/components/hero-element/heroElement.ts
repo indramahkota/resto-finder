@@ -3,6 +3,7 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../globals/appConfig';
+import EventType from '../../globals/eventType';
 
 @customElement('hero-element')
 export default class HeroElement extends CommonElement {
@@ -64,7 +65,13 @@ export default class HeroElement extends CommonElement {
 
     private _onButtonClickHandler(): void {
         this._heroButton?.blur();
-        document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
+        const letsFind = new CustomEvent(EventType.LETS_FIND, {
+            detail: {
+                message: `Let's Find`
+            },
+            bubbles: true
+        });
+        this.dispatchEvent(letsFind);
     }
 }
 

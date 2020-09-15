@@ -13,9 +13,14 @@ import EventType from '../globals/eventType';
 export default class PageHome extends CommonElement {
     @internalProperty()
     private _restoData: IRestaurants | null = null;
+
+    private _gotoRestaurants = () => {
+        document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
+    }
     
     connectedCallback(): void {
         super.connectedCallback();
+        this.addEventListener(EventType.LETS_FIND, this._gotoRestaurants, false);
 
         RemoteDataSource.getAllRestaurant<IRestaurants>()
             .then(res => this._restoData = res)
@@ -28,6 +33,11 @@ export default class PageHome extends CommonElement {
                 });
                 this.dispatchEvent(showToast);
             });
+    }
+
+    disconnectedCallback(): void {
+        this.removeEventListener(EventType.LETS_FIND, this._gotoRestaurants, false);
+        super.disconnectedCallback();
     }
 
     render(): TemplateResult {
