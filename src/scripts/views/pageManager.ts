@@ -4,9 +4,9 @@ import { customElement, property } from 'lit-element';
 import { ifDefined } from "lit-html/directives/if-defined";
 
 import { MatchObject, Route } from './routes/route';
+import CommonElement from '../_library_/components/_base_/commonElement';
 
 import "../_library_/components/user-profile/userProfile";
-import CommonElement from '../_library_/components/_base_/commonElement';
 
 import "./pageHome";
 import "./pageFavorites";

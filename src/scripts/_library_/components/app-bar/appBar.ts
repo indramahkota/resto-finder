@@ -1,9 +1,9 @@
 import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property, internalProperty } from 'lit-element';
 
-import CommonElement from '../_base_/commonElement';
 import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
+import CommonElement from '../_base_/commonElement';
 
 @customElement('app-bar')
 export default class AppBar extends CommonElement {

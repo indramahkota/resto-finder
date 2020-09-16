@@ -1,7 +1,8 @@
 import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
-import CommonElement from './_library_/components/_base_/commonElement';
+
 import EventType from './globals/eventType';
+import CommonElement from './_library_/components/_base_/commonElement';
 
 import "./_library_/components/app-toast/appToast";
 import "./_library_/components/app-bar/appBar";

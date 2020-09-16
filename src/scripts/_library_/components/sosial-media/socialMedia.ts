@@ -1,8 +1,8 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import CommonElement from '../_base_/commonElement';
 import AppConfig from '../../../globals/appConfig';
+import CommonElement from '../_base_/commonElement';
 
 @customElement('social-media')
 export default class SocialMedia extends CommonElement {

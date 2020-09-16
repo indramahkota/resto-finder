@@ -1,8 +1,8 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import CommonElement from '../_library_/components/_base_/commonElement';
 import EventType from '../globals/eventType';
+import CommonElement from '../_library_/components/_base_/commonElement';
 
 @customElement('rstf-details')
 export default class PageDetails extends CommonElement {

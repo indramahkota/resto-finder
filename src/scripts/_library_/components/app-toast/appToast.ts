@@ -1,5 +1,6 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
+
 import CommonElement from '../_base_/commonElement';
 
 @customElement('app-toast')

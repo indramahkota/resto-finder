@@ -1,10 +1,10 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import "../sosial-media/socialMedia";
-
 import AppConfig from '../../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
+
+import "../sosial-media/socialMedia";
 
 @customElement('user-profile')
 export default class UserProfile extends CommonElement {
