@@ -78,7 +78,7 @@ export default class RestoCard extends CommonElement {
     }
 
     checkImgSrcValue(val?: string): string {
-        return AppConfig.BASE_IMAGE_URL + val;
+        return `${AppConfig.BASE_IMAGE_URL}small/${val}`;
     }
 }
 

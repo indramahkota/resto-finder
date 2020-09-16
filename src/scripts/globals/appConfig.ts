@@ -13,7 +13,7 @@ export default class AppConfig {
 
     static readonly URL_LOADING_SVG = loadingImageSvgUrl;
     static readonly BASE_URL:string = 'https://dicoding-restaurant-api.el.r.appspot.com/';
-    static readonly BASE_IMAGE_URL:string = 'https://dicoding-restaurant-api.el.r.appspot.com/images/small/';
+    static readonly BASE_IMAGE_URL:string = 'https://dicoding-restaurant-api.el.r.appspot.com/images/';
 
     static readonly STATIC_USER: User = {
         name: 'Indra Mahkota',
