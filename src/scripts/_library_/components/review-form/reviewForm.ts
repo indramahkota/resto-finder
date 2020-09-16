@@ -3,8 +3,8 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
-@customElement('review-card')
-export default class ReviewCard extends CommonElement {
+@customElement('review-form')
+export default class ReviewForm extends CommonElement {
     @property({ type: String, attribute: true })
     message = 'This is Toaster';
 
@@ -18,6 +18,6 @@ export default class ReviewCard extends CommonElement {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
-        'review-card': ReviewCard;
+        'review-form': ReviewForm;
     }
 }
