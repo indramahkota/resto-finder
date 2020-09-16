@@ -2,8 +2,8 @@ import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
-import AppConfig from '../../globals/appConfig';
-import EventType from '../../globals/eventType';
+import AppConfig from '../../../globals/appConfig';
+import EventType from '../../../globals/eventType';
 
 @customElement('hero-element')
 export default class HeroElement extends CommonElement {

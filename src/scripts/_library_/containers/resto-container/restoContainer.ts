@@ -1,12 +1,12 @@
+
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import "../resto-card/restoCard";
-import "../hero-element/heroElement";
-import "../restocard-shimmer/restoCardShimmer";
+import "../../components/resto-card/restoCard";
+import "../../components/restocard-shimmer/restoCardShimmer";
 
-import CommonElement from '../_base_/commonElement';
-import { RestaurantResponse } from '../../data/entity/RestaurantResponse';
+import CommonElement from '../../components/_base_/commonElement';
+import { RestaurantResponse } from '../../../data/entity/RestaurantResponse';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {

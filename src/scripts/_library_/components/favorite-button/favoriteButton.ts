@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import CommonElement from '../_base_/commonElement';
-import EventType from '../../globals/eventType';
+import EventType from '../../../globals/eventType';
 
 @customElement('favorite-button')
 export default class FavoriteButton extends CommonElement {

@@ -1,9 +1,6 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
-import "../hero-element/heroElement";
-import "../resto-container/restoContainer";
-
 import CommonElement from '../_base_/commonElement';
 
 @customElement('rating-element')

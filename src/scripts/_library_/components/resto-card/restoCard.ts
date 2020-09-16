@@ -2,12 +2,11 @@ import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
-import "../hero-element/heroElement";
 import "../rating-element/ratingElement";
 
 import CommonElement from '../_base_/commonElement';
-import AppConfig from '../../globals/appConfig';
-import { Restaurant } from '../../data/entity/RestaurantEntity';
+import AppConfig from '../../../globals/appConfig';
+import { Restaurant } from '../../../data/entity/RestaurantEntity';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {

@@ -2,7 +2,7 @@ import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
-import AppConfig from '../../globals/appConfig';
+import AppConfig from '../../../globals/appConfig';
 
 @customElement('foot-bar')
 export default class FootBar extends CommonElement {

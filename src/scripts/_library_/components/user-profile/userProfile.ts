@@ -3,7 +3,7 @@ import { customElement, property } from 'lit-element';
 
 import "../sosial-media/socialMedia";
 
-import AppConfig from '../../globals/appConfig';
+import AppConfig from '../../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
 @customElement('user-profile')

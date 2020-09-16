@@ -1,9 +1,6 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
 
-import "../resto-card/restoCard";
-import "../hero-element/heroElement";
-
 import CommonElement from '../_base_/commonElement';
 
 @customElement('restocard-shimmer')
