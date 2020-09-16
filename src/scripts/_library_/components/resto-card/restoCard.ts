@@ -14,7 +14,6 @@ export default class RestoCard extends CommonElement {
     data: Restaurant | undefined;
 
     private _imgLoaded = false;
-    private _timeOutId: number | null = null;
 
     private _lazyLoad = () => {
         if(this.data === undefined || this._imgLoaded)
@@ -22,11 +21,8 @@ export default class RestoCard extends CommonElement {
         
         const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
 
-        if(this._timeOutId !== null)
-            clearTimeout(this._timeOutId);
-
         /* #WARNING# Sebaiknya jangan pakai setTimeout() */
-        this._timeOutId = window.setTimeout(() => {
+        setTimeout(() => {
             const scrollTop = window.pageYOffset;
             if(image.offsetTop < (window.innerHeight + scrollTop)) {
                 const imageHelper: HTMLImageElement | null = new Image();
@@ -44,7 +40,7 @@ export default class RestoCard extends CommonElement {
                     window.removeEventListener("orientationChange", this._lazyLoad, false);
                 }
             }
-        }, 50);
+        }, 150);
     }
 
     connectedCallback(): void {
