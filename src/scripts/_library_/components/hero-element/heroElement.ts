@@ -25,6 +25,7 @@ export default class HeroElement extends CommonElement {
     }
 
     private _onButtonClickHandler(): void {
+        document.getElementById('find-button')?.blur();
         const letsFind = new CustomEvent(EventType.LETS_FIND, {
             detail: {
                 message: `Let's Find`
