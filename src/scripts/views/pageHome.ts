@@ -15,13 +15,13 @@ export default class PageHome extends CommonElement {
     @internalProperty()
     private _restoData: RestaurantResponse | null = null;
 
-    private _gotoRestaurants = () => {
+    private _goToRestaurants = () => {
         document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
     }
     
     connectedCallback(): void {
         super.connectedCallback();
-        this.addEventListener(EventType.LETS_FIND, this._gotoRestaurants, false);
+        this.addEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
 
         RemoteDataSource.getAllRestaurant<RestaurantResponse>()
             .then(res => this._restoData = res)
@@ -37,7 +37,7 @@ export default class PageHome extends CommonElement {
     }
 
     disconnectedCallback(): void {
-        this.removeEventListener(EventType.LETS_FIND, this._gotoRestaurants, false);
+        this.removeEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
         super.disconnectedCallback();
     }
 

@@ -29,7 +29,6 @@ export default class AppBar extends CommonElement {
     private _isOpen = false;
 
     private _header: HTMLElement | null = null;
-
     private _currScrollPos = 0;
     private _lastScrollPos = 0;
     private _ticking = false;
@@ -43,10 +42,25 @@ export default class AppBar extends CommonElement {
 
         if (!this._ticking) {
             window.requestAnimationFrame(() => {
-                this.hideOrShowHeader();
+                this._hideOrShowHeader();
                 this._ticking = false;
             });
             this._ticking = true;
+        }
+    }
+
+    private _hideOrShowHeader(): void {
+        if(this._currScrollPos < 120) {
+            this._header?.classList.remove('hide');
+            return;
+        }
+
+        const hideHeader = this._currScrollPos - this._lastScrollPos;
+        if(hideHeader > 0) {
+            this._isOpen = false;
+            this._header?.classList.add('hide');
+        } else if(hideHeader < -10){
+            this._header?.classList.remove('hide');
         }
     }
 
@@ -117,21 +131,6 @@ export default class AppBar extends CommonElement {
             this.dataShouldUpdate(window.location.hash);
 
         window.addEventListener('scroll', this._onScrollHandler, false);
-    }
-
-    hideOrShowHeader(): void {
-        if(this._currScrollPos < 120) {
-            this._header?.classList.remove('hide');
-            return;
-        }
-
-        const hideHeader = this._currScrollPos - this._lastScrollPos;
-        if(hideHeader > 0) {
-            this._isOpen = false;
-            this._header?.classList.add('hide');
-        } else if(hideHeader < -10){
-            this._header?.classList.remove('hide');
-        }
     }
 
     disconnectedCallback(): void {
