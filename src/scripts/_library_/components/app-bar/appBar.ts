@@ -3,10 +3,10 @@ import { customElement, property, internalProperty } from 'lit-element';
 
 import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
-import CommonElement from '../_base_/commonElement';
+import ScrollEffectElement from '../_base_/scrollEffectComponent';
 
 @customElement('app-bar')
-export default class AppBar extends CommonElement {
+export default class AppBar extends ScrollEffectElement {
     @property({ type: String, attribute: true })
     title = AppConfig.APP_NAME;
 
@@ -29,25 +29,7 @@ export default class AppBar extends CommonElement {
     private _isOpen = false;
 
     private _header: HTMLElement | null = null;
-    private _currScrollPos = 0;
-    private _lastScrollPos = 0;
     private _ticking = false;
-
-    private _onScrollHandler = () => {
-        this._currScrollPos = window.scrollY;
-
-        window.setTimeout(() => {
-            this._lastScrollPos = window.scrollY;
-        }, 50);
-
-        if (!this._ticking) {
-            window.requestAnimationFrame(() => {
-                this._hideOrShowHeader();
-                this._ticking = false;
-            });
-            this._ticking = true;
-        }
-    }
 
     private _hideOrShowHeader(): void {
         if(this._currScrollPos < 120) {
@@ -129,17 +111,20 @@ export default class AppBar extends CommonElement {
             this._iconNavFocus = true;
         if (window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
-
-        window.addEventListener('scroll', this._onScrollHandler, false);
-    }
-
-    disconnectedCallback(): void {
-        window.removeEventListener('scroll', this._onScrollHandler, false);
-        super.disconnectedCallback();
     }
 
     firstUpdated(): void {
         this._header = document.getElementById("rstf-header");
+    }
+
+    updated(): void {
+        if (!this._ticking) {
+            window.requestAnimationFrame(() => {
+                this._hideOrShowHeader();
+                this._ticking = false;
+            });
+            this._ticking = true;
+        }
     }
 
     render(): TemplateResult {

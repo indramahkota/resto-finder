@@ -5,8 +5,7 @@ import CommonElement from '../_base_/commonElement';
 
 @customElement('search-bar')
 export default class SearchBar extends CommonElement {
-    private searchBar: HTMLElement | null = null;
-
+    private _searchBar: HTMLElement | null = null;
     private _currScrollPos = 0;
     private _ticking = false;
 
@@ -24,10 +23,10 @@ export default class SearchBar extends CommonElement {
 
     hideOrShowsearchBar(): void {
         if(this._currScrollPos < ((3/4) * window.screen.height)) {
-            this.searchBar?.classList.add('hide');
+            this._searchBar?.classList.add('hide');
             return;
         } else {
-            this.searchBar?.classList.remove('hide');
+            this._searchBar?.classList.remove('hide');
         }
     }
 
@@ -42,7 +41,7 @@ export default class SearchBar extends CommonElement {
     }
 
     firstUpdated(): void {
-        this.searchBar = document.getElementById("search-bar");
+        this._searchBar = document.getElementById("search-bar");
     }
 
     render(): TemplateResult {
