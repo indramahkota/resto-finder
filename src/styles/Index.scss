@@ -3,6 +3,7 @@
 //under development :: default light
 :root {
     --color-text: #{$light-for-text};
+    --color-button: #{$light-button-color};
     --color-article-background: #{$light-for-card};
     --color-page-background: #{$light-for-background};
     --color-hero-background: #{$light-for-hero-background};
@@ -13,6 +14,7 @@
 
 .dark {
     --color-text: #{$dark-for-text};
+    --color-button: #{$dark-button-color};
     --color-article-background: #{$dark-for-card};
     --color-page-background: #{$dark-for-background};
     --color-hero-background: #{$dark-for-hero-background};
