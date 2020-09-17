@@ -10,22 +10,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* #WARNING# sass loader mengkonversi ke css mentah-mentah, bisa jadi url gambar tidak bisa di resolve */
   background: center / cover no-repeat url("../assets/images/heros/hero-image.webp");
-  /*  #WARNING# Laggg... */
-  background-attachment: fixed; /* Comment jika tidak ingin lag/fixed position */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
 
   .hero__placeholder {
     width: 90%;
     color: rgba(246, 205, 97);
     font-weight: bold;
     text-align: center;
-    // margin-bottom: 100px;
 
     h1 {
       font-size: 3.5em;
