@@ -1,28 +1,26 @@
-import { Icon } from "@fortawesome/fontawesome-svg-core";
-
-export interface INavigation {
-    name: string,
-    url: string,
-    isActive: boolean
+export interface Navigation {
+    name: string;
+    url: string;
+    isActive: boolean;
 }
 
-export interface ISocialMedia {
-    name: string,
-    url: string,
-    icon: Icon,
-    color: string,
-    isEmail: boolean
+export interface IconNavigation extends Navigation {
+    imageUrl: string;
+    imageAlt: string;
 }
 
-export interface IRestaurant {
-    id: string,
-    name: string,
-    description: string,
-    pictureId: string,
-    city: string,
-    rating: number
+export interface User {
+    name: string;
+    status: string;
+    location: string;
+    image: string;
+    roundImage: string;
 }
 
-export interface IRestaurants {
-    restaurants: IRestaurant[];
+export interface SocialMedia {
+    name: string;
+    url: string;
+    icon: string;
+    color: string;
+    isEmail: boolean;
 }

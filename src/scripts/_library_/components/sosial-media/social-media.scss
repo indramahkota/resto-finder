@@ -1,0 +1,33 @@
+.social__media {
+    font-size: 1.5em;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+
+        li {
+            margin: 4px;
+            list-style-type: none;
+
+            a {
+                display: flex;
+                width: 2em;
+                height: 2em;
+                border-radius: 1em;
+                text-decoration: none;
+                border-radius: 1em;
+                text-align: center;
+
+                i {
+                    width: 2em;
+                    height: 2em;
+                    border-radius: 1em;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

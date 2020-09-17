@@ -1,14 +1,11 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:32:11
- * @modify date 2020-09-06 14:17:28
- * @desc [description]
- */
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = merge(common, {
@@ -57,5 +54,23 @@ module.exports = merge(common, {
       }
     }
   },
-  plugins: [new CleanWebpackPlugin()]
+  module: {
+    rules: [
+      {
+        test: /\.css|\.s([ca])ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
+      },
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[id].css'
+    }),
+    new CleanWebpackPlugin()
+  ]
 });

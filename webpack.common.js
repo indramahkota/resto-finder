@@ -1,12 +1,9 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:31:52
- * @modify date 2020-09-06 15:18:02
- * @desc [description]
- */
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { resolve } = require("path");
 const { minify } = require("terser");
+// const workboxPlugin = require("workbox-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -41,7 +38,7 @@ module.exports = {
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'babel-loader'
       },
       {
         test: /\.tsx?$/,
@@ -49,27 +46,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css|\.s([ca])ss$/,
-        exclude: resolve(__dirname, "src/styles"),
-        use: [
-          {
-            loader: "lit-scss-loader",
-            options: {
-              minify: true
-            }
-          },
-          "extract-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.css|\.s([ca])ss$/,
-        exclude: resolve(__dirname, "src/scripts/components"),
-        use: ["style-loader", "css-loader", "sass-loader"]
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif|webp|ico|svg)$/i,
+        test: /\.(png|jpe?g|gif|webp|svg)$/i,
         use: [
           {
             loader: "file-loader",
@@ -96,6 +73,11 @@ module.exports = {
           to: resolve(__dirname, "dist/")
         }
       ]
-    })
+    }),
+    /* new workboxPlugin.InjectManifest({
+      swSrc: "./src/service-worker.js",
+      swDest: "sw.js",
+      maximumFileSizeToCacheInBytes: 5000000
+    }) */
   ]
 };

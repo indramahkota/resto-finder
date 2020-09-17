@@ -1,12 +1,8 @@
-/**
- * @author Indra Mahkota
- * @email indramahkota1@gmail.com
- * @create date 2020-08-26 21:35:52
- * @modify date 2020-08-28 18:21:42
- * @desc [description]
- */
-const { merge } = require("webpack-merge");
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require("path");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 
 module.exports = merge(common, {
@@ -14,5 +10,13 @@ module.exports = merge(common, {
   devtool: "eval-source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "dist")
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css|\.s([ca])ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      }
+    ]
+  },
 });

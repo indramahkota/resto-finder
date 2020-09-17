@@ -1,0 +1,56 @@
+.restocard__shimmer {
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-article-background);
+
+    .wrapper {
+        width: 0px;
+        animation: fullView 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        .pic {
+            height: 65px;
+            width: 65px;
+            padding: 50px;
+            border-radius: 50%;
+        }
+
+        .comment {
+            height: 10px;
+            margin-top: 20px;
+        }
+
+        .animate {
+            animation: shimmer 2s infinite linear;
+            background: linear-gradient(to right, var(--color-shimmer-gradient-weak) 4%, var(--color-shimmer-gradient-strong) 25%, var(--color-shimmer-gradient-weak) 36%);
+            background-size: 1000px 100%;
+        }
+    }
+}
+
+.br {
+    border-radius: 8px;
+}
+
+.w40 {
+    width: 40%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+@keyframes fullView {
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}

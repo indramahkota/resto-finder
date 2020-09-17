@@ -1,0 +1,45 @@
+@use "../../../../styles/components/toggle";
+@use "../../../../styles/components/hamburger";
+@use "../../../../styles/components/drawer";
+
+:host {
+  display: block;
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  padding: 0 5%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease-out;
+  border-bottom: 1px solid var(--color-page-background);
+  background-color: var(--color-article-background);
+
+  &.hide {
+    -webkit-transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    transform: translateY(-60px);
+  }
+
+  .header__logo {
+    min-height: 44px;
+    padding-top: 4px;
+    text-decoration: none;
+    color:  var(--color-text);
+    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 1.3em;
+    font-family: "Pacifico", cursive;
+    font-variant-ligatures: no-common-ligatures;
+    -webkit-font-variant-ligatures: no-common-ligatures;
+  }
+
+  @include toggle.all;
+
+  @include hamburger.all;
+
+  @include drawer.all;
+}

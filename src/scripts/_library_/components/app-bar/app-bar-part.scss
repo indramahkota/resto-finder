@@ -1,0 +1,50 @@
+@media screen and (min-width: 768px) {
+    .header {
+        .header__button {
+            display: none;
+        }
+
+        .toggle__container {
+            margin-left: 0;
+        }
+
+        .header__drawer {
+            position: static;
+            min-width: auto;
+            min-height: auto;
+            border: none;
+            background-color: transparent;
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                li {
+                    a {
+                        .chevron {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (hover: hover) {
+    .header {
+        .header__drawer {
+            ul {
+                li {
+                    a {
+                        &:hover {
+                            background-color: var(--color-page-background);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

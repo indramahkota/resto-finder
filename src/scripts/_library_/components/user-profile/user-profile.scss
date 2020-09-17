@@ -1,0 +1,63 @@
+.profile__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+
+    .profile__title {
+        color: var(--color-text);
+        padding: 20px;
+    }
+
+    .profile__content {
+        width: 90%;
+        margin: 20px 0;
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
+        background-color: var(--color-article-background);
+
+        .profile__desc_container {
+            order: 2;
+
+            .profile__name {
+                margin: 10px 0;
+                color: var(--color-text);
+            }
+
+            .profile__location {
+                margin: 10px 0;
+                color: var(--color-text);
+            }
+
+            .profile__hirable {
+                margin: 10px 0;
+                color: var(--color-text);
+            }
+
+            .profile__mediasocial {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .profile__image_container {
+            order: 1;
+
+            .profile__image {
+                max-width: 200px;
+                height: auto;
+                border-radius: 50%;
+                border: 0.5rem solid #6c63ff;
+            }
+        }
+    }
+}
