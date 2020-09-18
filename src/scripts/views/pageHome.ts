@@ -30,7 +30,7 @@ export default class PageHome extends CommonElement {
             .catch(err => {
                 const showToast = new CustomEvent(EventType.SHOW_TOAST, {
                     detail: {
-                        message: `Failed fetch data: ${err}`
+                        message: err
                     },
                     bubbles: true
                 });
