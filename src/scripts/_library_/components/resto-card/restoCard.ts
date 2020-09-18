@@ -8,6 +8,8 @@ import CommonElement from '../_base_/commonElement';
 
 import "../rating-element/ratingElement";
 
+import './resto-card.scss';
+
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
     @property({ type: Object, attribute: true })

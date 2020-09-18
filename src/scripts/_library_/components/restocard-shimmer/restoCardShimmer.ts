@@ -3,6 +3,8 @@ import { customElement } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
+import './resto-card-shimmer.scss';
+
 @customElement('restocard-shimmer')
 export default class RestoCardShimmer extends CommonElement {
     render(): TemplateResult {

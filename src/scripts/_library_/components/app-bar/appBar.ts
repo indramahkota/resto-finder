@@ -5,6 +5,8 @@ import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
 import ScrollEffectElement from '../_base_/scrollEffectComponent';
 
+import './app-bar.scss';
+
 @customElement('app-bar')
 export default class AppBar extends ScrollEffectElement {
     @property({ type: String, attribute: true })

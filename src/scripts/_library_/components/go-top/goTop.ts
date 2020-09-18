@@ -3,6 +3,8 @@ import { customElement } from 'lit-element';
 
 import ScrollEffectElement from '../_base_/scrollEffectComponent';
 
+import './go-top.scss';
+
 @customElement('go-top')
 export default class GoTop extends ScrollEffectElement {
     private _goTopButton: HTMLElement | null = null;

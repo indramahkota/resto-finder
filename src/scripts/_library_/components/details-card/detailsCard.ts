@@ -8,6 +8,8 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 import "../rating-element/ratingElement";
 import AppConfig from '../../../globals/appConfig';
 
+import './details-card.scss';
+
 @customElement('details-card')
 export default class DetailsCard extends CommonElement {
     @property({ type: Object, attribute: true })

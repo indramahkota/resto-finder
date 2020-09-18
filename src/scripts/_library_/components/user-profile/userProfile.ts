@@ -6,6 +6,8 @@ import CommonElement from '../_base_/commonElement';
 
 import "../sosial-media/socialMedia";
 
+import './user-profile.scss';
+
 @customElement('user-profile')
 export default class UserProfile extends CommonElement {
     @property({ type: String, attribute: true })

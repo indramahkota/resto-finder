@@ -4,6 +4,8 @@ import { customElement, property } from 'lit-element';
 import AppConfig from '../../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 
+import './foot-bar.scss';
+
 @customElement('foot-bar')
 export default class FootBar extends CommonElement {
     @property({ type: String, attribute: true })

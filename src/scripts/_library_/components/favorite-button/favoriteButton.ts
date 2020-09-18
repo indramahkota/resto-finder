@@ -4,6 +4,8 @@ import { customElement, property } from 'lit-element';
 import EventType from '../../../globals/eventType';
 import CommonElement from '../_base_/commonElement';
 
+import './favorite-button.scss';
+
 @customElement('favorite-button')
 export default class FavoriteButton extends CommonElement {
     @property({ type: Boolean, attribute: true })

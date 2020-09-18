@@ -5,6 +5,8 @@ import AppConfig from '../../../globals/appConfig';
 import EventType from '../../../globals/eventType';
 import CommonElement from '../_base_/commonElement';
 
+import './hero-element.scss';
+
 @customElement('hero-element')
 export default class HeroElement extends CommonElement {
     @property({ type: String, attribute: true })

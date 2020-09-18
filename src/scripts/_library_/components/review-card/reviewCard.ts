@@ -5,6 +5,8 @@ import anonymous from '../../../../assets/images/avatars/anonymous-avatar.svg';
 import CommonElement from '../_base_/commonElement';
 import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
 
+import './review-card.scss';
+
 @customElement('review-card')
 export default class ReviewCard extends CommonElement {
     @property({ type: Object, attribute: true })

@@ -3,6 +3,8 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
+import './review-form.scss';
+
 @customElement('review-form')
 export default class ReviewForm extends CommonElement {
     @property({ type: String, attribute: true })

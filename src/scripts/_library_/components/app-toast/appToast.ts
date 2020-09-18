@@ -3,6 +3,8 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
+import './app-toast.scss';
+
 @customElement('app-toast')
 export default class AppToast extends CommonElement {
     @property({ type: String, attribute: true })

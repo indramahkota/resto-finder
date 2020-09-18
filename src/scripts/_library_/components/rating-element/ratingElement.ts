@@ -3,6 +3,8 @@ import { customElement, property } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
+import './rating-element.scss';
+
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
     @property({ type: Number, attribute: true })

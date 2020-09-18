@@ -3,6 +3,8 @@ import { customElement } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
+import './search-bar.scss';
+
 @customElement('search-bar')
 export default class SearchBar extends CommonElement {
     private _searchBar: HTMLElement | null = null;
