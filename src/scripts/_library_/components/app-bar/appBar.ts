@@ -86,6 +86,10 @@ export default class AppBar extends ScrollEffectElement {
         input.blur();
     }
 
+    hideHeader(): void {
+        this._header?.classList.add('hide');
+    }
+
     dataShouldUpdate(hash: string): void {
         this.navData = this.navData.map(nav => {
             if (nav.url !== hash) {

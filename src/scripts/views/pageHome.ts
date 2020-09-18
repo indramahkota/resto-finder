@@ -17,6 +17,7 @@ export default class PageHome extends CommonElement {
     private _restoData: RestaurantResponse | null = null;
 
     private _goToRestaurants = () => {
+        document.querySelector('app-bar')?.hideHeader();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
     }
     
