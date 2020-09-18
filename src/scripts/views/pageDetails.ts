@@ -44,7 +44,7 @@ export default class PageDetails extends CommonElement {
         return html`
             <details-card></details-card>
             <menu-card></menu-card>
-            <review-container></review-container>
+            <review-container .data=${this._restoData?.restaurant.consumerReviews}></review-container>
             <review-form></review-form>
         `;
     }
