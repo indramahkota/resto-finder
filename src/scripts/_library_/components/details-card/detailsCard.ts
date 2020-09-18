@@ -20,15 +20,33 @@ export default class DetailsCard extends CommonElement {
                     <img src="${ifDefined(this.checkImgSrcValue(this.data?.pictureId))}" alt="${ifDefined(this.data?.name)} Image Name">
                 </div>
                 <div class="restodetails__content">
-                    <p tabindex="0" class="restodetails__name"><b><i class="fa fa-store"></i>${this.data?.name}</b></p>
-                    <p tabindex="0" class="restodetails__address"><i title="address" class="fa fa-map-marker-alt"></i>${this.data?.address}. ${this.data?.city}</p>
-                    <rating-element tabindex="0" aria-label="Rating ${this.data?.rating}" rating=${ifDefined(this.data?.rating)}></rating-element>
+                    <h1 tabindex="0">RESTAURANT DETAILS</h1>
+                    <div class="restodetails__part">
+                        <div class="restodetails__part1">
+                            <table style="width:100%">
+                                <tr>
+                                    <td class="td__icon"><i class="fa fa-store"></i></td>
+                                    <td><p tabindex="0" class="restodetails__name"><b>${this.data?.name}</b></p></td>
+                                </tr>
+                                <tr>
+                                    <td  class="td__icon"><i class="fa fa-map-marker-alt"></i></td>
+                                    <td><p tabindex="0" class="restodetails__address">${this.data?.address}. ${this.data?.city}</p></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="restodetails__part2">
+                            <h1>${this.data?.rating}</h1>
+                            <rating-element tabindex="0" aria-label="Rating ${this.data?.rating}" rating=${ifDefined(this.data?.rating)}></rating-element>
+                        </div>
+                    </div>
+                    
                     <p tabindex="0" class="restodetails__description">${this.data?.description}</p>
+                    
                     <div class="menucard__container">
                         <h1 tabindex="0" class="menucard__title">MENU</h1>
                         <div class="menucard__content">
                             <div class="food__container">
-                                <h1>FOODS</h1>
+                                <h2>FOODS</h2>
                                 <div class="food_content">
                                     <ol>
                                         ${
@@ -38,7 +56,7 @@ export default class DetailsCard extends CommonElement {
                                 </div>
                             </div>
                             <div class="drink__container">
-                                <h1>DRINKS</h1>
+                                <h2>DRINKS</h2>
                                 <div class="drink_content">
                                     <ol>
                                         ${

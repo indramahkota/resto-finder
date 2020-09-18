@@ -25,12 +25,47 @@
         border-radius: 8px;
         background-color: white;
 
+        .restodetails__part {
+            display: flex;
+            flex-direction: row;
+            margin-top: 8px;
+
+            .restodetails__part1 {
+                table {
+                    tr {
+                        .td__icon {
+                            text-align: center;
+                            vertical-align: top;
+                        }
+
+                        td {
+                            p {
+                                margin-left: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .restodetails__part2 {
+                display: flex;
+                margin: 0 8px;
+                min-width: 120px;
+                flex-direction: column;
+                align-items: center;
+                margin-left: auto;
+            }
+        }
+
+        .restodetails__description {
+            margin-top: 8px;
+        }
+
         .menucard__container {
             width: 100%;
             display: flex;
             flex-direction: column;
             margin-top: 20px;
-            // background-color: yellow;
 
             .menucard__title {
                 color: var(--color-text);
@@ -38,10 +73,15 @@
 
             .menucard__content {
                 display: flex;
+                margin-top: 10px;
                 flex-direction: column;
 
                 .food__container {
                     margin-bottom: 16px;
+
+                    h2 {
+                        font-size: 1em;
+                    }
 
                     .food_content {
                         ol {
@@ -59,7 +99,11 @@
                 }
 
                 .drink__container {
-                    .food_content {
+                    h2 {
+                        font-size: 1em;
+                    }
+
+                    .drink_content {
                         ol {
                             display: flex;
                             flex-direction: column;
