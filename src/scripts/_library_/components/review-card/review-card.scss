@@ -4,7 +4,7 @@
     border-radius: 8px;
     background-color: var(--color-article-background);
     color: var(--color-text);
-    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px -4px var(--color-background-shadow);
 
     .reviewcard__image {
         width: 48px;

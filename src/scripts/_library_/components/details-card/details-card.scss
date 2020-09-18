@@ -9,7 +9,7 @@
         display: flex;
         padding: 20px;
         border-radius: 8px;
-        background-color: white;
+        background-color: var(--color-article-background);
 
         img {
             width: 100%;
@@ -23,7 +23,8 @@
         padding: 20px;
         margin-top: 20px;
         border-radius: 8px;
-        background-color: white;
+        background-color: var(--color-article-background);
+        color: var(--color-text);
 
         .restodetails__part {
             display: flex;
