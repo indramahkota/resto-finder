@@ -1,0 +1,34 @@
+.pagedetails__container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .pagedetails__detailscard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pagedetails__reviewcard {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pagedetails__container {
+        flex-direction: row;
+
+        .pagedetails__detailscard {
+            width: 60%;
+            margin-right: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pagedetails__reviewcard {
+            width: 40%;
+            margin-top: 0;
+            margin-left: 8px;
+        }
+    }
+}

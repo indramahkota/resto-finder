@@ -7,9 +7,10 @@ import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
 import "../_library_/components/details-card/detailsCard";
-import "../_library_/components/menu-card/menuCard";
 import "../_library_/containers/review-container/reviewContainer";
 import "../_library_/components/review-form/reviewForm";
+
+import "./page-details.scss";
 
 @customElement('rstf-details')
 export default class PageDetails extends CommonElement {
@@ -22,6 +23,8 @@ export default class PageDetails extends CommonElement {
     firstUpdated(): void {
         if(this.detailsId === null)
             return;
+
+        document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
             
         RemoteDataSource.getRestaurantDetails<RestaurantDetailsResponse>(this.detailsId)
             .then(res => this._restoData = res)
@@ -36,16 +39,18 @@ export default class PageDetails extends CommonElement {
             });
     }
 
-    updated(): void {
-        console.log(this._restoData);
-    }
-
+    // <resto-card .data=${this._restoData?.restaurant}></resto-card>
     render(): TemplateResult {
         return html`
-            <details-card></details-card>
-            <menu-card></menu-card>
-            <review-container .data=${this._restoData?.restaurant.consumerReviews}></review-container>
-            <review-form></review-form>
+            <div class="pagedetails__container">
+                <div class="pagedetails__detailscard">
+                    <details-card .data=${this._restoData?.restaurant}></details-card>
+                </div>
+                <div class="pagedetails__reviewcard">
+                    <review-container .data=${this._restoData?.restaurant.consumerReviews}></review-container>
+                    <review-form></review-form>
+                </div>
+            </div>
         `;
     }
 }
