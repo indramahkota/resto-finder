@@ -1,0 +1,79 @@
+.restodetails__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .restodetails__image {
+        width: 100%;
+        display: flex;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: white;
+
+        img {
+            width: 100%;
+            margin: auto;
+            object-position: center;
+            border-radius: 8px;
+        }
+    }
+
+    .restodetails__content {
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        background-color: white;
+
+        .menucard__container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            // background-color: yellow;
+
+            .menucard__title {
+                color: var(--color-text);
+            }
+
+            .menucard__content {
+                display: flex;
+                flex-direction: column;
+
+                .food__container {
+                    margin-bottom: 16px;
+
+                    .food_content {
+                        ol {
+                            display: flex;
+                            flex-direction: column;
+                            list-style-type: "\1F44D";
+                            margin-left: 20px;
+
+                            li {
+                                padding-left: 8px;
+                                border-bottom: 1px dotted lightgray;
+                            }
+                        }
+                    }
+                }
+
+                .drink__container {
+                    .food_content {
+                        ol {
+                            display: flex;
+                            flex-direction: column;
+                            list-style-type: "\1F44D";
+                            margin-left: 20px;
+
+                            li {
+                                padding-left: 8px;
+                                border-bottom: 1px dotted lightgray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
