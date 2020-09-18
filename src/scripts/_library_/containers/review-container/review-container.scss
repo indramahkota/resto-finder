@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
 
     .review__title {
         margin: 10px 0;
@@ -13,7 +12,7 @@
     }
 
     .review__items {
-        margin: 32px auto 8px auto;
+        margin: 8px auto 8px auto;
         width: 90%;
         max-width: 1400px;
         display: grid;
