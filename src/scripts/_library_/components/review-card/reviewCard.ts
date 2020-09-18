@@ -1,8 +1,8 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
+import anonymous from '../../../../assets/images/avatars/anonymous-avatar.svg';
 
 import CommonElement from '../_base_/commonElement';
-import Utils from '../../../globals/appUtilities';
 import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
 
 @customElement('review-card')
@@ -13,9 +13,14 @@ export default class ReviewCard extends CommonElement {
     render(): TemplateResult {
         return html`
             <div class="reviewcard__container">
-                <img class="reviewcard__image" src="${Utils.randAvatar()}" alt="Avatar">
-                <p class="reviewcard__message">${this.data?.review}</p>
-                <span class="reviewcard__time">${this.data?.date}</span>
+                <div class="reviewcard__image__container">
+                    <img class="reviewcard__image" src="${anonymous}" alt="Avatar">
+                </div>
+                <div class="reviewcard__content">
+                    <p class="reviecard__name">${this.data?.name}</p>
+                    <p class="reviewcard__time">${this.data?.date}</p>
+                    <p class="reviewcard__message">${this.data?.review}</p>
+                </div>
             </div>
         `;
     }
