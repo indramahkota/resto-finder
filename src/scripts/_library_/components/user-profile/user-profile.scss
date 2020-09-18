@@ -61,3 +61,39 @@
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    .profile__container {
+        .profile__content {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 5%;
+            max-width: 1400px;
+            text-align: left;
+
+            .profile__desc_container {
+                order: 1;
+            }
+
+            .profile__image_container {
+                order: 2;
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+@media (hover: hover) {
+    .profile__container {
+        .profile__content {
+            .profile__image_container {
+                .profile__image {
+                    &:hover {
+                        box-shadow: 0 4px 16px -8px var(--color-background-shadow);
+                        transition: all 0.3s ease-out;
+                    }
+                }
+            }
+        }
+    }
+}

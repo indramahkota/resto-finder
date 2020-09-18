@@ -20,3 +20,11 @@
         gap: 16px;
     }
 }
+
+@media screen and (min-width: 650px) {
+    .review__container {
+        .review__items {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

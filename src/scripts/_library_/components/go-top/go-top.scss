@@ -19,3 +19,12 @@
         transform: translateX(150px);
     }
 }
+
+@media (hover: hover) {
+    .gotop__button {
+        &:hover {
+            background-color: #000;
+            transition: all ease-in-out 0.2s;
+        }
+    }
+}

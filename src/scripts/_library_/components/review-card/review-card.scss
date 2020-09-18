@@ -5,11 +5,11 @@
     background-color: var(--color-article-background);
     color: var(--color-text);
     box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
-    
+
     .reviewcard__image {
         width: 64px;
         padding: 2px;
-        border-radius:50%;
+        border-radius: 50%;
         background-color: var(--color-text);
     }
 
@@ -23,6 +23,19 @@
         .reviewcard__time {
             font-size: 95%;
             padding-bottom: 4px;
+        }
+    }
+}
+
+@media (hover: hover) {
+    .reviewcard__container {
+        //box shadow generator https://www.cssmatic.com/box-shadow
+        &:hover {
+            transition: all 0.3s ease-out;
+            -webkit-transform: translateY(-8px);
+            -ms-transform: translateY(-8px);
+            transform: translateY(-8px);
+            box-shadow: 0 4px 16px -8px var(--color-background-shadow);
         }
     }
 }

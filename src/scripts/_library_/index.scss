@@ -2,26 +2,21 @@
 
 /* AppBar Style */
 @import './components/app-bar/app-bar.scss';
-@import './components/app-bar/app-bar-part.scss';
 
 /* HeroElement style */
 @import './components/hero-element/hero-element.scss';
-@import './components/hero-element/hero-element-part.scss';
 
 /* RestoCard style */
 @import './components/resto-card/resto-card.scss';
-@import './components/resto-card/resto-card-part.scss';
 
 /* RatingElement style */
 @import './components/rating-element/rating-element.scss';
 
 /* UserProfile style */
 @import './components/user-profile/user-profile.scss';
-@import './components/user-profile/user-profile-part.scss';
 
 /* SocialMedia style */
 @import './components/sosial-media/social-media.scss';
-@import './components/sosial-media/social-media-part.scss';
 
 /* FootBar style */
 @import './components/foot-bar/foot-bar.scss';
@@ -46,19 +41,15 @@
 
 /* ReviewCard style */
 @import './components/review-card/review-card.scss';
-@import './components/review-card/review-card-part.scss';
 
 /* GoTop style */
 @import './components/go-top/go-top.scss';
-@import './components/go-top/go-top-part.scss';
 
 
 /* Containers */
 
 /* RestoContainer style */
 @import './containers/resto-container/resto-container.scss';
-@import './containers/resto-container/resto-container-part.scss';
 
 /* ReviewContainer style */
 @import './containers/review-container/review-container.scss';
-@import './containers/review-container/review-container-part.scss';

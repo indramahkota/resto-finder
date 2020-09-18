@@ -29,7 +29,7 @@
     min-height: 44px;
     padding-top: 4px;
     text-decoration: none;
-    color:  var(--color-text);
+    color: var(--color-text);
     // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 1.3em;
     font-family: "Pacifico", cursive;
@@ -42,4 +42,55 @@
   @include hamburger.all;
 
   @include drawer.all;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    .header__button {
+      display: none;
+    }
+
+    .toggle__container {
+      margin-left: 0;
+    }
+
+    .header__drawer {
+      position: static;
+      min-width: auto;
+      min-height: auto;
+      border: none;
+      background-color: transparent;
+
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        li {
+          a {
+            .chevron {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .header {
+    .header__drawer {
+      ul {
+        li {
+          a {
+            &:hover {
+              background-color: var(--color-page-background);
+            }
+          }
+        }
+      }
+    }
+  }
 }
