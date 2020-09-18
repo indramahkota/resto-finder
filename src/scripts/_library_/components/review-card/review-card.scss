@@ -29,7 +29,6 @@
 
 @media (hover: hover) {
     .reviewcard__container {
-        //box shadow generator https://www.cssmatic.com/box-shadow
         &:hover {
             transition: all 0.3s ease-out;
             -webkit-transform: translateY(-8px);
