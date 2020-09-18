@@ -7,7 +7,7 @@
     box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
 
     .reviewcard__image {
-        width: 64px;
+        width: 48px;
         padding: 2px;
         border-radius: 50%;
         background-color: var(--color-text);
@@ -35,6 +35,14 @@
             -ms-transform: translateY(-8px);
             transform: translateY(-8px);
             box-shadow: 0 4px 16px -8px var(--color-background-shadow);
+        }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .reviewcard__container {
+        .reviewcard__image {
+            width: 64px;
         }
     }
 }
