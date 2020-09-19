@@ -23,7 +23,7 @@ export default class FavoriteButton extends CommonElement {
 
     private _onButtonClickHandler(): void {
         this.isFavorite = !this.isFavorite;
-        const myFavorite = new CustomEvent(EventType.FAVORITE, {
+        const myFavorite = new CustomEvent(EventType.FAVORITE_CLICKED, {
             detail: {
                 message: 'Favorite Clicked',
                 data: this.isFavorite

@@ -43,7 +43,7 @@ export default class PageDetails extends CommonElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-        this.addEventListener(EventType.FAVORITE, this._handleFavorites, false);
+        this.addEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
 
         document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
 
@@ -70,7 +70,7 @@ export default class PageDetails extends CommonElement {
     }
 
     disconnectedCallback(): void {
-        this.removeEventListener(EventType.FAVORITE, this._handleFavorites, false);
+        this.removeEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
         super.disconnectedCallback();
     }
 
