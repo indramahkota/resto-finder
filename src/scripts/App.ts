@@ -29,7 +29,7 @@ export default class RestoFinder extends CommonElement {
 
         this._timeOutId = window.setTimeout(() => {
             this._toastMessage = null;
-        }, 2000);
+        }, 3000);
     }
 
     connectedCallback(): void {
