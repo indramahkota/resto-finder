@@ -69,7 +69,7 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[name].[contenthash:8].[id].css'
     }),
     new CleanWebpackPlugin()
   ]
