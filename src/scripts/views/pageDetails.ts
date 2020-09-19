@@ -76,7 +76,6 @@ export default class PageDetails extends CommonElement {
         super.disconnectedCallback();
     }
 
-    // <resto-card .data=${this._restoData?.restaurant}></resto-card>
     render(): TemplateResult {
         return html`
             <div class="pagedetails__container">
