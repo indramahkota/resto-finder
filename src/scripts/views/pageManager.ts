@@ -20,7 +20,7 @@ export default class PageManager extends CommonElement {
     private _forceUpdateHandler = () => {
         if(window.location.hash === '#content')
             return;
-        this.forceUpdate = this.randomText();
+        this.forceUpdate = Math.random().toString(36).substring(7);
     }
 
     connectedCallback(): void {
@@ -31,10 +31,6 @@ export default class PageManager extends CommonElement {
     disconnectedCallback(): void {
         window.removeEventListener('hashchange', this._forceUpdateHandler, false);
         super.disconnectedCallback();
-    }
-
-    randomText(): string {
-        return Math.random().toString(36).substring(7);
     }
 
     render(): TemplateResult {
