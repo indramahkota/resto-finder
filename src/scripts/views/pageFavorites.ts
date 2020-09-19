@@ -4,10 +4,10 @@ import { customElement, internalProperty } from 'lit-element';
 import CommonElement from '../_library_/components/_base_/commonElement';
 import EventType from '../globals/eventType';
 import LocalDatabase from '../data/sources/local/database/localDatabase';
+import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 import "../_library_/components/hero-element/heroElement";
 import "../_library_/containers/resto-container/restoContainer";
-import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 @customElement('rstf-favorites')
 export default class PageFavorites extends CommonElement {
@@ -19,13 +19,12 @@ export default class PageFavorites extends CommonElement {
 
         LocalDatabase.getAllFavorite()
             .then(res => {
-                const restoResponse: RestaurantResponse = {
+                this._restoData = {
                     error: false,
-                    message: '',
-                    count: 0,
+                    message: 'success',
+                    count: res.length,
                     restaurants: res
-                }
-                this._restoData = restoResponse;
+                };
             })
             .catch(err => {
                 const showToast = new CustomEvent(EventType.SHOW_TOAST, {
