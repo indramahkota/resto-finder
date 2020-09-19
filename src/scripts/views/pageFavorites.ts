@@ -1,4 +1,4 @@
-import { html, TemplateResult } from 'lit-html';
+import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
 import CommonElement from '../_library_/components/_base_/commonElement';
@@ -40,7 +40,9 @@ export default class PageFavorites extends CommonElement {
     render(): TemplateResult {
         return html`
             <section id="favorites-resto">
-                <resto-container title="FAVORITES RESTAURANTS" .data=${this._restoData}></resto-container>
+                ${
+                    this._restoData !== null ? html`<resto-container title="FAVORITES RESTAURANTS" .data=${this._restoData}></resto-container>` : nothing
+                }
             </section>
         `;
     }
