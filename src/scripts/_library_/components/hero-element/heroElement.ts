@@ -30,7 +30,7 @@ export default class HeroElement extends CommonElement {
         document.getElementById('find-button')?.blur();
         const letsFind = new CustomEvent(EventType.LETS_FIND, {
             detail: {
-                message: `Let's Find`
+                message: 'Let\'s Find'
             },
             bubbles: true
         });
