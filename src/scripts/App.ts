@@ -18,12 +18,11 @@ export default class RestoFinder extends CommonElement {
 
     private _showToastHandler = (event: Event) => {
         const details = (event as CustomEvent).detail;
+        if (details.message === undefined || details.message === '')
+            return;
 
         if (this._timeOutId !== null)
             clearTimeout(this._timeOutId);
-
-        if (details.message === undefined)
-            return;
 
         this._toastMessage = details.message;
 
