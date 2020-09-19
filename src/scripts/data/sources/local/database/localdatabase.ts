@@ -1,9 +1,9 @@
 import { openDB, DBSchema } from "idb";
-import { Restaurant } from "../../../entity/RestaurantEntity";
+import { RestaurantDetails } from "../../../entity/RestaurantEntity";
 
 interface RestoDatabase extends DBSchema {
     restaurants: {
-        value: Restaurant;
+        value: RestaurantDetails;
         key: string;
         indexes: { 'by-id': string, 'by-city': string, 'by-rating': number };
     };
@@ -21,22 +21,22 @@ const getDatabase = async () => {
 }
 
 export default class LocalDatabase {
-    static async createFavorite(data: Restaurant): Promise<string> {
+    static async createFavorite(data: RestaurantDetails): Promise<string> {
         const db = await getDatabase();
         return await db.add("restaurants", data);
     }
 
-    static async getFavoriteById(id: string): Promise<Restaurant | undefined> {
+    static async getFavoriteById(id: string): Promise<RestaurantDetails | undefined> {
         const db = await getDatabase();
         return await db.get("restaurants", id);
     }
 
-    static async getAllFavorite(): Promise<Restaurant[]> {
+    static async getAllFavorite(): Promise<RestaurantDetails[]> {
         const db = await getDatabase();
         return await db.getAll("restaurants");
     }
 
-    static async updateFavorite(data: Restaurant): Promise<string> {
+    static async updateFavorite(data: RestaurantDetails): Promise<string> {
         const db = await getDatabase();
         return await db.put("restaurants", data);
     }

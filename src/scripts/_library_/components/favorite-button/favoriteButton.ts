@@ -28,7 +28,8 @@ export default class FavoriteButton extends CommonElement {
         this._favoriteButton?.blur();
         const myFavorite = new CustomEvent(EventType.FAVORITE, {
             detail: {
-                message: `Favorite Clicked`
+                message: `Favorite Clicked`,
+                data: this.isFavorite
             },
             bubbles: true
         });
