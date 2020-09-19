@@ -26,10 +26,8 @@ export default class PageDetails extends CommonElement {
     private _isFavorite = false;
 
     private _handleFavorites = async (event: Event) => {
-        if(this._restoData?.restaurant === undefined)
-            return;
-        
-        if(this.detailsId === null)
+        if(this._restoData?.restaurant === undefined ||
+            this.detailsId === null)
             return;
 
         const details = (event as CustomEvent).detail;
