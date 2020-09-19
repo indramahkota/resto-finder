@@ -51,6 +51,12 @@ export default class PageDetails extends CommonElement {
 
         if(this.detailsId === null)
             return;
+
+        LocalDatabase.getFavoriteById(this.detailsId)
+            .then(data => {
+                if(data !== undefined)
+                    this._isFavorite = true;
+            })
             
         RemoteDataSource.getRestaurantDetails<RestaurantDetailsResponse>(this.detailsId)
             .then(res => this._restoData = res)
@@ -68,15 +74,6 @@ export default class PageDetails extends CommonElement {
     disconnectedCallback(): void {
         this.removeEventListener(EventType.FAVORITE, this._handleFavorites, false);
         super.disconnectedCallback();
-    }
-
-    firstUpdated(): void {
-        if(this.detailsId)
-            LocalDatabase.getFavoriteById(this.detailsId)
-                .then(data => {
-                    if(data !== undefined)
-                        this._isFavorite = true;
-                })
     }
 
     // <resto-card .data=${this._restoData?.restaurant}></resto-card>
