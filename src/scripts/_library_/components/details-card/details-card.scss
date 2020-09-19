@@ -1,4 +1,5 @@
 .restodetails__container {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,25 +7,24 @@
 
     .restodetails__image {
         width: 100%;
-        display: flex;
         padding: 20px;
         border-radius: 8px;
         background-color: var(--color-article-background);
 
         img {
             width: 100%;
-            margin: auto;
             object-position: center;
             border-radius: 8px;
         }
     }
 
     .restodetails__content {
+        width: 100%;
         padding: 20px;
         margin-top: 20px;
         border-radius: 8px;
-        background-color: var(--color-article-background);
         color: var(--color-text);
+        background-color: var(--color-article-background);
 
         .restodetails__part {
             display: flex;
