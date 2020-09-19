@@ -11,6 +11,20 @@
 
     .pagedetails__reviewcard {
         margin-top: 20px;
+
+        .pagedetails__favorite__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 8px;
+            color: var(--color-text);
+            background-color: var(--color-article-background);
+
+            h1 {
+                margin-right: auto;
+            }
+        }
     }
 }
 

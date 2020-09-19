@@ -12,7 +12,11 @@ export default class ReviewForm extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            
+            <div class="reviewform__container">
+                <input aria-label="Type your Name" class="reviewinput__name" placeholder="Type Your Name" type="text">
+                <textarea aria-label="Type your Review" class="reviewtextarea__review" placeholder="This Restaurant is awesome!"></textarea>
+                <button class="reviewbutton__submit">Send Review</button>
+            </div>
         `;
     }
 }
