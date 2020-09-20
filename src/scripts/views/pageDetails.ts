@@ -26,18 +26,22 @@ export default class PageDetails extends CommonElement {
     private _isFavorite = false;
 
     private _handleFavorites = async (event: Event) => {
-        if(this._restoData?.restaurant === undefined ||
-            this.detailsId === null)
-            return;
-
         const details = (event as CustomEvent).detail;
-        
-        if(!details.data) {
+
+        if (this.detailsId !== null && this._isFavorite && !details.data) {
+            await LocalDatabase.deleteFavorite(this.detailsId);
             this._isFavorite = false;
-            LocalDatabase.deleteFavorite(this.detailsId);
-        } else {
+        } else if (this._restoData?.restaurant !== undefined && !this._isFavorite && details.data) {
+            await LocalDatabase.createFavorite(this._restoData.restaurant);
             this._isFavorite = true;
-            LocalDatabase.createFavorite(this._restoData.restaurant);
+        } else {
+            const showToast = new CustomEvent(EventType.SHOW_TOAST, {
+                detail: {
+                    message: 'Something happen when add to favorites'
+                },
+                bubbles: true
+            });
+            this.dispatchEvent(showToast);
         }
     }
 
@@ -47,15 +51,15 @@ export default class PageDetails extends CommonElement {
 
         document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
 
-        if(this.detailsId === null)
+        if (this.detailsId === null)
             return;
 
         LocalDatabase.getFavoriteById(this.detailsId)
             .then(data => {
-                if(data !== undefined)
+                if (data !== undefined)
                     this._isFavorite = true;
-            })
-            
+            });
+
         RemoteDataSource.getRestaurantDetails<RestaurantDetailsResponse>(this.detailsId)
             .then(res => this._restoData = res)
             .catch(err => {
