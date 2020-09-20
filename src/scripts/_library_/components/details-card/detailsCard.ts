@@ -15,11 +15,27 @@ export default class DetailsCard extends CommonElement {
     @property({ type: Object, attribute: true })
     data: RestaurantDetails | undefined;
 
+    firstUpdated(): void {
+        const imageUrl = this.checkImgSrcValue(this.data?.pictureId);
+        if(imageUrl === undefined)
+            return;
+
+        const imageHelper = new Image();
+        imageHelper.src = imageUrl;
+        imageHelper.onload = () => {
+            if(this.data?.pictureId === undefined)
+                return;
+            const image = <HTMLImageElement>document.getElementById(this.data?.pictureId);
+            image.classList.add('complete');
+            image.src = imageHelper.src;
+        }
+    }
+
     render(): TemplateResult {
         return html`
             <div class="restodetails__container">
                 <div class="restodetails__image">
-                    <img src="${ifDefined(this.checkImgSrcValue(this.data?.pictureId))}" alt="${ifDefined(this.data?.name)} Image Name">
+                    <img id="${ifDefined(this.data?.pictureId)}" src="${AppConfig.URL_LOADING_SVG}" alt="${ifDefined(this.data?.name)} Image Name">
                 </div>
                 <div class="restodetails__content">
                     <h1 tabindex="0">RESTAURANT DETAILS</h1>

@@ -6,16 +6,22 @@
     flex-direction: column;
 
     .restodetails__image {
+        display: flex;
         width: 100%;
+        min-height: 250px;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
         background-color: var(--color-article-background);
 
         img {
-            width: 100%;
-            object-position: center;
-            border-radius: 8px;
+            margin: auto;
+
+            &.complete {
+                width: 100%;
+                object-position: center;
+                border-radius: 8px;
+            }
         }
     }
 
@@ -130,7 +136,7 @@
 
 @media screen and (min-width: 500px) {
     .restodetails__container {
-        .restodetails__content {            
+        .restodetails__content {
             .restodetails__part {
                 flex-direction: row;
                 align-items: center;

@@ -27,15 +27,16 @@ export default class RestoCard extends CommonElement {
         setTimeout(() => {
             const scrollTop = window.pageYOffset;
             if(image.offsetTop < (window.innerHeight + scrollTop)) {
-                const imageHelper: HTMLImageElement | null = new Image();
-                imageHelper.src = this.checkImgSrcValue(this.data?.pictureId);
-                imageHelper.onload = () => {
-                    if(image === null)
-                        return;
+                const imageUrl = this.checkImgSrcValue(this.data?.pictureId);
+                if(imageUrl === undefined)
+                    return;
 
-                    this._imgLoaded = true;
+                const imageHelper = new Image();
+                imageHelper.src = imageUrl;
+                imageHelper.onload = () => {
                     image.classList.add('complete');
                     image.src = imageHelper.src;
+                    this._imgLoaded = true;
 
                     document.removeEventListener("scroll", this._lazyLoad, false);
                     window.removeEventListener("resize", this._lazyLoad, false);
@@ -79,8 +80,8 @@ export default class RestoCard extends CommonElement {
         `;
     }
 
-    checkImgSrcValue(val?: string): string {
-        return `${AppConfig.BASE_IMAGE_URL}small/${val}`;
+    checkImgSrcValue(val?: string): string | undefined {
+        return val === undefined ? undefined : `${AppConfig.BASE_IMAGE_URL}small/${val}`;
     }
 }
 
