@@ -1,20 +1,29 @@
-import { html, TemplateResult } from 'lit-html';
-import { customElement, property } from 'lit-element';
+import { html, nothing, TemplateResult } from 'lit-html';
+import { customElement, internalProperty, property } from 'lit-element';
 import { ifDefined } from "lit-html/directives/if-defined";
 
+import EventType from '../globals/eventType';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
 import "../_library_/components/user-profile/userProfile";
+import "../_library_/components/app-toast/appToast";
+import "../_library_/components/foot-bar/footBar";
+import "../_library_/components/app-bar/appBar";
 
 import "./pageHome";
 import "./pageFavorites";
 import "./pageDetails";
 
-@customElement('rstf-pm')
-export default class PageManager extends CommonElement {
+@customElement('rstf-app')
+export default class RestoFinderApp extends CommonElement {
     @property({ type: String, attribute: true })
     forceUpdate = '-f';
+
+    @internalProperty()
+    private _toastMessage: string | null = null;
+    
+    private _timeOutId: number | null = null;
 
     private _forceUpdateHandler = () => {
         if(window.location.hash === '#content')
@@ -25,23 +34,48 @@ export default class PageManager extends CommonElement {
         this.forceUpdate = Math.random().toString(36).substring(7);
     }
 
+    private _showToastHandler = (event: Event) => {
+        const details = (event as CustomEvent).detail;
+        if (details.message === undefined || details.message === '')
+            return;
+
+        if (this._timeOutId !== null)
+            clearTimeout(this._timeOutId);
+
+        this._toastMessage = details.message;
+
+        this._timeOutId = window.setTimeout(() => {
+            this._toastMessage = null;
+        }, 3000);
+    }
+
     connectedCallback(): void {
         super.connectedCallback();
         window.addEventListener('hashchange', this._forceUpdateHandler, false);
+        this.addEventListener(EventType.SHOW_TOAST, this._showToastHandler, false);
     }
 
     disconnectedCallback(): void {
         window.removeEventListener('hashchange', this._forceUpdateHandler, false);
+        this.removeEventListener(EventType.SHOW_TOAST, this._showToastHandler, false);
         super.disconnectedCallback();
     }
 
     render(): TemplateResult {
         return html`
-            ${new Route('/', () => this.home(), true).mount()}
-            ${new Route('/user', () => this.user(), true).mount()}
-            ${new Route('/home', () => this.home(), true).mount()}
-            ${new Route('/details/:id', (data) => this.details(data), false).mount()}
-            ${new Route('/favorites', () => this.favorites(), true).mount()}
+            <app-bar></app-bar>
+            <section id="content">
+                ${new Route('/', () => this.home(), true).mount()}
+                ${new Route('/user', () => this.user(), true).mount()}
+                ${new Route('/home', () => this.home(), true).mount()}
+                ${new Route('/details/:id', (data) => this.details(data), false).mount()}
+                ${new Route('/favorites', () => this.favorites(), true).mount()}
+            </section>
+            <foot-bar></foot-bar>
+
+            ${this._toastMessage !== null ?
+                html`<app-toast message="${this._toastMessage}"></app-toast>` : nothing
+            }
         `;
     }
 
@@ -79,6 +113,6 @@ export default class PageManager extends CommonElement {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
     interface HTMLElementTagNameMap {
-        'rstf-pm': PageManager;
+        'rstf-app': RestoFinderApp;
     }
 }
