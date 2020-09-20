@@ -20,26 +20,28 @@ export default class PageHome extends CommonElement {
         document.querySelector('app-bar')?.hideHeader();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: "smooth" });
     }
-    
+
+    private async _getRestaurantData() {
+        try {
+            const restoData = await Repository.getAllRestaurant();
+            this._restoData = restoData;
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
+    }
+
     connectedCallback(): void {
         super.connectedCallback();
         this.addEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
-
-        Repository.getAllRestaurant()
-            .then(res => this._restoData = res)
-            .catch(err => {
-                this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                    detail: {
-                        message: err
-                    },
-                    bubbles: true
-                }));
-            });
     }
 
     disconnectedCallback(): void {
         this.removeEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
         super.disconnectedCallback();
+    }
+
+    firstUpdated(): void {
+        this._getRestaurantData();
     }
 
     render(): TemplateResult {

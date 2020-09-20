@@ -27,68 +27,64 @@ export default class PageDetails extends CommonElement {
 
     private _handleFavorites = async (event: Event) => {
         const details = (event as CustomEvent).detail;
-
         if (this.detailsId !== null && this._isFavorite && !details.data) {
-            await Repository.deleteFavorite(this.detailsId);
-            this._isFavorite = false;
-            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                detail: {
-                    message: "Remove favorites complete"
-                },
-                bubbles: true
-            }));
+            try {
+                await Repository.deleteFavorite(this.detailsId);
+                this._isFavorite = false;
+                this._dispatchData({ message: 'Remove favorite complete' }, EventType.SHOW_TOAST);
+            } catch (error) {
+                this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+            }
         } else if (this._restoData?.restaurant !== undefined && !this._isFavorite && details.data) {
-            const newFavorite = this._restoData.restaurant;
-            newFavorite.isFavorite = true;
-            
-            await Repository.createFavorite(newFavorite);
-            this._isFavorite = true;
-            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                detail: {
-                    message: "Add favorites complete"
-                },
-                bubbles: true
-            }));
+            try {
+                await Repository.createFavorite(Object.assign(this._restoData.restaurant, { isFavorite: true }));
+                this._isFavorite = true;
+                this._dispatchData({ message: 'Add favorite complete' }, EventType.SHOW_TOAST);
+            } catch (error) {
+                this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+            }
         } else {
-            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                detail: {
-                    message: 'Something happen when add to favorites'
-                },
-                bubbles: true
-            }));
+            this._dispatchData({ message: 'Something happen when add to favorite' }, EventType.SHOW_TOAST);
+        }
+    }
+
+    private async _getRestaurantDetailsData(id: string | null) {
+        if (id === null)
+            return;
+        try {
+            const restoData = await Repository.getRestaurantDetails(id);
+            this._restoData = restoData;
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
+    }
+
+    private async _getFavoriteData(id: string | null) {
+        if (id === null)
+            return;
+        try {
+            const favoriteData = await Repository.getFavoriteById(id);
+            if (favoriteData !== undefined)
+                this._isFavorite = true;
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
     }
 
     connectedCallback(): void {
         super.connectedCallback();
         this.addEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
-
-        document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
-
-        if (this.detailsId === null)
-            return;
-
-        Repository.getFavoriteById(this.detailsId)
-            .then(data => {
-                if (data !== undefined)
-                    this._isFavorite = true;
-            });
-
-        Repository.getRestaurantDetails(this.detailsId)
-            .then(res => this._restoData = res)
-            .catch(err => {
-                this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                    detail: {
-                        message: err
-                    },
-                    bubbles: true
-                }));
-            });
     }
 
     disconnectedCallback(): void {
         this.removeEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
         super.disconnectedCallback();
+    }
+
+    firstUpdated(): void {
+        document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
+        this._getFavoriteData(this.detailsId);
+        this._getRestaurantDetailsData(this.detailsId);
     }
 
     render(): TemplateResult {

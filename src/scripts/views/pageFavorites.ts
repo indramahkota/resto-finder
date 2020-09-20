@@ -16,40 +16,32 @@ export default class PageFavorites extends CommonElement {
 
     private _onFavoriteDeletedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
-        await Repository.deleteFavorite(details.data);
-        this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-            detail: {
-                message: "Remove favorites complete"
-            },
-            bubbles: true
-        }));
-        this._loadFavoriteData();
+        try {
+            await Repository.deleteFavorite(details.data);
+            this._dispatchData({ message: 'Remove favorite complete' }, EventType.SHOW_TOAST);
+            this._loadFavoriteData();
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
     }
 
-    private _loadFavoriteData() {
-        Repository.getAllFavorite()
-            .then(res => {
-                this._restoData = {
-                    error: false,
-                    message: 'success',
-                    count: res.length,
-                    restaurants: res
-                };
-            })
-            .catch(err => {
-                this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
-                    detail: {
-                        message: err
-                    },
-                    bubbles: true
-                }));
-            });
+    private async _loadFavoriteData() {
+        try {
+            const restoData = await Repository.getAllFavorite();
+            this._restoData = {
+                error: false,
+                message: 'success',
+                count: restoData.length,
+                restaurants: restoData
+            };
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
     }
 
     connectedCallback(): void {
         super.connectedCallback();
         this.addEventListener(EventType.FAVORITE_DELETED, this._onFavoriteDeletedHandler, false);
-        this._loadFavoriteData();
     }
 
     disconnectedCallback(): void {
@@ -57,11 +49,17 @@ export default class PageFavorites extends CommonElement {
         super.disconnectedCallback();
     }
 
+    firstUpdated(): void {
+        this._loadFavoriteData();
+    }
+
     render(): TemplateResult {
         return html`
             <section id="favorites-resto">
                 ${
-                    this._restoData !== null ? html`<resto-container title="FAVORITES" .data=${this._restoData}></resto-container>` : nothing
+                    this._restoData !== null ? html`
+                            <resto-container title="FAVORITES" .data=${this._restoData}></resto-container>
+                        ` : nothing
                 }
             </section>
         `;
