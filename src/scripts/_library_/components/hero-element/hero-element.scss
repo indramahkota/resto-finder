@@ -13,7 +13,6 @@
   background: center / cover no-repeat url("../../../../assets/images/heros/hero-image.webp");
 
   .hero__placeholder {
-    width: 90%;
     color: rgba(246, 205, 97);
     font-weight: bold;
     text-align: center;
@@ -23,11 +22,9 @@
       line-height: 90%;
       font-family: Arial, Helvetica, sans-serif;
       transition-property: transform;
-      background-color: var(--color-hero-background);
-      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
 
-      .medium {
-        font-size: 0.75em;
+      .herotext__logo {
         font-family: "Pacifico", cursive;
       }
     }
@@ -52,7 +49,6 @@
 @media screen and (min-width: 768px) {
   .hero__background {
     .hero__placeholder {
-      width: 80%;
       h1 {
         font-size: 4em;
       }
@@ -63,7 +59,6 @@
 @media screen and (min-width: 900px) {
   .hero__background {
     .hero__placeholder {
-      width: 70%;
       h1 {
         font-size: 6em;
       }
