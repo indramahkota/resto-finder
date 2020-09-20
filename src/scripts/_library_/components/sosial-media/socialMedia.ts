@@ -13,14 +13,14 @@ export default class SocialMedia extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class="social__media">
+            <div class='social__media'>
                 <ul>
                     ${
                         this.data.map((sm) =>
                             html`
                                 <li>
-                                    <a style="background-color: ${sm.color}" aria-label="This is the ${sm.isEmail ? "Email" : "Social media page" } who created this website." href="${sm.url}" target="_blank" rel="noopener noreferrer">
-                                        <i class="${sm.icon}"></i>
+                                    <a style='background-color: ${sm.color}' aria-label='This is the ${sm.isEmail ? 'Email' : 'Social media page' } who created this website.' href='${sm.url}' target='_blank' rel='noopener noreferrer'>
+                                        <i class='${sm.icon}'></i>
                                     </a>
                                 </li>
                             `

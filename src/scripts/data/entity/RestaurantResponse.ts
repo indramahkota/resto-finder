@@ -1,4 +1,4 @@
-import { Restaurant, RestaurantDetails } from "./RestaurantEntity";
+import { Restaurant, RestaurantDetails } from './RestaurantEntity';
 
 export interface RestaurantResponse {
     error: boolean;

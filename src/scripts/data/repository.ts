@@ -1,33 +1,33 @@
-import AppConfig from "../globals/appConfig";
-import { RestaurantDetails } from "./entity/RestaurantEntity";
-import { RestaurantDetailsResponse, RestaurantResponse } from "./entity/RestaurantResponse";
-import { Database } from "./sources/local/localDatabase";
-import { get } from "./sources/remote/remoteDataSource";
+import AppConfig from '../globals/appConfig';
+import { RestaurantDetails } from './entity/RestaurantEntity';
+import { RestaurantDetailsResponse, RestaurantResponse } from './entity/RestaurantResponse';
+import { Database } from './sources/local/clientDatabase';
+import { get } from './sources/network/networkDataSource';
 
 export default class Repository {
     static async createFavorite(data: RestaurantDetails): Promise<string> {
         const db = await Database();
-        return await db.add("restaurants", data);
+        return await db.add('restaurants', data);
     }
 
     static async getFavoriteById(id: string): Promise<RestaurantDetails | undefined> {
         const db = await Database();
-        return await db.get("restaurants", id);
+        return await db.get('restaurants', id);
     }
 
     static async getAllFavorite(): Promise<RestaurantDetails[]> {
         const db = await Database();
-        return await db.getAll("restaurants");
+        return await db.getAll('restaurants');
     }
 
     static async updateFavorite(data: RestaurantDetails): Promise<string> {
         const db = await Database();
-        return await db.put("restaurants", data);
+        return await db.put('restaurants', data);
     }
 
     static async deleteFavorite(id: string): Promise<void> {
         const db = await Database();
-        return await db.delete("restaurants", id);
+        return await db.delete('restaurants', id);
     }
 
     static async getAllRestaurant(): Promise<RestaurantResponse> {

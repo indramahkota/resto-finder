@@ -6,13 +6,13 @@ import EventType from '../globals/eventType';
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
-import "../_library_/components/details-card/detailsCard";
-import "../_library_/containers/review-container/reviewContainer";
-import "../_library_/components/review-form/reviewForm";
-import "../_library_/components/favorite-button/favoriteButton";
-import "../_library_/components/detailscard-shimmer/detailsCardShimmer";
+import '../_library_/components/details-card/detailsCard';
+import '../_library_/containers/review-container/reviewContainer';
+import '../_library_/components/review-form/reviewForm';
+import '../_library_/components/favorite-button/favoriteButton';
+import '../_library_/components/detailscard-shimmer/detailsCardShimmer';
 
-import "./page-details.scss";
+import './page-details.scss';
 
 @customElement('rstf-details')
 export default class PageDetails extends CommonElement {
@@ -89,15 +89,16 @@ export default class PageDetails extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            ${this._restoData === null ? html`
+            ${
+                this._restoData === null ? html`
                     <detailscard-shimmer></detailscard-shimmer>
                 ` : html`
-                    <div class="pagedetails__container">
-                        <div class="pagedetails__detailscard">
+                    <div class='pagedetails__container'>
+                        <div class='pagedetails__detailscard'>
                             <details-card .data=${this._restoData?.restaurant}></details-card>
                         </div>
-                        <div class="pagedetails__reviewcard">
-                            <div class="pagedetails__favorite__container">
+                        <div class='pagedetails__reviewcard'>
+                            <div class='pagedetails__favorite__container'>
                                 <h1>Save as favorite</h1>
                                 <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
                             </div>

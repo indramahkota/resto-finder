@@ -1,4 +1,4 @@
-import { TemplateResult } from "lit-html";
+import { TemplateResult } from 'lit-html';
 
 type Create = (data?: MatchObject) => TemplateResult | void;
 

@@ -6,8 +6,8 @@ import CommonElement from '../_library_/components/_base_/commonElement';
 import EventType from '../globals/eventType';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
-import "../_library_/components/hero-element/heroElement";
-import "../_library_/containers/resto-container/restoContainer";
+import '../_library_/components/hero-element/heroElement';
+import '../_library_/containers/resto-container/restoContainer';
 
 @customElement('rstf-favorites')
 export default class PageFavorites extends CommonElement {
@@ -55,10 +55,10 @@ export default class PageFavorites extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <section id="favorites-resto">
+            <section id='favorites-resto'>
                 ${
                     this._restoData !== null ? html`
-                            <resto-container title="FAVORITES" .data=${this._restoData}></resto-container>
+                            <resto-container title='FAVORITES' .data=${this._restoData}></resto-container>
                         ` : nothing
                 }
             </section>

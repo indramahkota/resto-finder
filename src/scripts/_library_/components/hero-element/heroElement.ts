@@ -17,11 +17,11 @@ export default class HeroElement extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class="hero__background">
-                <div id="hero-greeting" class="hero__placeholder">
-                    <h1 tabindex="0">${this.greeting}<br><span class="herotext__logo">${this.name}</span></h1>
+            <div class='hero__background'>
+                <div id='hero-greeting' class='hero__placeholder'>
+                    <h1 tabindex='0'>${this.greeting}<br><span class='herotext__logo'>${this.name}</span></h1>
                 </div>
-                <button id="find-button" aria-label="Let's Find Button" class="hero__button" @click="${this._onButtonClickHandler}">Let's Find Resto</button>
+                <button id='find-button' aria-label="Let's Find Button" class='hero__button' @click='${this._onButtonClickHandler}'>Let's Find Resto</button>
             </div>
         `;
     }

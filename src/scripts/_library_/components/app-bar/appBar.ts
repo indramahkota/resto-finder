@@ -58,9 +58,9 @@ export default class AppBar extends ScrollEffectElement {
     private _onHamburgerClickHandler() {
         this._isOpen = !this._isOpen;
         if (this._isOpen) {
-            Utils.setLCS(AppConfig.LCS_DRAWER, "open");
+            Utils.setLCS(AppConfig.LCS_DRAWER, 'open');
         } else {
-            Utils.setLCS(AppConfig.LCS_DRAWER, "close");
+            Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
         }
     }
 
@@ -80,10 +80,10 @@ export default class AppBar extends ScrollEffectElement {
 
         if (input.checked) {
             window.document.body.classList.remove('dark');
-            Utils.setLCS(AppConfig.LCS_THEME, "light");
+            Utils.setLCS(AppConfig.LCS_THEME, 'light');
         } else {
             window.document.body.classList.add('dark');
-            Utils.setLCS(AppConfig.LCS_THEME, "dark");
+            Utils.setLCS(AppConfig.LCS_THEME, 'dark');
         }
         input.blur();
     }
@@ -120,7 +120,7 @@ export default class AppBar extends ScrollEffectElement {
     }
 
     firstUpdated(): void {
-        this._header = document.getElementById("rstf-header");
+        this._header = document.getElementById('rstf-header');
     }
 
     updated(): void {
@@ -135,37 +135,37 @@ export default class AppBar extends ScrollEffectElement {
 
     render(): TemplateResult {
         return html`
-            <header id="rstf-header" class="header">
-                <a href="/" class="header__logo">${this.title}</a>
+            <header id='rstf-header' class='header'>
+                <a href='/' class='header__logo'>${this.title}</a>
 
                 ${
                     this._darkMode ? html`
-                        <div class="toggle__container">
-                            <label class="toggle__label">
-                                <input aria-label="This input for Toggle Dark or Light Mode" @change="${this._onSwitchChangeHandler}" type="checkbox" ?checked=${this._isLight}>
-                                <span class="slider round"></span>
-                                <div class="toggle__icon">
-                                    <i class="fas fa-sun"></i>
-                                    <i class="fas fa-moon"></i>
+                        <div class='toggle__container'>
+                            <label class='toggle__label'>
+                                <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isLight}>
+                                <span class='slider round'></span>
+                                <div class='toggle__icon'>
+                                    <i class='fas fa-sun'></i>
+                                    <i class='fas fa-moon'></i>
                                 </div>
                             </label>
                         </div>
                     ` : nothing
                 }
 
-                <button aria-label="Toggle Menu Button" class="header__button ${this._isOpen ? 'change' : ''}" @click="${this._onHamburgerClickHandler}">
-                    <span class="humburger"></span>
+                <button aria-label='Toggle Menu Button' class='header__button ${this._isOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
+                    <span class='humburger'></span>
                 </button>
 
-                <nav class="header__drawer ${this._isOpen ? 'change' : ''}">
+                <nav class='header__drawer ${this._isOpen ? 'change' : ''}'>
                     <ul>
                         ${this.navData.map(nav =>
                                 html`
                                     <li>
-                                        <a href="${nav.url}" @click="${this._onNavigationClickHandler}"
-                                            class="${ nav.isActive ? 'active' : ''}">
+                                        <a href='${nav.url}' @click='${this._onNavigationClickHandler}'
+                                            class='${ nav.isActive ? 'active' : ''}'>
                                             ${nav.name}
-                                            <span class="chevron"></span>
+                                            <span class='chevron'></span>
                                         </a>
                                     </li>
                                 `
@@ -173,10 +173,10 @@ export default class AppBar extends ScrollEffectElement {
                         }
 
                         <li>
-                            <a href="${this.iconNavData.url}" class="anchor__icon__container ${this._iconNavFocus ? 'active' : ''}" @click="${this._onIconNavClickHandler}">
-                                <img class="anchor__icon" src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
-                                <p class="anchor__name">${this.iconNavData.name}</p>
-                                <span class="chevron"></span>
+                            <a href='${this.iconNavData.url}' class='anchor__icon__container ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
+                                <img class='anchor__icon' src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
+                                <p class='anchor__name'>${this.iconNavData.name}</p>
+                                <span class='chevron'></span>
                             </a>
                         </li>
                     </ul>

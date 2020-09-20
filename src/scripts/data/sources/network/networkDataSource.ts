@@ -12,7 +12,7 @@ export async function http<T>(
 
 export async function get<T>(
     path: string,
-    args: RequestInit = { method: "get" }
+    args: RequestInit = { method: 'get' }
 ): Promise<T> {
     return await http<T>(new Request(path, args));
 }
@@ -21,7 +21,7 @@ export async function post<T, B>(
     path: string,
     body: B | undefined = undefined,
     args: RequestInit = {
-        method: "post",
+        method: 'post',
         body: JSON.stringify(body),
         headers: {
             'Content-type': 'application/json',

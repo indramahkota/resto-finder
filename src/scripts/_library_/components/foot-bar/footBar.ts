@@ -13,8 +13,8 @@ export default class FootBar extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <footer class="footer">
-                <p tabindex="0">${this.text}</p>
+            <footer class='footer'>
+                <p tabindex='0'>${this.text}</p>
             </footer>
         `;
     }

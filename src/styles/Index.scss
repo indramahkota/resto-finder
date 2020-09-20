@@ -1,4 +1,4 @@
-@import "./utilities/variables";
+@import './utilities/variables';
 
 :root {
     --color-text: #{$light-for-text};
@@ -61,7 +61,7 @@ body {
     transition: all 0.2s ease-out;
     background-color: var(--color-page-background);
     /* ukuran static font-size: 16px, line-height: normal; */
-    font: 16px / normal Montserrat, "Montserrat", sans-serif;
+    font: 16px / normal Montserrat, 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 

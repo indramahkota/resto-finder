@@ -1,5 +1,5 @@
-import { internalProperty } from "lit-element";
-import CommonElement from "./commonElement";
+import { internalProperty } from 'lit-element';
+import CommonElement from './commonElement';
 
 export default class ScrollEffectElement extends CommonElement {
     @internalProperty()

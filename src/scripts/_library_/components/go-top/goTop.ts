@@ -25,7 +25,7 @@ export default class GoTop extends ScrollEffectElement {
     }
 
     firstUpdated(): void {
-        this._goTopButton = document.getElementById("top-button");
+        this._goTopButton = document.getElementById('top-button');
     }
 
     updated(): void {
@@ -40,7 +40,7 @@ export default class GoTop extends ScrollEffectElement {
 
     render(): TemplateResult {
         return html`
-            <button id="top-button" class="gotop__button hide" aria-label="Go to top Button" title="Go to top" @click="${this._onButtonClickHandler}"><i class="fas fa-hand-point-up"></i></button>
+            <button id='top-button' class='gotop__button hide' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
         `;
     }
 

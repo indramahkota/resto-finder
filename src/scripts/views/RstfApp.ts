@@ -1,19 +1,19 @@
 import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, internalProperty, property } from 'lit-element';
-import { ifDefined } from "lit-html/directives/if-defined";
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 import EventType from '../globals/eventType';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
-import "../_library_/components/user-profile/userProfile";
-import "../_library_/components/app-toast/appToast";
-import "../_library_/components/foot-bar/footBar";
-import "../_library_/components/app-bar/appBar";
+import '../_library_/components/user-profile/userProfile';
+import '../_library_/components/app-toast/appToast';
+import '../_library_/components/foot-bar/footBar';
+import '../_library_/components/app-bar/appBar';
 
-import "./pageHome";
-import "./pageFavorites";
-import "./pageDetails";
+import './pageHome';
+import './pageFavorites';
+import './pageDetails';
 
 @customElement('rstf-app')
 export default class RestoFinderApp extends CommonElement {
@@ -64,7 +64,7 @@ export default class RestoFinderApp extends CommonElement {
     render(): TemplateResult {
         return html`
             <app-bar></app-bar>
-            <section id="content">
+            <section id='content'>
                 ${new Route('/', () => this.home(), true).mount()}
                 ${new Route('/user', () => this.user(), true).mount()}
                 ${new Route('/home', () => this.home(), true).mount()}
@@ -73,15 +73,17 @@ export default class RestoFinderApp extends CommonElement {
             </section>
             <foot-bar></foot-bar>
 
-            ${this._toastMessage !== null ?
-                html`<app-toast message="${this._toastMessage}"></app-toast>` : nothing
+            ${
+                this._toastMessage !== null ? html`
+                    <app-toast message='${this._toastMessage}'></app-toast>
+                ` : nothing
             }
         `;
     }
 
     user(): TemplateResult {
         return html`
-            <section id="user">
+            <section id='user'>
                 <user-profile></user-profile>
             </section>
         `;
@@ -89,7 +91,7 @@ export default class RestoFinderApp extends CommonElement {
 
     home(): TemplateResult {
         return html`
-            <section id="home">
+            <section id='home'>
                 <rstf-home></rstf-home>
             </section>
         `;
@@ -97,7 +99,7 @@ export default class RestoFinderApp extends CommonElement {
 
     favorites(): TemplateResult {
         return html`
-            <section id="favorites">
+            <section id='favorites'>
                 <rstf-favorites></rstf-favorites>
             </section>
         `;

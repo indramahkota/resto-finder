@@ -14,14 +14,14 @@ export default class ReviewCard extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class="reviewcard__container">
-                <div class="reviewcard__image__container">
-                    <img class="reviewcard__image" src="${anonymous}" alt="Avatar">
+            <div class='reviewcard__container'>
+                <div class='reviewcard__image__container'>
+                    <img class='reviewcard__image' src='${anonymous}' alt='Avatar'>
                 </div>
-                <div class="reviewcard__content">
-                    <p tabindex="0" class="reviecard__name">${this.data?.name}</p>
-                    <p tabindex="0" class="reviewcard__time">${this.data?.date}</p>
-                    <p tabindex="0" class="reviewcard__message">${this.data?.review}</p>
+                <div class='reviewcard__content'>
+                    <p tabindex='0' class='reviecard__name'>${this.data?.name}</p>
+                    <p tabindex='0' class='reviewcard__time'>${this.data?.date}</p>
+                    <p tabindex='0' class='reviewcard__message'>${this.data?.review}</p>
                 </div>
             </div>
         `;

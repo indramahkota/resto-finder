@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common");
-const TerserPlugin = require("terser-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common');
+const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
-  mode: "production",
+  mode: 'production',
   devtool: false,
   optimization: {
     minimizer: [
@@ -33,13 +33,13 @@ module.exports = merge(common, {
       })
     ],
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
       minSize: 20000,
       maxSize: 70000,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
-      automaticNameDelimiter: "~",
+      automaticNameDelimiter: '~',
       enforceSizeThreshold: 50000,
       cacheGroups: {
         defaultVendors: {
@@ -60,8 +60,8 @@ module.exports = merge(common, {
         test: /\.css|\.s([ca])ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
+          'css-loader',
+          'sass-loader'
         ]
       },
     ]

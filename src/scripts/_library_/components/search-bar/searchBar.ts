@@ -43,17 +43,17 @@ export default class SearchBar extends CommonElement {
     }
 
     firstUpdated(): void {
-        this._searchBar = document.getElementById("search-bar");
+        this._searchBar = document.getElementById('search-bar');
     }
 
     render(): TemplateResult {
         return html`
-            <div id="search-bar" class="search__floater hide">
-                <div class="search__anchor">
-                    <form id="search-form" action="get">
-                        <input aria-label="Search to Find Resto" type="text" class="search__bar" placeholder="Find Resto">
-                        <input class="search__submit" type="submit">
-                        <div class="search__toggler"></div>
+            <div id='search-bar' class='search__floater hide'>
+                <div class='search__anchor'>
+                    <form id='search-form' action='get'>
+                        <input aria-label='Search to Find Resto' type='text' class='search__bar' placeholder='Find Resto'>
+                        <input class='search__submit' type='submit'>
+                        <div class='search__toggler'></div>
                     </form>
                 </div>
             </div>

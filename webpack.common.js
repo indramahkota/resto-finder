@@ -1,13 +1,13 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { resolve } = require("path");
-const { minify } = require("terser");
-// const workboxPlugin = require("workbox-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { resolve } = require('path');
+const { minify } = require('terser');
+// const workboxPlugin = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const webcomponents_vendor_url = "node_modules/@webcomponents/webcomponentsjs";
+const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
   {
     from: resolve(`${webcomponents_vendor_url}/custom-elements-es5-adapter.js`),
@@ -28,10 +28,10 @@ const fileToCopy = [
 ];
 
 module.exports = {
-  entry: resolve(__dirname, "src/index.ts"),
+  entry: resolve(__dirname, 'src/index.ts'),
   output: {
-    path: resolve(__dirname, "dist"),
-    filename: "[name].[contenthash:8].js"
+    path: resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash:8].js'
   },
   module: {
     rules: [
@@ -49,8 +49,8 @@ module.exports = {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
         use: [
           {
-            loader: "file-loader",
-            options: { name: "static/images/[name].[contenthash:8].[ext]" }
+            loader: 'file-loader',
+            options: { name: 'static/images/[name].[contenthash:8].[ext]' }
           }
         ]
       }
@@ -61,22 +61,22 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: resolve(__dirname, "src/index.html"),
+      filename: 'index.html',
+      template: resolve(__dirname, 'src/index.html'),
       minify: { collapseWhitespace: true, removeComments: true }
     }),
     new CopyWebpackPlugin({
       patterns: [
         ...fileToCopy,
         {
-          from: resolve(__dirname, "public/"),
-          to: resolve(__dirname, "dist/")
+          from: resolve(__dirname, 'public/'),
+          to: resolve(__dirname, 'dist/')
         }
       ]
     }),
     /* new workboxPlugin.InjectManifest({
-      swSrc: "./src/service-worker.js",
-      swDest: "sw.js",
+      swSrc: './src/service-worker.js',
+      swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 5000000
     }) */
   ]

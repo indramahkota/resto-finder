@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: center / cover no-repeat url("../../../../assets/images/heros/hero-image.webp");
+  background: center / cover no-repeat url('../../../../assets/images/heros/hero-image.webp');
 
   .hero__placeholder {
     color: rgba(246, 205, 97);
@@ -25,7 +25,7 @@
       text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
 
       .herotext__logo {
-        font-family: "Pacifico", cursive;
+        font-family: 'Pacifico', cursive;
       }
     }
   }
