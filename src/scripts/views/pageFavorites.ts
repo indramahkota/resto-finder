@@ -41,7 +41,7 @@ export default class PageFavorites extends CommonElement {
         return html`
             <section id="favorites-resto">
                 ${
-                    this._restoData !== null ? html`<resto-container title="FAVORITES RESTAURANTS" .data=${this._restoData}></resto-container>` : nothing
+                    this._restoData !== null ? html`<resto-container title="FAVORITES" .data=${this._restoData}></resto-container>` : nothing
                 }
             </section>
         `;
