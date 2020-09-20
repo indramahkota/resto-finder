@@ -28,13 +28,12 @@ export default class PageHome extends CommonElement {
         RemoteDataSource.getAllRestaurant<RestaurantResponse>()
             .then(res => this._restoData = res)
             .catch(err => {
-                const showToast = new CustomEvent(EventType.SHOW_TOAST, {
+                this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                     detail: {
                         message: err
                     },
                     bubbles: true
-                });
-                this.dispatchEvent(showToast);
+                }));
             });
     }
 

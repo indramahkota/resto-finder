@@ -27,7 +27,7 @@ export default class ReviewForm extends CommonElement {
 
     private _onButtonClickHandler(): void {
         this.complete = false;
-        const submitReview = new CustomEvent(EventType.SUBMIT_REVIEW, {
+        this.dispatchEvent(new CustomEvent(EventType.SUBMIT_REVIEW, {
             detail: {
                 message: "Review Sumbitted",
                 data: {
@@ -36,8 +36,7 @@ export default class ReviewForm extends CommonElement {
                 }
             },
             bubbles: true
-        });
-        this.dispatchEvent(submitReview);
+        }));
     }
 
     updated(): void {

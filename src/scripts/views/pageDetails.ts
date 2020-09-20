@@ -32,17 +32,28 @@ export default class PageDetails extends CommonElement {
         if (this.detailsId !== null && this._isFavorite && !details.data) {
             await LocalDatabase.deleteFavorite(this.detailsId);
             this._isFavorite = false;
+            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
+                detail: {
+                    message: "Remove favorites complete"
+                },
+                bubbles: true
+            }));
         } else if (this._restoData?.restaurant !== undefined && !this._isFavorite && details.data) {
             await LocalDatabase.createFavorite(this._restoData.restaurant);
             this._isFavorite = true;
+            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
+                detail: {
+                    message: "Add favorites complete"
+                },
+                bubbles: true
+            }));
         } else {
-            const showToast = new CustomEvent(EventType.SHOW_TOAST, {
+            this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                 detail: {
                     message: 'Something happen when add to favorites'
                 },
                 bubbles: true
-            });
-            this.dispatchEvent(showToast);
+            }));
         }
     }
 
@@ -64,13 +75,12 @@ export default class PageDetails extends CommonElement {
         RemoteDataSource.getRestaurantDetails<RestaurantDetailsResponse>(this.detailsId)
             .then(res => this._restoData = res)
             .catch(err => {
-                const showToast = new CustomEvent(EventType.SHOW_TOAST, {
+                this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                     detail: {
                         message: err
                     },
                     bubbles: true
-                });
-                this.dispatchEvent(showToast);
+                }));
             });
     }
 
