@@ -1,11 +1,10 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty, property } from 'lit-element';
 
+import Repository from '../data/repository';
 import EventType from '../globals/eventType';
-import RemoteDataSource from '../data/sources/remote/remoteDataSource';
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import CommonElement from '../_library_/components/_base_/commonElement';
-import LocalDatabase from '../data/sources/local/database/localDatabase';
 
 import "../_library_/components/details-card/detailsCard";
 import "../_library_/containers/review-container/reviewContainer";
@@ -30,7 +29,7 @@ export default class PageDetails extends CommonElement {
         const details = (event as CustomEvent).detail;
 
         if (this.detailsId !== null && this._isFavorite && !details.data) {
-            await LocalDatabase.deleteFavorite(this.detailsId);
+            await Repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
             this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                 detail: {
@@ -42,7 +41,7 @@ export default class PageDetails extends CommonElement {
             const newFavorite = this._restoData.restaurant;
             newFavorite.isFavorite = true;
             
-            await LocalDatabase.createFavorite(newFavorite);
+            await Repository.createFavorite(newFavorite);
             this._isFavorite = true;
             this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                 detail: {
@@ -69,13 +68,13 @@ export default class PageDetails extends CommonElement {
         if (this.detailsId === null)
             return;
 
-        LocalDatabase.getFavoriteById(this.detailsId)
+        Repository.getFavoriteById(this.detailsId)
             .then(data => {
                 if (data !== undefined)
                     this._isFavorite = true;
             });
 
-        RemoteDataSource.getRestaurantDetails<RestaurantDetailsResponse>(this.detailsId)
+        Repository.getRestaurantDetails(this.detailsId)
             .then(res => this._restoData = res)
             .catch(err => {
                 this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {

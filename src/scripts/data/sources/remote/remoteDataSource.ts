@@ -1,23 +1,33 @@
-import AppConfig from "../../../globals/appConfig";
+export async function http<T>(
+    request: RequestInfo
+): Promise<T> {
+    const response = await fetch(request);
 
-export default class RemoteDataSource {
-    static async getAllRestaurant<T>(): Promise<T> {
-        const response = await fetch(AppConfig.BASE_URL+'list');
-        if (response !== undefined && response.status === 200) {
-            /* #WARNING# Sebaiknya jangan pakai setTimeout() */
-            await new Promise(res => setTimeout(res, 500));
-            return await Promise.resolve(response.json());
-        }
-        return await Promise.reject(new Error(`Code: ${response.status}, ${response.statusText}`));
+    if (!response.ok) {
+        throw new Error(response.statusText);
     }
 
-    static async getRestaurantDetails<T>(id: string): Promise<T> {
-        const response = await fetch(`${AppConfig.BASE_URL}detail/${id}`);
-        if (response !== undefined && response.status === 200) {
-            /* #WARNING# Sebaiknya jangan pakai setTimeout() */
-            await new Promise(res => setTimeout(res, 500));
-            return await Promise.resolve(response.json());
+    return response.json();
+}
+
+export async function get<T>(
+    path: string,
+    args: RequestInit = { method: "get" }
+): Promise<T> {
+    return await http<T>(new Request(path, args));
+}
+
+export async function post<T, B>(
+    path: string,
+    body: B | undefined = undefined,
+    args: RequestInit = {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+            'Content-type': 'application/json',
+            'X-Auth-Token': '12345'
         }
-        return await Promise.reject(new Error(`Code: ${response.status}, ${response.statusText}`));
     }
+): Promise<T> {
+    return await http<T>(new Request(path, args));
 }

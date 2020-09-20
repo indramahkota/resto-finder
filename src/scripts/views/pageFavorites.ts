@@ -1,9 +1,9 @@
 import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
+import Repository from '../data/repository';
 import CommonElement from '../_library_/components/_base_/commonElement';
 import EventType from '../globals/eventType';
-import LocalDatabase from '../data/sources/local/database/localDatabase';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 import "../_library_/components/hero-element/heroElement";
@@ -16,7 +16,7 @@ export default class PageFavorites extends CommonElement {
 
     private _onFavoriteDeletedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
-        await LocalDatabase.deleteFavorite(details.data);
+        await Repository.deleteFavorite(details.data);
         this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
             detail: {
                 message: "Remove favorites complete"
@@ -27,7 +27,7 @@ export default class PageFavorites extends CommonElement {
     }
 
     private _loadFavoriteData() {
-        LocalDatabase.getAllFavorite()
+        Repository.getAllFavorite()
             .then(res => {
                 this._restoData = {
                     error: false,

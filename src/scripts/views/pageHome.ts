@@ -1,7 +1,6 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
-import RemoteDataSource from '../data/sources/remote/remoteDataSource';
 import EventType from '../globals/eventType';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 import CommonElement from '../_library_/components/_base_/commonElement';
@@ -10,6 +9,7 @@ import "../_library_/components/hero-element/heroElement";
 // import "../_library_/components/search-bar/searchBar";
 import "../_library_/containers/resto-container/restoContainer";
 import "../_library_/components/go-top/goTop";
+import Repository from '../data/repository';
 
 @customElement('rstf-home')
 export default class PageHome extends CommonElement {
@@ -25,7 +25,7 @@ export default class PageHome extends CommonElement {
         super.connectedCallback();
         this.addEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
 
-        RemoteDataSource.getAllRestaurant<RestaurantResponse>()
+        Repository.getAllRestaurant()
             .then(res => this._restoData = res)
             .catch(err => {
                 this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
