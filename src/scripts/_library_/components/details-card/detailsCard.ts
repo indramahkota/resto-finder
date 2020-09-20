@@ -64,21 +64,21 @@ export default class DetailsCard extends CommonElement {
                         <h1 tabindex="0" class="menucard__title">MENU</h1>
                         <div class="menucard__content">
                             <div class="food__container">
-                                <h2>FOODS</h2>
+                                <h2 tabindex="0">FOODS</h2>
                                 <div class="food_content">
                                     <ol>
                                         ${
-                                            this.data?.menus.foods.map(res => html`<li><p style="display:flex;">${this.capitalizeWords(res.name)}<span style="margin-left: auto;">$0.00</span></p></li>`)
+                                            this.data?.menus.foods.map(res => html`<li tabindex="0"><p style="display:flex;">${this.capitalizeWords(res.name)}<span style="margin-left: auto;">$0.00</span></p></li>`)
                                         }
                                     </ol>
                                 </div>
                             </div>
                             <div class="drink__container">
-                                <h2>DRINKS</h2>
+                                <h2 tabindex="0">DRINKS</h2>
                                 <div class="drink_content">
                                     <ol>
                                         ${
-                                            this.data?.menus.drinks.map(res => html`<li><p style="display:flex;">${this.capitalizeWords(res.name)}<span style="margin-left: auto;">$0.00</span></p></li>`)
+                                            this.data?.menus.drinks.map(res => html`<li tabindex="0"><p style="display:flex;">${this.capitalizeWords(res.name)}<span style="margin-left: auto;">$0.00</span></p></li>`)
                                         }
                                     </ol>
                                 </div>

@@ -19,9 +19,9 @@ export default class ReviewCard extends CommonElement {
                     <img class="reviewcard__image" src="${anonymous}" alt="Avatar">
                 </div>
                 <div class="reviewcard__content">
-                    <p class="reviecard__name">${this.data?.name}</p>
-                    <p class="reviewcard__time">${this.data?.date}</p>
-                    <p class="reviewcard__message">${this.data?.review}</p>
+                    <p tabindex="0" class="reviecard__name">${this.data?.name}</p>
+                    <p tabindex="0" class="reviewcard__time">${this.data?.date}</p>
+                    <p tabindex="0" class="reviewcard__message">${this.data?.review}</p>
                 </div>
             </div>
         `;
