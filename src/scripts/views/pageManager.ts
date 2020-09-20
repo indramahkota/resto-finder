@@ -1,4 +1,3 @@
-
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -20,6 +19,9 @@ export default class PageManager extends CommonElement {
     private _forceUpdateHandler = () => {
         if(window.location.hash === '#content')
             return;
+        
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         this.forceUpdate = Math.random().toString(36).substring(7);
     }
 
