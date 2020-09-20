@@ -1,18 +1,18 @@
 .toast__container {
-    display: flex;
-    position: fixed;
     width: 100%;
     bottom: 50px;
     z-index: 999;
+    display: flex;
+    position: fixed;
 
     .app__toast {
-        min-width: 250px;
+        width: 80%;
+        max-width: 250px;
         margin: auto;
         color: #fff;
-        border-radius: 2px;
+        border-radius: 8px;
         padding: 16px;
         text-align: center;
-        font-size: 17px;
         background-color: #333;
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
         animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -21,44 +21,36 @@
 
 @-webkit-keyframes fadein {
     from {
-        bottom: 0;
         opacity: 0;
     }
     to {
-        bottom: 30px;
         opacity: 1;
     }
 }
 
 @keyframes fadein {
     from {
-        bottom: 0;
         opacity: 0;
     }
     to {
-        bottom: 30px;
         opacity: 1;
     }
 }
 
 @-webkit-keyframes fadeout {
     from {
-        bottom: 30px;
         opacity: 1;
     }
     to {
-        bottom: 0;
         opacity: 0;
     }
 }
 
 @keyframes fadeout {
     from {
-        bottom: 30px;
         opacity: 1;
     }
     to {
-        bottom: 0;
         opacity: 0;
     }
 }
