@@ -10,6 +10,7 @@
     --color-background-shadow: #{$light-for-background-shadow};
     --color-shimmer-gradient-weak: #{$light-for-gradient-weak};
     --color-shimmer-gradient-strong: #{$light-for-gradient-strong};
+    --color-input-border: #{$light-for-input-border};
 }
 
 .dark {
@@ -22,6 +23,22 @@
     --color-background-shadow: #{$dark-for-background-shadow};
     --color-shimmer-gradient-weak: #{$dark-for-gradient-weak};
     --color-shimmer-gradient-strong: #{$dark-for-gradient-strong};
+    --color-input-border: #{$dark-for-input-border};
+}
+
+::placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
+}
+
+::-ms-input-placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
 }
 
 * {
