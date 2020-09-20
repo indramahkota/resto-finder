@@ -15,7 +15,7 @@ export default class FavoriteButton extends CommonElement {
         return html`
             <button aria-label="Favorite Button" class="favorite__button" @click="${this._onButtonClickHandler}">
                 ${
-                    this.isFavorite ? html`<i style="color: pink;" class="fas fa-heart"></i>` : html`<i class="far fa-heart"></i>`
+                    this.isFavorite ? html`<i style="color: #ff69b4;" class="fas fa-heart"></i>` : html`<i class="far fa-heart"></i>`
                 }
             </button>
         `;
