@@ -1,4 +1,4 @@
-import { html, TemplateResult } from 'lit-html';
+import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
@@ -9,6 +9,7 @@ import CommonElement from '../_base_/commonElement';
 import "../rating-element/ratingElement";
 
 import './resto-card.scss';
+import EventType from '../../../globals/eventType';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
@@ -46,6 +47,16 @@ export default class RestoCard extends CommonElement {
         }, 150);
     }
 
+    private _onButtonClickHandler() {
+        this.dispatchEvent(new CustomEvent(EventType.FAVORITE_DELETED, {
+            detail: {
+                message: "Please delete this favorite",
+                data: this.data?.id
+            },
+            bubbles: true
+        }));
+    }
+
     connectedCallback(): void {
         super.connectedCallback();
         document.addEventListener("scroll", this._lazyLoad, false);
@@ -69,6 +80,12 @@ export default class RestoCard extends CommonElement {
             <div class="card__container">
                 <div class="image__content">
                     <img id="${ifDefined(this.data?.pictureId)}" src="${AppConfig.URL_LOADING_SVG}" alt="${ifDefined(this.data?.name)} Image Name">
+                    ${
+                        this.data?.isFavorite ? html`
+                        <div class="card__delete">
+                            <button @click="${this._onButtonClickHandler}"><i class="fas fa-trash-alt"></i></button>
+                        </div>` : nothing
+                    }
                 </div>
                 <div class="card__content">
                     <p tabindex="0" class="card__city">${this.data?.city.toUpperCase()}</p>

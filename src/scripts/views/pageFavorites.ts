@@ -14,9 +14,19 @@ export default class PageFavorites extends CommonElement {
     @internalProperty()
     private _restoData: RestaurantResponse | null = null;
 
-    connectedCallback(): void {
-        super.connectedCallback();
+    private _onFavoriteDeletedHandler = async (event: Event) => {
+        const details = (event as CustomEvent).detail;
+        await LocalDatabase.deleteFavorite(details.data);
+        this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
+            detail: {
+                message: "Remove favorites complete"
+            },
+            bubbles: true
+        }));
+        this._loadFavoriteData();
+    }
 
+    private _loadFavoriteData() {
         LocalDatabase.getAllFavorite()
             .then(res => {
                 this._restoData = {
@@ -34,6 +44,17 @@ export default class PageFavorites extends CommonElement {
                     bubbles: true
                 }));
             });
+    }
+
+    connectedCallback(): void {
+        super.connectedCallback();
+        this.addEventListener(EventType.FAVORITE_DELETED, this._onFavoriteDeletedHandler, false);
+        this._loadFavoriteData();
+    }
+
+    disconnectedCallback(): void {
+        this.removeEventListener(EventType.FAVORITE_DELETED, this._onFavoriteDeletedHandler, false);
+        super.disconnectedCallback();
     }
 
     render(): TemplateResult {

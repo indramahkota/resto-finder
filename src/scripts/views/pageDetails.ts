@@ -39,7 +39,10 @@ export default class PageDetails extends CommonElement {
                 bubbles: true
             }));
         } else if (this._restoData?.restaurant !== undefined && !this._isFavorite && details.data) {
-            await LocalDatabase.createFavorite(this._restoData.restaurant);
+            const newFavorite = this._restoData.restaurant;
+            newFavorite.isFavorite = true;
+            
+            await LocalDatabase.createFavorite(newFavorite);
             this._isFavorite = true;
             this.dispatchEvent(new CustomEvent(EventType.SHOW_TOAST, {
                 detail: {
