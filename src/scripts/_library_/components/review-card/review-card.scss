@@ -3,8 +3,8 @@
     padding: 10px;
     border-radius: 8px;
     color: var(--color-text);
+    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
     background-color: var(--color-article-background);
-    box-shadow: 0 4px 8px -4px var(--color-background-shadow);
 
     .reviewcard__image {
         width: 48px;
