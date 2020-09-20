@@ -52,7 +52,7 @@ export default class ReviewForm extends CommonElement {
             <div class="reviewform__container">
                 <input aria-label="Type your Name" class="reviewinput__name" placeholder="Type Your Name" type="text" @change="${this._onNameChangeHandler}" .value="${this._name}">
                 <textarea aria-label="Type your Review" class="reviewtextarea__review" placeholder="This Restaurant is awesome!" @change="${this._onReviewChangeHandler}" .value="${this._review}"></textarea>
-                <button class="reviewbutton__submit" @click="${this._onButtonClickHandler}">Send Review</button>
+                <button class="reviewbutton__submit" @click="${this._onButtonClickHandler}">Add Review</button>
             </div>
         `;
     }

@@ -5,4 +5,16 @@
     background-color: var(--color-article-background);
     display: flex;
     flex-direction: column;
+
+    .reviewinput__name {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .reviewtextarea__review {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    /* .reviewbutton__submit {
+        
+    } */
 }
