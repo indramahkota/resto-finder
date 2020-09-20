@@ -5,9 +5,6 @@
     background-color: var(--color-article-background);
 
     .wrapper {
-        width: 0px;
-        animation: fullView 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
         .pic {
             height: 65px;
             width: 65px;
@@ -38,12 +35,6 @@
 
 .w50 {
     width: 50%;
-}
-
-@keyframes fullView {
-    100% {
-        width: 100%;
-    }
 }
 
 @keyframes shimmer {
