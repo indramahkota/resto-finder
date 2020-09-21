@@ -1,4 +1,4 @@
-import { html, TemplateResult } from 'lit-html';
+import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
@@ -60,6 +60,25 @@ export default class DetailsCard extends CommonElement {
                     </div>
                     
                     <p tabindex='0' class='restodetails__description'>${this.data?.description}</p>
+
+                    ${
+                        this.data?.categories !== undefined && this.data?.categories.length > 0 ?
+                            html`
+                                <div class='restodetails__category'>
+                                    <div class="restodetails__category__title">
+                                        <i class="fa fa-list-alt"></i>
+                                        <p tabindex='0'><b>Categories</b></p>
+                                    </div>
+                                    <div class="restodetails__categoryitems">
+                                        ${
+                                            this.data?.categories.map(res => html`
+                                                <div class="category__items"><p tabindex='0'>${res.name}</p></div>
+                                            `)
+                                        }
+                                    </div>
+                                </div>
+                            ` : nothing
+                    }
                     
                     <div class='menucard__container'>
                         <h1 tabindex='0' class='menucard__title'>MENU</h1>
