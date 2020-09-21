@@ -96,6 +96,9 @@ export default class PageDetails extends CommonElement {
         super.connectedCallback();
         this.addEventListener(EventType.FAVORITE_CLICKED, this._addOrRemoveFavoriteHandler, false);
         this.addEventListener(EventType.SUBMIT_REVIEW, this._submitReviewHandler, false);
+
+        document.body.scrollTo({ top: 0 });
+        document.documentElement.scrollTo({ top: 0 });
     }
 
     disconnectedCallback(): void {
