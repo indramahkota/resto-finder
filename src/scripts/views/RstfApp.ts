@@ -29,8 +29,8 @@ export default class RestoFinderApp extends CommonElement {
         if(window.location.hash === '#content')
             return;
         
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        document.body.scrollTo({ top: 0, behavior: 'auto'});
+        document.documentElement.scrollTo({ top: 0, behavior: 'auto'});
         this.forceUpdate = Math.random().toString(36).substring(7);
     }
 
