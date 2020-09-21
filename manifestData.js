@@ -75,6 +75,7 @@ module.exports = {
       destination: join("static", "icons"),
       sizes: "192x192",
       type: "image/png",
+      ios: true,
     },
     {
       src: resolve("public/static/icons/icon_256x256.png"),
