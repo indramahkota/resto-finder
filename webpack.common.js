@@ -3,7 +3,7 @@
 
 const { resolve } = require('path');
 const { minify } = require('terser');
-// const workboxPlugin = require('workbox-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -77,10 +77,10 @@ module.exports = {
       minify: { collapseWhitespace: true, removeComments: true }
     }),
     new WebpackPwaManifest(PWAManifestData),
-    /* new workboxPlugin.InjectManifest({
-      swSrc: './src/service-worker.js',
+    new workboxPlugin.InjectManifest({
+      swSrc: 'src/service-worker.js',
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 5000000
-    }) */
+    })
   ]
 };
