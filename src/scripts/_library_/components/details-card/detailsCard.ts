@@ -1,12 +1,13 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 import CommonElement from '../_base_/commonElement';
 import { RestaurantDetails } from '../../../data/entity/RestaurantEntity';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import Utils from '../../../globals/appUtilities';
+import AppConfig from '../../../globals/appConfig';
 
 import '../rating-element/ratingElement';
-import AppConfig from '../../../globals/appConfig';
 
 import './details-card.scss';
 
@@ -16,7 +17,7 @@ export default class DetailsCard extends CommonElement {
     data: RestaurantDetails | undefined;
 
     firstUpdated(): void {
-        const imageUrl = this.checkImgSrcValue(this.data?.pictureId);
+        const imageUrl = Utils.genImgSrc('medium', this.data?.pictureId);
         if(imageUrl === undefined)
             return;
 
@@ -68,7 +69,7 @@ export default class DetailsCard extends CommonElement {
                                 <div class='food_content'>
                                     <ol>
                                         ${
-                                            this.data?.menus.foods.map(res => html`<li tabindex='0'><p style='display:flex;'>${this.capitalizeWords(res.name)}<span style='margin-left: auto;'>$0.00</span></p></li>`)
+                                            this.data?.menus.foods.map(res => html`<li tabindex='0'><p style='display:flex;'>${Utils.capitalizeWords(res.name)}<span style='margin-left: auto;'>$0.00</span></p></li>`)
                                         }
                                     </ol>
                                 </div>
@@ -78,7 +79,7 @@ export default class DetailsCard extends CommonElement {
                                 <div class='drink_content'>
                                     <ol>
                                         ${
-                                            this.data?.menus.drinks.map(res => html`<li tabindex='0'><p style='display:flex;'>${this.capitalizeWords(res.name)}<span style='margin-left: auto;'>$0.00</span></p></li>`)
+                                            this.data?.menus.drinks.map(res => html`<li tabindex='0'><p style='display:flex;'>${Utils.capitalizeWords(res.name)}<span style='margin-left: auto;'>$0.00</span></p></li>`)
                                         }
                                     </ol>
                                 </div>
@@ -88,16 +89,6 @@ export default class DetailsCard extends CommonElement {
                 </div>
             </div>
         `;
-    }
-
-    checkImgSrcValue(val?: string): string | undefined {
-        return val === undefined ? undefined : `${AppConfig.BASE_IMAGE_URL}medium/${val}`;
-    }
-
-    capitalizeWords(str: string): string {
-        return str.replace(/\w\S*/g, (txt) => {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
     }
 }
 

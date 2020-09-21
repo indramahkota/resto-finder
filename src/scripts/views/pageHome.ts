@@ -16,7 +16,7 @@ export default class PageHome extends CommonElement {
     @internalProperty()
     private _restoData: RestaurantResponse | null = null;
 
-    private _goToRestaurants = () => {
+    private _focusOnTopRestaurantsHandler = () => {
         document.querySelector('app-bar')?.hideHeader();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -32,11 +32,11 @@ export default class PageHome extends CommonElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-        this.addEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
+        this.addEventListener(EventType.LETS_FIND, this._focusOnTopRestaurantsHandler, false);
     }
 
     disconnectedCallback(): void {
-        this.removeEventListener(EventType.LETS_FIND, this._goToRestaurants, false);
+        this.removeEventListener(EventType.LETS_FIND, this._focusOnTopRestaurantsHandler, false);
         super.disconnectedCallback();
     }
 

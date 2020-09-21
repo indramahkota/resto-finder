@@ -25,7 +25,7 @@ export default class PageDetails extends CommonElement {
     @internalProperty()
     private _isFavorite = false;
 
-    private _handleFavorites = async (event: Event) => {
+    private _addOrRemoveFavoriteHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
         if (this.detailsId !== null && this._isFavorite && !details.data) {
             try {
@@ -73,11 +73,11 @@ export default class PageDetails extends CommonElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-        this.addEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
+        this.addEventListener(EventType.FAVORITE_CLICKED, this._addOrRemoveFavoriteHandler, false);
     }
 
     disconnectedCallback(): void {
-        this.removeEventListener(EventType.FAVORITE_CLICKED, this._handleFavorites, false);
+        this.removeEventListener(EventType.FAVORITE_CLICKED, this._addOrRemoveFavoriteHandler, false);
         super.disconnectedCallback();
     }
 

@@ -24,6 +24,11 @@ export default class GoTop extends ScrollEffectElement {
         }
     }
 
+    private _onButtonClickHandler(): void {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
     firstUpdated(): void {
         this._goTopButton = document.getElementById('top-button');
     }
@@ -42,11 +47,6 @@ export default class GoTop extends ScrollEffectElement {
         return html`
             <button id='top-button' class='gotop__button hide' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
         `;
-    }
-
-    private _onButtonClickHandler(): void {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 }
 

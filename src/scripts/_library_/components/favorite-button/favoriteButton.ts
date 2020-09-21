@@ -11,6 +11,11 @@ export default class FavoriteButton extends CommonElement {
     @property({ type: Boolean, attribute: true })
     isFavorite = false;
 
+    private _onButtonClickHandler(): void {
+        this.isFavorite = !this.isFavorite;
+        this._dispatchData({ data: this.isFavorite }, EventType.FAVORITE_CLICKED);
+    }
+
     render(): TemplateResult {
         return html`
             <button aria-label='Favorite Button is favorite ${this.isFavorite}' class='favorite__button' @click='${this._onButtonClickHandler}'>
@@ -19,11 +24,6 @@ export default class FavoriteButton extends CommonElement {
                 }
             </button>
         `;
-    }
-
-    private _onButtonClickHandler(): void {
-        this.isFavorite = !this.isFavorite;
-        this._dispatchData({ data: this.isFavorite }, EventType.FAVORITE_CLICKED);
     }
 }
 

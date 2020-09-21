@@ -5,11 +5,12 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 import AppConfig from '../../../globals/appConfig';
 import { Restaurant } from '../../../data/entity/RestaurantEntity';
 import CommonElement from '../_base_/commonElement';
+import EventType from '../../../globals/eventType';
+import Utils from '../../../globals/appUtilities';
 
 import '../rating-element/ratingElement';
 
 import './resto-card.scss';
-import EventType from '../../../globals/eventType';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
@@ -28,7 +29,7 @@ export default class RestoCard extends CommonElement {
         setTimeout(() => {
             const scrollTop = window.pageYOffset;
             if(image.offsetTop < (window.innerHeight + scrollTop)) {
-                const imageUrl = this.checkImgSrcValue(this.data?.pictureId);
+                const imageUrl = Utils.genImgSrc('small', this.data?.pictureId);
                 if(imageUrl === undefined)
                     return;
 
@@ -89,10 +90,6 @@ export default class RestoCard extends CommonElement {
                 </div>
             </div>
         `;
-    }
-
-    checkImgSrcValue(val?: string): string | undefined {
-        return val === undefined ? undefined : `${AppConfig.BASE_IMAGE_URL}small/${val}`;
     }
 }
 
