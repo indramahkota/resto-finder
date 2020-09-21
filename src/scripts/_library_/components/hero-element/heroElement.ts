@@ -28,12 +28,7 @@ export default class HeroElement extends CommonElement {
 
     private _onButtonClickHandler(): void {
         document.getElementById('find-button')?.blur();
-        this.dispatchEvent(new CustomEvent(EventType.LETS_FIND, {
-            detail: {
-                message: 'Let\'s Find'
-            },
-            bubbles: true
-        }));
+        this._dispatchData({ message: 'Let\'s Find' }, EventType.LETS_FIND);
     }
 }
 

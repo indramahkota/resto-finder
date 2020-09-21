@@ -48,13 +48,7 @@ export default class RestoCard extends CommonElement {
     }
 
     private _onButtonClickHandler() {
-        this.dispatchEvent(new CustomEvent(EventType.FAVORITE_DELETED, {
-            detail: {
-                message: 'Please delete this favorite',
-                data: this.data?.id
-            },
-            bubbles: true
-        }));
+        this._dispatchData({ data: this.data?.id }, EventType.FAVORITE_DELETED);
     }
 
     connectedCallback(): void {
