@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-html';
-import { customElement, internalProperty, property } from 'lit-element';
+import { customElement, internalProperty } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
@@ -8,9 +8,6 @@ import EventType from '../../../globals/eventType';
 
 @customElement('review-form')
 export default class ReviewForm extends CommonElement {
-    @property({ type: Boolean, attribute: true })
-    complete = false;
-
     @internalProperty()
     private _name = '';
 
@@ -26,15 +23,14 @@ export default class ReviewForm extends CommonElement {
     }
 
     private _onButtonClickHandler(): void {
-        this.complete = false;
-        this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
-    }
-
-    updated(): void {
-        if (this.complete === true) {
-            this._name = '';
-            this._review = '';
+        if(this._name === '' || this._review === '') {
+            this._dispatchData({ message: 'There is Empty input, please check again!' }, EventType.SHOW_TOAST);
+            return;
         }
+
+        this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
+        this._name = '';
+        this._review = '';
     }
 
     render(): TemplateResult {

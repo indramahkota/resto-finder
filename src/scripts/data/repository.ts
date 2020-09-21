@@ -1,8 +1,10 @@
 import AppConfig from '../globals/appConfig';
+import { CustomerReview } from './entity/CustomerReviewEntity';
+import { CustomerReviewResponse } from './entity/CustomerReviewResponse';
 import { RestaurantDetails } from './entity/RestaurantEntity';
 import { RestaurantDetailsResponse, RestaurantResponse } from './entity/RestaurantResponse';
 import { Database } from './sources/local/clientDatabase';
-import { get } from './sources/network/networkDataSource';
+import { get, post } from './sources/network/networkDataSource';
 
 export default class Repository {
     static async createFavorite(data: RestaurantDetails): Promise<string> {
@@ -36,5 +38,9 @@ export default class Repository {
 
     static async getRestaurantDetails(id: string): Promise<RestaurantDetailsResponse> {
         return await get<RestaurantDetailsResponse>(`${AppConfig.BASE_URL}detail/${id}`);
+    }
+
+    static async postRestaurantReview(customerReview: CustomerReview): Promise<CustomerReviewResponse> {
+        return await post<CustomerReviewResponse, CustomerReview>(`${AppConfig.BASE_URL}review`, customerReview);
     }
 }

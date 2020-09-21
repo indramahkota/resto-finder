@@ -5,6 +5,7 @@ import Repository from '../data/repository';
 import EventType from '../globals/eventType';
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import CommonElement from '../_library_/components/_base_/commonElement';
+import { CustomerReview } from '../data/entity/CustomerReviewEntity';
 
 import '../_library_/components/details-card/detailsCard';
 import '../_library_/containers/review-container/reviewContainer';
@@ -48,6 +49,26 @@ export default class PageDetails extends CommonElement {
         }
     }
 
+    private _submitReviewHandler = async (event: Event) => {
+        if (this.detailsId === null)
+            return;
+
+        const details = (event as CustomEvent).detail;
+        const customerReview: CustomerReview = {
+            id: this.detailsId,
+            name: details.name,
+            review: details.review,
+            date: Date.now().toString() //Maybe tidak diperhitungkan datanya saat post
+        }
+
+        try {
+            await Repository.postRestaurantReview(customerReview);
+            this._getRestaurantDetailsData(this.detailsId);
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
+    }
+
     private async _getRestaurantDetailsData(id: string | null) {
         if (id === null)
             return;
@@ -74,10 +95,12 @@ export default class PageDetails extends CommonElement {
     connectedCallback(): void {
         super.connectedCallback();
         this.addEventListener(EventType.FAVORITE_CLICKED, this._addOrRemoveFavoriteHandler, false);
+        this.addEventListener(EventType.SUBMIT_REVIEW, this._submitReviewHandler, false);
     }
 
     disconnectedCallback(): void {
         this.removeEventListener(EventType.FAVORITE_CLICKED, this._addOrRemoveFavoriteHandler, false);
+        this.removeEventListener(EventType.SUBMIT_REVIEW, this._submitReviewHandler, false);
         super.disconnectedCallback();
     }
 
