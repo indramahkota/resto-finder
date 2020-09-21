@@ -6,6 +6,8 @@ const { minify } = require('terser');
 // const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const PWAManifestData = require("./manifestData.js");
 
 const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
@@ -60,11 +62,6 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: resolve(__dirname, 'src/index.html'),
-      minify: { collapseWhitespace: true, removeComments: true }
-    }),
     new CopyWebpackPlugin({
       patterns: [
         ...fileToCopy,
@@ -74,6 +71,12 @@ module.exports = {
         }
       ]
     }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: resolve(__dirname, 'src/index.html'),
+      minify: { collapseWhitespace: true, removeComments: true }
+    }),
+    new WebpackPwaManifest(PWAManifestData),
     /* new workboxPlugin.InjectManifest({
       swSrc: './src/service-worker.js',
       swDest: 'sw.js',
