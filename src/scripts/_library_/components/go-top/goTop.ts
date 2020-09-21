@@ -25,8 +25,8 @@ export default class GoTop extends ScrollEffectElement {
     }
 
     private _onButtonClickHandler(): void {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        document.body.scrollTo({ top: 0, behavior: 'smooth'});
+        document.documentElement.scrollTo({ top: 0, behavior: 'smooth'});
     }
 
     firstUpdated(): void {
