@@ -53,32 +53,36 @@
         display: flex;
         flex-direction: column;
 
-        .card__name {
-            text-decoration: none;
+        a {
             color: inherit;
-            padding: 2px 0 8px 0;
-            margin-bottom: 4px;
-        }
+            font: inherit;
+            text-decoration: none;
 
-        .card__city {
-            font-size: 0.8em;
-            padding: 4px 0;
-        }
+            .card__name {
+                color: inherit;
+                padding: 2px 0 8px 0;
+                margin-bottom: 4px;
+            }
 
-        .card__description {
-            padding-top: 4px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
+            .card__city {
+                font-size: 0.8em;
+                padding: 4px 0;
+            }
+
+            .card__description {
+                padding-top: 4px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+            }
         }
     }
 }
 
 @media (hover: hover) {
     .card__container {
-        //box shadow generator https://www.cssmatic.com/box-shadow
         &:hover {
             transition: all 0.3s ease-out;
             -webkit-transform: translateY(-8px);

@@ -83,10 +83,12 @@ export default class RestoCard extends CommonElement {
                     }
                 </div>
                 <div class='card__content'>
-                    <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
-                    <a href='#/details/${this.data?.id}' class='card__name'><b>${this.data?.name}</b></a>
-                    <rating-element tabindex='0' aria-label='Rating ${this.data?.rating}' rating=${ifDefined(this.data?.rating)}></rating-element>
-                    <p tabindex='0' class='card__description'>${this.data?.description}</p> 
+                    <a href='#/details/${this.data?.id}'>
+                        <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
+                        <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>
+                        <rating-element tabindex='0' aria-label='Rating ${this.data?.rating}' rating=${ifDefined(this.data?.rating)}></rating-element>
+                        <p tabindex='0' class='card__description'>${this.data?.description}</p>
+                    </a>
                 </div>
             </div>
         `;
