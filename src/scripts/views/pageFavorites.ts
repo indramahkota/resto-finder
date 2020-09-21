@@ -17,8 +17,8 @@ export default class PageFavorites extends CommonElement {
     private _onFavoriteDeletedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
         try {
-            await Repository.deleteFavorite(details.data);
-            this._dispatchData({ message: 'Remove favorite complete' }, EventType.SHOW_TOAST);
+            await Repository.deleteFavorite(details.id);
+            this._dispatchData({ message: `Complete: Remove ${details.name} from favorite` }, EventType.SHOW_TOAST);
             this._loadFavoriteData();
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);

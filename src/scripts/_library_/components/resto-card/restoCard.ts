@@ -49,7 +49,7 @@ export default class RestoCard extends CommonElement {
     }
 
     private _onButtonClickHandler() {
-        this._dispatchData({ data: this.data?.id }, EventType.FAVORITE_DELETED);
+        this._dispatchData({ id: this.data?.id, name: this.data?.name }, EventType.FAVORITE_DELETED);
     }
 
     connectedCallback(): void {

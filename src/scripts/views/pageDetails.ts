@@ -32,7 +32,7 @@ export default class PageDetails extends CommonElement {
             try {
                 await Repository.deleteFavorite(this.detailsId);
                 this._isFavorite = false;
-                this._dispatchData({ message: 'Remove favorite complete' }, EventType.SHOW_TOAST);
+                this._dispatchData({ message: `Complete: Remove ${this._restoData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
             } catch (error) {
                 this._dispatchData({ message: error }, EventType.SHOW_TOAST);
             }
@@ -40,7 +40,7 @@ export default class PageDetails extends CommonElement {
             try {
                 await Repository.createFavorite(Object.assign(this._restoData.restaurant, { isFavorite: true }));
                 this._isFavorite = true;
-                this._dispatchData({ message: 'Add favorite complete' }, EventType.SHOW_TOAST);
+                this._dispatchData({ message: `Complete: Add ${this._restoData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
             } catch (error) {
                 this._dispatchData({ message: error }, EventType.SHOW_TOAST);
             }
