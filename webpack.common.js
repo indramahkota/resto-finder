@@ -78,7 +78,7 @@ module.exports = {
     }),
     new WebpackPwaManifest(PWAManifestData),
     new workboxPlugin.InjectManifest({
-      swSrc: 'src/service-worker.js',
+      swSrc: resolve(__dirname, 'src/service-worker.js'),
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 5000000
     })
