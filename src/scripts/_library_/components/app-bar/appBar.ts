@@ -3,7 +3,7 @@ import { customElement, property, internalProperty } from 'lit-element';
 
 import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
-import ScrollEffectElement from '../_base_/scrollEffectComponent';
+import ScrollEffectElement from '../_base_/scrollEffectElement';
 
 import './app-bar.scss';
 

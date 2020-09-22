@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
 
-import ScrollEffectElement from '../_base_/scrollEffectComponent';
+import ScrollEffectElement from '../_base_/scrollEffectElement';
 
 import './go-top.scss';
 

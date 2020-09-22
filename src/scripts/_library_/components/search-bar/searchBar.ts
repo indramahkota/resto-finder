@@ -1,30 +1,17 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
 
-import CommonElement from '../_base_/commonElement';
+import ScrollEffectElement from '../_base_/scrollEffectElement';
 
 import './search-bar.scss';
 
 @customElement('search-bar')
-export default class SearchBar extends CommonElement {
+export default class SearchBar extends ScrollEffectElement {
     private _searchBar: HTMLElement | null = null;
-    private _currScrollPos = 0;
     private _ticking = false;
 
-    private _onScrollHandler = () => {
-        this._currScrollPos = window.scrollY;
-
-        if (!this._ticking) {
-            window.requestAnimationFrame(() => {
-                this.hideOrShowsearchBar();
-                this._ticking = false;
-            });
-            this._ticking = true;
-        }
-    }
-
-    hideOrShowsearchBar(): void {
-        if(this._currScrollPos < ((3/4) * window.screen.height)) {
+    private _hideOrShowsearchBar(): void {
+        if (this._currScrollPos < ((3 / 4) * window.screen.height)) {
             this._searchBar?.classList.add('hide');
             return;
         } else {
@@ -32,18 +19,18 @@ export default class SearchBar extends CommonElement {
         }
     }
 
-    connectedCallback(): void {
-        super.connectedCallback();
-        window.addEventListener('scroll', this._onScrollHandler, false);
-    }
-
-    disconnectedCallback(): void {
-        window.removeEventListener('scroll', this._onScrollHandler, false);
-        super.disconnectedCallback();
-    }
-
     firstUpdated(): void {
         this._searchBar = document.getElementById('search-bar');
+    }
+
+    updated(): void {
+        if (!this._ticking) {
+            window.requestAnimationFrame(() => {
+                this._hideOrShowsearchBar();
+                this._ticking = false;
+            });
+            this._ticking = true;
+        }
     }
 
     render(): TemplateResult {
