@@ -45,6 +45,4 @@ export default class AppConfig {
     ];
 
     static readonly SUPPORT_DARK_MODE: boolean = true;
-
-    static readonly JSON_RESTO_DATA_URL: string = './static/data/restodata.json';
 }
