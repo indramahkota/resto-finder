@@ -157,7 +157,7 @@ export default class AppBar extends ScrollEffectElement {
                     <span class='humburger'></span>
                 </button>
 
-                <nav class='header__drawer ${this._isOpen ? 'change' : ''}'>
+                <nav class='header__nav ${this._isOpen ? 'change' : ''}'>
                     <ul>
                         ${this.navData.map(nav =>
                                 html`

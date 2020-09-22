@@ -173,7 +173,7 @@
     }
   }
 
-  .header__drawer {
+  .header__nav {
     top: 60px;
     right: -300px;
     min-width: 300px;
@@ -245,7 +245,7 @@
       margin-left: 0;
     }
 
-    .header__drawer {
+    .header__nav {
       position: static;
       min-width: auto;
       min-height: auto;
@@ -272,7 +272,7 @@
 
 @media (hover: hover) {
   .header {
-    .header__drawer {
+    .header__nav {
       ul {
         li {
           a {
