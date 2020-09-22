@@ -7,7 +7,7 @@ const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const PWAManifestData = require("./manifestData.js");
+const PWAManifestData = require("./manifest/manifestData.js");
 
 const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
