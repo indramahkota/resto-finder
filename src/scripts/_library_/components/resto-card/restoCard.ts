@@ -25,27 +25,24 @@ export default class RestoCard extends CommonElement {
         
         const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
 
-        /* #WARNING# Sebaiknya jangan pakai setTimeout() */
-        setTimeout(() => {
-            const scrollTop = window.pageYOffset;
-            if(image.offsetTop < (window.innerHeight + scrollTop)) {
-                const imageUrl = Utils.genImgSrc('small', this.data?.pictureId);
-                if(imageUrl === undefined)
-                    return;
+        const scrollTop = window.pageYOffset;
+        if(image.offsetTop < (window.innerHeight + scrollTop)) {
+            const imageUrl = Utils.genImgSrc('small', this.data?.pictureId);
+            if(imageUrl === undefined)
+                return;
 
-                const imageHelper = new Image();
-                imageHelper.src = imageUrl;
-                imageHelper.onload = () => {
-                    image.classList.add('complete');
-                    image.src = imageHelper.src;
-                    this._imgLoaded = true;
+            const imageHelper = new Image();
+            imageHelper.src = imageUrl;
+            imageHelper.onload = () => {
+                image.classList.add('complete');
+                image.src = imageHelper.src;
+                this._imgLoaded = true;
 
-                    document.removeEventListener('scroll', this._lazyLoad, false);
-                    window.removeEventListener('resize', this._lazyLoad, false);
-                    window.removeEventListener('orientationChange', this._lazyLoad, false);
-                }
+                document.removeEventListener('scroll', this._lazyLoad, false);
+                window.removeEventListener('resize', this._lazyLoad, false);
+                window.removeEventListener('orientationChange', this._lazyLoad, false);
             }
-        }, 150);
+        }
     }
 
     private _onButtonClickHandler() {
