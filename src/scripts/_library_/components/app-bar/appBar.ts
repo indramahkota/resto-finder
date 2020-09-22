@@ -50,7 +50,7 @@ export default class AppBar extends ScrollEffectElement {
 
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
-        this._iconNavFocus = !this._iconNavFocus;
+        this._iconNavFocus = true;
         if (this._isOpen)
             this._onHamburgerClickHandler();
     }
