@@ -22,7 +22,7 @@ export async function post<T, B>(
     body: B | undefined = undefined,
     args: RequestInit = {
         method: 'post',
-        body: JSON.stringify(body),
+        body: typeof body === 'object' ? JSON.stringify(body) : undefined,
         headers: {
             'Content-type': 'application/json',
             'X-Auth-Token': '12345'
