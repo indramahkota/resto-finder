@@ -19,8 +19,8 @@ window.addEventListener('DOMContentLoaded', () => {
     `, document.body);
 });
 
-window.addEventListener("load", () => {
-    registerSw();
-    requestNotificationPermission();
-    getNotificationSubscription();
+window.addEventListener("load", async () => {
+    await registerSw();
+    await requestNotificationPermission();
+    await getNotificationSubscription();
 });
