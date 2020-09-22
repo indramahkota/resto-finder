@@ -15,10 +15,8 @@ export async function requestNotificationPermission(): Promise<void> {
             const result = await Notification.requestPermission();
             if (result === 'denied') {
                 console.log('Fitur notifikasi tidak diizinkan.');
-                return;
             } else if (result === 'default') {
                 console.error('Pengguna menutup kotak dialog permintaan izin.');
-                return;
             }
         } catch (error) {
             console.log(error, 'PushManager tidak didukung browser ini.');
