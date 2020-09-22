@@ -27,7 +27,7 @@ export default class RestoCard extends CommonElement {
 
         const scrollTop = window.pageYOffset;
         if(image.offsetTop < (window.innerHeight + scrollTop)) {
-            const imageUrl = Utils.genImgSrc('small', this.data?.pictureId);
+            const imageUrl = Utils.genImgSrc(this.data?.pictureId, 'small');
             if(imageUrl === undefined)
                 return;
 

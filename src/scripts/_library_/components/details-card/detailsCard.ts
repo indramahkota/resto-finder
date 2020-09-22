@@ -17,7 +17,7 @@ export default class DetailsCard extends CommonElement {
     data: RestaurantDetails | undefined;
 
     firstUpdated(): void {
-        const imageUrl = Utils.genImgSrc('medium', this.data?.pictureId);
+        const imageUrl = Utils.genImgSrc(this.data?.pictureId, 'medium');
         if(imageUrl === undefined)
             return;
 
