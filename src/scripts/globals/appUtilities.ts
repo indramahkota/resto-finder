@@ -9,7 +9,7 @@ export default class Utils {
         return window.localStorage.getItem(key);
     }
 
-    static genImgSrc(size: string, imageId?: string): string | undefined {
+    static genImgSrc(imageId: string | undefined, size: string): string | undefined {
         return imageId === undefined ? undefined : `${AppConfig.BASE_IMAGE_URL}${size}/${imageId}`;
     }
 
