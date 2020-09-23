@@ -23,7 +23,7 @@ export default class ReviewForm extends CommonElement {
     }
 
     private _onButtonClickHandler(): void {
-        if(this._name === '' || this._review === '') {
+        if(this._name.trim() === '' || this._review.trim() === '') {
             this._dispatchData({ message: 'There is Empty input, please check again!' }, EventType.SHOW_TOAST);
             return;
         }
