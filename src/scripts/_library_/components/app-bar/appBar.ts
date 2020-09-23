@@ -124,14 +124,18 @@ export default class AppBar extends ScrollEffectElement {
         this._header = document.getElementById('rstf-header');
     }
 
-    updated(): void {
-        if (!this._ticking) {
-            window.requestAnimationFrame(() => {
-                this._hideOrShowHeader();
-                this._ticking = false;
-            });
-            this._ticking = true;
-        }
+    updated(changedProperties: Map<string | number | symbol, unknown>): void {
+        changedProperties.forEach((_oldValue, propName) => {
+            if(propName === '_currScrollPos' || propName === '_lastScrollPos') {
+                if (!this._ticking) {
+                    window.requestAnimationFrame(() => {
+                        this._hideOrShowHeader();
+                        this._ticking = false;
+                    });
+                    this._ticking = true;
+                }
+            }
+        });
     }
 
     render(): TemplateResult {

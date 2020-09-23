@@ -23,14 +23,18 @@ export default class SearchBar extends ScrollEffectElement {
         this._searchBar = document.getElementById('search-bar');
     }
 
-    updated(): void {
-        if (!this._ticking) {
-            window.requestAnimationFrame(() => {
-                this._hideOrShowsearchBar();
-                this._ticking = false;
-            });
-            this._ticking = true;
-        }
+    updated(changedProperties: Map<string | number | symbol, unknown>): void {
+        changedProperties.forEach((_oldValue, propName) => {
+            if(propName === '_currScrollPos' || propName === '_lastScrollPos') {
+                if (!this._ticking) {
+                    window.requestAnimationFrame(() => {
+                        this._hideOrShowsearchBar();
+                        this._ticking = false;
+                    });
+                    this._ticking = true;
+                }
+            }
+        });
     }
 
     render(): TemplateResult {

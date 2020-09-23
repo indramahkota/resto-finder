@@ -33,14 +33,18 @@ export default class GoTop extends ScrollEffectElement {
         this._goTopButton = document.getElementById('top-button');
     }
 
-    updated(): void {
-        if (!this._ticking) {
-            window.requestAnimationFrame(() => {
-                this._hideOrShowsearchBar();
-                this._ticking = false;
-            });
-            this._ticking = true;
-        }
+    updated(changedProperties: Map<string | number | symbol, unknown>): void {
+        changedProperties.forEach((_oldValue, propName) => {
+            if(propName === '_currScrollPos' || propName === '_lastScrollPos') {
+                if (!this._ticking) {
+                    window.requestAnimationFrame(() => {
+                        this._hideOrShowsearchBar();
+                        this._ticking = false;
+                    });
+                    this._ticking = true;
+                }
+            }
+        });
     }
 
     render(): TemplateResult {
