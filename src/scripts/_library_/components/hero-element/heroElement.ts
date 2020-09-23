@@ -15,6 +15,11 @@ export default class HeroElement extends CommonElement {
     @property({ type: String, attribute: true })
     name = AppConfig.APP_NAME;
 
+    private _onButtonClickHandler(): void {
+        document.getElementById('find-button')?.blur();
+        this._dispatchData({ message: 'Let\'s Find' }, EventType.LETS_FIND);
+    }
+
     render(): TemplateResult {
         return html`
             <div class='hero__background'>
@@ -24,11 +29,6 @@ export default class HeroElement extends CommonElement {
                 <button id='find-button' aria-label="Let's Find Button" class='hero__button' @click='${this._onButtonClickHandler}'>Let's Find Resto</button>
             </div>
         `;
-    }
-
-    private _onButtonClickHandler(): void {
-        document.getElementById('find-button')?.blur();
-        this._dispatchData({ message: 'Let\'s Find' }, EventType.LETS_FIND);
     }
 }
 
