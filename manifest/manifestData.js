@@ -6,7 +6,7 @@ const { resolve, join } = require('path');
 module.exports = {
   name: "Resto Finder",
   short_name: "Resto Finder",
-  description: "Resto Finder - Menyediakan berbagai informasi restoran terbaik disekitar anda",
+  description: "Resto Finder - Resto Finder - Provides various information on the best restaurants around you",
   gcm_sender_id: "792532488211",
   start_url: "/",
   display: "standalone",
