@@ -22,42 +22,41 @@ export default class AppBar extends ScrollEffectElement {
     private _iconNavFocus = false;
 
     @internalProperty()
-    private _darkMode = AppConfig.SUPPORT_DARK_MODE;
+    private _isDrawerOpen = false;
 
     @internalProperty()
     private _isLight = true;
 
     @internalProperty()
-    private _isOpen = false;
+    private _darkMode = AppConfig.SUPPORT_DARK_MODE;
 
     private _header: HTMLElement | null = null;
     private _ticking = false;
 
     private _hideOrShowHeader(): void {
-        if(this._currScrollPos < 120) {
-            this._header?.classList.remove('hide');
+        if (this._currScrollPos < 120) {
+            this.showHeader();
             return;
         }
-
         const hideHeader = this._currScrollPos - this._lastScrollPos;
-        if(hideHeader > 0) {
-            this._isOpen = false;
-            this._header?.classList.add('hide');
-        } else if(hideHeader < -10){
-            this._header?.classList.remove('hide');
+        if (hideHeader > 0) {
+            this._isDrawerOpen = false;
+            this.hideHeader();
+        } else if (hideHeader < -10) {
+            this.showHeader();
         }
     }
 
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
         this._iconNavFocus = true;
-        if (this._isOpen)
+        if (this._isDrawerOpen)
             this._onHamburgerClickHandler();
     }
 
     private _onHamburgerClickHandler() {
-        this._isOpen = !this._isOpen;
-        if (this._isOpen) {
+        this._isDrawerOpen = !this._isDrawerOpen;
+        if (this._isDrawerOpen) {
             Utils.setLCS(AppConfig.LCS_DRAWER, 'open');
         } else {
             Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
@@ -70,7 +69,7 @@ export default class AppBar extends ScrollEffectElement {
         this.dataShouldUpdate(hash);
 
         this._iconNavFocus = false;
-        if (this._isOpen)
+        if (this._isDrawerOpen)
             this._onHamburgerClickHandler();
     }
 
@@ -92,6 +91,10 @@ export default class AppBar extends ScrollEffectElement {
         this._header?.classList.add('hide');
     }
 
+    showHeader(): void {
+        this._header?.classList.remove('hide');
+    }
+
     dataShouldUpdate(hash: string): void {
         this.navData = this.navData.map(nav => {
             if (nav.url !== hash) {
@@ -107,12 +110,10 @@ export default class AppBar extends ScrollEffectElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-        if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
+        if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark')
             this._isLight = false;
-        }
-        if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open') {
-            this._isOpen = true;
-        }
+        if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open')
+            this._isDrawerOpen = true;
         if (window.location.hash === this.iconNavData.url)
             this._iconNavFocus = true;
         if (window.location.hash !== '')
@@ -153,11 +154,11 @@ export default class AppBar extends ScrollEffectElement {
                     ` : nothing
                 }
 
-                <button aria-label='Toggle Menu Button' class='header__button ${this._isOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
+                <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
                     <span class='humburger'></span>
                 </button>
 
-                <nav class='header__nav ${this._isOpen ? 'change' : ''}'>
+                <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
                     <ul>
                         ${this.navData.map(nav =>
                                 html`
