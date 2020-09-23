@@ -67,23 +67,23 @@ export default class RestoCard extends CommonElement {
     render(): TemplateResult {
         return html`
             <div class='card__container'>
-                <div class='image__content'>
-                    <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)}'>
-                    ${
-                        this.data?.isFavorite ? html`
-                        <div class='card__delete'>
-                            <button @click='${this._onButtonClickHandler}'><i class='fas fa-trash-alt'></i></button>
-                        </div>` : nothing
-                    }
-                </div>
-                <div class='card__content'>
-                    <a href='#/details/${this.data?.id}'>
+                <a href='#/details/${this.data?.id}'>
+                    <div class='image__content'>
+                        <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)}'>
+                    </div>
+                    <div class='card__content'>
                         <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
                         <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>
                         <rating-element tabindex='0' aria-label='Rating ${this.data?.rating}' rating=${ifDefined(this.data?.rating)}></rating-element>
                         <p tabindex='0' class='card__description'>${this.data?.description}</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
+                ${
+                    this.data?.isFavorite ? html`
+                    <div class='card__delete'>
+                        <button @click='${this._onButtonClickHandler}'><i class='fas fa-trash-alt'></i></button>
+                    </div>` : nothing
+                }
             </div>
         `;
     }
