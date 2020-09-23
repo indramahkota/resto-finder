@@ -41,6 +41,7 @@ export default class AppBar extends ScrollEffectElement {
         const hideHeader = this._currScrollPos - this._lastScrollPos;
         if (hideHeader > 0) {
             this._isDrawerOpen = false;
+            Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
             this.hideHeader();
         } else if (hideHeader < -10) {
             this.showHeader();
