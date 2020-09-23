@@ -11,7 +11,7 @@ const isLocalhost = Boolean(
 export async function register(swUrl: string): Promise<void> {
     if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl);
+        await checkValidServiceWorker(swUrl);
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
@@ -28,7 +28,7 @@ export async function register(swUrl: string): Promise<void> {
         }
     } else {
         // Is not localhost. Just register service worker
-        registerValidSW(swUrl);
+        await registerValidSW(swUrl);
     }
 }
 
@@ -37,7 +37,7 @@ export async function unregister(): Promise<void> {
         try {
             const registration = await navigator.serviceWorker.ready;
             if (registration !== undefined) {
-                registration.unregister();
+                await registration.unregister();
             }
         } catch (error) {
             console.error(error.message);
