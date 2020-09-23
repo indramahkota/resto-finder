@@ -2,11 +2,9 @@ export async function http<T>(
     request: RequestInfo
 ): Promise<T> {
     const response = await fetch(request);
-
     if (!response.ok) {
         throw new Error(response.statusText);
     }
-
     return response.json();
 }
 

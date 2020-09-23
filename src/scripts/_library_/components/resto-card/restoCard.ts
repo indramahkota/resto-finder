@@ -20,17 +20,14 @@ export default class RestoCard extends CommonElement {
     private _imgLoaded = false;
 
     private _lazyLoad = () => {
-        if(this.data === undefined || this._imgLoaded)
+        const pictId = this.data?.pictureId;
+        if (this.data === undefined || pictId === undefined || this._imgLoaded)
             return;
         
-        const image = <HTMLImageElement>document.getElementById(this.data.pictureId);
-
+        const image = <HTMLImageElement>document.getElementById(pictId);
         const scrollTop = window.pageYOffset;
         if(image.offsetTop < (window.innerHeight + scrollTop)) {
-            const imageUrl = Utils.genImgSrc(this.data?.pictureId, 'small');
-            if(imageUrl === undefined)
-                return;
-
+            const imageUrl = Utils.genImgSrc(pictId, 'small');
             const imageHelper = new Image();
             imageHelper.src = imageUrl;
             imageHelper.onload = () => {
@@ -71,7 +68,7 @@ export default class RestoCard extends CommonElement {
         return html`
             <div class='card__container'>
                 <div class='image__content'>
-                    <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)} Image Name'>
+                    <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)}'>
                     ${
                         this.data?.isFavorite ? html`
                         <div class='card__delete'>

@@ -34,7 +34,7 @@ export default class RestoContainer extends CommonElement {
                             </div>
                         ` : html`
                             <div class='resto__empty'>
-                                <img src='${notFound}'>
+                                <img src='${notFound}' alt="No data found">
                                 <p>No data found</p>
                             </div>
                         `

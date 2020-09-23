@@ -63,7 +63,7 @@ export default class PageDetails extends CommonElement {
 
         try {
             await Repository.postRestaurantReview(customerReview);
-            this._getRestaurantDetailsData(this.detailsId);
+            await this._getRestaurantDetailsData(this.detailsId);
             this._dispatchData({ message: 'Submit review success' }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
