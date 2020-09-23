@@ -9,8 +9,8 @@ export default class Utils {
         return window.localStorage.getItem(key);
     }
 
-    static genImgSrc(imageId: string | undefined, size: string): string | undefined {
-        return imageId === undefined ? undefined : `${AppConfig.BASE_IMAGE_URL}${size}/${imageId}`;
+    static genImgSrc(imageId: string, size: string): string {
+        return `${AppConfig.BASE_IMAGE_URL}${size}/${imageId}`;
     }
 
     static capitalizeWords(str: string): string {

@@ -17,16 +17,15 @@ export default class DetailsCard extends CommonElement {
     data: RestaurantDetails | undefined;
 
     firstUpdated(): void {
-        const imageUrl = Utils.genImgSrc(this.data?.pictureId, 'medium');
-        if(imageUrl === undefined)
+        const pictId = this.data?.pictureId;
+        if (pictId === undefined)
             return;
 
+        const image = <HTMLImageElement>document.getElementById(pictId);
+        const imageUrl = Utils.genImgSrc(pictId, 'medium');
         const imageHelper = new Image();
         imageHelper.src = imageUrl;
         imageHelper.onload = () => {
-            if(this.data?.pictureId === undefined)
-                return;
-            const image = <HTMLImageElement>document.getElementById(this.data?.pictureId);
             image.classList.add('complete');
             image.src = imageHelper.src;
         }

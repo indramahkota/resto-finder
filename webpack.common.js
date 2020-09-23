@@ -3,11 +3,9 @@
 
 const { resolve } = require('path');
 const { minify } = require('terser');
-const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const PWAManifestData = require("./manifest/manifestData.js");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
@@ -76,11 +74,6 @@ module.exports = {
       template: resolve(__dirname, 'src/index.html'),
       minify: { collapseWhitespace: true, removeComments: true }
     }),
-    new WebpackPwaManifest(PWAManifestData),
-    new workboxPlugin.InjectManifest({
-      swSrc: resolve(__dirname, 'src/service-worker.js'),
-      swDest: 'sw.js',
-      maximumFileSizeToCacheInBytes: 5000000
-    })
+    new CleanWebpackPlugin()
   ]
 };
