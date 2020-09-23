@@ -3,6 +3,9 @@ import { getNotificationSubscription, requestNotificationPermission } from "./sc
 
 window.addEventListener("load", async () => {
     await register('./sw.js');
+});
+
+window.addEventListener('DOMContentLoaded', async () => {
     await requestNotificationPermission();
     await getNotificationSubscription();
 });

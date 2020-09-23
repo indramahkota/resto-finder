@@ -25,11 +25,11 @@ export async function requestNotificationPermission(): Promise<void> {
 }
 
 const arrayBufferToArrayNumber = (arrBuffer: ArrayBuffer | null): number[] | null => {
-    if (arrBuffer !== null) {
-        const uint8Arr = new Uint8Array(arrBuffer);
-        return Array.from(uint8Arr);
+    if (arrBuffer === null) {
+        return null;
     }
-    return null;
+    const uint8Arr = new Uint8Array(arrBuffer);
+    return Array.from(uint8Arr);
 }
 
 export async function getNotificationSubscription(): Promise<void> {
