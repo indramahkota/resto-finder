@@ -4,7 +4,7 @@
 const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const development = require('./webpack.dev');
-const pwaPlugin = require('./pwa/pwa-plugin.js');
+const pwaPlugin = require('./pwa/pwa-plugin');
 
 module.exports = merge(development, {
     entry: {
