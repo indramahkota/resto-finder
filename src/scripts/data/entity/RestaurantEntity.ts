@@ -5,7 +5,7 @@ export interface Restaurant {
     pictureId: string;
     city: string;
     rating: number;
-    isFavorite: boolean
+    isFavorite: boolean;
 }
 
 export interface RestaurantDetails extends Restaurant {
