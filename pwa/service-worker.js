@@ -91,7 +91,7 @@ self.addEventListener("push", e => {
 
     let options = {
         body: body,
-        icon: "static/icons/icon_144x144.png",
+        icon: "notif_icon.png",
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),
