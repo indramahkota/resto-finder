@@ -11,7 +11,11 @@
         text-decoration: none;
 
         .image__content {
+            display: flex;
+
             img {
+                margin: auto;
+                
                 &.complete {
                     width: 100%;
                     height: 200px;
