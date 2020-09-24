@@ -13,7 +13,7 @@ import './details-card.scss';
 
 @customElement('details-card')
 export default class DetailsCard extends CommonElement {
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     data: RestaurantDetails | undefined;
 
     firstUpdated(): void {
@@ -41,14 +41,14 @@ export default class DetailsCard extends CommonElement {
                     <h1 tabindex='0'>RESTAURANT DETAILS</h1>
                     <div class='restodetails__part'>
                         <div class='restodetails__part1'>
-                            <table style='width:100%'>
+                            <table>
                                 <tr>
-                                    <td class='td__icon'><i class='fa fa-store'></i></td>
-                                    <td><p tabindex='0' class='restodetails__name'><b>${this.data?.name}</b></p></td>
+                                    <td><i class='fa fa-store'></i></td>
+                                    <td><p tabindex='0'><b>${this.data?.name}</b></p></td>
                                 </tr>
                                 <tr>
-                                    <td  class='td__icon'><i class='fa fa-map-marker-alt'></i></td>
-                                    <td><p tabindex='0' class='restodetails__address'>${this.data?.address}. ${this.data?.city}</p></td>
+                                    <td><i class='fa fa-map-marker-alt'></i></td>
+                                    <td><p tabindex='0'>${this.data?.address}. ${this.data?.city}</p></td>
                                 </tr>
                             </table>
                         </div>
