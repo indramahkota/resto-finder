@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: center / cover no-repeat url("../../../../assets/images/heros/hero-image.webp");
+  background: center / cover no-repeat url("../../../../assets/images/heros/hero-image-small.webp");
 
   .hero__placeholder {
     -webkit-transform: translateY(-60px);
@@ -54,6 +54,8 @@
 
 @media screen and (min-width: 768px) {
   .hero__background {
+    background: center / cover no-repeat url("../../../../assets/images/heros/hero-image-large.webp");
+
     .hero__placeholder {
       h1 {
         font-size: 4em;
