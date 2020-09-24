@@ -13,7 +13,10 @@ export default class FavoriteButton extends CommonElement {
 
     private _onButtonClickHandler(): void {
         this.isFavorite = !this.isFavorite;
-        this._dispatchData({ data: this.isFavorite }, EventType.FAVORITE_CLICKED);
+        if(this.isFavorite)
+            this._dispatchData({}, EventType.ADD_FAVORITE);
+        else
+            this._dispatchData({}, EventType.DELETE_FAVORITE);
     }
 
     render(): TemplateResult {
