@@ -12,10 +12,10 @@ import './resto-container.scss';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     title = 'RESTAURANTS';
 
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     data: RestaurantResponse | null = null;
 
     render(): TemplateResult {

@@ -8,7 +8,7 @@ import './favorite-button.scss';
 
 @customElement('favorite-button')
 export default class FavoriteButton extends CommonElement {
-    @property({ type: Boolean, attribute: true })
+    @property({ type: Boolean })
     isFavorite = false;
 
     private _onButtonClickHandler(): void {

@@ -8,7 +8,7 @@ import './foot-bar.scss';
 
 @customElement('foot-bar')
 export default class FootBar extends CommonElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     text = AppConfig.TEXT_FOOTER;
 
     render(): TemplateResult {

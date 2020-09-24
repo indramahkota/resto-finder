@@ -9,10 +9,10 @@ import './hero-element.scss';
 
 @customElement('hero-element')
 export default class HeroElement extends CommonElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     greeting = AppConfig.TEXT_GREETING;
 
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     name = AppConfig.APP_NAME;
 
     private _onButtonClickHandler(): void {

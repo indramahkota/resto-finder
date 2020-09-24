@@ -10,10 +10,10 @@ import './review-container.scss';
 
 @customElement('review-container')
 export default class ReviewContainer extends CommonElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     title = 'LATEST REVIEWS';
 
-    @property({ type: Array, attribute: true })
+    @property({ type: Array })
     data?: ConsumerReview[] | null = null;
 
     render(): TemplateResult {

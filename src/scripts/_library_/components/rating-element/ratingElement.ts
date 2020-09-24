@@ -7,7 +7,7 @@ import './rating-element.scss';
 
 @customElement('rating-element')
 export default class RatingElement extends CommonElement {
-    @property({ type: Number, attribute: true })
+    @property({ type: Number })
     rating = 0;
     
     render(): TemplateResult {

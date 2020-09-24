@@ -14,7 +14,7 @@ import './resto-card.scss';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     data: Restaurant | undefined;
 
     private _imgLoaded = false;
@@ -34,10 +34,6 @@ export default class RestoCard extends CommonElement {
                 image.classList.add('complete');
                 image.src = imageHelper.src;
                 this._imgLoaded = true;
-
-                document.removeEventListener('scroll', this._lazyLoad, false);
-                window.removeEventListener('resize', this._lazyLoad, false);
-                window.removeEventListener('orientationChange', this._lazyLoad, false);
             }
         }
     }

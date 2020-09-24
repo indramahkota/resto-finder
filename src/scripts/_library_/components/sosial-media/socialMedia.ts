@@ -8,7 +8,7 @@ import './social-media.scss';
 
 @customElement('social-media')
 export default class SocialMedia extends CommonElement {
-    @property({ type: Array, attribute: true })
+    @property({ type: Array })
     data = AppConfig.APP_SOCIAL_MEDIA;
 
     render(): TemplateResult {

@@ -9,14 +9,14 @@ import './review-card.scss';
 
 @customElement('review-card')
 export default class ReviewCard extends CommonElement {
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     data: ConsumerReview | null = null;
 
     render(): TemplateResult {
         return html`
             <div class='reviewcard__container'>
                 <div class='reviewcard__image__container'>
-                    <img class='reviewcard__image' src='${anonymous}' alt='Avatar'>
+                    <img class='reviewcard__image' src='${anonymous}' alt='Reviewer Avatar'>
                 </div>
                 <div class='reviewcard__content'>
                     <p tabindex='0' class='reviecard__name'>${this.data?.name}</p>

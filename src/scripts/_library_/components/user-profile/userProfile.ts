@@ -10,10 +10,10 @@ import './user-profile.scss';
 
 @customElement('user-profile')
 export default class UserProfile extends CommonElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     title = 'PROFILE';
 
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     data = AppConfig.STATIC_USER;
 
     render(): TemplateResult {
