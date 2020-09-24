@@ -3,16 +3,19 @@
 }
 
 .hero__background {
-  display: flex;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: center / cover no-repeat url('../../../../assets/images/heros/hero-image.webp');
+  background: center / cover no-repeat url("../../../../assets/images/heros/hero-image.webp");
 
   .hero__placeholder {
+    -webkit-transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    transform: translateY(-60px);
     color: rgb(246, 205, 97);
     font-weight: bold;
     text-align: center;
@@ -25,12 +28,15 @@
       text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
 
       .herotext__logo {
-        font-family: 'Pacifico', cursive;
+        font-family: "Pacifico", cursive;
       }
     }
   }
 
   .hero__button {
+    -webkit-transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    transform: translateY(-60px);
     background-color: #2b6ca1;
     border: solid 2px #2b6ca1;
     color: white;
