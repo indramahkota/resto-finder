@@ -9,13 +9,13 @@ import './app-bar.scss';
 
 @customElement('app-bar')
 export default class AppBar extends ScrollEffectElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     title = AppConfig.APP_NAME;
 
-    @property({ type: Array, attribute: true })
+    @property({ type: Array })
     navData = AppConfig.APP_NAVIGATION;
 
-    @property({ type: Object, attribute: true })
+    @property({ type: Object })
     iconNavData = AppConfig.APP_ICON_NAVIGATION;
 
     @internalProperty()
@@ -51,8 +51,9 @@ export default class AppBar extends ScrollEffectElement {
     private _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
         this._iconNavFocus = true;
-        if (this._isDrawerOpen)
+        if (this._isDrawerOpen) {
             this._onHamburgerClickHandler();
+        }
     }
 
     private _onHamburgerClickHandler() {
@@ -70,8 +71,9 @@ export default class AppBar extends ScrollEffectElement {
         this.dataShouldUpdate(hash);
 
         this._iconNavFocus = false;
-        if (this._isDrawerOpen)
+        if (this._isDrawerOpen) {
             this._onHamburgerClickHandler();
+        }
     }
 
     private _onSwitchChangeHandler(event: Event) {
@@ -98,15 +100,9 @@ export default class AppBar extends ScrollEffectElement {
 
     dataShouldUpdate(hash: string): void {
         this.navData = this.navData.map(nav => {
-            if (nav.url !== hash) {
-                nav['isActive'] = false;
-                return nav;
-            }
-            else {
-                nav['isActive'] = true;
-                return nav;
-            }
-        })
+            nav.isActive = nav.url === hash || false;
+            return nav;
+        });
     }
 
     connectedCallback(): void {
@@ -127,14 +123,13 @@ export default class AppBar extends ScrollEffectElement {
 
     updated(changedProperties: Map<string | number | symbol, unknown>): void {
         changedProperties.forEach((_oldValue, propName) => {
-            if(propName === '_currScrollPos' || propName === '_lastScrollPos') {
-                if (!this._ticking) {
-                    window.requestAnimationFrame(() => {
-                        this._hideOrShowHeader();
-                        this._ticking = false;
-                    });
-                    this._ticking = true;
-                }
+            if ((propName === '_currScrollPos' || propName === '_lastScrollPos') &&
+                !this._ticking) {
+                window.requestAnimationFrame(() => {
+                    this._hideOrShowHeader();
+                    this._ticking = false;
+                });
+                this._ticking = true;
             }
         });
     }
