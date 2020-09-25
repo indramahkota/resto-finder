@@ -15,7 +15,7 @@ import './resto-card.scss';
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {
     @property({ type: Object })
-    data: Restaurant | undefined;
+    data: Restaurant | null = null;
 
     private _imgLoaded = false;
 
