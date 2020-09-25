@@ -23,7 +23,6 @@ export default class RestoCard extends CommonElement {
         const pictId = this.data?.pictureId;
         if (this.data === undefined || pictId === undefined || this._imgLoaded)
             return;
-        
         const image = <HTMLImageElement>document.getElementById(pictId);
         const scrollTop = window.pageYOffset;
         if(image.offsetTop < (window.innerHeight + scrollTop)) {

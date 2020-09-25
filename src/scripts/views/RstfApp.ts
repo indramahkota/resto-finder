@@ -28,7 +28,6 @@ export default class RestoFinderApp extends CommonElement {
     private _forceUpdateHandler = () => {
         if(window.location.hash === '#content')
             return;
-        
         this.forceUpdate = Math.random().toString(36).substring(7);
     }
 

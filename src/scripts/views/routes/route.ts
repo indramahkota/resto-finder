@@ -2,7 +2,7 @@ import { TemplateResult } from 'lit-html';
 
 type Create = (data?: MatchObject) => TemplateResult | void;
 
-interface IParam {
+interface Parameter {
     key: string;
     value: string;
 }
@@ -11,7 +11,7 @@ export interface MatchObject {
     path: string | null;
     url: string;
     isExact: boolean;
-    params: IParam[];
+    params: Parameter[];
 }
 
 interface MatchPathOptions {
@@ -82,8 +82,8 @@ function matchPath(pathname: string, options: MatchPathOptions): MatchObject | n
 }
 
 // '#/agaga/:id & #/agaga/hAD654vv' -> ([{key: 'id', value: 'hAD654vv'}])
-function returnParameters(path: string, pathname: string): IParam[] {
-    const params: IParam[] = [];
+function returnParameters(path: string, pathname: string): Parameter[] {
+    const params: Parameter[] = [];
     const paramNames = path.split('/');
     const paramValues = pathname.split('/');
 

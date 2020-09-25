@@ -27,7 +27,6 @@ export default class ReviewForm extends CommonElement {
             this._dispatchData({ message: 'There is Empty input, please check again!' }, EventType.SHOW_TOAST);
             return;
         }
-
         this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
         this._name = '';
         this._review = '';

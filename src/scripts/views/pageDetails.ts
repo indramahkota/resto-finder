@@ -57,7 +57,6 @@ export default class PageDetails extends ServiceElement {
     private _submitReviewHandler = async (event: Event) => {
         if (this.detailsId === null)
             return;
-
         const details = (event as CustomEvent).detail;
         const customerReview: CustomerReview = {
             id: this.detailsId,
