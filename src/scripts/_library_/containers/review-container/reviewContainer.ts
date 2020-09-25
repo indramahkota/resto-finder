@@ -14,7 +14,7 @@ export default class ReviewContainer extends CommonElement {
     title = 'LATEST REVIEWS';
 
     @property({ type: Array })
-    data?: ConsumerReview[] | null = null;
+    data: ConsumerReview[] = [];
 
     render(): TemplateResult {
         return html`
@@ -22,7 +22,7 @@ export default class ReviewContainer extends CommonElement {
                 <h1 tabindex='0' class='review__title'>${this.title}</h1>
                     <div class='review__items'>
                         ${
-                            this.data?.slice(Math.max(this.data?.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`)
+                            this.data.slice(Math.max(this.data.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`)
                         }
                     </div>
                 </div>

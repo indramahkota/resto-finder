@@ -24,7 +24,7 @@ export default class PageDetails extends ServiceElement {
     private _restoData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
-    private _reviewData: ConsumerReview[] | null = null;
+    private _reviewData: ConsumerReview[] = [];
 
     @internalProperty()
     private _isFavorite = false;
