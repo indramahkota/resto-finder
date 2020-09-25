@@ -1,5 +1,5 @@
 import { html, nothing, TemplateResult } from 'lit-html';
-import { customElement, internalProperty, property } from 'lit-element';
+import { customElement, internalProperty } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import EventType from '../globals/eventType';
@@ -17,18 +17,15 @@ import './pageDetails';
 
 @customElement('rstf-app')
 export default class RestoFinderApp extends CommonElement {
-    @property({ type: String, attribute: true })
-    forceUpdate = '-f';
-
     @internalProperty()
     private _toastMessage: string | null = null;
     
     private _timeOutId: number | null = null;
 
-    private _forceUpdateHandler = () => {
+    private _forceUpdateHandler = async () => {
         if(window.location.hash === '#content')
             return;
-        this.forceUpdate = Math.random().toString(36).substring(7);
+        await this.requestUpdate();
     }
 
     private _showToastHandler = (event: Event) => {
