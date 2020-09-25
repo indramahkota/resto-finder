@@ -43,11 +43,6 @@ export default class RestoContainer extends CommonElement {
                                     <restocard-shimmer></restocard-shimmer>
                                     <restocard-shimmer></restocard-shimmer>
                                     <restocard-shimmer></restocard-shimmer>
-                                    <restocard-shimmer></restocard-shimmer>
-                                    <restocard-shimmer></restocard-shimmer>
-                                    <restocard-shimmer></restocard-shimmer>
-                                    <restocard-shimmer></restocard-shimmer>
-                                    <restocard-shimmer></restocard-shimmer>
                                 </div>
                             `
                 }
