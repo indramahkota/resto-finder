@@ -81,25 +81,19 @@ export default class RestoFinderApp extends CommonElement {
 
     user(): TemplateResult {
         return html`
-            <section id='user'>
-                <user-profile></user-profile>
-            </section>
+            <user-profile></user-profile>
         `;
     }
 
     home(): TemplateResult {
         return html`
-            <section id='home'>
-                <rstf-home></rstf-home>
-            </section>
+            <rstf-home></rstf-home>
         `;
     }
 
     favorites(): TemplateResult {
         return html`
-            <section id='favorites'>
-                <rstf-favorites></rstf-favorites>
-            </section>
+            <rstf-favorites></rstf-favorites>
         `;
     }
 
