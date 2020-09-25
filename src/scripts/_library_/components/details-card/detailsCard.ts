@@ -14,7 +14,7 @@ import './details-card.scss';
 @customElement('details-card')
 export default class DetailsCard extends CommonElement {
     @property({ type: Object })
-    data: RestaurantDetails | undefined;
+    data: RestaurantDetails | null = null;
 
     firstUpdated(): void {
         const pictId = this.data?.pictureId;
