@@ -7,9 +7,9 @@ import { Database } from './sources/local/clientDatabase';
 import { get, post } from './sources/network/networkDataSource';
 
 export default class Repository {
-    static async createFavorite(data: RestaurantDetails): Promise<string> {
+    static async putFavorite(data: RestaurantDetails): Promise<string> {
         const db = await Database();
-        return await db.add('restaurants', data);
+        return await db.put('restaurants', data);
     }
 
     static async getFavoriteById(id: string): Promise<RestaurantDetails | undefined> {
@@ -20,11 +20,6 @@ export default class Repository {
     static async getAllFavorite(): Promise<RestaurantDetails[]> {
         const db = await Database();
         return await db.getAll('restaurants');
-    }
-
-    static async updateFavorite(data: RestaurantDetails): Promise<string> {
-        const db = await Database();
-        return await db.put('restaurants', data);
     }
 
     static async deleteFavorite(id: string): Promise<void> {

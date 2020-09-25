@@ -12,10 +12,10 @@ interface RestoDatabase extends DBSchema {
 export async function Database(): Promise<IDBPDatabase<RestoDatabase>> {
     return await openDB<RestoDatabase>('resto-finder-database', 1, {
         upgrade: db => {
-            const store = db.createObjectStore('restaurants', { keyPath: 'id' });
-            store.createIndex('by-id', 'id');
-            store.createIndex('by-city', 'city');
-            store.createIndex('by-rating', 'rating');
+            const restaurants = db.createObjectStore('restaurants', { keyPath: 'id' });
+            restaurants.createIndex('by-id', 'id');
+            restaurants.createIndex('by-city', 'city');
+            restaurants.createIndex('by-rating', 'rating');
         }
     });
 }

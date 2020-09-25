@@ -34,12 +34,8 @@ export default class PageDetails extends CommonElement {
         if(this.detailsId === null || this._restoData === null)
             return;
         try {
-            const favoriteData = await Repository.getFavoriteById(this.detailsId);
             const newFavoriteData = Object.assign(this._restoData.restaurant, { isFavorite: true });
-            if(favoriteData !== undefined)
-                await Repository.updateFavorite(newFavoriteData);
-            else
-                await Repository.createFavorite(newFavoriteData);
+            await Repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
             this._dispatchData({ message: `Add ${this._restoData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
