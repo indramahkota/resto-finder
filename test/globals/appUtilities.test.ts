@@ -25,11 +25,35 @@ describe('Get User Local Storage', () => {
     });
 });
 
-describe('Generate Image Url Source', () => {
+describe('Generate Image Source Url', () => {
     it('should throw error when id is empty', () => {
         expect(
             () => Utils.genImgSrc('', 'small')
         ).toThrowError(AppExeption.IMAGE_ID_CAN_NOT_BE_EMPTY);
+    });
+
+    it('should return actual image url', () => {
+        const id = '10';
+        const size = 'small';
+        expect(
+            Utils.genImgSrc(id, size)
+        ).toEqual('https://dicoding-restaurant-api.el.r.appspot.com/images/small/10');
+    });
+
+    it('should return actual image url', () => {
+        const id = '11';
+        const size = 'medium';
+        expect(
+            Utils.genImgSrc(id, size)
+        ).toEqual('https://dicoding-restaurant-api.el.r.appspot.com/images/medium/11');
+    });
+
+    it('should return actual image url', () => {
+        const id = '12';
+        const size = 'large';
+        expect(
+            Utils.genImgSrc(id, size)
+        ).toEqual('https://dicoding-restaurant-api.el.r.appspot.com/images/large/12');
     });
 });
 
@@ -37,6 +61,13 @@ describe('Generate Capitalize Each First Word', () => {
     it('should throw error when text is empty', () => {
         expect(
             () => Utils.capitalizeWords('')
-        ).toThrowError(AppExeption.IMAGE_ID_CAN_NOT_BE_EMPTY);
+        ).toThrowError(AppExeption.TEXT_CAN_NOT_BE_EMPTY);
+    });
+
+    it('should return actual text', () => {
+        const text = 'something awesome happen!!';
+        expect(
+            Utils.capitalizeWords(text)
+        ).toEqual('Something Awesome Happen!!');
     });
 });

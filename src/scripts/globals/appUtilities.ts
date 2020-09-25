@@ -31,7 +31,7 @@ export default class Utils {
     static capitalizeWords(text: string): string {
         if (text === '')
             throw new Error(AppExeption.TEXT_CAN_NOT_BE_EMPTY);
-        return text.replace(/\w\S*/g, (txt) => {
+        return text.replace(/\w\S*/g, txt => {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
     }
