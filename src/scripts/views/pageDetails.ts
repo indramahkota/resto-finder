@@ -17,7 +17,7 @@ import './page-details.scss';
 
 @customElement('rstf-details')
 export default class PageDetails extends ServiceElement {
-    @property({ type: String, attribute: true })
+    @property({ type: String })
     detailsId: string | null = null;
 
     @internalProperty()
