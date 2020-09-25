@@ -38,25 +38,21 @@ export async function getNotificationSubscription(): Promise<void> {
             try {
                 const registration = await navigator.serviceWorker.getRegistration();
                 if (registration !== undefined) {
-                    try {
-                        const subscribtion = await registration.pushManager.subscribe({
-                            userVisibleOnly: true,
-                            applicationServerKey: urlBase64ToUint8Array('BKrlDhc0zQnMTPFjLdezIyRaxklJTEegifGWrNHhN3TvHkNVSAI-jYwqRUhigqeqG42C3mFnJL7uJ-JUpGzWbCs')
-                        });
+                    const subscribtion = await registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array('BKrlDhc0zQnMTPFjLdezIyRaxklJTEegifGWrNHhN3TvHkNVSAI-jYwqRUhigqeqG42C3mFnJL7uJ-JUpGzWbCs')
+                    });
 
-                        const p256dhKey = arrayBufferToArrayNumber(subscribtion.getKey('p256dh'));
-                        const authKey = arrayBufferToArrayNumber(subscribtion.getKey('auth'));
+                    const p256dhKey = arrayBufferToArrayNumber(subscribtion.getKey('p256dh'));
+                    const authKey = arrayBufferToArrayNumber(subscribtion.getKey('auth'));
 
-                        if (p256dhKey === null || authKey === null)
-                            return;
+                    if (p256dhKey === null || authKey === null)
+                        return;
 
-                        console.log(`endpoint: '${subscribtion.endpoint}', keys: { p256dh: '${btoa(String.fromCharCode.apply(null, p256dhKey))}', auth: '${btoa(String.fromCharCode.apply(null, authKey))}'}`);
-                    } catch (error) {
-                        console.error(error, 'Tidak mendapatkan subscribtion key');
-                    }
+                    console.log(`endpoint: '${subscribtion.endpoint}', keys: { p256dh: '${btoa(String.fromCharCode.apply(null, p256dhKey))}', auth: '${btoa(String.fromCharCode.apply(null, authKey))}'}`);
                 }
             } catch (error) {
-                console.error(error, 'Tidak mendapatkan registration');
+                console.error('Tidak mendapatkan registration', error);
             }
         } else {
             console.log('PushManager tidak didukung browser ini.');
