@@ -53,29 +53,18 @@ async function checkValidServiceWorker(swUrl: string): Promise<void> {
         const contentType = swFileResponse.headers.get('content-type');
         if ((swFileResponse.status === 404 ||
             (contentType != null && contentType.indexOf('javascript') === -1))) {
-            try {
-                const registration = await navigator.serviceWorker.ready;
-                if (registration !== undefined) {
-                    try {
-                        const unregister = await registration.unregister();
-                        if (unregister) {
-                            window.location.reload();
-                        }
-                    } catch (error) {
-                        console.error(error.message);
-                    }
+            const registration = await navigator.serviceWorker.ready;
+            if (registration !== undefined) {
+                const unregister = await registration.unregister();
+                if (unregister) {
+                    window.location.reload();
                 }
-            } catch (error) {
-                console.error(error.message);
             }
         } else {
             await registerValidSW(swUrl);
         }
     } catch (error) {
-        console.log(
-            'No internet connection found. App is running in offline mode.',
-            error
-        );
+        console.error(error.message);
     }
 }
 
