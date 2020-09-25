@@ -3,8 +3,7 @@ import { customElement, internalProperty } from 'lit-element';
 
 import EventType from '../globals/eventType';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
-import CommonElement from '../_library_/components/_base_/commonElement';
-import Repository from '../data/repository';
+import ServiceElement from '../_library_/components/_base_/serviceElement';
 
 import '../_library_/components/hero-element/heroElement';
 // import '../_library_/components/search-bar/searchBar';
@@ -12,7 +11,7 @@ import '../_library_/containers/resto-container/restoContainer';
 import '../_library_/components/go-top/goTop';
 
 @customElement('rstf-home')
-export default class PageHome extends CommonElement {
+export default class PageHome extends ServiceElement {
     @internalProperty()
     private _restoData: RestaurantResponse | null = null;
 
@@ -23,7 +22,7 @@ export default class PageHome extends CommonElement {
 
     private async _getRestaurantData() {
         try {
-            const restoData = await Repository.getAllRestaurant();
+            const restoData = await this._repository.getAllRestaurant();
             this._restoData = restoData;
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);

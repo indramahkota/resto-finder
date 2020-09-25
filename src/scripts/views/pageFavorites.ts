@@ -1,23 +1,22 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
-import Repository from '../data/repository';
-import CommonElement from '../_library_/components/_base_/commonElement';
 import EventType from '../globals/eventType';
+import ServiceElement from '../_library_/components/_base_/serviceElement';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 import '../_library_/components/hero-element/heroElement';
 import '../_library_/containers/resto-container/restoContainer';
 
 @customElement('rstf-favorites')
-export default class PageFavorites extends CommonElement {
+export default class PageFavorites extends ServiceElement {
     @internalProperty()
     private _restoData: RestaurantResponse | null = null;
 
     private _deleteFavoritedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
         try {
-            await Repository.deleteFavorite(details.id);
+            await this._repository.deleteFavorite(details.id);
             await this._loadFavoriteData();
             this._dispatchData({ message: `Remove ${details.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
@@ -27,7 +26,7 @@ export default class PageFavorites extends CommonElement {
 
     private async _loadFavoriteData() {
         try {
-            const restoData = await Repository.getAllFavorite();
+            const restoData = await this._repository.getAllFavorite();
             this._restoData = {
                 error: false,
                 message: 'success',

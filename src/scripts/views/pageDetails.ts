@@ -1,11 +1,11 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty, property } from 'lit-element';
 
-import Repository from '../data/repository';
 import EventType from '../globals/eventType';
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
-import CommonElement from '../_library_/components/_base_/commonElement';
 import { CustomerReview } from '../data/entity/CustomerReviewEntity';
+import { ConsumerReview } from '../data/entity/RestaurantEntity';
+import ServiceElement from '../_library_/components/_base_/serviceElement';
 
 import '../_library_/components/details-card/detailsCard';
 import '../_library_/containers/review-container/reviewContainer';
@@ -14,10 +14,9 @@ import '../_library_/components/favorite-button/favoriteButton';
 import '../_library_/components/detailscard-shimmer/detailsCardShimmer';
 
 import './page-details.scss';
-import { ConsumerReview } from '../data/entity/RestaurantEntity';
 
 @customElement('rstf-details')
-export default class PageDetails extends CommonElement {
+export default class PageDetails extends ServiceElement {
     @property({ type: String, attribute: true })
     detailsId: string | null = null;
 
@@ -35,7 +34,7 @@ export default class PageDetails extends CommonElement {
             return;
         try {
             const newFavoriteData = Object.assign(this._restoData.restaurant, { isFavorite: true });
-            await Repository.putFavorite(newFavoriteData);
+            await this._repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
             this._dispatchData({ message: `Add ${this._restoData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
@@ -47,7 +46,7 @@ export default class PageDetails extends CommonElement {
         if(this.detailsId === null)
             return;
         try {
-            await Repository.deleteFavorite(this.detailsId);
+            await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
             this._dispatchData({ message: `Remove ${this._restoData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
@@ -68,7 +67,7 @@ export default class PageDetails extends CommonElement {
         }
 
         try {
-            const reviewResponse = await Repository.postRestaurantReview(customerReview);
+            const reviewResponse = await this._repository.postRestaurantReview(customerReview);
             this._reviewData = reviewResponse.customerReviews;
             this._dispatchData({ message: 'Submit review success' }, EventType.SHOW_TOAST);
         } catch (error) {
@@ -97,10 +96,10 @@ export default class PageDetails extends CommonElement {
         if (this.detailsId === null)
             return;
         try {
-            const favoriteData = await Repository.getFavoriteById(this.detailsId);
+            const favoriteData = await this._repository.getFavoriteById(this.detailsId);
             if (favoriteData !== undefined)
                 this._isFavorite = true;
-            this._restoData = await Repository.getRestaurantDetails(this.detailsId);
+            this._restoData = await this._repository.getRestaurantDetails(this.detailsId);
             this._reviewData = this._restoData.restaurant.consumerReviews;
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
