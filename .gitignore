@@ -13,3 +13,4 @@ firebase.json
 .cache
 .eslintcache
 package-lock.json
+/coverage
