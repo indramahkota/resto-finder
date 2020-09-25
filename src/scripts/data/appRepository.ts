@@ -5,7 +5,7 @@ import { RestaurantDetails } from './entity/RestaurantEntity';
 import { RestaurantDetailsResponse, RestaurantResponse } from './entity/RestaurantResponse';
 import { DbService, ApiService } from './sources/appServices';
 import { Database } from './sources/local/clientDatabase';
-import { get, post } from './sources/network/networkDataSource';
+import { get, post } from './sources/network/networkHelper';
 
 export default class AppRepository implements DbService, ApiService {
     async putFavorite(data: RestaurantDetails): Promise<string> {
