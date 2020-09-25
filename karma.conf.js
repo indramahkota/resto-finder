@@ -11,11 +11,12 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ["jasmine", "karma-typescript"],
 
     // list of files / patterns to load in the browser
     files: [
-      'specs/**/*Spec.js',
+      { pattern: "src/**/*.ts" },
+      { pattern: "test/**/*.ts" }
     ],
 
     // list of files / patterns to exclude
@@ -24,7 +25,10 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'specs/**/*Spec.js': ['webpack', 'sourcemap'],
+      //'specs/**/*Spec.js': ['webpack', 'sourcemap'],
+      // "**/*.ts": "karma-typescript" // *.tsx for React Jsx
+      "src/**/*.ts": ["karma-typescript", "coverage"],
+      "test/**/*.ts": ["karma-typescript"]
     },
 
     webpack: {
@@ -45,7 +49,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ["progress", "coverage", "karma-typescript"],
 
     // web server port
     port: 9876,
@@ -72,5 +76,13 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+    
+    karmaTypescriptConfig: {
+      bundlerOptions: {
+          transforms: [
+              require("karma-typescript-es6-transform")()
+          ]
+      }
+  }
   });
 };
