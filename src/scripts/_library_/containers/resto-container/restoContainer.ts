@@ -42,9 +42,7 @@ export default class RestoContainer extends CommonElement {
         return html`
             <div class='resto__items'>
                 ${
-                    data.map(res => html`
-                        <resto-card .data=${res}></resto-card>
-                    `)
+                    data.map(res => html`<resto-card .data=${res}></resto-card>`)
                 }
             </div>
         `;
