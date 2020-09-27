@@ -1,15 +1,15 @@
-export interface Navigation {
+export interface INavigation {
     name: string;
     url: string;
     isActive: boolean;
 }
 
-export interface IconNavigation extends Navigation {
+export interface IProfileNavigation extends INavigation {
     imageUrl: string;
     imageAlt: string;
 }
 
-export interface User {
+export interface IUser {
     name: string;
     status: string;
     location: string;
@@ -17,7 +17,7 @@ export interface User {
     roundImage: string;
 }
 
-export interface SocialMedia {
+export interface ISocialMedia {
     name: string;
     url: string;
     icon: string;

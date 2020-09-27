@@ -62,6 +62,14 @@ export default class RestoCard extends CommonElement {
         this._lazyLoad();
     }
 
+    renderDeleteButton(): TemplateResult {
+        return html`
+            <div class='card__delete'>
+                <button @click='${this._onButtonClickHandler}'><i class='fas fa-trash-alt'></i></button>
+            </div>
+        `;
+    }
+
     render(): TemplateResult {
         return html`
             <div class='card__container'>
@@ -76,11 +84,9 @@ export default class RestoCard extends CommonElement {
                         <p tabindex='0' class='card__description'>${this.data?.description}</p>
                     </div>
                 </a>
+
                 ${
-                    this.data?.isFavorite ? html`
-                    <div class='card__delete'>
-                        <button @click='${this._onButtonClickHandler}'><i class='fas fa-trash-alt'></i></button>
-                    </div>` : nothing
+                    this.data?.isFavorite ? this.renderDeleteButton() : nothing
                 }
             </div>
         `;

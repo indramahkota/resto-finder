@@ -4,6 +4,7 @@ import { customElement, property, internalProperty } from 'lit-element';
 import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
 import ScrollEffectElement from '../_base_/scrollEffectElement';
+import { INavigation } from '../../../interfaces/interfaces';
 
 import './app-bar.scss';
 
@@ -134,24 +135,40 @@ export default class AppBar extends ScrollEffectElement {
         });
     }
 
+    renderToggle(): TemplateResult {
+        return html`
+            <div class='toggle__container'>
+                <label class='toggle__label'>
+                    <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isLight}>
+                    <span class='slider round'></span>
+                    <div class='toggle__icon'>
+                        <i class='fas fa-sun'></i>
+                        <i class='fas fa-moon'></i>
+                    </div>
+                </label>
+            </div>
+        `;
+    }
+
+    renderNavList(nav: INavigation): TemplateResult {
+        return html`
+            <li>
+                <a href='${nav.url}' @click='${this._onNavigationClickHandler}'
+                    class='${ nav.isActive ? 'active' : ''}'>
+                    ${nav.name}
+                    <span class='chevron'></span>
+                </a>
+            </li>
+        `;
+    }
+
     render(): TemplateResult {
         return html`
             <header id='rstf-header' class='header'>
                 <a href='/' class='header__logo'>${this.title}</a>
 
                 ${
-                    this._darkMode ? html`
-                        <div class='toggle__container'>
-                            <label class='toggle__label'>
-                                <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isLight}>
-                                <span class='slider round'></span>
-                                <div class='toggle__icon'>
-                                    <i class='fas fa-sun'></i>
-                                    <i class='fas fa-moon'></i>
-                                </div>
-                            </label>
-                        </div>
-                    ` : nothing
+                    this._darkMode ? this.renderToggle() : nothing
                 }
 
                 <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
@@ -160,18 +177,8 @@ export default class AppBar extends ScrollEffectElement {
 
                 <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
                     <ul>
-                        ${this.navData.map(nav =>
-                                html`
-                                    <li>
-                                        <a href='${nav.url}' @click='${this._onNavigationClickHandler}'
-                                            class='${ nav.isActive ? 'active' : ''}'>
-                                            ${nav.name}
-                                            <span class='chevron'></span>
-                                        </a>
-                                    </li>
-                                `
-                            )
-                        }
+                    
+                        ${ this.navData.map(nav => this.renderNavList(nav)) }
 
                         <li>
                             <a href='${this.iconNavData.url}' class='anchor__icon__container ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
