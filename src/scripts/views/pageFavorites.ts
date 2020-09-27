@@ -26,7 +26,7 @@ export default class PageFavorites extends ServiceElement {
 
     private async _loadFavoriteData() {
         try {
-            const restoData = await this._repository.getAllFavorite();
+            const restoData = await this._repository.getAllFavorites();
             this._restoData = {
                 error: false,
                 message: 'success',

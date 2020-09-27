@@ -18,7 +18,7 @@ export default class AppRepository implements DbService, ApiService {
         return await db.get('restaurants', id);
     }
 
-    async getAllFavorite(): Promise<RestaurantDetails[]> {
+    async getAllFavorites(): Promise<RestaurantDetails[]> {
         const db = await Database();
         return await db.getAll('restaurants');
     }
@@ -28,7 +28,7 @@ export default class AppRepository implements DbService, ApiService {
         return await db.delete('restaurants', id);
     }
 
-    async getAllRestaurant(): Promise<RestaurantResponse> {
+    async getAllRestaurants(): Promise<RestaurantResponse> {
         return await get<RestaurantResponse>(AppConfig.BASE_URL + 'list');
     }
 

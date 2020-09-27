@@ -6,12 +6,12 @@ import { RestaurantDetailsResponse, RestaurantResponse } from "../entity/Restaur
 export interface DbService {
     putFavorite(data: RestaurantDetails): Promise<string>;
     getFavoriteById(id: string): Promise<RestaurantDetails | undefined>;
-    getAllFavorite(): Promise<RestaurantDetails[]>;
+    getAllFavorites(): Promise<RestaurantDetails[]>;
     deleteFavorite(id: string): Promise<void>;
 }
 
 export interface ApiService {
-    getAllRestaurant(): Promise<RestaurantResponse>;
+    getAllRestaurants(): Promise<RestaurantResponse>;
     getRestaurantDetails(id: string): Promise<RestaurantDetailsResponse>;
     postRestaurantReview(customerReview: CustomerReview): Promise<CustomerReviewResponse>;
 }

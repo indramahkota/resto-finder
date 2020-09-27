@@ -22,7 +22,7 @@ export default class PageHome extends ServiceElement {
 
     private async _getRestaurantData() {
         try {
-            const restoData = await this._repository.getAllRestaurant();
+            const restoData = await this._repository.getAllRestaurants();
             this._restoData = restoData;
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
