@@ -25,7 +25,7 @@ export default class RestoCard extends CommonElement {
             return;
         const image = <HTMLImageElement>document.getElementById(pictId);
         const scrollTop = window.pageYOffset;
-        if(image.offsetTop < (window.innerHeight + scrollTop)) {
+        if (image.offsetTop < (window.innerHeight + scrollTop)) {
             const imageUrl = Utils.genImgSrc(pictId, 'small');
             const imageHelper = new Image();
             imageHelper.src = imageUrl;
@@ -33,6 +33,9 @@ export default class RestoCard extends CommonElement {
                 image.classList.add('complete');
                 image.src = imageHelper.src;
                 this._imgLoaded = true;
+                this.removeEventListener('scroll', this._lazyLoad, false);
+                this.removeEventListener('resize', this._lazyLoad, false);
+                this.removeEventListener('orientationChange', this._lazyLoad, false);
             }
         }
     }
@@ -43,15 +46,15 @@ export default class RestoCard extends CommonElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-        document.addEventListener('scroll', this._lazyLoad, false);
-        window.addEventListener('resize', this._lazyLoad, false);
-        window.addEventListener('orientationChange', this._lazyLoad, false);
+        this.addEventListener('scroll', this._lazyLoad, false);
+        this.addEventListener('resize', this._lazyLoad, false);
+        this.addEventListener('orientationChange', this._lazyLoad, false);
     }
 
     disconnectedCallback(): void {
-        document.removeEventListener('scroll', this._lazyLoad, false);
-        window.removeEventListener('resize', this._lazyLoad, false);
-        window.removeEventListener('orientationChange', this._lazyLoad, false);
+        this.removeEventListener('scroll', this._lazyLoad, false);
+        this.removeEventListener('resize', this._lazyLoad, false);
+        this.removeEventListener('orientationChange', this._lazyLoad, false);
         super.disconnectedCallback();
     }
 
