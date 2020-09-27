@@ -58,12 +58,6 @@ describe('Generate Image Source Url', () => {
 });
 
 describe('Generate Capitalize Each First Word', () => {
-    it('should throw error when text is empty', () => {
-        expect(
-            () => Utils.capitalizeWords('')
-        ).toThrowError(AppExeption.TEXT_CAN_NOT_BE_EMPTY);
-    });
-
     it('should return actual text', () => {
         const text = 'something awesome happen!!';
         expect(
