@@ -9,8 +9,8 @@
         "noImplicitAny": true,
         "declarationDir": "dist/types",
         "declaration": true,
-        "target": "es2017",
-        "module": "es2020",
+        "target": "es2015", //"target": "es2017",
+		"module": "commonjs", //"module": "es2020",
         "strict": true,
         "lib": [
             "es2017",
