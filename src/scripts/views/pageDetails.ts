@@ -106,26 +106,34 @@ export default class PageDetails extends ServiceElement {
         document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
     }
 
+    renderShimmer(): TemplateResult {
+        return html`
+            <detailscard-shimmer></detailscard-shimmer>
+        `;
+    }
+
+    renderPageDetailsContent(data: RestaurantDetailsResponse): TemplateResult {
+        return html`
+            <div class='pagedetails__container'>
+                <div class='pagedetails__detailscard'>
+                    <details-card .data=${data.restaurant}></details-card>
+                </div>
+                <div class='pagedetails__reviewcard'>
+                    <div class='pagedetails__favorite__container'>
+                        <h1>Save as favorite</h1>
+                        <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
+                    </div>
+                    <review-container .data=${this._reviewData}></review-container>
+                    <review-form></review-form>
+                </div>                
+            </div>
+        `;
+    }
+
     render(): TemplateResult {
         return html`
             ${
-                this._restoData === null ? html`
-                    <detailscard-shimmer></detailscard-shimmer>
-                ` : html`
-                    <div class='pagedetails__container'>
-                        <div class='pagedetails__detailscard'>
-                            <details-card .data=${this._restoData?.restaurant}></details-card>
-                        </div>
-                        <div class='pagedetails__reviewcard'>
-                            <div class='pagedetails__favorite__container'>
-                                <h1>Save as favorite</h1>
-                                <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
-                            </div>
-                            <review-container .data=${this._reviewData}></review-container>
-                            <review-form></review-form>
-                        </div>                
-                    </div>
-                `
+                this._restoData === null ? this.renderShimmer() : this.renderPageDetailsContent(this._restoData)
             }
         `;
     }

@@ -6,7 +6,6 @@ import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 import ServiceElement from '../_library_/components/_base_/serviceElement';
 
 import '../_library_/components/hero-element/heroElement';
-// import '../_library_/components/search-bar/searchBar';
 import '../_library_/containers/resto-container/restoContainer';
 import '../_library_/components/go-top/goTop';
 
@@ -52,9 +51,6 @@ export default class PageHome extends ServiceElement {
                 <resto-container title='TOP RESTAURANTS' .data=${this._restoData}></resto-container>
             </section>
             <go-top></go-top>
-            
-            <!-- Fitur belum difungsikan -->
-            <!-- <search-bar></search-bar> -->
         `;
     }
 }
