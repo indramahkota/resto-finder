@@ -6,6 +6,7 @@ const { minify } = require('terser');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
@@ -73,6 +74,10 @@ module.exports = {
       filename: 'index.html',
       template: resolve(__dirname, 'src/index.html'),
       minify: { collapseWhitespace: true, removeComments: true }
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'allChunks'
     }),
     new CleanWebpackPlugin()
   ]
