@@ -3,6 +3,18 @@ import { RestaurantDetailsResponse, RestaurantResponse } from '../../../src/scri
 import { CustomerReviewResponse } from '../../../src/scripts/data/entity/CustomerReviewResponse';
 import { CustomerReview } from '../../../src/scripts/data/entity/CustomerReviewEntity';
 
+export function generateFakeRestaurant(): Restaurant {
+    return {
+        id: '36fa3p5gw45kfhujxow',
+        name: 'Gigitan Cepat',
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.',
+        pictureId: '32',
+        city: 'Bandung',
+        rating: 4.4,
+        isFavorite: false
+    };
+}
+
 export function generateFakeRestaurantList(): Restaurant[] {
     return [
         {
@@ -117,6 +129,59 @@ export function generateFakeRestaurantDetailsResponse(): RestaurantDetailsRespon
         message: 'success',
         restaurant: generateFakeRestaurantDetails()
     };
+}
+
+export function generateFakeRestaurantDetailsList(): RestaurantDetails[] {
+    return [
+        {
+            id: 'w029d674m9kflb9aln',
+            name: 'Pangsit Express',
+            description: 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.',
+            pictureId: '24',
+            city: 'Semarang',
+            rating: 4.8,
+            isFavorite: true,
+            address: 'Jln. Pandeglang no 19.',
+            categories: generateFakeCategoryList(),
+            menus: generateFakeMenus(),
+            consumerReviews: generateFakeConsumerReviewList()
+        },
+        {
+            id: '36fa3p5gw45kfhujxow',
+            name: 'Gigitan Cepat',
+            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.',
+            pictureId: '32',
+            city: 'Bandung',
+            rating: 4.4,
+            isFavorite: true,
+            address: 'Jln. Pandeglang no 19',
+            categories: generateFakeCategoryList(),
+            menus: generateFakeMenus(),
+            consumerReviews: generateFakeConsumerReviewList()
+        },
+        {
+            id: 'rnw5ppceixkflb9aln',
+            name: 'Rumah Senja',
+            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.',
+            pictureId: '32',
+            city: 'Jakarta',
+            rating: 4.5,
+            isFavorite: true,
+            address: 'Jln. Pandeglang no 19',
+            categories: generateFakeCategoryList(),
+            menus: generateFakeMenus(),
+            consumerReviews: generateFakeConsumerReviewList()
+        }
+    ];
+}
+
+export function generateFakeCustomerReview(): CustomerReview {
+    return {
+        id: '36fa3',
+        name: 'Buchori',
+        review: 'Harganya murah sekali!',
+        date: '13 November 2019'
+    }
 }
 
 export function generateFakeCustomerReviewList(): CustomerReview[] {

@@ -4,39 +4,53 @@ import { CustomerReviewResponse } from './entity/CustomerReviewResponse';
 import { RestaurantDetails } from './entity/RestaurantEntity';
 import { RestaurantDetailsResponse, RestaurantResponse } from './entity/RestaurantResponse';
 import { DbService, ApiService } from './sources/appServices';
-import { Database } from './sources/local/clientDatabase';
-import { get, post } from './sources/network/networkHelper';
+import ClientDatabase from './sources/local/clientDatabase';
+import NetworkServer from './sources/network/networkServer';
 
 export default class AppRepository implements DbService, ApiService {
+    private _net: NetworkServer;
+    private _db: ClientDatabase;
+
+    constructor(networkServer: NetworkServer, clientDatabase: ClientDatabase) {
+        this._net = networkServer;
+        this._db = clientDatabase;
+    }
+
     async putFavorite(data: RestaurantDetails): Promise<string> {
-        const db = await Database();
-        return await db.put('restaurants', data);
+        return await this._db.putRestaurant(data);
     }
 
     async getFavoriteById(id: string): Promise<RestaurantDetails | undefined> {
-        const db = await Database();
-        return await db.get('restaurants', id);
+        return await this._db.getRestaurant(id);
     }
 
     async getAllFavorites(): Promise<RestaurantDetails[]> {
-        const db = await Database();
-        return await db.getAll('restaurants');
+        return await this._db.getAllRestaurant();
     }
 
     async deleteFavorite(id: string): Promise<void> {
-        const db = await Database();
-        return await db.delete('restaurants', id);
+        return await this._db.deleteRestaurant(id);
     }
 
     async getAllRestaurants(): Promise<RestaurantResponse> {
-        return await get<RestaurantResponse>(AppConfig.BASE_URL + 'list');
+        return await this._net.get<RestaurantResponse>(
+            AppConfig.BASE_URL + 'list'
+        );
     }
 
-    async getRestaurantDetails(id: string): Promise<RestaurantDetailsResponse> {
-        return await get<RestaurantDetailsResponse>(`${AppConfig.BASE_URL}detail/${id}`);
+    async getRestaurantDetails(
+        id: string
+    ): Promise<RestaurantDetailsResponse> {
+        return await this._net.get<RestaurantDetailsResponse>(
+            `${AppConfig.BASE_URL}detail/${id}`
+        );
     }
 
-    async postRestaurantReview(customerReview: CustomerReview): Promise<CustomerReviewResponse> {
-        return await post<CustomerReviewResponse, CustomerReview>(`${AppConfig.BASE_URL}review`, customerReview);
+    async postRestaurantReview(
+        customerReview: CustomerReview
+    ): Promise<CustomerReviewResponse> {
+        return await this._net.post<CustomerReviewResponse, CustomerReview>(
+            `${AppConfig.BASE_URL}review`, customerReview
+        );
     }
 }
