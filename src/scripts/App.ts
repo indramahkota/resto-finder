@@ -2,6 +2,8 @@ import { html, render } from 'lit-html';
 
 import AppConfig from './globals/appConfig';
 import Utils from './globals/appUtilities';
+
+import  './styles/Index.scss';
 import './views/RstfApp';
 
 window.addEventListener('DOMContentLoaded', () => {
