@@ -13,7 +13,9 @@ import '../_library_/components/review-form/reviewForm';
 import '../_library_/components/favorite-button/favoriteButton';
 import '../_library_/components/detailscard-shimmer/detailsCardShimmer';
 
-import './page-details.scss';
+import(
+    /* webpackPreload: true */
+    './page-details.scss');
 
 @customElement('rstf-details')
 export default class PageDetails extends ServiceElement {
