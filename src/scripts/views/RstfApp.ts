@@ -11,9 +11,18 @@ import '../_library_/components/foot-bar/footBar';
 import '../_library_/components/app-bar/appBar';
 import './pageHome';
 
-import(/* webpackPreload: true */ "../_library_/components/user-profile/userProfile");
-import(/* webpackPreload: true */ "./pageFavorites");
-import(/* webpackPreload: true */ "./pageDetails");
+import(
+    /* webpackPrefetch: true */
+    /* webpackChunkName: "profile" */
+    "../_library_/components/user-profile/userProfile");
+import(
+    /* webpackPrefetch: true */
+    /* webpackChunkName: "favorites" */
+    "./pageFavorites");
+import(
+    /* webpackPrefetch: true */
+    /* webpackChunkName: "details" */
+    "./pageDetails");
 
 @customElement('rstf-app')
 export default class RestoFinderApp extends CommonElement {
