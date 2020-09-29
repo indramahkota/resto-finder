@@ -15,11 +15,11 @@ export default class ReviewForm extends CommonElement {
     private _review = '';
 
     private _onNameChangeHandler(event: Event): void {
-        this._name = (event.target as HTMLInputElement).value;
+        this.setName((event.target as HTMLInputElement).value);
     }
 
     private _onReviewChangeHandler(event: Event): void {
-        this._review = (event.target as HTMLTextAreaElement).value;
+        this.setReview((event.target as HTMLTextAreaElement).value);
     }
 
     private _onButtonClickHandler(): void {
@@ -28,9 +28,17 @@ export default class ReviewForm extends CommonElement {
             return;
         }
         this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
-        this._name = '';
-        this._review = '';
+        this.setName('');
+        this.setReview('');
     }
+
+    setName(name: string): void {
+        this._name = name;
+    }
+
+    setReview(review: string): void {
+        this._review = review;
+    } 
 
     render(): TemplateResult {
         return html`
