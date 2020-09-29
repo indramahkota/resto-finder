@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+interface Attr {
+    [propName: string]: string;
+}
 
 export default class TestUtils {
     /**
@@ -10,7 +11,7 @@ export default class TestUtils {
      * @param {object} attributes
      * @returns {Promise<HTMLElement>}
      */
-    static render(tag: string, attributes: any = {}): Promise<HTMLElement> {
+    static render(tag: string, attributes: Attr = {}): Promise<HTMLElement> {
         TestUtils._renderToDocument(tag, attributes);
         return TestUtils._waitForComponentToRender(tag);
     }
@@ -21,7 +22,7 @@ export default class TestUtils {
      * @param {string} tag
      * @param {object} attributes
      */
-    static _renderToDocument(tag: string, attributes: any): void {
+    static _renderToDocument(tag: string, attributes: Attr): void {
         const htmlAttributes = TestUtils._mapObjectToHTMLAttributes(attributes);
         document.body.innerHTML = `<${tag} ${htmlAttributes}></${tag}>`;
     }
@@ -35,7 +36,7 @@ export default class TestUtils {
      * @param {object} attributes
      * @returns {string}
      */
-    static _mapObjectToHTMLAttributes(attributes: any): string {
+    static _mapObjectToHTMLAttributes(attributes: Attr): string {
         return Object.entries(attributes).reduce((previous, current) => {
             return previous + ` ${current[0]}="${current[1]}"`;
         }, "");
