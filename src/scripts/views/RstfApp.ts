@@ -6,23 +6,25 @@ import EventType from '../globals/eventType';
 import { MatchObject, Route } from './routes/route';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
-import '../_library_/components/app-toast/appToast';
-import '../_library_/components/foot-bar/footBar';
-import '../_library_/components/app-bar/appBar';
-import './pageHome';
+import(
+    /* webpackPreload: true */
+    /* webpackChunkName: 'footer' */
+    '../_library_/components/foot-bar/footBar');
+
+import(
+    /* webpackPreload: true */
+    /* webpackChunkName: 'header' */
+    '../_library_/components/app-bar/appBar');
 
 import(
     /* webpackPrefetch: true */
-    /* webpackChunkName: 'profile' */
-    '../_library_/components/user-profile/userProfile');
-import(
-    /* webpackPrefetch: true */
-    /* webpackChunkName: 'favorites' */
-    './pageFavorites');
-import(
-    /* webpackPrefetch: true */
-    /* webpackChunkName: 'details' */
-    './pageDetails');
+    /* webpackChunkName: 'home' */
+    './pageHome');
+
+import '../_library_/components/app-toast/appToast';
+import '../_library_/components/user-profile/userProfile';
+import './pageFavorites';
+import './pageDetails';
 
 @customElement('rstf-app')
 export default class RestoFinderApp extends CommonElement {
