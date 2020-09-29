@@ -101,7 +101,7 @@ export function generateFakeConsumerReviewList(): ConsumerReview[] {
         },
         {
             name: 'Postman 2',
-            review: 'yuhu',
+            review: 'Yuhu im ready',
             date: '25 September 2020'
         }
     ];

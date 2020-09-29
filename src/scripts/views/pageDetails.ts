@@ -93,6 +93,7 @@ export default class PageDetails extends ServiceElement {
 
     async setRestaurantDetailsData(restodetailsData: RestaurantDetailsResponse): Promise<void> {
         this._restodetailsData = restodetailsData;
+        await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
     }
 
     async setConsumerReviewListData(reviewData: ConsumerReview[]): Promise<void> {
@@ -108,7 +109,6 @@ export default class PageDetails extends ServiceElement {
                 this._isFavorite = true;
             const restodetailsData = await this._repository.getRestaurantDetails(this.detailsId);
             await this.setRestaurantDetailsData(restodetailsData);
-            await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }

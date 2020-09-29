@@ -21,7 +21,7 @@ export default class FavoriteButton extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <button aria-label='${ !this.isFavorite ? 'Add this Restaurant into favorites' : 'Remove this Restaurant into favorites' }' class='favorite__button' @click='${this._onButtonClickHandler}'>
+            <button aria-label='${ !this.isFavorite ? 'Add this Restaurant into favorites' : 'Remove this Restaurant from favorites' }' class='favorite__button' @click='${this._onButtonClickHandler}'>
                 ${
                     this.isFavorite ? html`<i style='color: #ff69b4;' class='fas fa-heart'></i>` : html`<i class='far fa-heart'></i>`
                 }
