@@ -7,23 +7,6 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { clientsClaim, skipWaiting } from 'workbox-core';
 import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
 
-/* Icons: CacheFirst */
-registerRoute(
-    new RegExp(/\.(?:eot|ttf|woff|woff2)$/),
-    new CacheFirst({
-        cacheName: 'font-icons',
-        plugins: [
-            new CacheableResponsePlugin({
-                statuses: [0, 200]
-            }),
-            new ExpirationPlugin({
-                maxEntries: 60,
-                maxAgeSeconds: 365 * 24 * 60 * 60 // 1 Tahun
-            })
-        ]
-    })
-);
-
 /* Image: CacheFirst */
 registerRoute(
     ({ request }) => request.destination === 'image',
@@ -41,11 +24,32 @@ registerRoute(
     })
 );
 
-const base_url = 'https://dicoding-restaurant-api.el.r.appspot.com/';
+const base_font_url = 'https://fonts.gstatic.com/';
+const base_icon_url = 'https://cdn.jsdelivr.net/';
+
+/* Font: CacheFirst */
+registerRoute(
+    ({ request }) => (request.url.indexOf(base_font_url) > -1 ||
+        request.url.indexOf(base_icon_url) > -1),
+    new CacheFirst({
+        cacheName: 'fonts&icons',
+        plugins: [
+            new CacheableResponsePlugin({
+                statuses: [0, 200]
+            }),
+            new ExpirationPlugin({
+                maxEntries: 60,
+                maxAgeSeconds: 365 * 24 * 60 * 60 // 1 Tahun
+            })
+        ]
+    })
+);
+
+const base_api_url = 'https://dicoding-restaurant-api.el.r.appspot.com/';
 
 /* API: StaleWhileRevalidate */
 registerRoute(
-    ({ request }) => (request.url.indexOf(base_url + 'list') > -1),
+    ({ request }) => (request.url.indexOf(base_api_url + 'list') > -1),
     new StaleWhileRevalidate({
         cacheName: "api-stalewhilerevalidate",
         plugins: [
@@ -62,7 +66,7 @@ registerRoute(
 
 /* API: NetworkFirst */
 registerRoute(
-    ({ request }) => (request.url.indexOf(base_url + 'detail') > -1),
+    ({ request }) => (request.url.indexOf(base_api_url + 'detail') > -1),
     new NetworkFirst({
         cacheName: "api-networkfirst",
         plugins: [
