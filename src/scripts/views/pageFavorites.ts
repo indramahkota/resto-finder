@@ -11,7 +11,7 @@ import '../_library_/containers/resto-container/restoContainer';
 @customElement('rstf-favorites')
 export default class PageFavorites extends ServiceElement {
     @internalProperty()
-    private _restoData: RestaurantResponse | null = null;
+    private _restoListData: RestaurantResponse | null = null;
 
     private _deleteFavoritedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
@@ -27,12 +27,12 @@ export default class PageFavorites extends ServiceElement {
     private async _loadFavoriteData() {
         try {
             const restoData = await this._repository.getAllFavorites();
-            this._restoData = {
+            await this.setRestaurantListData({
                 error: false,
                 message: 'success',
                 count: restoData.length,
                 restaurants: restoData
-            };
+            });
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
@@ -48,14 +48,18 @@ export default class PageFavorites extends ServiceElement {
         super.disconnectedCallback();
     }
 
-    firstUpdated(): void {
-        this._loadFavoriteData();
+    async setRestaurantListData(restoListData: RestaurantResponse): Promise<void> {
+        this._restoListData = restoListData;
+    }
+
+    async firstUpdated(): Promise<void> {
+        await this._loadFavoriteData();
     }
 
     render(): TemplateResult {
         return html`
             <section id='favorites-resto'>
-                <resto-container title='FAVORITES' .data=${this._restoData}></resto-container>
+                <resto-container title='FAVORITES' .data=${this._restoListData}></resto-container>
             </section>
         `;
     }

@@ -21,22 +21,22 @@ export default class PageDetails extends ServiceElement {
     detailsId: string | null = null;
 
     @internalProperty()
-    private _restoData: RestaurantDetailsResponse | null = null;
+    private _restodetailsData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
-    private _reviewData: ConsumerReview[] = [];
+    private _reviewListData: ConsumerReview[] = [];
 
     @internalProperty()
     private _isFavorite = false;
 
     private _addFavoriteHandler = async () => {
-        if(this.detailsId === null || this._restoData === null)
+        if(this.detailsId === null || this._restodetailsData === null)
             return;
         try {
-            const newFavoriteData = Object.assign(this._restoData.restaurant, { isFavorite: true });
+            const newFavoriteData = Object.assign(this._restodetailsData.restaurant, { isFavorite: true });
             await this._repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
-            this._dispatchData({ message: `Add ${this._restoData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Add ${this._restodetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
@@ -48,7 +48,7 @@ export default class PageDetails extends ServiceElement {
         try {
             await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
-            this._dispatchData({ message: `Remove ${this._restoData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Remove ${this._restodetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
@@ -67,7 +67,7 @@ export default class PageDetails extends ServiceElement {
 
         try {
             const reviewResponse = await this._repository.postRestaurantReview(customerReview);
-            this._reviewData = reviewResponse.customerReviews;
+            await this.setConsumerReviewListData(reviewResponse.customerReviews);
             this._dispatchData({ message: 'Submit review success' }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
@@ -91,6 +91,14 @@ export default class PageDetails extends ServiceElement {
         super.disconnectedCallback();
     }
 
+    async setRestaurantDetailsData(restodetailsData: RestaurantDetailsResponse): Promise<void> {
+        this._restodetailsData = restodetailsData;
+    }
+
+    async setConsumerReviewListData(reviewData: ConsumerReview[]): Promise<void> {
+        this._reviewListData = reviewData;
+    }
+
     async firstUpdated(): Promise<void> {
         if (this.detailsId === null)
             return;
@@ -98,8 +106,9 @@ export default class PageDetails extends ServiceElement {
             const favoriteData = await this._repository.getFavoriteById(this.detailsId);
             if (favoriteData !== undefined)
                 this._isFavorite = true;
-            this._restoData = await this._repository.getRestaurantDetails(this.detailsId);
-            this._reviewData = this._restoData.restaurant.consumerReviews;
+            const restodetailsData = await this._repository.getRestaurantDetails(this.detailsId);
+            await this.setRestaurantDetailsData(restodetailsData);
+            await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
@@ -123,7 +132,7 @@ export default class PageDetails extends ServiceElement {
                         <h1>Save as favorite</h1>
                         <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
                     </div>
-                    <review-container .data=${this._reviewData}></review-container>
+                    <review-container .data=${this._reviewListData}></review-container>
                     <review-form></review-form>
                 </div>                
             </div>
@@ -133,7 +142,7 @@ export default class PageDetails extends ServiceElement {
     render(): TemplateResult {
         return html`
             ${
-                this._restoData === null ? this.renderShimmer() : this.renderPageDetailsContent(this._restoData)
+                this._restodetailsData === null ? this.renderShimmer() : this.renderPageDetailsContent(this._restodetailsData)
             }
         `;
     }

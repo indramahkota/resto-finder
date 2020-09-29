@@ -4,7 +4,7 @@ import NetworkServer from '../../../data/sources/network/networkServer';
 import CommonElement from './commonElement';
 
 export default class ServiceElement extends CommonElement {
-    private net = new NetworkServer();
-    private db = new ClientDatabase();
-    protected _repository = new AppRepository(this.net, this.db);
+    private network = new NetworkServer();
+    private database = new ClientDatabase();
+    protected _repository = new AppRepository(this.network, this.database);
 }

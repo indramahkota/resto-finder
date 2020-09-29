@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-//Cuma support attribute bertype string
-
 export default class TestUtils {
     /**
      * Renders a given element with provided attributes

@@ -12,20 +12,11 @@ import '../_library_/components/go-top/goTop';
 @customElement('rstf-home')
 export default class PageHome extends ServiceElement {
     @internalProperty()
-    private _restoData: RestaurantResponse | null = null;
+    private _restoListData: RestaurantResponse | null = null;
 
     private _focusOnTopRestaurantsHandler = () => {
         document.querySelector('app-bar')?.hideHeader();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    private async _getRestaurantData() {
-        try {
-            const restoData = await this._repository.getAllRestaurants();
-            this._restoData = restoData;
-        } catch (error) {
-            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
-        }
     }
 
     connectedCallback(): void {
@@ -38,8 +29,17 @@ export default class PageHome extends ServiceElement {
         super.disconnectedCallback();
     }
 
-    firstUpdated(): void {
-        this._getRestaurantData();
+    async setRestaurantListData(restoListData: RestaurantResponse): Promise<void> {
+        this._restoListData = restoListData;
+    }
+
+    async firstUpdated(): Promise<void> {
+        try {
+            const restoListData = await this._repository.getAllRestaurants();
+            await this.setRestaurantListData(restoListData);
+        } catch (error) {
+            this._dispatchData({ message: error }, EventType.SHOW_TOAST);
+        }
     }
 
     render(): TemplateResult {
@@ -48,7 +48,7 @@ export default class PageHome extends ServiceElement {
                 <hero-element></hero-element>
             </section>
             <section id='top-resto'>
-                <resto-container title='TOP RESTAURANTS' .data=${this._restoData}></resto-container>
+                <resto-container title='TOP RESTAURANTS' .data=${this._restoListData}></resto-container>
             </section>
             <go-top></go-top>
         `;

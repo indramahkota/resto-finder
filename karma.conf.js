@@ -29,7 +29,7 @@ module.exports = function (config) {
       //'specs/**/*Spec.js': ['webpack', 'sourcemap'],
       // "**/*.ts": "karma-typescript" // *.tsx for React Jsx
       "src/**/*.ts": ["karma-typescript", "coverage"],
-      "test/**/*.ts": ["karma-typescript"]
+      "test/**/*.ts": ["karma-typescript", "sourcemap"]
     },
 
     webpack: {
