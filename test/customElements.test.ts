@@ -20,6 +20,7 @@ import SocialMedia from '../src/scripts/_library_/components/sosial-media/social
 import UserProfile from '../src/scripts/_library_/components/user-profile/userProfile';
 import RestoContainer from '../src/scripts/_library_/containers/resto-container/restoContainer';
 import ReviewContainer from '../src/scripts/_library_/containers/review-container/reviewContainer';
+import TestUtils from './CustomelementTestUtilities';
 
 describe('Custom Element Instance Of their class', () => {
     it('should Instance Of RestoFinderApp', () => {
@@ -50,6 +51,13 @@ describe('Custom Element Instance Of their class', () => {
     it('should Instance Of AppToast', () => {
         const el = document.createElement('app-toast');
         expect(el).toBeInstanceOf(AppToast);
+    });
+
+    it('should render AppToast correctly', async () => {
+        const _root = await TestUtils.render('app-toast', {
+            message: "Text Message"
+        });
+        expect(_root.innerHTML.includes("Text Message")).toBeTruthy();
     });
 
     it('should Instance Of DetailsCard', () => {

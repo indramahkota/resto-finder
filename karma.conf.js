@@ -15,6 +15,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
+      "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
       { pattern: "src/**/*.ts" },
       { pattern: "test/**/*.ts" }
     ],
@@ -76,13 +77,13 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
-    
+
     karmaTypescriptConfig: {
       bundlerOptions: {
-          transforms: [
-              require("karma-typescript-es6-transform")()
-          ]
+        transforms: [
+          require("karma-typescript-es6-transform")()
+        ]
       }
-  }
+    }
   });
 };
