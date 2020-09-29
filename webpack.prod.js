@@ -6,7 +6,6 @@ const common = require('./webpack.common');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -67,7 +66,6 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new PreloadWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
       chunkFilename: '[name].[id].[contenthash:8].css'
