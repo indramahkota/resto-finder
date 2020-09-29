@@ -12,15 +12,15 @@ import '../_library_/components/app-bar/appBar';
 import './pageHome';
 
 import(
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     /* webpackChunkName: "profile" */
     "../_library_/components/user-profile/userProfile");
 import(
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     /* webpackChunkName: "favorites" */
     "./pageFavorites");
 import(
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     /* webpackChunkName: "details" */
     "./pageDetails");
 
