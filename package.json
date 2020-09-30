@@ -49,6 +49,8 @@
     "html-minifier": "^4.0.0",
     "html-webpack-injector": "^1.1.4",
     "html-webpack-plugin": "^4.5.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
     "jasmine": "^3.6.1",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^3.5.0",
