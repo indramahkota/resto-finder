@@ -9,6 +9,7 @@ export default class AppConfig {
 
     static readonly LCS_THEME: string = 'resto-finder-indramahkota-theme-mode';
     static readonly LCS_DRAWER: string = 'resto-finder-indramahkota-drawer-mode';
+    static readonly LCS_FAVORITE_COUNTER: string = 'resto-finder-indramahkota-favorite-counter';
 
     static readonly BASE_URL:string = 'https://dicoding-restaurant-api.el.r.appspot.com/';
     static readonly BASE_IMAGE_URL:string = 'https://dicoding-restaurant-api.el.r.appspot.com/images/';

@@ -12,6 +12,8 @@ import '../_library_/containers/review-container/reviewContainer';
 import '../_library_/components/review-form/reviewForm';
 import '../_library_/components/favorite-button/favoriteButton';
 import '../_library_/components/detailscard-shimmer/detailsCardShimmer';
+import Utils from '../globals/appUtilities';
+import AppConfig from '../globals/appConfig';
 
 // import './page-details.scss';
 
@@ -29,6 +31,26 @@ export default class PageDetails extends ServiceElement {
     @internalProperty()
     private _isFavorite = false;
 
+    private _incrementFavoriteCounter() {
+        const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
+        if(counter === null || counter === '0') {
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, '1');
+        } else {
+            const increment = Number(counter) + 1;
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, increment.toString());
+        }
+    }
+
+    private _decrementFavoriteCounter() {
+        const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
+        if(counter === null || counter === '0') {
+            return;
+        } else {
+            const increment = Number(counter) - 1;
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, increment.toString());
+        }
+    }
+
     private _addFavoriteHandler = async () => {
         if(this.detailsId === null || this._restodetailsData === null)
             return;
@@ -36,6 +58,7 @@ export default class PageDetails extends ServiceElement {
             const newFavoriteData = Object.assign(this._restodetailsData.restaurant, { isFavorite: true });
             await this._repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
+            this._incrementFavoriteCounter();
             this._dispatchData({ message: `Add ${this._restodetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
@@ -48,6 +71,7 @@ export default class PageDetails extends ServiceElement {
         try {
             await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
+            this._decrementFavoriteCounter();
             this._dispatchData({ message: `Remove ${this._restodetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);

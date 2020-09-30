@@ -7,11 +7,22 @@ import { RestaurantResponse } from '../data/entity/RestaurantResponse';
 
 import '../_library_/components/hero-element/heroElement';
 import '../_library_/containers/resto-container/restoContainer';
+import Utils from '../globals/appUtilities';
+import AppConfig from '../globals/appConfig';
 
 @customElement('rstf-favorites')
 export default class PageFavorites extends ServiceElement {
     @internalProperty()
     private _restoListData: RestaurantResponse | null = null;
+
+    private _getFavoriteCounter(): number {
+        const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
+        if(counter === null || counter === '0') {
+            return 0;
+        } else {
+            return Number(counter);
+        }
+    }
 
     private _deleteFavoritedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
@@ -59,7 +70,7 @@ export default class PageFavorites extends ServiceElement {
     render(): TemplateResult {
         return html`
             <section id='favorites-resto'>
-                <resto-container title='FAVORITES' .data=${this._restoListData}></resto-container>
+                <resto-container title='FAVORITES' .data=${this._restoListData} totalShimmerItem=${this._getFavoriteCounter()}></resto-container>
             </section>
         `;
     }
