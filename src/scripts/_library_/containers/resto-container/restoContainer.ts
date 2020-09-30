@@ -19,12 +19,17 @@ export default class RestoContainer extends CommonElement {
     @property({ type: Object })
     data: RestaurantResponse | null = null;
 
+    @property({ type: Number })
+    totalShimmerItem = 0;
+
     renderShimmer(): TemplateResult {
+        const itemTemplates = [];
+        for (let _i = 0; _i < this.totalShimmerItem; _i++) {
+            itemTemplates.push(html`<restocard-shimmer></restocard-shimmer>`);
+        }
         return html`
             <div class='resto__items'>
-                <restocard-shimmer></restocard-shimmer>
-                <restocard-shimmer></restocard-shimmer>
-                <restocard-shimmer></restocard-shimmer>
+                ${ itemTemplates }
             </div>
         `;
     }

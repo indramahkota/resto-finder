@@ -48,7 +48,7 @@ export default class PageHome extends ServiceElement {
                 <hero-element></hero-element>
             </section>
             <section id='top-resto'>
-                <resto-container title='TOP RESTAURANTS' .data=${this._restoListData}></resto-container>
+                <resto-container title='TOP RESTAURANTS' .data=${this._restoListData} totalShimmerItem=20></resto-container>
             </section>
             <go-top></go-top>
         `;
