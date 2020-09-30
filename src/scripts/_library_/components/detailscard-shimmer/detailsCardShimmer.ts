@@ -3,7 +3,7 @@ import { customElement } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
 
-import './details-card-shimmer.scss';
+// import './details-card-shimmer.scss';
 
 @customElement('detailscard-shimmer')
 export default class DetailsCardShimmer extends CommonElement {

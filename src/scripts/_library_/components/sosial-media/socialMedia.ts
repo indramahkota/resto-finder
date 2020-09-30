@@ -5,7 +5,7 @@ import AppConfig from '../../../globals/appConfig';
 import CommonElement from '../_base_/commonElement';
 import { ISocialMedia } from '../../../interfaces/interfaces';
 
-import './social-media.scss';
+// import './social-media.scss';
 
 @customElement('social-media')
 export default class SocialMedia extends CommonElement {

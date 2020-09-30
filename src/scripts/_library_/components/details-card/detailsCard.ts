@@ -9,7 +9,7 @@ import AppConfig from '../../../globals/appConfig';
 
 import '../rating-element/ratingElement';
 
-import './details-card.scss';
+// import './details-card.scss';
 
 @customElement('details-card')
 export default class DetailsCard extends CommonElement {

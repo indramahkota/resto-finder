@@ -10,7 +10,7 @@ import Utils from '../../../globals/appUtilities';
 
 import '../rating-element/ratingElement';
 
-import './resto-card.scss';
+// import './resto-card.scss';
 
 @customElement('resto-card')
 export default class RestoCard extends CommonElement {

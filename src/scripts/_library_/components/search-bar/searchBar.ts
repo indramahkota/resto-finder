@@ -3,7 +3,7 @@ import { customElement } from 'lit-element';
 
 import ScrollEffectElement from '../_base_/scrollEffectElement';
 
-import './search-bar.scss';
+// import './search-bar.scss';
 
 @customElement('search-bar')
 export default class SearchBar extends ScrollEffectElement {

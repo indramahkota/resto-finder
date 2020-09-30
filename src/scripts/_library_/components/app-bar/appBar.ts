@@ -6,7 +6,7 @@ import AppConfig from '../../../globals/appConfig';
 import ScrollEffectElement from '../_base_/scrollEffectElement';
 import { INavigation } from '../../../interfaces/interfaces';
 
-import './app-bar.scss';
+// import './app-bar.scss';
 
 @customElement('app-bar')
 export default class AppBar extends ScrollEffectElement {

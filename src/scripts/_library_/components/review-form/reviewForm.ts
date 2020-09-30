@@ -2,9 +2,9 @@ import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
 import CommonElement from '../_base_/commonElement';
-
-import './review-form.scss';
 import EventType from '../../../globals/eventType';
+
+// import './review-form.scss';
 
 @customElement('review-form')
 export default class ReviewForm extends CommonElement {

@@ -6,7 +6,7 @@ import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
 
 import '../../components/review-card/reviewCard';
 
-import './review-container.scss';
+// import './review-container.scss';
 
 @customElement('review-container')
 export default class ReviewContainer extends CommonElement {

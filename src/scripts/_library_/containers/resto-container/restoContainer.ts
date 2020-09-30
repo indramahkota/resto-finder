@@ -9,7 +9,7 @@ import { Restaurant } from '../../../data/entity/RestaurantEntity';
 import '../../components/resto-card/restoCard';
 import '../../components/restocard-shimmer/restoCardShimmer';
 
-import './resto-container.scss';
+// import './resto-container.scss';
 
 @customElement('resto-container')
 export default class RestoContainer extends CommonElement {

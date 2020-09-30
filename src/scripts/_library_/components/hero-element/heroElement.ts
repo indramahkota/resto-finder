@@ -22,7 +22,7 @@ import hero_1327 from '../../../../assets/images/heros/hero-image-large_vfy6po_c
 import hero_1347 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1347.jpg';
 import hero_1350 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1350.jpg';
 
-import './hero-element.scss';
+// import './hero-element.scss';
 
 @customElement('hero-element')
 export default class HeroElement extends CommonElement {
