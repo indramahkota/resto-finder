@@ -12,7 +12,13 @@ export default class ReviewForm extends CommonElement {
     private _name = '';
 
     @internalProperty()
+    private _nameIsInvalid = false;
+
+    @internalProperty()
     private _review = '';
+
+    @internalProperty()
+    private _reviewIsInvalid = false;
 
     private _onNameChangeHandler(event: Event): void {
         this.setName((event.target as HTMLInputElement).value);
@@ -24,12 +30,16 @@ export default class ReviewForm extends CommonElement {
 
     private _onButtonClickHandler(): void {
         if(this._name.trim() === '' || this._review.trim() === '') {
+            this._nameIsInvalid = this._name.trim() === '' || false;
+            this._reviewIsInvalid = this._review.trim() === '' || false;
             this._dispatchData({ message: 'There is Empty input, please check again!' }, EventType.SHOW_TOAST);
             return;
         }
         this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
         this.setName('');
         this.setReview('');
+        this._nameIsInvalid = false;
+        this._reviewIsInvalid = false;
     }
 
     setName(name: string): void {
@@ -38,13 +48,13 @@ export default class ReviewForm extends CommonElement {
 
     setReview(review: string): void {
         this._review = review;
-    } 
+    }
 
     render(): TemplateResult {
         return html`
             <div class='reviewform__container'>
-                <input aria-label='Type your Name' class='reviewinput__name' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name}'>
-                <textarea aria-label='Type your Review' class='reviewtextarea__review' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review}'></textarea>
+                <input id='review-input' aria-label='Type your Name' class='reviewinput__name' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name}' ?required=${this._nameIsInvalid}>
+                <textarea id='review-textarea' aria-label='Type your Review' class='reviewtextarea__review' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review}' ?required=${this._reviewIsInvalid}></textarea>
                 <button class='reviewbutton__submit' @click='${this._onButtonClickHandler}'>Add Review</button>
             </div>
         `;

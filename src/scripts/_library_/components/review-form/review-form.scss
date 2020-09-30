@@ -24,6 +24,10 @@
         &:focus {
             box-shadow: 0 0 0 1px #45a1ff, 0 0 0 4px rgba(69, 161, 255, 0.3), 0 0 0 1px #45a1ff;
         }
+
+        &:invalid {
+            box-shadow: 0 0 0 1px #c01515, 0 0 0 4px rgba(192, 21, 21, 0.3), 0 0 0 1px #c01515;
+        }
     }
 
     .reviewtextarea__review {
@@ -42,6 +46,10 @@
 
         &:focus {
             box-shadow: 0 0 0 1px #45a1ff, 0 0 0 4px rgba(69, 161, 255, 0.3), 0 0 0 1px #45a1ff;
+        }
+
+        &:invalid {
+            box-shadow: 0 0 0 1px #c01515, 0 0 0 4px rgba(192, 21, 21, 0.3), 0 0 0 1px #c01515;
         }
     }
 
