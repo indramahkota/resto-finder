@@ -53,20 +53,13 @@ body {
     height: 100%;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: var(--color-page-background);
-    /* ukuran static font-size: 16px, line-height: normal; */
     font: 16px / normal Montserrat, 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     .skip-link {
         position: absolute;
-        top: -40px;
         left: 0;
+        top: -40px;
         background-color: #bf1722;
         color: white;
         padding: 8px;
