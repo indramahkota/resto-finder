@@ -10,7 +10,7 @@
     font-weight: bold;
     text-align: center;
     position: absolute;
-    top: 50px;
+    top: 75px;
     left: 0;
     right: 0;
 
@@ -27,6 +27,7 @@
     }
 
     .hero__button {
+      visibility: hidden;
       background-color: #2b6ca1;
       border: solid 2px #2b6ca1;
       color: white;
@@ -53,6 +54,10 @@
 
       h1 {
         font-size: 3em;
+      }
+
+      .hero__button {
+        visibility: visible;
       }
     }
   }
