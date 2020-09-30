@@ -5,7 +5,7 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 import CommonElement from '../_base_/commonElement';
 import { Category, Drink, Food, Menus, RestaurantDetails } from '../../../data/entity/RestaurantEntity';
 import Utils from '../../../globals/appUtilities';
-import AppConfig from '../../../globals/appConfig';
+import placeholderImage from '../../../../assets/images/placeholder.png';
 
 import '../rating-element/ratingElement';
 
@@ -25,7 +25,6 @@ export default class DetailsCard extends CommonElement {
         const imageHelper = new Image();
         imageHelper.src = imageUrl;
         imageHelper.onload = () => {
-            image.classList.add('complete');
             image.src = imageHelper.src;
         }
     }
@@ -103,7 +102,7 @@ export default class DetailsCard extends CommonElement {
         return html`
             <div class='restodetails__container'>
                 <div class='restodetails__image'>
-                    <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)} Image Name'>
+                    <img id='${ifDefined(this.data?.pictureId)}' src='${placeholderImage}' alt='${ifDefined(this.data?.name)} Image Name'>
                 </div>
                 
                 <div class='restodetails__content'>

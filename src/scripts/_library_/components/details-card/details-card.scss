@@ -8,7 +8,7 @@
     .restodetails__image {
         display: flex;
         width: 100%;
-        min-height: 250px;
+        height: 280px;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
@@ -16,12 +16,11 @@
 
         img {
             margin: auto;
-
-            &.complete {
-                width: 100%;
-                object-position: center;
-                border-radius: 8px;
-            }
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
         }
     }
 
@@ -187,6 +186,22 @@
                     margin-left: auto;
                 }
             }
+        }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .restodetails__container {
+        .restodetails__image {
+            min-height: 350px;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .restodetails__container {
+        .restodetails__image {
+            min-height: 450px;
         }
     }
 }

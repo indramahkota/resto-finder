@@ -26,19 +26,12 @@
             border-radius: 2px;
         }
 
-        .image__content {
-            display: flex;
-
-            img {
-                margin: auto;
-                height: 200px;
-
-                &.complete {
-                    width: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
+        img {
+            margin: auto;
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .card__content {

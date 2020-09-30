@@ -34,7 +34,7 @@ export default class DetailsCardShimmer extends CommonElement {
                     <div class='comment br animate'></div>
                     <div class='comment br animate'></div>
                 </div>
-                <div class='element6'>&nbsp;</div>
+                <div class='element6'></div>
             </div>
         `;
     }

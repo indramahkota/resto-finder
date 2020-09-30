@@ -2,11 +2,11 @@ import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
-import AppConfig from '../../../globals/appConfig';
 import { Restaurant } from '../../../data/entity/RestaurantEntity';
 import CommonElement from '../_base_/commonElement';
 import EventType from '../../../globals/eventType';
 import Utils from '../../../globals/appUtilities';
+import placeholderImage from '../../../../assets/images/placeholder.png';
 
 import '../rating-element/ratingElement';
 
@@ -30,7 +30,6 @@ export default class RestoCard extends CommonElement {
             const imageHelper = new Image();
             imageHelper.src = imageUrl;
             imageHelper.onload = () => {
-                image.classList.add('complete');
                 image.src = imageHelper.src;
                 this._imgLoaded = true;
                 this.removeEventListener('scroll', this._lazyLoad, false);
@@ -74,12 +73,8 @@ export default class RestoCard extends CommonElement {
         return html`
             <div class='card__container'>
                 <a href='#/details/${this.data?.id}'>
-                    <div class="card__rating">
-                        <span>⭐ ${this.data?.rating}</span>
-                    </div>
-                    <div class='image__content'>
-                        <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)}'>
-                    </div>
+                    <span class="card__rating">⭐ ${this.data?.rating}</span>
+                    <img id='${ifDefined(this.data?.pictureId)}' src='${placeholderImage}' alt='${ifDefined(this.data?.name)}'>
                     <div class='card__content'>
                         <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
                         <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>
