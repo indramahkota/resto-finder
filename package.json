@@ -8,8 +8,9 @@
     "lint:eslint": "eslint ./src/**/*.ts",
     "lint:lit-analyzer": "lit-analyzer",
     "build": "webpack --config webpack.prod.js",
-    "build:pwa": "webpack --config webpack.prod~pwa.js",
     "build:analyzer": "webpack --config webpack.prod~analyzer.js",
+    "build:pwa": "webpack --config webpack.prod~pwa.js",
+    "build:pwa:imagemin": "webpack --config webpack.prod~pwa~min.js",
     "start": "webpack-dev-server --config webpack.dev.js",
     "start:pwa": "webpack-dev-server --config webpack.dev~pwa.js",
     "test": "karma start"
