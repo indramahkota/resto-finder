@@ -64,6 +64,7 @@
         .resto__empty {
             &:hover {
                 transition: all 0.3s ease-out;
+                transition-property: transform, box-shadow;
                 -webkit-transform: translateY(-8px);
                 -ms-transform: translateY(-8px);
                 transform: translateY(-8px);

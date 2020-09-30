@@ -88,7 +88,7 @@
     .profile__container {
         .profile__content {
             &:hover {
-                transition: all 0.3s ease-out;
+                transition: transform 0.3s ease-out;
                 -webkit-transform: translateY(-8px);
                 -ms-transform: translateY(-8px);
                 transform: translateY(-8px);
@@ -98,7 +98,7 @@
                 .profile__image {
                     &:hover {
                         box-shadow: 0 4px 16px -8px var(--color-background-shadow);
-                        transition: all 0.3s ease-out;
+                        transition: box-shadow 0.3s ease-out;
                     }
                 }
             }

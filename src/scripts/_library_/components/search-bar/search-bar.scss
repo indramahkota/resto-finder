@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 75px;
     right: 75px;
-    transition: all ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
     transform: translate(-50%, -50%);
 
     &.hide {
@@ -31,7 +31,7 @@
                 border-radius: 25px;
                 opacity: 0;
                 z-index: 5;
-                transition: all 0.2;
+                transition: transform 0.2;
                 font-size: 1em;
 
                 &:hover {
@@ -43,7 +43,7 @@
                     left: auto;
                     opacity: 1;
                     cursor: text;
-                    transition: all 0.2;
+                    transition: transform 0.2;
                     padding-left: 25px;
                     padding-right: 70px;
 
@@ -51,7 +51,7 @@
                         right: 400px;
                         background: #151515;
                         z-index: 6;
-                        transition: all 0.2;
+                        transition: transform 0.2;
                     }
 
                     & ~ .search__toggler::before {
@@ -87,7 +87,7 @@
                 top: -4px;
                 left: -4px;
                 border-radius: 50%;
-                transition: all 0.2s;
+                transition: transform 0.2s;
 
                 &:hover {
                     cursor: pointer;
@@ -105,7 +105,7 @@
                     height: 2px;
                     background: #fff;
                     transform: rotate(45deg);
-                    transition: all 0.2s;
+                    transition: transform 0.2s;
                 }
 
                 &::after {
@@ -120,7 +120,7 @@
                     height: 25px;
                     border-radius: 50%;
                     border: 2px solid #fff;
-                    transition: all 0.2s;
+                    transition: transform 0.2s;
                 }
             }
         }

@@ -94,7 +94,7 @@
 @media (hover: hover) {
     .card__container {
         &:hover {
-            transition: all 0.3s ease-out;
+            transition: transform 0.3s ease-out;
             -webkit-transform: translateY(-8px);
             -ms-transform: translateY(-8px);
             transform: translateY(-8px);
@@ -104,7 +104,7 @@
         .card__delete {
             button {
                 &:hover {
-                    transition: 0.3s ease-in;
+                    transition: background-color 0.3s ease-in;
                     background-color: #e74c3c;
                 }
             }

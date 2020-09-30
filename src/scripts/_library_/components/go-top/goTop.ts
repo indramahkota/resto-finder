@@ -12,14 +12,14 @@ export default class GoTop extends ScrollEffectElement {
 
     private _hideOrShowsearchBar(): void {
         if (this._currScrollPos < ((3 / 4) * window.screen.height)) {
-            this._goTopButton?.classList.add('hide');
+            this._goTopButton?.classList.remove('show');
             return;
         }
         const hideTopButton = this._currScrollPos - this._lastScrollPos;
         if (hideTopButton > 0) {
-            this._goTopButton?.classList.add('hide');
+            this._goTopButton?.classList.remove('show');
         } else if (hideTopButton < -10) {
-            this._goTopButton?.classList.remove('hide');
+            this._goTopButton?.classList.add('show');
         }
     }
 
@@ -47,7 +47,7 @@ export default class GoTop extends ScrollEffectElement {
 
     render(): TemplateResult {
         return html`
-            <button id='top-button' class='gotop__button hide' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
+            <button id='top-button' class='gotop__button' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
         `;
     }
 }

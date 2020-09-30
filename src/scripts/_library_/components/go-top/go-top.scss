@@ -1,7 +1,7 @@
 .gotop__button {
     position: fixed;
     bottom: 20px;
-    right: 10px;
+    right: -150px;
     z-index: 999;
     border: none;
     outline: none;
@@ -11,12 +11,12 @@
     border-radius: 15px;
     font-size: 25px;
     background-color: var(--color-button);
-    transition: all ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
 
-    &.hide {
-        -webkit-transform: translateX(150px);
-        -ms-transform: translateX(150px);
-        transform: translateX(150px);
+    &.show {
+        -webkit-transform: translateX(-160px);
+        -ms-transform: translateX(-160px);
+        transform: translateX(-160px);
     }
 }
 
@@ -24,7 +24,7 @@
     .gotop__button {
         &:hover {
             background-color: #000;
-            transition: all ease-in-out 0.2s;
+            transition: transform ease-in-out 0.2s;
         }
     }
 }

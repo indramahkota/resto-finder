@@ -19,7 +19,6 @@
         background-color: var(--color-article-background);
         border: 1px solid var(--color-input-border);
         -webkit-appearance: none;
-        transition: inherit;
 
         &:focus {
             box-shadow: 0 0 0 1px #45a1ff, 0 0 0 4px rgba(69, 161, 255, 0.3), 0 0 0 1px #45a1ff;
@@ -42,7 +41,6 @@
         background-color: var(--color-article-background);
         border: 1px solid var(--color-input-border);
         -webkit-appearance: none;
-        transition: inherit;
 
         &:focus {
             box-shadow: 0 0 0 1px #45a1ff, 0 0 0 4px rgba(69, 161, 255, 0.3), 0 0 0 1px #45a1ff;
@@ -75,6 +73,7 @@
                 background-color: #ffffff;
                 color: black;
                 transition: ease-in 0.3s;
+                transition-property: background-color, color;
             }
         }
     }

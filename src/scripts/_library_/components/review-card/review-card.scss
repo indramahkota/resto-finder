@@ -64,7 +64,7 @@
 @media (hover: hover) {
     .reviewcard__container {
         &:hover {
-            transition: all 0.3s ease-out;
+            transition: transform 0.3s ease-out;
             -webkit-transform: translateY(-8px);
             -ms-transform: translateY(-8px);
             transform: translateY(-8px);
