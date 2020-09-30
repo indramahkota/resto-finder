@@ -34,6 +34,11 @@ export default class AppBar extends ScrollEffectElement {
     private _header: HTMLElement | null = null;
     private _ticking = false;
 
+    private _onResizeHandler = () => {
+        this._isDrawerOpen = false;
+        Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
+    }
+
     private _hideOrShowHeader(): void {
         if (this._currScrollPos < 120) {
             this.showHeader();
@@ -116,6 +121,13 @@ export default class AppBar extends ScrollEffectElement {
             this._iconNavFocus = true;
         if (window.location.hash !== '')
             this.dataShouldUpdate(window.location.hash);
+
+        window.addEventListener('resize', this._onResizeHandler, false);
+    }
+
+    disconnectedCallback(): void {
+        window.removeEventListener('resize', this._onResizeHandler, false);
+        super.disconnectedCallback();
     }
 
     firstUpdated(): void {
