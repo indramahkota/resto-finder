@@ -74,13 +74,15 @@ export default class RestoCard extends CommonElement {
         return html`
             <div class='card__container'>
                 <a href='#/details/${this.data?.id}'>
+                    <div class="card__rating">
+                        <span>⭐ ${this.data?.rating}</span>
+                    </div>
                     <div class='image__content'>
                         <img id='${ifDefined(this.data?.pictureId)}' src='${AppConfig.URL_LOADING_SVG}' alt='${ifDefined(this.data?.name)}'>
                     </div>
                     <div class='card__content'>
                         <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
                         <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>
-                        <rating-element tabindex='0' aria-label='Rating ${this.data?.rating}' rating=${ifDefined(this.data?.rating)}></rating-element>
                         <p tabindex='0' class='card__description'>${this.data?.description}</p>
                     </div>
                 </a>

@@ -10,13 +10,29 @@
         font: inherit;
         text-decoration: none;
 
+        .card__rating {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            top: 166px;
+            left: 2px;
+            padding: 4px 8px 4px 4px;
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: bolder;
+            background-color: var(--color-article-background);
+            border-radius: 2px;
+        }
+
         .image__content {
             display: flex;
 
             img {
                 margin: auto;
                 height: 200px;
-                
+
                 &.complete {
                     width: 100%;
                     object-fit: cover;
@@ -35,7 +51,6 @@
             .card__name {
                 color: inherit;
                 padding: 2px 0 8px 0;
-                margin-bottom: 4px;
             }
 
             .card__city {

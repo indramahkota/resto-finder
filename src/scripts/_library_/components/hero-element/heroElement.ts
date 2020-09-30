@@ -60,7 +60,7 @@ export default class HeroElement extends CommonElement {
                             ${hero_1327} 1327w,
                             ${hero_1347} 1347w,
                             ${hero_1350} 1350w"
-                        src="${hero_1350}"
+                        src="${hero_356}"
                     alt="Hero Image">
                 </picture>
                 <div id='hero-greeting' class='hero__placeholder'>
