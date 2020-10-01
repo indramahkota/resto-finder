@@ -33,4 +33,24 @@ export default class Utils {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
     }
+
+    static incrementFavoriteCounter(): void {
+        const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
+        if(!counter || counter === '0') {
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, '1');
+        } else {
+            const increment = Number(counter) + 1;
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, increment.toString());
+        }
+    }
+
+    static decrementFavoriteCounter(): void {
+        const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
+        if(!counter || counter === '0') {
+            return;
+        } else {
+            const increment = Number(counter) - 1;
+            Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, increment.toString());
+        }
+    }
 }

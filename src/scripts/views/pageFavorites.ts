@@ -25,6 +25,7 @@ export default class PageFavorites extends ServiceElement {
         try {
             await this._repository.deleteFavorite(details.id);
             await this._loadFavoriteData();
+            Utils.decrementFavoriteCounter();
             this._dispatchData({ message: `Remove ${details.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
