@@ -13,7 +13,8 @@
     "build:pwa:imagemin": "webpack --config webpack.prod~pwa~imagemin.js",
     "start": "webpack-dev-server --config webpack.dev.js",
     "start:pwa": "webpack-dev-server --config webpack.dev~pwa.js",
-    "test": "karma start"
+    "test:karma": "karma start",
+    "test:e2e": "codeceptjs run --steps"
   },
   "keywords": [
     "Typescript",
