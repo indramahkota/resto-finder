@@ -10,7 +10,7 @@ describe('Get Local Storage', () => {
 
     it('should return Storage class correctly', () => {
         expect(
-            () => getLocalStorage()
+            getLocalStorage()
         ).toBeInstanceOf(Storage);
     });
 });
