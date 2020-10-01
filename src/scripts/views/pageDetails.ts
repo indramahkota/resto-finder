@@ -153,7 +153,7 @@ export default class PageDetails extends ServiceElement {
                 </div>
                 <div class='pagedetails__reviewcard'>
                     <div class='pagedetails__favorite__container'>
-                        <h1>Save as favorite</h1>
+                        <h1 tabindex='0'>Save as favorite</h1>
                         <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
                     </div>
                     <review-container .data=${this._reviewListData}></review-container>
