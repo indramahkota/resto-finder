@@ -12,6 +12,12 @@ describe('Page Details', async () => {
         await (root as PageDetails).setRestaurantDetailsData(generateFakeRestaurantDetailsResponse());
     });
 
+    it('should render shimmer when detailsId value equal to null', async () => {
+        (root as PageDetails).setRestaurantDetailsData(null);
+        await (root as PageDetails).updateComplete;
+        expect(root.querySelector('detailscard-shimmer')).toBeTruthy();
+    });
+
     it('should render page details correctly', async () => {
         expect(root.innerHTML.includes("Gigitan Cepat")).toBeTruthy();
         expect(root.innerHTML.includes("Bandung")).toBeTruthy();
@@ -22,12 +28,6 @@ describe('Page Details', async () => {
         expect(root.innerHTML.includes("Kalimantan")).toBeTruthy();
         expect(root.innerHTML.includes("Bubur Pedas")).toBeTruthy();
         expect(root.innerHTML.includes("Extra Joss")).toBeTruthy();
-    });
-
-    it('should render shimmer when detailsId value equal to null', async () => {
-        (root as PageDetails).setRestaurantDetailsData(null);
-        await (root as PageDetails).updateComplete;
-        expect(root.querySelector('detailscard-shimmer')).toBeTruthy();
     });
 
     it('should show the Add this Restaurant into favorites button when the Restaurant has not been add before', async () => {

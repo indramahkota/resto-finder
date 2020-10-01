@@ -2,10 +2,16 @@ import AppExeption from '../../src/scripts/globals/appExeption';
 import Utils, { getLocalStorage } from '../../src/scripts/globals/appUtilities';
 
 describe('Get Local Storage', () => {
-    it('should fail when localStorage is not supported', () => {
+    it('should success when localStorage supported', () => {
         expect(
             () => getLocalStorage()
         ).not.toThrowError(AppExeption.LOCAL_STORAGE_NOT_SUPPORTED);
+    });
+
+    it('should return Storage class correctly', () => {
+        expect(
+            () => getLocalStorage()
+        ).toBeInstanceOf(Storage);
     });
 });
 
