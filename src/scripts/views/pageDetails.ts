@@ -158,7 +158,7 @@ export default class PageDetails extends ServiceElement {
                     </div>
                     <review-container .data=${this._reviewListData}></review-container>
                     <review-form></review-form>
-                </div>                
+                </div>
             </div>
         `;
     }
