@@ -33,7 +33,7 @@ export default class PageDetails extends ServiceElement {
 
     private _incrementFavoriteCounter() {
         const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
-        if(counter === null || counter === '0') {
+        if(!counter || counter === '0') {
             Utils.setLCS(AppConfig.LCS_FAVORITE_COUNTER, '1');
         } else {
             const increment = Number(counter) + 1;
@@ -43,7 +43,7 @@ export default class PageDetails extends ServiceElement {
 
     private _decrementFavoriteCounter() {
         const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
-        if(counter === null || counter === '0') {
+        if(!counter || counter === '0') {
             return;
         } else {
             const increment = Number(counter) - 1;
@@ -52,8 +52,8 @@ export default class PageDetails extends ServiceElement {
     }
 
     private _addFavoriteHandler = async () => {
-        if(this.detailsId === null || this._restodetailsData === null)
-            return;
+        if(!this.detailsId || !this._restodetailsData) return;
+
         try {
             const newFavoriteData = Object.assign(this._restodetailsData.restaurant, { isFavorite: true });
             await this._repository.putFavorite(newFavoriteData);
@@ -66,8 +66,8 @@ export default class PageDetails extends ServiceElement {
     }
 
     private _deleteFavoriteHandler = async () => {
-        if(this.detailsId === null)
-            return;
+        if(!this.detailsId) return;
+
         try {
             await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
@@ -79,8 +79,8 @@ export default class PageDetails extends ServiceElement {
     }
 
     private _submitReviewHandler = async (event: Event) => {
-        if (this.detailsId === null)
-            return;
+        if (!this.detailsId) return;
+
         const details = (event as CustomEvent).detail;
         const customerReview: CustomerReview = {
             id: this.detailsId,
@@ -125,8 +125,8 @@ export default class PageDetails extends ServiceElement {
     }
 
     async firstUpdated(): Promise<void> {
-        if (this.detailsId === null)
-            return;
+        if (!this.detailsId) return;
+        
         try {
             const favoriteData = await this._repository.getFavoriteById(this.detailsId);
             if (favoriteData !== undefined)
@@ -166,7 +166,7 @@ export default class PageDetails extends ServiceElement {
     render(): TemplateResult {
         return html`
             ${
-                this._restodetailsData === null ? this.renderShimmer() : this.renderPageDetailsContent(this._restodetailsData)
+                !this._restodetailsData ? this.renderShimmer() : this.renderPageDetailsContent(this._restodetailsData)
             }
         `;
     }

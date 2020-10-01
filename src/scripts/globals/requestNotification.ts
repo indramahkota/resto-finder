@@ -25,9 +25,8 @@ export async function requestNotificationPermission(): Promise<void> {
 }
 
 const arrayBufferToArrayNumber = (arrBuffer: ArrayBuffer | null): number[] | null => {
-    if (arrBuffer === null) {
-        return null;
-    }
+    if (!arrBuffer) return null;
+
     const uint8Arr = new Uint8Array(arrBuffer);
     return Array.from(uint8Arr);
 }
@@ -46,8 +45,7 @@ export async function getNotificationSubscription(): Promise<void> {
                     const p256dhKey = arrayBufferToArrayNumber(subscribtion.getKey('p256dh'));
                     const authKey = arrayBufferToArrayNumber(subscribtion.getKey('auth'));
 
-                    if (p256dhKey === null || authKey === null)
-                        return;
+                    if (!p256dhKey || !authKey) return;
 
                     console.log(`endpoint: '${subscribtion.endpoint}', keys: { p256dh: '${btoa(String.fromCharCode.apply(null, p256dhKey))}', auth: '${btoa(String.fromCharCode.apply(null, authKey))}'}`);
                 }

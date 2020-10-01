@@ -17,11 +17,7 @@ export default class PageFavorites extends ServiceElement {
 
     private _getFavoriteCounter(): number {
         const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
-        if(counter === null || counter === '0') {
-            return 0;
-        } else {
-            return Number(counter);
-        }
+        return (!counter || counter === '0') ? 0 : Number(counter);
     }
 
     private _deleteFavoritedHandler = async (event: Event) => {

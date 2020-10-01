@@ -33,8 +33,7 @@ export default class RestoFinderApp extends CommonElement {
         if (details.message === undefined || details.message === '')
             return;
 
-        if (this._timeOutId !== null)
-            clearTimeout(this._timeOutId);
+        if (this._timeOutId) clearTimeout(this._timeOutId);
 
         this._toastMessage = details.message;
 
@@ -68,7 +67,7 @@ export default class RestoFinderApp extends CommonElement {
             <foot-bar></foot-bar>
 
             ${
-                this._toastMessage !== null ? html`
+                this._toastMessage ? html`
                     <app-toast message='${this._toastMessage}'></app-toast>
                 ` : nothing
             }

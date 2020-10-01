@@ -22,8 +22,7 @@ export default class LazyLoadElement extends CommonElement {
             imageObserver.observe(image);
         } else {
             const _lazyLoad = () => {
-                if (!image.classList.contains('lazy'))
-                    return;
+                if (!image.classList.contains('lazy')) return;
 
                 const scrollTop = window.pageYOffset;
                 const viewportOffset = image.getBoundingClientRect();
