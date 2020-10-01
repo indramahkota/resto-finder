@@ -40,7 +40,7 @@
     "babel-plugin-template-html-minifier": "^4.1.0",
     "babel-plugin-transform-builtin-classes": "^0.6.1",
     "clean-webpack-plugin": "^3.0.0",
-    "codeceptjs": "^2.6.11",
+    "codeceptjs": "^3.0.0",
     "copy-webpack-plugin": "^6.1.1",
     "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
