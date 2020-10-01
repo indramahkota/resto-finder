@@ -6,12 +6,12 @@ import(
     './styles/Index.scss');
 
 import(
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     /* webpackChunkName: 'componentcss' */
     './styles/Components.scss');
 
 import(
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     /* webpackChunkName: 'app' */
     './scripts/App');
 
