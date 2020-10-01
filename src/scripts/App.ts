@@ -4,7 +4,7 @@ import AppConfig from './globals/appConfig';
 import Utils from './globals/appUtilities';
 
 import(
-    /* webpackPreload: true */
+    /* webpackPrefetch: true */
     /* webpackChunkName: 'componentcss' */
     '../styles/Components.scss');
 
