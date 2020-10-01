@@ -3,16 +3,6 @@ import { html, render } from 'lit-html';
 import AppConfig from './globals/appConfig';
 import Utils from './globals/appUtilities';
 
-import(
-    /* webpackPrefetch: true */
-    /* webpackChunkName: 'componentcss' */
-    '../styles/Components.scss');
-
-import(
-    /* webpackPreload: true */
-    /* webpackChunkName: 'maincss' */
-    '../styles/Index.scss');
-
 import './views/RstfApp';
 
 window.addEventListener('DOMContentLoaded', () => {

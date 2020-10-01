@@ -1,2 +1,18 @@
 import 'regenerator-runtime';
-import './scripts/App';
+
+import(
+    /* webpackPreload: true */
+    /* webpackChunkName: 'maincss' */
+    '../styles/Index.scss');
+
+import(
+    /* webpackPrefetch: true */
+    /* webpackChunkName: 'componentcss' */
+    '../styles/Components.scss');
+
+import(
+    /* webpackPrefetch: true */
+    /* webpackChunkName: 'app' */
+    './scripts/App');
+
+// import './scripts/App';

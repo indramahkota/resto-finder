@@ -8,8 +8,8 @@ const pwaPlugin = require('./pwa/pwa-plugin');
 
 module.exports = merge(production, {
   entry: {
-    sw: resolve(__dirname, 'src/sw.ts'),
-    main: resolve(__dirname, 'src/index.ts')
+    main: resolve(__dirname, 'src/index.ts'),
+    sw: resolve(__dirname, 'src/sw.ts')
   },
   plugins: [
     ...pwaPlugin
