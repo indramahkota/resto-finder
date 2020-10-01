@@ -1,9 +1,8 @@
 import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined';
 
 import { Restaurant } from '../../../data/entity/RestaurantEntity';
-import CommonElement from '../_base_/commonElement';
+import LazyLoadElement from '../_base_/lazyLoadElement';
 import EventType from '../../../globals/eventType';
 import Utils from '../../../globals/appUtilities';
 import placeholderImage from '../../../../assets/images/placeholder.png';
@@ -13,52 +12,20 @@ import '../rating-element/ratingElement';
 // import './resto-card.scss';
 
 @customElement('resto-card')
-export default class RestoCard extends CommonElement {
+export default class RestoCard extends LazyLoadElement {
     @property({ type: Object })
     data: Restaurant | null = null;
-
-    private _imgLoaded = false;
-
-    private _lazyLoad = () => {
-        const pictId = this.data?.pictureId;
-        if (this.data === undefined || pictId === undefined || this._imgLoaded)
-            return;
-        const image = <HTMLImageElement>document.getElementById(pictId);
-        const scrollTop = window.pageYOffset;
-        if (image.offsetTop < (window.innerHeight + scrollTop)) {
-            const imageUrl = Utils.genImgSrc(pictId, 'small');
-            const imageHelper = new Image();
-            imageHelper.src = imageUrl;
-            imageHelper.onload = () => {
-                image.src = imageHelper.src;
-                this._imgLoaded = true;
-                this.removeEventListener('scroll', this._lazyLoad, false);
-                this.removeEventListener('resize', this._lazyLoad, false);
-                this.removeEventListener('orientationChange', this._lazyLoad, false);
-            }
-        }
-    }
 
     private _onButtonClickHandler() {
         this._dispatchData({ id: this.data?.id, name: this.data?.name }, EventType.DELETE_FAVORITE);
     }
 
-    connectedCallback(): void {
-        super.connectedCallback();
-        this.addEventListener('scroll', this._lazyLoad, false);
-        this.addEventListener('resize', this._lazyLoad, false);
-        this.addEventListener('orientationChange', this._lazyLoad, false);
-    }
-
-    disconnectedCallback(): void {
-        this.removeEventListener('scroll', this._lazyLoad, false);
-        this.removeEventListener('resize', this._lazyLoad, false);
-        this.removeEventListener('orientationChange', this._lazyLoad, false);
-        super.disconnectedCallback();
-    }
-
     firstUpdated(): void {
-        this._lazyLoad();
+        const pictId = this.data?.pictureId;
+        if(pictId === undefined)
+            return;
+        const image = <HTMLImageElement>document.getElementById(pictId);
+        this._setupImageLazy(image);
     }
 
     renderDeleteButton(): TemplateResult {
@@ -69,12 +36,24 @@ export default class RestoCard extends CommonElement {
         `;
     }
 
+    renderCardImage(): TemplateResult {
+        const pictName = this.data?.name;
+        const pictId = this.data?.pictureId;
+        if (pictName === undefined || pictId === undefined)
+            return html`<img src='${placeholderImage}' alt='Placeholder Image'>`;
+        return html`
+            <img id='${pictId}' class='lazy' src='${placeholderImage}' data-src=${Utils.genImgSrc(pictId, 'small')} alt='${pictId}'>
+        `;
+    }
+
     render(): TemplateResult {
         return html`
             <div class='card__container'>
                 <a href='#/details/${this.data?.id}'>
-                    <span class="card__rating">⭐ ${this.data?.rating}</span>
-                    <img id='${ifDefined(this.data?.pictureId)}' src='${placeholderImage}' alt='${ifDefined(this.data?.name)}'>
+                    <span class='card__rating'>⭐ ${this.data?.rating}</span>
+                    ${
+                        this.renderCardImage()
+                    }
                     <div class='card__content'>
                         <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
                         <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>

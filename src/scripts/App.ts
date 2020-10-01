@@ -5,12 +5,12 @@ import Utils from './globals/appUtilities';
 
 import(
     /* webpackPreload: true */
-    /* webpackChunkName: "componentcss" */
-     '../styles/Components.scss');
+    /* webpackChunkName: 'componentcss' */
+    '../styles/Components.scss');
 
 import(
-/* webpackPreload: true */
-/* webpackChunkName: "maincss" */
+    /* webpackPreload: true */
+    /* webpackChunkName: 'maincss' */
     '../styles/Index.scss');
 
 import './views/RstfApp';
