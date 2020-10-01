@@ -7,12 +7,7 @@ import(
 
 import(
     /* webpackPreload: true */
-    /* webpackChunkName: 'componentcss' */
+    /* webpackChunkName: 'compcss' */
     './styles/Components.scss');
 
-import(
-    /* webpackPreload: true */
-    /* webpackChunkName: 'app' */
-    './scripts/App');
-
-// import './scripts/App';
+import './scripts/App';
