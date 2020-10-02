@@ -7,7 +7,7 @@ export default class LazyLoadElement extends CommonElement {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const urldataset = image.dataset.src;
-                        if (urldataset) {
+                        if (urldataset !== undefined) {
                             const imageHelper = new Image();
                             imageHelper.src = urldataset;
                             imageHelper.onload = () => {
@@ -30,7 +30,7 @@ export default class LazyLoadElement extends CommonElement {
 
                 if (imageTop < (window.innerHeight + scrollTop)) {
                     const urldataset = image.dataset.src;
-                    if (urldataset) {
+                    if (urldataset !== undefined) {
                         const imageHelper = new Image();
                         imageHelper.src = urldataset;
                         imageHelper.onload = () => {

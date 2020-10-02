@@ -1,14 +1,14 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
-import EventType from '../globals/eventType';
-import ServiceElement from '../_library_/components/_base_/serviceElement';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
+import ServiceElement from '../_library_/components/_base_/serviceElement';
+import Utils from '../globals/appUtilities';
+import AppConfig from '../globals/appConfig';
+import EventType from '../globals/eventType';
 
 import '../_library_/components/hero-element/heroElement';
 import '../_library_/containers/resto-container/restoContainer';
-import Utils from '../globals/appUtilities';
-import AppConfig from '../globals/appConfig';
 
 @customElement('rstf-favorites')
 export default class PageFavorites extends ServiceElement {
@@ -22,6 +22,8 @@ export default class PageFavorites extends ServiceElement {
 
     private _deleteFavoritedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
+        if(!details.id || details.id === '') return;
+
         try {
             await this._repository.deleteFavorite(details.id);
             await this._loadFavoriteData();

@@ -11,7 +11,10 @@ export default class AppRepository implements DbService, ApiService {
     private _net: NetworkServer;
     private _db: ClientDatabase;
 
-    constructor(networkServer: NetworkServer, clientDatabase: ClientDatabase) {
+    constructor(
+        networkServer: NetworkServer,
+        clientDatabase: ClientDatabase
+    ) {
         this._net = networkServer;
         this._db = clientDatabase;
     }

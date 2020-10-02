@@ -19,7 +19,7 @@ export async function requestNotificationPermission(): Promise<void> {
                 console.error('Pengguna menutup kotak dialog permintaan izin.');
             }
         } catch (error) {
-            console.log(error, 'PushManager tidak didukung browser ini.');
+            console.log(error);
         }
     }
 }

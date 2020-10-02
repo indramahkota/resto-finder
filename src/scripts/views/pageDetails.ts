@@ -1,11 +1,11 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty, property } from 'lit-element';
 
-import Utils from '../globals/appUtilities';
-import EventType from '../globals/eventType';
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import { CustomerReview } from '../data/entity/CustomerReviewEntity';
 import { ConsumerReview } from '../data/entity/RestaurantEntity';
+import Utils from '../globals/appUtilities';
+import EventType from '../globals/eventType';
 import ServiceElement from '../_library_/components/_base_/serviceElement';
 
 import '../_library_/components/details-card/detailsCard';
@@ -105,6 +105,7 @@ export default class PageDetails extends ServiceElement {
 
     async firstUpdated(): Promise<void> {
         if (!this.detailsId) return;
+        document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
         
         try {
             const favoriteData = await this._repository.getFavoriteById(this.detailsId);
@@ -115,7 +116,6 @@ export default class PageDetails extends ServiceElement {
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
-        document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
     }
 
     renderShimmer(): TemplateResult {

@@ -18,8 +18,8 @@ export default class DetailsCard extends CommonElement {
 
     firstUpdated(): void {
         const pictId = this.data?.pictureId;
-        if (pictId === undefined)
-            return;
+        if (pictId === undefined) return;
+        
         const image = <HTMLImageElement>document.getElementById(pictId);
         const imageUrl = Utils.genImgSrc(pictId, 'medium');
         const imageHelper = new Image();

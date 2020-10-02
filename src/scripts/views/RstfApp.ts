@@ -2,8 +2,8 @@ import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
-import EventType from '../globals/eventType';
 import { MatchObject, Route } from './routes/route';
+import EventType from '../globals/eventType';
 import CommonElement from '../_library_/components/_base_/commonElement';
 
 import '../_library_/components/foot-bar/footBar';

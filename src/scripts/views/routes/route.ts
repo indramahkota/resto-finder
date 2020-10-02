@@ -98,7 +98,7 @@ function returnParameters(path: string, pathname: string): Parameter[] {
     return params;
 }
 
-// // '#/aaa/bbb/:id/:haha' -> 'aaa/bbb'
+// '#/aaa/bbb/:id/:haha' -> 'aaa/bbb'
 function pathWithoutParameters(path: string): string {
     const pathArray = path.split('/');
     let firstParamIndex = pathArray.length;

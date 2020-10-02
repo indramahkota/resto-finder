@@ -1,8 +1,8 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, internalProperty } from 'lit-element';
 
-import EventType from '../globals/eventType';
 import { RestaurantResponse } from '../data/entity/RestaurantResponse';
+import EventType from '../globals/eventType';
 import ServiceElement from '../_library_/components/_base_/serviceElement';
 
 import '../_library_/components/hero-element/heroElement';
