@@ -11,13 +11,13 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["jasmine", "karma-typescript"],
+    frameworks: ['jasmine', 'karma-typescript'],
 
     // list of files / patterns to load in the browser
     files: [
-      "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
-      { pattern: "src/**/*.ts" },
-      { pattern: "test/**/*.ts" }
+      'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js',
+      { pattern: 'src/**/*.ts' },
+      { pattern: 'test/**/*.ts' }
     ],
 
     // list of files / patterns to exclude
@@ -27,9 +27,9 @@ module.exports = function (config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       //'specs/**/*Spec.js': ['webpack', 'sourcemap'],
-      // "**/*.ts": "karma-typescript" // *.tsx for React Jsx
-      "src/**/*.ts": ["karma-typescript", "coverage"],
-      "test/**/*.ts": ["karma-typescript", "sourcemap"]
+      // '**/*.ts': 'karma-typescript' // *.tsx for React Jsx
+      'src/**/*.ts': ['karma-typescript', 'coverage'],
+      'test/**/*.ts': ['karma-typescript', 'sourcemap']
     },
 
     webpack: {
@@ -50,7 +50,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["progress", "coverage", "karma-typescript"],
+    reporters: ['progress', 'coverage', 'karma-typescript'],
 
     // web server port
     port: 9876,
@@ -81,7 +81,7 @@ module.exports = function (config) {
     karmaTypescriptConfig: {
       bundlerOptions: {
         transforms: [
-          require("karma-typescript-es6-transform")()
+          require('karma-typescript-es6-transform')()
         ]
       }
     }
