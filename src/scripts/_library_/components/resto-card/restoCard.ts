@@ -40,7 +40,7 @@ export default class RestoCard extends LazyLoadElement {
         const pictName = this.data?.name;
         const pictId = this.data?.pictureId;
         if (pictName === undefined || pictId === undefined)
-            return html`<img src='${placeholderImage}' alt='Placeholder Image'>`;
+            return html`<img src='${placeholderImage}' alt='Placeholder'>`;
         return html`
             <img id='${pictId}' class='lazy' src='${placeholderImage}' data-src=${Utils.genImgSrc(pictId, 'small')} alt='${pictId}'>
         `;
