@@ -30,11 +30,11 @@ describe('Page Details', async () => {
         expect(root.innerHTML.includes("Extra Joss")).toBeTruthy();
     });
 
-    it('should show the Add this Restaurant into favorites button when the Restaurant has not been add before', async () => {
+    it('should the button aria-label contain /Add this Restaurant into favorites/ the Restaurant has not been added before', async () => {
         expect(root.querySelector('[aria-label="Add this Restaurant into favorites"]')).toBeTruthy();
     });
 
-    it('should show the Remove this Restaurant into favorites button when the Restaurant has added to database', async () => {
+    it('should the button aria-label contain /Remove this Restaurant from favorites/ when the Restaurant has added to database', async () => {
         const elementAdd = root.querySelector('[aria-label="Add this Restaurant into favorites"]');
         elementAdd.dispatchEvent(new Event('click'));
 
@@ -42,7 +42,7 @@ describe('Page Details', async () => {
         expect(root.querySelector('[aria-label="Remove this Restaurant from favorites"]')).toBeTruthy();
     });
 
-    it('should show the Add this Restaurant into favorites button when the Restaurant has added to database and deleted again', async () => {
+    it('should the button aria-label contain /Add this Restaurant into favorites/ when the Restaurant has added to database and deleted again', async () => {
         const elementAdd = root.querySelector('[aria-label="Add this Restaurant into favorites"]');
         elementAdd.dispatchEvent(new Event('click'));
 

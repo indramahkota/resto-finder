@@ -96,7 +96,7 @@ Scenario('Add restaurant review ', async (I) => {
     I.seeElement('.pagedetails__container');
     I.seeElement('.pagedetails__reviewcard');
 
-    //Scroll to review container
+    //Scroll to review container!
     I.scrollTo('.reviewform__container');
 
     //Apakah element tampil/visible?
@@ -113,10 +113,10 @@ Scenario('Add restaurant review ', async (I) => {
     I.click(reviewInput);
     I.type('This review from Codecept');
 
-    //Ambil submit button
+    //Ambil submit button!
     const submitButton = locate('.reviewbutton__submit').first();
 
-    //Klik submit
+    //Klik submit!
     I.click(submitButton);
 
     pause();
