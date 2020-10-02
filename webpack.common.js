@@ -7,21 +7,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const webcomponents_vendor_url = 'node_modules/@webcomponents/webcomponentsjs';
+const webcomponents_vendor = 'node_modules/@webcomponents/webcomponentsjs';
 const fileToCopy = [
   {
-    from: resolve(`${webcomponents_vendor_url}/custom-elements-es5-adapter.js`),
+    from: resolve(`${webcomponents_vendor}/custom-elements-es5-adapter.js`),
     to: 'static/vendors',
     flatten: true,
-    transform: function (fileContent) {
+    transform: fileContent => {
       return minify(fileContent.toString()).code;
     }
   },
   {
-    from: resolve(`${webcomponents_vendor_url}/webcomponents-loader.js`),
+    from: resolve(`${webcomponents_vendor}/webcomponents-loader.js`),
     to: 'static/vendors',
     flatten: true,
-    transform: function (fileContent) {
+    transform: fileContent => {
       return minify(fileContent.toString()).code;
     }
   }
