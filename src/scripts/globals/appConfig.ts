@@ -1,6 +1,6 @@
 import { IProfileNavigation, INavigation, ISocialMedia, IUser } from '../interfaces/interfaces';
 import userImageUrl from '../../assets/images/profile.webp';
-import userImageUrlRound from '../../assets/images/profile-round-60.webp';
+import userImageUrlRound from '../../assets/images/profile_round_60.webp';
 
 export default class AppConfig {
     static readonly APP_NAME: string = 'Resto Finder';

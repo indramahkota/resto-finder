@@ -5,22 +5,22 @@ import AppConfig from '../../../globals/appConfig';
 import EventType from '../../../globals/eventType';
 import CommonElement from '../_base_/commonElement';
 
-import hero_200 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_200.jpg';
-import hero_356 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_356.jpg';
-import hero_476 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_476.jpg';
-import hero_578 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_578.jpg';
-import hero_676 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_676.jpg';
-import hero_762 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_762.jpg';
-import hero_845 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_845.jpg';
-import hero_920 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_920.jpg';
-import hero_997 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_997.jpg';
-import hero_1068 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1068.jpg';
-import hero_1137 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1137.jpg';
-import hero_1201 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1201.jpg';
-import hero_1260 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1260.jpg';
-import hero_1327 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1327.jpg';
-import hero_1347 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1347.jpg';
-import hero_1350 from '../../../../assets/images/heros/hero-image-large_vfy6po_c_scale,w_1350.jpg';
+import hero_200 from '../../../../assets/images/heros/hero_image_w_200.jpg';
+import hero_356 from '../../../../assets/images/heros/hero_image_w_356.jpg';
+import hero_476 from '../../../../assets/images/heros/hero_image_w_476.jpg';
+import hero_578 from '../../../../assets/images/heros/hero_image_w_578.jpg';
+import hero_676 from '../../../../assets/images/heros/hero_image_w_676.jpg';
+import hero_762 from '../../../../assets/images/heros/hero_image_w_762.jpg';
+import hero_845 from '../../../../assets/images/heros/hero_image_w_845.jpg';
+import hero_920 from '../../../../assets/images/heros/hero_image_w_920.jpg';
+import hero_997 from '../../../../assets/images/heros/hero_image_w_997.jpg';
+import hero_1068 from '../../../../assets/images/heros/hero_image_w_1068.jpg';
+import hero_1137 from '../../../../assets/images/heros/hero_image_w_1137.jpg';
+import hero_1201 from '../../../../assets/images/heros/hero_image_w_1201.jpg';
+import hero_1260 from '../../../../assets/images/heros/hero_image_w_1260.jpg';
+import hero_1327 from '../../../../assets/images/heros/hero_image_w_1327.jpg';
+import hero_1347 from '../../../../assets/images/heros/hero_image_w_1347.jpg';
+import hero_1350 from '../../../../assets/images/heros/hero_image_w_1350.jpg';
 
 // import './hero-element.scss';
 

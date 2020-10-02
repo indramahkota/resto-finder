@@ -2,9 +2,9 @@ import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import { RestaurantResponse } from '../../../data/entity/RestaurantResponse';
-import CommonElement from '../../components/_base_/commonElement';
-import notFound from '../../../../assets/images/not-found.webp';
 import { Restaurant } from '../../../data/entity/RestaurantEntity';
+import CommonElement from '../../components/_base_/commonElement';
+import notFound from '../../../../assets/images/not_found.webp';
 
 import '../../components/resto-card/restoCard';
 import '../../components/restocard-shimmer/restoCardShimmer';
