@@ -1,6 +1,6 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
-import anonymous from '../../../../assets/images/avatars/anonymous-avatar.svg';
+import anonymous from '../../../../assets/images/avatars/anonymous_avatar.svg';
 
 import CommonElement from '../_base_/commonElement';
 import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
