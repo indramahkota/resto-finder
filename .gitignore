@@ -15,9 +15,3 @@ firebase.json
 package-lock.json
 /coverage
 /e2e/outputs
-.yarn/*
-!.yarn/cache
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
