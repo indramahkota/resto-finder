@@ -22,15 +22,15 @@ export default class PageDetails extends ServiceElement {
     detailsId: string | null = null;
 
     @internalProperty()
-    private _restodetailsData: RestaurantDetailsResponse | null = null;
+    _restodetailsData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
-    private _reviewListData: ConsumerReview[] = [];
+    _reviewListData: ConsumerReview[] = [];
 
     @internalProperty()
-    private _isFavorite = false;
+    _isFavorite = false;
 
-    private _addFavoriteHandler = async () => {
+    _addFavoriteHandler = async () => {
         if(!this.detailsId || !this._restodetailsData) return;
 
         try {
@@ -44,7 +44,7 @@ export default class PageDetails extends ServiceElement {
         }
     }
 
-    private _deleteFavoriteHandler = async () => {
+    _deleteFavoriteHandler = async () => {
         if(!this.detailsId) return;
 
         try {
@@ -57,7 +57,7 @@ export default class PageDetails extends ServiceElement {
         }
     }
 
-    private _submitReviewHandler = async (event: Event) => {
+    _submitReviewHandler = async (event: Event) => {
         if (!this.detailsId) return;
 
         const details = (event as CustomEvent).detail;

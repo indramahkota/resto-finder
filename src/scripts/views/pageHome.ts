@@ -12,9 +12,9 @@ import '../_library_/components/go-top/goTop';
 @customElement('rstf-home')
 export default class PageHome extends ServiceElement {
     @internalProperty()
-    private _restoListData: RestaurantResponse | null = null;
+    _restoListData: RestaurantResponse | null = null;
 
-    private _focusOnTopRestaurantsHandler = () => {
+    _focusOnTopRestaurantsHandler = () => {
         document.querySelector('app-bar')?.hideHeader();
         document.getElementById('top-resto')?.scrollIntoView({ behavior: 'smooth' });
     }

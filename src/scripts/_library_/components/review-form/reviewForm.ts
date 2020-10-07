@@ -9,26 +9,26 @@ import EventType from '../../../globals/eventType';
 @customElement('review-form')
 export default class ReviewForm extends CommonElement {
     @internalProperty()
-    private _name = '';
+    _name = '';
 
     @internalProperty()
-    private _nameIsInvalid = false;
+    _nameIsInvalid = false;
 
     @internalProperty()
-    private _review = '';
+    _review = '';
 
     @internalProperty()
-    private _reviewIsInvalid = false;
+    _reviewIsInvalid = false;
 
-    private _onNameChangeHandler(event: Event): void {
+    _onNameChangeHandler(event: Event): void {
         this.setName((event.target as HTMLInputElement).value);
     }
 
-    private _onReviewChangeHandler(event: Event): void {
+    _onReviewChangeHandler(event: Event): void {
         this.setReview((event.target as HTMLTextAreaElement).value);
     }
 
-    private _onButtonClickHandler(): void {
+    _onButtonClickHandler(): void {
         if(this._name.trim() === '' || this._review.trim() === '') {
             this._nameIsInvalid = this._name.trim() === '' || false;
             this._reviewIsInvalid = this._review.trim() === '' || false;

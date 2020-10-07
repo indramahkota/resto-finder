@@ -3,13 +3,31 @@ import { customElement, property, internalProperty } from 'lit-element';
 
 import Utils from '../../../globals/appUtilities';
 import AppConfig from '../../../globals/appConfig';
-import ScrollEffectElement from '../_base_/scrollEffectElement';
 import { INavigation } from '../../../interfaces/interfaces';
+import CommonElement from '../_base_/commonElement';
+import IScrollEffect from '../_base_/interfaces/IScrollEffect';
 
 // import './app-bar.scss';
 
 @customElement('app-bar')
-export default class AppBar extends ScrollEffectElement {
+export default class AppBar extends CommonElement implements IScrollEffect {
+    _ticking = false;
+    _currentScrollPosition = 0;
+    _lastScrollPosition = 0;
+    _onScrollHandler = () => {
+        this._currentScrollPosition = window.scrollY;
+            window.setTimeout(() => {
+                this._lastScrollPosition = window.scrollY;
+            }, 50);
+            if (!this._ticking) {
+                window.requestAnimationFrame(() => {
+                    this._hideOrShowHeader();
+                    this._ticking = false;
+                });
+                this._ticking = true;
+            }
+    };
+
     @property({ type: String })
     title = AppConfig.APP_NAME;
 
@@ -20,31 +38,28 @@ export default class AppBar extends ScrollEffectElement {
     iconNavData = AppConfig.APP_ICON_NAVIGATION;
 
     @internalProperty()
-    private _iconNavFocus = false;
+    _iconNavFocus = false;
 
     @internalProperty()
-    private _isDrawerOpen = false;
+    _isDrawerOpen = false;
 
     @internalProperty()
-    private _isLight = true;
+    _isLight = true;
 
     @internalProperty()
-    private _darkMode = AppConfig.SUPPORT_DARK_MODE;
+    _darkMode = AppConfig.SUPPORT_DARK_MODE;
 
-    private _header: HTMLElement | null = null;
-    private _ticking = false;
-
-    private _onResizeHandler = () => {
+    _onResizeHandler = () => {
         this._isDrawerOpen = false;
         Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
     }
 
-    private _hideOrShowHeader(): void {
-        if (this._currScrollPos < 120) {
+    _hideOrShowHeader(): void {
+        if (this._currentScrollPosition < 120) {
             this.showHeader();
             return;
         }
-        const hideHeader = this._currScrollPos - this._lastScrollPos;
+        const hideHeader = this._currentScrollPosition - this._lastScrollPosition;
         if (hideHeader > 0) {
             this._isDrawerOpen = false;
             Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
@@ -54,7 +69,7 @@ export default class AppBar extends ScrollEffectElement {
         }
     }
 
-    private _onIconNavClickHandler() {
+    _onIconNavClickHandler() {
         this.dataShouldUpdate(this.iconNavData.url);
         this._iconNavFocus = true;
         if (this._isDrawerOpen) {
@@ -62,7 +77,7 @@ export default class AppBar extends ScrollEffectElement {
         }
     }
 
-    private _onHamburgerClickHandler() {
+    _onHamburgerClickHandler() {
         this._isDrawerOpen = !this._isDrawerOpen;
         if (this._isDrawerOpen) {
             Utils.setLCS(AppConfig.LCS_DRAWER, 'open');
@@ -71,7 +86,7 @@ export default class AppBar extends ScrollEffectElement {
         }
     }
 
-    private _onNavigationClickHandler(event: Event) {
+    _onNavigationClickHandler(event: Event) {
         const path = event.composedPath();
         const { hash } = path[0] as HTMLAnchorElement;
         this.dataShouldUpdate(hash);
@@ -82,10 +97,9 @@ export default class AppBar extends ScrollEffectElement {
         }
     }
 
-    private _onSwitchChangeHandler(event: Event) {
+    _onSwitchChangeHandler(event: Event) {
         const path = event.composedPath();
         const input = path[0] as HTMLInputElement;
-
         if (input.checked) {
             window.document.body.classList.remove('dark');
             Utils.setLCS(AppConfig.LCS_THEME, 'light');
@@ -93,15 +107,14 @@ export default class AppBar extends ScrollEffectElement {
             window.document.body.classList.add('dark');
             Utils.setLCS(AppConfig.LCS_THEME, 'dark');
         }
-        input.blur();
     }
 
     hideHeader(): void {
-        this._header?.classList.add('hide');
+        document.getElementById('rstf-header')?.classList.add('hide');
     }
 
     showHeader(): void {
-        this._header?.classList.remove('hide');
+        document.getElementById('rstf-header')?.classList.remove('hide');
     }
 
     dataShouldUpdate(hash: string): void {
@@ -123,28 +136,13 @@ export default class AppBar extends ScrollEffectElement {
             this.dataShouldUpdate(window.location.hash);
 
         window.addEventListener('resize', this._onResizeHandler, false);
+        window.addEventListener('scroll', this._onScrollHandler, false);
     }
 
     disconnectedCallback(): void {
         window.removeEventListener('resize', this._onResizeHandler, false);
+        window.removeEventListener('scroll', this._onScrollHandler, false);
         super.disconnectedCallback();
-    }
-
-    firstUpdated(): void {
-        this._header = document.getElementById('rstf-header');
-    }
-
-    updated(changedProperties: Map<string | number | symbol, unknown>): void {
-        changedProperties.forEach((_oldValue, propName) => {
-            if ((propName === '_currScrollPos' || propName === '_lastScrollPos') &&
-                !this._ticking) {
-                window.requestAnimationFrame(() => {
-                    this._hideOrShowHeader();
-                    this._ticking = false;
-                });
-                this._ticking = true;
-            }
-        });
     }
 
     renderToggle(): TemplateResult {
@@ -179,9 +177,7 @@ export default class AppBar extends ScrollEffectElement {
             <header id='rstf-header' class='header'>
                 <a href='/' class='header__logo'>${this.title}</a>
 
-                ${
-                    this._darkMode ? this.renderToggle() : nothing
-                }
+                ${ this._darkMode ? this.renderToggle() : nothing }
 
                 <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
                     <span class='humburger'></span>
@@ -189,7 +185,6 @@ export default class AppBar extends ScrollEffectElement {
 
                 <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
                     <ul>
-                    
                         ${ this.navData.map(nav => this.renderNavList(nav)) }
 
                         <li>

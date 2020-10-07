@@ -13,14 +13,14 @@ import '../_library_/containers/resto-container/restoContainer';
 @customElement('rstf-favorites')
 export default class PageFavorites extends ServiceElement {
     @internalProperty()
-    private _restoListData: RestaurantResponse | null = null;
+    _restoListData: RestaurantResponse | null = null;
 
-    private _getFavoriteCounter(): number {
+    _getFavoriteCounter(): number {
         const counter = Utils.getLCS(AppConfig.LCS_FAVORITE_COUNTER);
         return (!counter || counter === '0') ? 0 : Number(counter);
     }
 
-    private _deleteFavoritedHandler = async (event: Event) => {
+    _deleteFavoritedHandler = async (event: Event) => {
         const details = (event as CustomEvent).detail;
         if(!details.id || details.id === '') return;
 
@@ -34,7 +34,7 @@ export default class PageFavorites extends ServiceElement {
         }
     }
 
-    private async _loadFavoriteData() {
+    async _loadFavoriteData() {
         try {
             const restoData = await this._repository.getAllFavorites();
             await this.setRestaurantListData({

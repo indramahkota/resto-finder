@@ -18,17 +18,17 @@ import './pageHome';
 @customElement('rstf-app')
 export default class RestoFinderApp extends CommonElement {
     @internalProperty()
-    private _toastMessage: string | null = null;
+    _toastMessage: string | null = null;
     
-    private _timeOutId: number | null = null;
+    _timeOutId: number | null = null;
 
-    private _forceUpdateHandler = async () => {
+    _forceUpdateHandler = async () => {
         if(window.location.hash === '#content')
             return;
         await this.requestUpdate();
     }
 
-    private _showToastHandler = (event: Event) => {
+    _showToastHandler = (event: Event) => {
         const details = (event as CustomEvent).detail;
         if (details.message === undefined || details.message === '')
             return;

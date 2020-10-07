@@ -32,7 +32,7 @@ export default class HeroElement extends CommonElement {
     @property({ type: String })
     name = AppConfig.APP_NAME;
 
-    private _onButtonClickHandler(): void {
+    _onButtonClickHandler(): void {
         document.getElementById('find-button')?.blur();
         this._dispatchData({ message: 'Let\'s Find' }, EventType.LETS_FIND);
     }

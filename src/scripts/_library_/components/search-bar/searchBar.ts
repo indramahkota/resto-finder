@@ -1,39 +1,36 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
-
-import ScrollEffectElement from '../_base_/scrollEffectElement';
+import CommonElement from '../_base_/commonElement';
+import IScrollEffect from '../_base_/interfaces/IScrollEffect';
 
 // import './search-bar.scss';
 
 @customElement('search-bar')
-export default class SearchBar extends ScrollEffectElement {
-    private _searchBar: HTMLElement | null = null;
-    private _ticking = false;
-
-    private _hideOrShowsearchBar(): void {
-        if (this._currScrollPos < ((3 / 4) * window.screen.height)) {
-            this._searchBar?.classList.add('hide');
-            return;
-        } else {
-            this._searchBar?.classList.remove('hide');
-        }
-    }
-
-    firstUpdated(): void {
-        this._searchBar = document.getElementById('search-bar');
-    }
-
-    updated(changedProperties: Map<string | number | symbol, unknown>): void {
-        changedProperties.forEach((_oldValue, propName) => {
-            if ((propName === '_currScrollPos' || propName === '_lastScrollPos') &&
-                !this._ticking) {
+export default class SearchBar extends CommonElement implements IScrollEffect {
+    _ticking = false;
+    _currentScrollPosition = 0;
+    _lastScrollPosition = 0;
+    _onScrollHandler = () => {
+        this._currentScrollPosition = window.scrollY;
+            window.setTimeout(() => {
+                this._lastScrollPosition = window.scrollY;
+            }, 50);
+            if (!this._ticking) {
                 window.requestAnimationFrame(() => {
                     this._hideOrShowsearchBar();
                     this._ticking = false;
                 });
                 this._ticking = true;
             }
-        });
+    };
+
+    _hideOrShowsearchBar(): void {
+        if (this._currentScrollPosition < ((3 / 4) * window.screen.height)) {
+            document.getElementById('search-bar')?.classList.add('hide');
+            return;
+        } else {
+            document.getElementById('search-bar')?.classList.remove('hide');
+        }
     }
 
     render(): TemplateResult {

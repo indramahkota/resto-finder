@@ -1,48 +1,55 @@
 import { html, TemplateResult } from 'lit-html';
 import { customElement } from 'lit-element';
-
-import ScrollEffectElement from '../_base_/scrollEffectElement';
+import CommonElement from '../_base_/commonElement';
+import IScrollEffect from '../_base_/interfaces/IScrollEffect';
 
 // import './go-top.scss';
 
 @customElement('go-top')
-export default class GoTop extends ScrollEffectElement {
-    private _goTopButton: HTMLElement | null = null;
-    private _ticking = false;
-
-    private _hideOrShowsearchBar(): void {
-        if (this._currScrollPos < ((3 / 4) * window.screen.height)) {
-            this._goTopButton?.classList.remove('show');
-            return;
-        }
-        const hideTopButton = this._currScrollPos - this._lastScrollPos;
-        if (hideTopButton > 0) {
-            this._goTopButton?.classList.remove('show');
-        } else if (hideTopButton < -10) {
-            this._goTopButton?.classList.add('show');
-        }
-    }
-
-    private _onButtonClickHandler(): void {
-        document.body.scrollTo({ top: 0, behavior: 'smooth' });
-        document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    firstUpdated(): void {
-        this._goTopButton = document.getElementById('top-button');
-    }
-
-    updated(changedProperties: Map<string | number | symbol, unknown>): void {
-        changedProperties.forEach((_oldValue, propName) => {
-            if ((propName === '_currScrollPos' || propName === '_lastScrollPos') &&
-                !this._ticking) {
+export default class GoTop extends CommonElement implements IScrollEffect {
+    _ticking = false;
+    _currentScrollPosition = 0;
+    _lastScrollPosition = 0;
+    _onScrollHandler = () => {
+        this._currentScrollPosition = window.scrollY;
+            window.setTimeout(() => {
+                this._lastScrollPosition = window.scrollY;
+            }, 50);
+            if (!this._ticking) {
                 window.requestAnimationFrame(() => {
                     this._hideOrShowsearchBar();
                     this._ticking = false;
                 });
                 this._ticking = true;
             }
-        });
+    };
+
+    _hideOrShowsearchBar(): void {
+        if (this._currentScrollPosition < ((3 / 4) * window.screen.height)) {
+            document.getElementById('top-button')?.classList.remove('show');
+            return;
+        }
+        const hideTopButton = this._currentScrollPosition - this._lastScrollPosition;
+        if (hideTopButton > 0) {
+            document.getElementById('top-button')?.classList.remove('show');
+        } else if (hideTopButton < -10) {
+            document.getElementById('top-button')?.classList.add('show');
+        }
+    }
+
+    _onButtonClickHandler(): void {
+        document.body.scrollTo({ top: 0, behavior: 'smooth' });
+        document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    connectedCallback(): void {
+        super.connectedCallback();
+        window.addEventListener('scroll', this._onScrollHandler, false);
+    }
+
+    disconnectedCallback(): void {
+        window.removeEventListener('scroll', this._onScrollHandler, false);
+        super.disconnectedCallback();
     }
 
     render(): TemplateResult {

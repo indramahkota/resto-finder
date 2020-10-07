@@ -16,7 +16,7 @@ export default class RestoCard extends LazyLoadElement {
     @property({ type: Object })
     data: Restaurant | null = null;
 
-    private _onButtonClickHandler() {
+    _onButtonClickHandler() {
         this._dispatchData({ id: this.data?.id, name: this.data?.name }, EventType.DELETE_FAVORITE);
     }
 

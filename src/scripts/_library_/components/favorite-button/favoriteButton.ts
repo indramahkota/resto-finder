@@ -11,7 +11,7 @@ export default class FavoriteButton extends CommonElement {
     @property({ type: Boolean })
     isFavorite = false;
 
-    private _onButtonClickHandler(): void {
+    _onButtonClickHandler(): void {
         this.isFavorite = !this.isFavorite;
         if(this.isFavorite)
             this._dispatchData({}, EventType.ADD_FAVORITE);
