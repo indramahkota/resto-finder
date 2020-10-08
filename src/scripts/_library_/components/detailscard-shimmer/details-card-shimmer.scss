@@ -1,95 +1,103 @@
-.detailscard__shimmer {
-    margin: 20px;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas:
-        "box1 box1 box1 box1 box1 box1 box1 box1 box1 box1"
-        "box3 box3 box3 box3 box3 box3 box3 box3 box3 box3"
-        "box2 box2 box2 box2 box2 box2 box2 box2 box2 box2"
-        "box4 box4 box4 box4 box4 box4 box4 box4 box4 box4"
-        "box5 box5 box5 box5 box5 box5 box5 box5 box5 box5"
-        "box6 box6 box6 box6 box6 box6 box6 box6 box6 box6";
+.detailscard__shimmer__container {
+    width: 100%;
+    
+    .detailscard__shimmer {
+        margin: 20px;
+        display: grid;
+        grid-gap: 20px;
+        max-width: 1350px;
+        margin: auto;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas:
+            "box1 box1 box1 box1 box1 box1 box1 box1 box1 box1"
+            "box3 box3 box3 box3 box3 box3 box3 box3 box3 box3"
+            "box2 box2 box2 box2 box2 box2 box2 box2 box2 box2"
+            "box4 box4 box4 box4 box4 box4 box4 box4 box4 box4"
+            "box5 box5 box5 box5 box5 box5 box5 box5 box5 box5"
+            "box6 box6 box6 box6 box6 box6 box6 box6 box6 box6";
 
-    div {
-        padding: 20px;
-        border-radius: 8px;
-        background-color: var(--color-article-background);
+        div {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--color-article-background);
 
-        > .animate {
-            animation: shimmer 2s infinite linear;
-            background: linear-gradient(
-                to right,
-                var(--color-shimmer-gradient-weak) 4%,
-                var(--color-shimmer-gradient-strong) 25%,
-                var(--color-shimmer-gradient-weak) 36%
-            );
-            background-size: 1000px 100%;
+            > .animate {
+                animation: shimmer 2s infinite linear;
+                background: linear-gradient(
+                    to right,
+                    var(--color-shimmer-gradient-weak) 4%,
+                    var(--color-shimmer-gradient-strong) 25%,
+                    var(--color-shimmer-gradient-weak) 36%
+                );
+                background-size: 1000px 100%;
+            }
+
+            > .w40 {
+                width: 40%;
+            }
+
+            > .w50 {
+                width: 50%;
+            }
         }
 
-        > .w40 {
-            width: 40%;
+        .element1 {
+            grid-area: box1;
+
+            .comment {
+                height: 100%;
+            }
         }
 
-        > .w50 {
-            width: 50%;
+        .element2 {
+            grid-area: box2;
+
+            .comment {
+                margin-top: 20px;
+            }
         }
-    }
 
-    .element1 {
-        grid-area: box1;
+        .element3 {
+            grid-area: box3;
 
-        .comment {
-            height: 100%;
+            .comment {
+                margin-top: 20px;
+            }
         }
-    }
 
-    .element2 {
-        grid-area: box2;
+        .element4 {
+            grid-area: box4;
 
-        .comment {
-            margin-top: 20px;
+            .comment {
+                margin-top: 20px;
+            }
         }
-    }
 
-    .element3 {
-        grid-area: box3;
+        .element5 {
+            grid-area: box5;
 
-        .comment {
-            margin-top: 20px;
+            .comment {
+                margin-top: 20px;
+            }
         }
-    }
 
-    .element4 {
-        grid-area: box4;
-
-        .comment {
-            margin-top: 20px;
+        .element6 {
+            grid-area: box6;
+            visibility: hidden;
         }
-    }
-
-    .element5 {
-        grid-area: box5;
-
-        .comment {
-            margin-top: 20px;
-        }
-    }
-
-    .element6 {
-        grid-area: box6;
-        visibility: hidden;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .detailscard__shimmer {
-        grid-template-areas:
-            "box1 box1 box1 box1 box1 box1 box2 box2 box2 box2"
-            "box1 box1 box1 box1 box1 box1 box4 box4 box4 box4"
-            "box3 box3 box3 box3 box3 box3 box5 box5 box5 box5"
-            "box3 box3 box3 box3 box3 box3 box6 box6 box6 box6"
-            "box3 box3 box3 box3 box3 box3 box6 box6 box6 box6";
+    .detailscard__shimmer__container {
+        .detailscard__shimmer {
+            grid-template-areas:
+                "box1 box1 box1 box1 box1 box1 box2 box2 box2 box2"
+                "box1 box1 box1 box1 box1 box1 box4 box4 box4 box4"
+                "box3 box3 box3 box3 box3 box3 box5 box5 box5 box5"
+                "box3 box3 box3 box3 box3 box3 box6 box6 box6 box6"
+                "box3 box3 box3 box3 box3 box3 box6 box6 box6 box6";
+        }
     }
 }

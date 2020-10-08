@@ -127,16 +127,18 @@ export default class PageDetails extends ServiceElement {
     renderPageDetailsContent(data: RestaurantDetailsResponse): TemplateResult {
         return html`
             <div class='pagedetails__container'>
-                <div class='pagedetails__detailscard'>
-                    <details-card .data=${data.restaurant}></details-card>
-                </div>
-                <div class='pagedetails__reviewcard'>
-                    <div class='pagedetails__favorite__container'>
-                        <h1 tabindex='0'>Save as favorite</h1>
-                        <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
+                <div class='pagedetails'>
+                    <div class='pagedetails__detailscard'>
+                        <details-card .data=${data.restaurant}></details-card>
                     </div>
-                    <review-container .data=${this._reviewListData}></review-container>
-                    <review-form></review-form>
+                    <div class='pagedetails__reviewcard'>
+                        <div class='pagedetails__favorite__container'>
+                            <h1 tabindex='0'>Save as favorite</h1>
+                            <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
+                        </div>
+                        <review-container .data=${this._reviewListData}></review-container>
+                        <review-form></review-form>
+                    </div>
                 </div>
             </div>
         `;
