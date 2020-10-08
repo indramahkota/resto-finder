@@ -9,16 +9,10 @@ import EventType from '../../../globals/eventType';
 @customElement('review-form')
 export default class ReviewForm extends CommonElement {
     @internalProperty()
-    _name = '';
+    _name: string | null = '';
 
     @internalProperty()
-    _nameIsInvalid = false;
-
-    @internalProperty()
-    _review = '';
-
-    @internalProperty()
-    _reviewIsInvalid = false;
+    _review: string | null = '';
 
     _onNameChangeHandler(event: Event): void {
         this.setName((event.target as HTMLInputElement).value);
@@ -29,17 +23,29 @@ export default class ReviewForm extends CommonElement {
     }
 
     _onButtonClickHandler(): void {
-        if(this._name.trim() === '' || this._review.trim() === '') {
-            this._nameIsInvalid = this._name.trim() === '' || false;
-            this._reviewIsInvalid = this._review.trim() === '' || false;
-            this._dispatchData({ message: 'There is Empty input, please check again!' }, EventType.SHOW_TOAST);
+        if((this._name === null && this._review === null) ||
+            (this._name?.trim() === '' && this._review?.trim() === '')) {
+            this._name = this._review = null;
+            this._dispatchData({ message: 'Name and Review input can not be empty!' }, EventType.SHOW_TOAST);
+            return;
+        }
+        if(this._name === null || this._review === null ||
+            this._name?.trim() === '' || this._review?.trim() === '') {
+            let fieldError = '';
+            if(this._name === null || this._name === '') {
+                this._name = null;
+                fieldError += 'Name';
+            }
+            if(this._review === null || this._review === '') {
+                this._review = null;
+                fieldError += 'Review'
+            }
+            this._dispatchData({ message: `${fieldError} input can not be empty!` }, EventType.SHOW_TOAST);
             return;
         }
         this._dispatchData({ name: this._name, review: this._review }, EventType.SUBMIT_REVIEW);
         this.setName('');
         this.setReview('');
-        this._nameIsInvalid = false;
-        this._reviewIsInvalid = false;
     }
 
     setName(name: string): void {
@@ -53,8 +59,8 @@ export default class ReviewForm extends CommonElement {
     render(): TemplateResult {
         return html`
             <div class='reviewform__container'>
-                <input id='review-input' aria-label='Type your Name' class='reviewinput__name' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name}' ?required=${this._nameIsInvalid}>
-                <textarea id='review-textarea' aria-label='Type your Review' class='reviewtextarea__review' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review}' ?required=${this._reviewIsInvalid}></textarea>
+                <input id='review-input' aria-label='Type your Name' class='reviewinput__name' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name === null ? '' : this._name}' ?required=${this._name === null}>
+                <textarea id='review-textarea' aria-label='Type your Review' class='reviewtextarea__review' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review === null ? '' : this._review}' ?required=${this._review === null}></textarea>
                 <button class='reviewbutton__submit' @click='${this._onButtonClickHandler}'>Add Review</button>
             </div>
         `;
