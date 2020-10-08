@@ -44,7 +44,10 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     _isDrawerOpen = false;
 
     @internalProperty()
-    _isLight = true;
+    _isThemeLight = true;
+
+    @internalProperty()
+    _showHeader = true;
 
     @internalProperty()
     _darkMode = AppConfig.SUPPORT_DARK_MODE;
@@ -110,11 +113,11 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     }
 
     hideHeader(): void {
-        document.getElementById('rstf-header')?.classList.add('hide');
+        this._showHeader = false;
     }
 
     showHeader(): void {
-        document.getElementById('rstf-header')?.classList.remove('hide');
+        this._showHeader = true;
     }
 
     dataShouldUpdate(hash: string): void {
@@ -127,7 +130,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     connectedCallback(): void {
         super.connectedCallback();
         if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark')
-            this._isLight = false;
+            this._isThemeLight = false;
         if (Utils.getLCS(AppConfig.LCS_DRAWER) === 'open')
             this._isDrawerOpen = true;
         if (window.location.hash === this.iconNavData.url)
@@ -149,7 +152,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         return html`
             <div class='toggle__container'>
                 <label class='toggle__label'>
-                    <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isLight}>
+                    <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isThemeLight}>
                     <span class='slider round'></span>
                     <div class='toggle__icon'>
                         <i class='fas fa-sun'></i>
@@ -174,29 +177,31 @@ export default class AppBar extends CommonElement implements IScrollEffect {
 
     render(): TemplateResult {
         return html`
-            <header id='rstf-header' class='header'>
-                <a href='/' class='header__logo'>${this.title}</a>
+            <div class=${this._showHeader ? 'header__container' : 'header__container hide'}>
+                <header class='header'>
+                    <a href='/' class='header__logo'>${this.title}</a>
 
-                ${ this._darkMode ? this.renderToggle() : nothing }
+                    ${ this._darkMode ? this.renderToggle() : nothing }
 
-                <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
-                    <span class='humburger'></span>
-                </button>
+                    <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
+                        <span class='humburger'></span>
+                    </button>
 
-                <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
-                    <ul>
-                        ${ this.navData.map(nav => this.renderNavList(nav)) }
+                    <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
+                        <ul>
+                            ${ this.navData.map(nav => this.renderNavList(nav)) }
 
-                        <li>
-                            <a href='${this.iconNavData.url}' class='anchor__icon__container ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
-                                <img class='anchor__icon' src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
-                                <p class='anchor__name'>${this.iconNavData.name}</p>
-                                <span class='chevron'></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+                            <li>
+                                <a href='${this.iconNavData.url}' class='anchor__icon__container ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
+                                    <img class='anchor__icon' src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
+                                    <p class='anchor__name'>${this.iconNavData.name}</p>
+                                    <span class='chevron'></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
         `;
     }
 }
