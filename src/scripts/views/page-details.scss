@@ -6,7 +6,6 @@
     .pagedetails {
         display: flex;
         flex-direction: column;
-        max-width: 1350px;
         margin: 0 auto;
 
         .pagedetails__detailscard {
@@ -38,7 +37,9 @@
 @media screen and (min-width: 768px) {
     .pagedetails__container {
         .pagedetails {
+            display: flex;
             flex-direction: row;
+            max-width: 1350px;
 
             .pagedetails__detailscard {
                 width: 60%;
