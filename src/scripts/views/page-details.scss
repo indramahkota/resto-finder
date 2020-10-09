@@ -1,12 +1,13 @@
 .pagedetails__container {
     width: 100%;
     display: flex;
+    padding: 20px;
 
     .pagedetails {
         display: flex;
         flex-direction: column;
         max-width: 1350px;
-        margin: 20px auto 0 auto;
+        margin: 0 auto;
 
         .pagedetails__detailscard {
             display: flex;
