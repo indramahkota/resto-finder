@@ -16,7 +16,7 @@ export default class PageHome extends ServiceElement {
 
     _focusOnTopRestaurantsHandler = () => {
         document.querySelector('app-bar')?.hideHeader();
-        document.getElementById('top-resto')?.scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('resto-container')?.scrollIntoView({ behavior: 'smooth' });
     }
 
     connectedCallback(): void {
@@ -44,12 +44,8 @@ export default class PageHome extends ServiceElement {
 
     render(): TemplateResult {
         return html`
-            <section id='greeting'>
-                <hero-element></hero-element>
-            </section>
-            <section id='top-resto'>
-                <resto-container title='TOP RESTAURANTS' .data=${this._restoListData} totalShimmerItem=20></resto-container>
-            </section>
+            <hero-element></hero-element>
+            <resto-container title='TOP RESTAURANTS' .data=${this._restoListData} totalShimmerItem=20></resto-container>
             <go-top></go-top>
         `;
     }
