@@ -53,6 +53,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     _darkMode = AppConfig.SUPPORT_DARK_MODE;
 
     _onResizeHandler = () => {
+        this._hideOrShowHeader();
         this._isDrawerOpen = false;
         Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
     }
