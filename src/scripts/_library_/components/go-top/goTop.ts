@@ -17,14 +17,14 @@ export default class GoTop extends CommonElement implements IScrollEffect {
             }, 50);
             if (!this._ticking) {
                 window.requestAnimationFrame(() => {
-                    this._hideOrShowsearchBar();
+                    this._hideOrShowGoTop();
                     this._ticking = false;
                 });
                 this._ticking = true;
             }
     };
 
-    _hideOrShowsearchBar(): void {
+    _hideOrShowGoTop(): void {
         if (this._currentScrollPosition < ((3 / 4) * window.screen.height)) {
             document.getElementById('top-button')?.classList.remove('show');
             return;
