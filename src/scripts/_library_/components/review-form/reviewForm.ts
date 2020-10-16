@@ -23,22 +23,21 @@ export default class ReviewForm extends CommonElement {
     }
 
     _onButtonClickHandler(): void {
-        if((this._name === null && this._review === null) ||
-            (this._name?.trim() === '' && this._review?.trim() === '')) {
-            this._name = this._review = null;
+        if ((!this._name && !this._review) || (this._name?.trim() === '' && this._review?.trim() === '')) {
+            this.setName(null);
+            this.setReview(null);
             this._dispatchData({ message: 'Name and Review input can not be empty!' }, EventType.SHOW_TOAST);
             return;
         }
-        if(this._name === null || this._review === null ||
-            this._name?.trim() === '' || this._review?.trim() === '') {
-            let fieldError = '';
-            if(this._name === null || this._name === '') {
-                this._name = null;
-                fieldError += 'Name';
+        if (!this._name || !this._review || this._name?.trim() === '' || this._review?.trim() === '') {
+            let fieldError;
+            if (!this._name || this._name === '') {
+                this.setName(null);
+                fieldError = 'Name';
             }
-            if(this._review === null || this._review === '') {
-                this._review = null;
-                fieldError += 'Review'
+            if (!this._review || this._review === '') {
+                this.setReview(null);
+                fieldError = 'Review'
             }
             this._dispatchData({ message: `${fieldError} input can not be empty!` }, EventType.SHOW_TOAST);
             return;
@@ -48,11 +47,11 @@ export default class ReviewForm extends CommonElement {
         this.setReview('');
     }
 
-    setName(name: string): void {
+    setName(name: string | null): void {
         this._name = name;
     }
 
-    setReview(review: string): void {
+    setReview(review: string | null): void {
         this._review = review;
     }
 
