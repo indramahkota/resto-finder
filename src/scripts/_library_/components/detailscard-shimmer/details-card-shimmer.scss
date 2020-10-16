@@ -1,8 +1,8 @@
-.detailscard__shimmer__container {
+.detailsCardShimmerContainer {
     width: 100%;
     padding: 20px;
     
-    .detailscard__shimmer {
+    .detailsCardShimmer {
         display: grid;
         grid-gap: 20px;
         max-width: 1350px;
@@ -90,8 +90,8 @@
 }
 
 @media screen and (min-width: 768px) {
-    .detailscard__shimmer__container {
-        .detailscard__shimmer {
+    .detailsCardShimmerContainer {
+        .detailsCardShimmer {
             grid-template-areas:
                 "box1 box1 box1 box1 box1 box1 box2 box2 box2 box2"
                 "box1 box1 box1 box1 box1 box1 box4 box4 box4 box4"

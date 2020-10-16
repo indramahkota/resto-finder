@@ -19,7 +19,7 @@ export default class DetailsCard extends CommonElement {
     firstUpdated(): void {
         const pictId = this.data?.pictureId;
         if (pictId === undefined) return;
-        
+
         const image = <HTMLImageElement>document.getElementById(pictId);
         const imageUrl = Utils.genImgSrc(pictId, 'medium');
         const imageHelper = new Image();
@@ -31,15 +31,13 @@ export default class DetailsCard extends CommonElement {
 
     renderCategories(data: Category[]): TemplateResult {
         return html`
-            <div class='restodetails__category'>
-                <div class="restodetails__category__title">
+            <div class='restoDetailsCategory'>
+                <div class="restoDetailsCategoryTitle">
                     <i class="fa fa-list-alt"></i>
                     <p tabindex='0'><b>Categories</b></p>
                 </div>
-                <div class="restodetails__categoryitems">
-                    ${
-                        data.map(res => html`<div class="category__items"><p tabindex='0'>${res.name}</p></div>`)
-                    }
+                <div class="restoDetailsCategoryItems">
+                    ${data.map(res => html`<div class="categoryItems"><p tabindex='0'>${res.name}</p></div>`)}
                 </div>
             </div>
         `;
@@ -53,13 +51,11 @@ export default class DetailsCard extends CommonElement {
 
     renderFoods(foods: Food[]): TemplateResult {
         return html`
-            <div class='food__container'>
+            <div class='foodContainer'>
                 <h2 tabindex='0'>FOODS</h2>
-                <div class='food_content'>
+                <div class='foodContent'>
                     <ol>
-                        ${
-                            foods.map(res => html`<li tabindex='0'>${ this.renderListContent(res.name) }</li>`)
-                        }
+                        ${foods.map(res => html`<li tabindex='0'>${this.renderListContent(res.name)}</li>`)}
                     </ol>
                 </div>
             </div>
@@ -68,13 +64,11 @@ export default class DetailsCard extends CommonElement {
 
     renderDrinks(drinks: Drink[]): TemplateResult {
         return html`
-            <div class='drink__container'>
+            <div class='drinkContainer'>
                 <h2 tabindex='0'>DRINKS</h2>
-                <div class='drink_content'>
+                <div class='drinkContent'>
                     <ol>
-                        ${
-                            drinks.map(res => html`<li tabindex='0'>${ this.renderListContent(res.name) }</li>`)
-                        }
+                        ${drinks.map(res => html`<li tabindex='0'>${this.renderListContent(res.name)}</li>`)}
                     </ol>
                 </div>
             </div>
@@ -83,16 +77,11 @@ export default class DetailsCard extends CommonElement {
 
     renderMenus(menus: Menus): TemplateResult {
         return html`
-            <div class='menucard__container'>
-                <h1 tabindex='0' class='menucard__title'>MENU</h1>
-                <div class='menucard__content'>
-                    ${
-                        menus.foods.length > 0 ? this.renderFoods(menus.foods) : nothing
-                    }
-
-                    ${
-                        menus.drinks.length > 0 ? this.renderDrinks(menus.drinks) : nothing
-                    }
+            <div class='menuCardContainer'>
+                <h1 tabindex='0' class='menuCardTitle'>MENU</h1>
+                <div class='menuCardContent'>
+                    ${menus.foods.length > 0 ? this.renderFoods(menus.foods) : nothing}
+                    ${menus.drinks.length > 0 ? this.renderDrinks(menus.drinks) : nothing}
                 </div>
             </div>
         `;
@@ -100,15 +89,15 @@ export default class DetailsCard extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='restodetails__container'>
-                <div class='restodetails__image'>
+            <div class='restoDetailsContainer'>
+                <div class='restoDetailsImage'>
                     <img id='${ifDefined(this.data?.pictureId)}' src='${placeholderImage}' alt='${ifDefined(this.data?.name)} Image Name'>
                 </div>
                 
-                <div class='restodetails__content'>
+                <div class='restoDetailsContent'>
                     <h1 tabindex='0'>RESTAURANT DETAILS</h1>
-                    <div class='restodetails__part'>
-                        <div class='restodetails__part1'>
+                    <div class='restoDetailsPart'>
+                        <div class='restoDetailsPart1'>
                             <table>
                                 <tr>
                                     <td><i class='fa fa-store'></i></td>
@@ -120,23 +109,17 @@ export default class DetailsCard extends CommonElement {
                                 </tr>
                             </table>
                         </div>
-                        <div class='restodetails__part2'>
+                        <div class='restoDetailsPart2'>
                             <h1>${this.data?.rating}</h1>
                             <rating-element tabindex='0' aria-label='Rating ${this.data?.rating}' rating=${ifDefined(this.data?.rating)}></rating-element>
                         </div>
                     </div>
                     
-                    <p tabindex='0' class='restodetails__description'>${this.data?.description}</p>
+                    <p tabindex='0' class='restoDetailsDescription'>${this.data?.description}</p>
 
-                    ${
-                        this.data?.categories !== undefined && this.data?.categories.length > 0 ?
-                            this.renderCategories(this.data.categories) : nothing
-                    }
+                    ${this.data?.categories !== undefined && this.data?.categories.length > 0 ? this.renderCategories(this.data.categories) : nothing}
 
-                    ${
-                        this.data?.menus !== undefined && this.data?.menus.foods.length > 0 && this.data?.menus.drinks.length > 0 ?
-                            this.renderMenus(this.data.menus) : nothing
-                    }
+                    ${this.data?.menus !== undefined && this.data?.menus.foods.length > 0 && this.data?.menus.drinks.length > 0 ? this.renderMenus(this.data.menus) : nothing}
                 </div>
             </div>
         `;

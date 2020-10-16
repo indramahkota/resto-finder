@@ -9,8 +9,8 @@ import CommonElement from '../_base_/commonElement';
 export default class DetailsCardShimmer extends CommonElement {
     render(): TemplateResult {
         return html`
-            <div class='detailscard__shimmer__container'>
-                <div class='detailscard__shimmer'>
+            <div class='detailsCardShimmerContainer'>
+                <div class='detailsCardShimmer'>
                     <div class='element1'>
                         <div class='comment br animate'></div>
                     </div>

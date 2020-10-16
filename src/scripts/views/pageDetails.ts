@@ -22,7 +22,7 @@ export default class PageDetails extends ServiceElement {
     detailsId: string | null = null;
 
     @internalProperty()
-    _restodetailsData: RestaurantDetailsResponse | null = null;
+    _restoDetailsData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
     _reviewListData: ConsumerReview[] = [];
@@ -31,27 +31,27 @@ export default class PageDetails extends ServiceElement {
     _isFavorite = false;
 
     _addFavoriteHandler = async () => {
-        if(!this.detailsId || !this._restodetailsData) return;
+        if (!this.detailsId || !this._restoDetailsData) return;
 
         try {
-            const newFavoriteData = Object.assign(this._restodetailsData.restaurant, { isFavorite: true });
+            const newFavoriteData = Object.assign(this._restoDetailsData.restaurant, { isFavorite: true });
             await this._repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
             Utils.incrementFavoriteCounter();
-            this._dispatchData({ message: `Add ${this._restodetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Add ${this._restoDetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
     }
 
     _deleteFavoriteHandler = async () => {
-        if(!this.detailsId) return;
+        if (!this.detailsId) return;
 
         try {
             await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
             Utils.decrementFavoriteCounter();
-            this._dispatchData({ message: `Remove ${this._restodetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Remove ${this._restoDetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
@@ -95,7 +95,7 @@ export default class PageDetails extends ServiceElement {
     }
 
     async setRestaurantDetailsData(restodetailsData: RestaurantDetailsResponse): Promise<void> {
-        this._restodetailsData = restodetailsData;
+        this._restoDetailsData = restodetailsData;
         await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
     }
 
@@ -106,7 +106,7 @@ export default class PageDetails extends ServiceElement {
     async firstUpdated(): Promise<void> {
         if (!this.detailsId) return;
         document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
-        
+
         try {
             const favoriteData = await this._repository.getFavoriteById(this.detailsId);
             if (favoriteData !== undefined)
@@ -126,13 +126,13 @@ export default class PageDetails extends ServiceElement {
 
     renderPageDetailsContent(data: RestaurantDetailsResponse): TemplateResult {
         return html`
-            <div class='pagedetails__container'>
-                <div class='pagedetails'>
-                    <div class='pagedetails__detailscard'>
+            <div class='pageDetailsContainer'>
+                <div class='pageDetails'>
+                    <div class='pageDetailsDescriptionCard'>
                         <details-card .data=${data.restaurant}></details-card>
                     </div>
-                    <div class='pagedetails__reviewcard'>
-                        <div class='pagedetails__favorite__container'>
+                    <div class='pageDetailsReviewCard'>
+                        <div class='pageDetailsFavoriteContainer'>
                             <h1 tabindex='0'>Save as favorite</h1>
                             <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
                         </div>
@@ -146,9 +146,7 @@ export default class PageDetails extends ServiceElement {
 
     render(): TemplateResult {
         return html`
-            ${
-                !this._restodetailsData ? this.renderShimmer() : this.renderPageDetailsContent(this._restodetailsData)
-            }
+            ${!this._restoDetailsData ? this.renderShimmer() : this.renderPageDetailsContent(this._restoDetailsData)}
         `;
     }
 }

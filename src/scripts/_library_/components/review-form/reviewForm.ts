@@ -57,10 +57,10 @@ export default class ReviewForm extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='reviewform__container'>
-                <input id='review-input' aria-label='Type your Name' class='reviewinput__name' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name === null ? '' : this._name}' ?required=${this._name === null}>
-                <textarea id='review-textarea' aria-label='Type your Review' class='reviewtextarea__review' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review === null ? '' : this._review}' ?required=${this._review === null}></textarea>
-                <button class='reviewbutton__submit' @click='${this._onButtonClickHandler}'>Add Review</button>
+            <div class='reviewFormContainer'>
+                <input id='review-input' aria-label='Type your Name' class='reviewInputName' placeholder='Type Your Name' type='text' @change='${this._onNameChangeHandler}' .value='${this._name === null ? '' : this._name}' ?required=${this._name === null}>
+                <textarea id='review-textarea' aria-label='Type your Review' class='reviewTextArea' placeholder='This Restaurant is awesome!' @change='${this._onReviewChangeHandler}' .value='${this._review === null ? '' : this._review}' ?required=${this._review === null}></textarea>
+                <button class='reviewButtonSubmit' @click='${this._onButtonClickHandler}'>Add Review</button>
             </div>
         `;
     }

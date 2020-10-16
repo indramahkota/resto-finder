@@ -12,16 +12,16 @@ export default class GoTop extends CommonElement implements IScrollEffect {
     _lastScrollPosition = 0;
     _onScrollHandler = () => {
         this._currentScrollPosition = window.scrollY;
-            window.setTimeout(() => {
-                this._lastScrollPosition = window.scrollY;
-            }, 50);
-            if (!this._ticking) {
-                window.requestAnimationFrame(() => {
-                    this._hideOrShowGoTop();
-                    this._ticking = false;
-                });
-                this._ticking = true;
-            }
+        window.setTimeout(() => {
+            this._lastScrollPosition = window.scrollY;
+        }, 50);
+        if (!this._ticking) {
+            window.requestAnimationFrame(() => {
+                this._hideOrShowGoTop();
+                this._ticking = false;
+            });
+            this._ticking = true;
+        }
     };
 
     _hideOrShowGoTop(): void {
@@ -54,7 +54,7 @@ export default class GoTop extends CommonElement implements IScrollEffect {
 
     render(): TemplateResult {
         return html`
-            <button id='top-button' class='gotop__button' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
+            <button id='top-button' class='goTopButton' aria-label='Go to top Button' title='Go to top' @click='${this._onButtonClickHandler}'><i class='fas fa-hand-point-up'></i></button>
         `;
     }
 }

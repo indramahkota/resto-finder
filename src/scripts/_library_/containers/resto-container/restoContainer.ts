@@ -29,7 +29,7 @@ export default class RestoContainer extends CommonElement {
         }
         return html`
             <div class='resto__items'>
-                ${ itemTemplates }
+                ${itemTemplates}
             </div>
         `;
     }
@@ -46,9 +46,7 @@ export default class RestoContainer extends CommonElement {
     renderAllRestaurants(data: Restaurant[]): TemplateResult {
         return html`
             <div class='resto__items'>
-                ${
-                    data.map(res => html`<resto-card .data=${res}></resto-card>`)
-                }
+                ${data.map(res => html`<resto-card .data=${res}></resto-card>`)}
             </div>
         `;
     }
@@ -57,13 +55,7 @@ export default class RestoContainer extends CommonElement {
         return html`
             <div class='resto__container'>
                 <h1 tabindex='0' class='resto__title'>${this.title}</h1>
-                ${
-                    this.data ?
-                        this.data.restaurants.length > 0 ?
-                            this.renderAllRestaurants(this.data.restaurants) :
-                            this.renderEmpty() :
-                        this.renderShimmer()
-                }
+                ${this.data ? (this.data.restaurants.length > 0 ? this.renderAllRestaurants(this.data.restaurants) : this.renderEmpty()) : this.renderShimmer()}
             </div>
         `;
     }

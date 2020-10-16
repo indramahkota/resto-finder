@@ -1,4 +1,4 @@
-.reviewform__container {
+.reviewFormContainer {
     width: 100%;
     padding: 20px;
     border-radius: 8px;
@@ -8,7 +8,7 @@
     box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
     background-color: var(--color-article-background);
 
-    .reviewinput__name {
+    .reviewInputName {
         font: inherit;
         min-height: 44px;
         padding: 8px;
@@ -29,7 +29,7 @@
         }
     }
 
-    .reviewtextarea__review {
+    .reviewTextArea {
         font: inherit;
         margin-top: 8px;
         min-height: 88px;
@@ -51,7 +51,7 @@
         }
     }
 
-    .reviewbutton__submit {
+    .reviewButtonSubmit {
         margin-top: 8px;
         min-height: 44px;
         border-radius: 8px;
@@ -67,8 +67,8 @@
 }
 
 @media (hover: hover) {
-    .reviewform__container {
-        .reviewbutton__submit {
+    .reviewFormContainer {
+        .reviewButtonSubmit {
             &:hover {
                 background-color: #ffffff;
                 color: black;

@@ -1,22 +1,22 @@
-.pagedetails__container {
+.pageDetailsContainer {
     width: 100%;
     display: flex;
     padding: 20px;
 
-    .pagedetails {
+    .pageDetails {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
 
-        .pagedetails__detailscard {
+        .pageDetailsDescriptionCard {
             display: flex;
             flex-direction: column;
         }
 
-        .pagedetails__reviewcard {
+        .pageDetailsReviewCard {
             margin-top: 20px;
 
-            .pagedetails__favorite__container {
+            .pageDetailsFavoriteContainer {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -35,20 +35,20 @@
 }
 
 @media screen and (min-width: 768px) {
-    .pagedetails__container {
-        .pagedetails {
+    .pageDetailsContainer {
+        .pageDetails {
             display: flex;
             flex-direction: row;
             max-width: 1350px;
 
-            .pagedetails__detailscard {
+            .pageDetailsDescriptionCard {
                 width: 60%;
                 margin-right: 8px;
                 display: flex;
                 flex-direction: column;
             }
 
-            .pagedetails__reviewcard {
+            .pageDetailsReviewCard {
                 width: 40%;
                 margin-top: 0;
                 margin-left: 8px;

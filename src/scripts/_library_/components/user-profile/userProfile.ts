@@ -18,24 +18,24 @@ export default class UserProfile extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='profile__container'>
-                <h1 tabindex='0' class='profile__title'>${this.title}</h1>
-                <div class='profile__content'>
-                    <div class='profile__desc_container'>
-                        <h2 tabindex='0' class='profile__name'>${this.data.name}</h2>
-                        <div class='profile__location'>
+            <div class='profileContainer'>
+                <h1 tabindex='0' class='profileTitle'>${this.title}</h1>
+                <div class='profileContent'>
+                    <div class='profileDescriptionContainer'>
+                        <h2 tabindex='0' class='profileName'>${this.data.name}</h2>
+                        <div class='profileLocation'>
                             <i class='fas fa-map-marker-alt'></i>
                             <span tabindex='0'>${this.data.location}</span>
                         </div>
-                        <div class='profile__hirable'>
+                        <div class='profileHirable'>
                             <p tabindex='0'>${this.data.status}</p>
                         </div>
-                        <div class='profile__mediasocial'>
+                        <div class='profileMediaSocial'>
                             <social-media></social-media>
                         </div>
                     </div>
-                    <div class='profile__image_container'>
-                        <img class='profile__image' src='${this.data.image}' alt='Indra Mahkota, Developer who build this website'/>
+                    <div class='profileImageContainer'>
+                        <img class='profileImage' src='${this.data.image}' alt='Indra Mahkota, Developer who build this website'/>
                     </div>
                 </div>
             </div>

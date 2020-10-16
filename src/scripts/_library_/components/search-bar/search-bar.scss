@@ -1,4 +1,4 @@
-.search__floater {
+.searchFloater {
     position: fixed;
     bottom: 75px;
     right: 75px;
@@ -11,13 +11,13 @@
         transform: translateX(150px);
     }
 
-    .search__anchor {
+    .searchAnchor {
         position: relative;
         width: auto;
         height: auto;
 
         form {
-            .search__bar {
+            .searchBar {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -47,20 +47,20 @@
                     padding-left: 25px;
                     padding-right: 70px;
 
-                    & ~ .search__toggler {
+                    & ~ .searchToggler {
                         right: 400px;
                         background: #151515;
                         z-index: 6;
                         transition: transform 0.2;
                     }
 
-                    & ~ .search__toggler::before {
+                    & ~ .searchToggler::before {
                         top: 0;
                         left: 0;
                         width: 25px;
                     }
 
-                    & ~ .search__toggler::after {
+                    & ~ .searchToggler::after {
                         top: 0;
                         left: 0;
                         width: 25px;
@@ -73,12 +73,12 @@
                 }
             }
 
-            .search__submit {
+            .searchSubmit {
                 opacity: 0;
                 width: 0;
             }
 
-            .search__toggler {
+            .searchToggler {
                 position: absolute;
                 width: 60px;
                 height: 60px;

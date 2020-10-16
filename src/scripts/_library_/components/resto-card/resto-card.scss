@@ -1,4 +1,4 @@
-.card__container {
+.cardContainer {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -10,7 +10,7 @@
         font: inherit;
         text-decoration: none;
 
-        .card__rating {
+        .cardRating {
             position: absolute;
             display: flex;
             align-items: center;
@@ -34,24 +34,24 @@
             object-position: center;
         }
 
-        .card__content {
+        .cardContent {
             padding: 8px 16px 16px 16px;
             max-height: 250px;
             color: var(--color-text);
             display: flex;
             flex-direction: column;
 
-            .card__name {
+            .cardName {
                 color: inherit;
                 padding: 2px 0 8px 0;
             }
 
-            .card__city {
+            .cardCity {
                 font-size: 0.8em;
                 padding: 4px 0;
             }
 
-            .card__description {
+            .cardDescription {
                 padding-top: 4px;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -62,7 +62,7 @@
         }
     }
 
-    .card__delete {
+    .cardDelete {
         position: absolute;
         top: 0;
         right: 0;
@@ -92,7 +92,7 @@
 }
 
 @media (hover: hover) {
-    .card__container {
+    .cardContainer {
         &:hover {
             transition: transform 0.3s ease-out;
             -webkit-transform: translateY(-8px);
@@ -101,7 +101,7 @@
             box-shadow: 0 4px 16px -8px var(--color-background-shadow);
         }
 
-        .card__delete {
+        .cardDelete {
             button {
                 &:hover {
                     transition: background-color 0.3s ease-in;

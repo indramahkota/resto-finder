@@ -1,11 +1,11 @@
-.hero__container {
+.heroContainer {
   width: 100%;
   min-height: 250px;
   max-height: 100vh;
   overflow: hidden;
   position: relative;
 
-  .hero__placeholder {
+  .heroPlaceholder {
     color: rgb(246, 205, 97);
     font-weight: bold;
     text-align: center;
@@ -20,12 +20,12 @@
       font-family: Arial, Helvetica, sans-serif;
       text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
 
-      .herotext__logo {
+      .heroTextLogo {
         font-family: "Pacifico", cursive;
       }
     }
 
-    .hero__button {
+    .heroButton {
       visibility: hidden;
       background-color: #2b6ca1;
       border: solid 2px #2b6ca1;
@@ -45,17 +45,17 @@
 }
 
 @media screen and (min-width: 500px) {
-  .hero__container {
+  .heroContainer {
     min-height: 350px;
 
-    .hero__placeholder {
+    .heroPlaceholder {
       top: 75px;
 
       h1 {
         font-size: 3em;
       }
 
-      .hero__button {
+      .heroButton {
         visibility: visible;
       }
     }
@@ -63,10 +63,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero__container {
+  .heroContainer {
     min-height: 500px;
 
-    .hero__placeholder {
+    .heroPlaceholder {
       top: 125px;
 
       h1 {
@@ -77,15 +77,15 @@
 }
 
 @media screen and (min-width: 900px) {
-  .hero__container {
-    .hero__placeholder {
+  .heroContainer {
+    .heroPlaceholder {
       top: 150px;
 
       h1 {
         font-size: 5em;
       }
 
-      .hero__button {
+      .heroButton {
         font-size: 18px;
         min-height: 52px;
       }
@@ -94,7 +94,7 @@
 }
 
 @media screen and (min-width: 1350px) {
-  .hero__container {
+  .heroContainer {
     picture {
       display: flex;
       img {
@@ -105,8 +105,8 @@
 }
 
 @media (hover: hover) {
-  .hero__container {
-    .hero__button {
+  .heroContainer {
+    .heroButton {
       &:hover {
         background-color: #ffffff;
         color: black;

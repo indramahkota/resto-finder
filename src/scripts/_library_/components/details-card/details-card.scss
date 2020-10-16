@@ -1,11 +1,11 @@
-.restodetails__container {
+.restoDetailsContainer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    .restodetails__image {
+    .restoDetailsImage {
         display: flex;
         width: 100%;
         height: 280px;
@@ -24,7 +24,7 @@
         }
     }
 
-    .restodetails__content {
+    .restoDetailsContent {
         width: 100%;
         padding: 20px;
         margin-top: 20px;
@@ -33,12 +33,12 @@
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
         background-color: var(--color-article-background);
 
-        .restodetails__part {
+        .restoDetailsPart {
             display: flex;
             flex-direction: column;
             margin-top: 8px;
 
-            .restodetails__part1 {
+            .restoDetailsPart1 {
                 table {
                     width: 100%;
 
@@ -56,7 +56,7 @@
                 }
             }
 
-            .restodetails__part2 {
+            .restoDetailsPart2 {
                 display: flex;
                 margin: 8px;
                 padding: 8px;
@@ -69,16 +69,16 @@
             }
         }
 
-        .restodetails__description {
+        .restoDetailsDescription {
             margin-top: 8px;
         }
 
-        .restodetails__category {
+        .restoDetailsCategory {
             display: flex;
             flex-direction: column;
             margin-top: 16px;
 
-            .restodetails__category__title {
+            .restoDetailsCategoryTitle {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -89,12 +89,12 @@
                 }
             }
 
-            .restodetails__categoryitems {
+            .restoDetailsCategoryItems {
                 margin-top: 8px;
                 display: flex;
                 flex-direction: row;
 
-                .category__items {
+                .categoryItems {
                     height: 32px;
                     padding: 8px;
                     margin: 4px;
@@ -112,29 +112,29 @@
             }
         }
 
-        .menucard__container {
+        .menuCardContainer {
             width: 100%;
             display: flex;
             flex-direction: column;
             margin-top: 20px;
 
-            .menucard__title {
+            .menuCardTitle {
                 color: var(--color-text);
             }
 
-            .menucard__content {
+            .menuCardContent {
                 display: flex;
                 margin-top: 10px;
                 flex-direction: column;
 
-                .food__container {
+                .foodContainer {
                     margin-bottom: 16px;
 
                     h2 {
                         font-size: 1em;
                     }
 
-                    .food_content {
+                    .foodContent {
                         ol {
                             display: flex;
                             flex-direction: column;
@@ -149,12 +149,12 @@
                     }
                 }
 
-                .drink__container {
+                .drinkContainer {
                     h2 {
                         font-size: 1em;
                     }
 
-                    .drink_content {
+                    .drinkContent {
                         ol {
                             display: flex;
                             flex-direction: column;
@@ -174,14 +174,14 @@
 }
 
 @media screen and (min-width: 500px) {
-    .restodetails__container {
-        .restodetails__content {
-            .restodetails__part {
+    .restoDetailsContainer {
+        .restoDetailsContent {
+            .restoDetailsPart {
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
 
-                .restodetails__part2 {
+                .restoDetailsPart2 {
                     margin-top: 0;
                     margin-left: auto;
                 }
@@ -191,16 +191,16 @@
 }
 
 @media screen and (min-width: 900px) {
-    .restodetails__container {
-        .restodetails__image {
+    .restoDetailsContainer {
+        .restoDetailsImage {
             min-height: 350px;
         }
     }
 }
 
 @media screen and (min-width: 1200px) {
-    .restodetails__container {
-        .restodetails__image {
+    .restoDetailsContainer {
+        .restoDetailsImage {
             min-height: 450px;
         }
     }

@@ -18,12 +18,10 @@ export default class ReviewContainer extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='review__container'>
-                <h1 tabindex='0' class='review__title'>${this.title}</h1>
-                    <div class='review__items'>
-                        ${
-                            this.data.slice(Math.max(this.data.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`)
-                        }
+            <div class='reviewContainer'>
+                <h1 tabindex='0' class='reviewTitle'>${this.title}</h1>
+                    <div class='reviewItems'>
+                        ${this.data.slice(Math.max(this.data.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`)}
                     </div>
                 </div>
             </div>

@@ -12,16 +12,16 @@ export default class SearchBar extends CommonElement implements IScrollEffect {
     _lastScrollPosition = 0;
     _onScrollHandler = () => {
         this._currentScrollPosition = window.scrollY;
-            window.setTimeout(() => {
-                this._lastScrollPosition = window.scrollY;
-            }, 50);
-            if (!this._ticking) {
-                window.requestAnimationFrame(() => {
-                    this._hideOrShowsearchBar();
-                    this._ticking = false;
-                });
-                this._ticking = true;
-            }
+        window.setTimeout(() => {
+            this._lastScrollPosition = window.scrollY;
+        }, 50);
+        if (!this._ticking) {
+            window.requestAnimationFrame(() => {
+                this._hideOrShowsearchBar();
+                this._ticking = false;
+            });
+            this._ticking = true;
+        }
     };
 
     _hideOrShowsearchBar(): void {
@@ -35,12 +35,12 @@ export default class SearchBar extends CommonElement implements IScrollEffect {
 
     render(): TemplateResult {
         return html`
-            <div id='search-bar' class='search__floater hide'>
-                <div class='search__anchor'>
+            <div id='search-bar' class='searchFloater hide'>
+                <div class='searchAnchor'>
                     <form id='search-form' action='get'>
-                        <input aria-label='Search to Find Resto' type='text' class='search__bar' placeholder='Find Resto'>
-                        <input class='search__submit' type='submit'>
-                        <div class='search__toggler'></div>
+                        <input aria-label='Search to Find Resto' type='text' class='searchBar' placeholder='Find Resto'>
+                        <input class='searchSubmit' type='submit'>
+                        <div class='searchToggler'></div>
                     </form>
                 </div>
             </div>

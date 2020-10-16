@@ -1,4 +1,4 @@
-.header__container {
+.headerContainer {
   width: 100%;
   z-index: 1000;
   display: flex;
@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: space-between;
 
-    .header__logo {
+    .headerLogo {
       min-height: 44px;
       padding-top: 4px;
       text-decoration: none;
@@ -33,13 +33,13 @@
       font-family: "Pacifico", cursive;
     }
 
-    .toggle__container {
+    .toggleContainer {
       display: flex;
       margin-left: auto;
       align-items: center;
       justify-content: space-between;
 
-      .toggle__label {
+      .toggleLabel {
         width: 84px;
         height: 38px;
         position: relative;
@@ -64,7 +64,7 @@
           }
         }
 
-        .toggle__icon {
+        .toggleIcon {
           display: flex;
           justify-content: space-between;
           position: absolute;
@@ -115,7 +115,7 @@
       }
     }
 
-    .header__button {
+    .headerButton {
       min-width: 44px;
       min-height: 44px;
       padding: 20px 20px;
@@ -170,7 +170,7 @@
       }
     }
 
-    .header__nav {
+    .headerNavigation {
       top: 60px;
       right: -300px;
       min-width: 300px;
@@ -218,13 +218,13 @@
             }
           }
 
-          .anchor__icon__container {
-            .anchor__icon {
+          .anchorIconContainer {
+            .anchorIcon {
               width: 34px;
               height: 34px;
             }
 
-            .anchor__name {
+            .anchorName {
               margin-right: auto;
               padding: 0 10px;
             }
@@ -236,17 +236,17 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header__container {
+  .headerContainer {
     .header {
-      .header__button {
+      .headerButton {
         display: none;
       }
 
-      .toggle__container {
+      .toggleContainer {
         margin-left: 0;
       }
 
-      .header__nav {
+      .headerNavigation {
         position: static;
         min-width: auto;
         min-height: auto;
@@ -273,9 +273,9 @@
 }
 
 @media (hover: hover) {
-  .header__container {
+  .headerContainer {
     .header {
-      .header__nav {
+      .headerNavigation {
         ul {
           li {
             a {

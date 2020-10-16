@@ -16,16 +16,16 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     _lastScrollPosition = 0;
     _onScrollHandler = () => {
         this._currentScrollPosition = window.scrollY;
-            window.setTimeout(() => {
-                this._lastScrollPosition = window.scrollY;
-            }, 50);
-            if (!this._ticking) {
-                window.requestAnimationFrame(() => {
-                    this._hideOrShowHeader();
-                    this._ticking = false;
-                });
-                this._ticking = true;
-            }
+        window.setTimeout(() => {
+            this._lastScrollPosition = window.scrollY;
+        }, 50);
+        if (!this._ticking) {
+            window.requestAnimationFrame(() => {
+                this._hideOrShowHeader();
+                this._ticking = false;
+            });
+            this._ticking = true;
+        }
     };
 
     @property({ type: String })
@@ -152,11 +152,11 @@ export default class AppBar extends CommonElement implements IScrollEffect {
 
     renderToggle(): TemplateResult {
         return html`
-            <div class='toggle__container'>
-                <label class='toggle__label'>
+            <div class='toggleContainer'>
+                <label class='toggleLabel'>
                     <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isThemeLight}>
                     <span class='slider round'></span>
-                    <div class='toggle__icon'>
+                    <div class='toggleIcon'>
                         <i class='fas fa-sun'></i>
                         <i class='fas fa-moon'></i>
                     </div>
@@ -169,7 +169,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         return html`
             <li>
                 <a href='${nav.url}' @click='${this._onNavigationClickHandler}'
-                    class='${ nav.isActive ? 'active' : ''}'>
+                    class='${nav.isActive ? 'active' : ''}'>
                     ${nav.name}
                     <span class='chevron'></span>
                 </a>
@@ -179,24 +179,24 @@ export default class AppBar extends CommonElement implements IScrollEffect {
 
     render(): TemplateResult {
         return html`
-            <div class=${this._showHeader ? 'header__container' : 'header__container hide'}>
+            <div class=${this._showHeader ? 'headerContainer' : 'headerContainer hide'}>
                 <header class='header'>
-                    <a href='/' class='header__logo'>${this.title}</a>
+                    <a href='/' class='headerLogo'>${this.title}</a>
 
-                    ${ this._darkMode ? this.renderToggle() : nothing }
+                    ${this._darkMode ? this.renderToggle() : nothing}
 
-                    <button aria-label='Toggle Menu Button' class='header__button ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
+                    <button aria-label='Toggle Menu Button' class='headerButton ${this._isDrawerOpen ? 'change' : ''}' @click='${this._onHamburgerClickHandler}'>
                         <span class='humburger'></span>
                     </button>
 
-                    <nav class='header__nav ${this._isDrawerOpen ? 'change' : ''}'>
+                    <nav class='headerNavigation ${this._isDrawerOpen ? 'change' : ''}'>
                         <ul>
-                            ${ this.navData.map(nav => this.renderNavList(nav)) }
+                            ${this.navData.map(nav => this.renderNavList(nav))}
 
                             <li>
-                                <a href='${this.iconNavData.url}' class='anchor__icon__container ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
-                                    <img class='anchor__icon' src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
-                                    <p class='anchor__name'>${this.iconNavData.name}</p>
+                                <a href='${this.iconNavData.url}' class='anchorIconContainer ${this._iconNavFocus ? 'active' : ''}' @click='${this._onIconNavClickHandler}'>
+                                    <img class='anchorIcon' src='${this.iconNavData.imageUrl}' alt='${this.iconNavData.imageAlt}'/>
+                                    <p class='anchorName'>${this.iconNavData.name}</p>
                                     <span class='chevron'></span>
                                 </a>
                             </li>
