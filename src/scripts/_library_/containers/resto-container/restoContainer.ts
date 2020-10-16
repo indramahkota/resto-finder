@@ -54,7 +54,7 @@ export default class RestoContainer extends CommonElement {
     render(): TemplateResult {
         return html`
             <div class='restoContainer'>
-                <h1 tabindex='0' class='restoTitle'>${this.title}</h1>
+                <h1 class='restoTitle'>${this.title}</h1>
                 ${this.data ? (this.data.restaurants.length > 0 ? this.renderAllRestaurants(this.data.restaurants) : this.renderEmpty()) : this.renderShimmer()}
             </div>
         `;
