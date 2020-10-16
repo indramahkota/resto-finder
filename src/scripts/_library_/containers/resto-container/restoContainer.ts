@@ -28,7 +28,7 @@ export default class RestoContainer extends CommonElement {
             itemTemplates.push(html`<restocard-shimmer></restocard-shimmer>`);
         }
         return html`
-            <div class='resto__items'>
+            <div class='restoItems'>
                 ${itemTemplates}
             </div>
         `;
@@ -36,7 +36,7 @@ export default class RestoContainer extends CommonElement {
 
     renderEmpty(): TemplateResult {
         return html`
-            <div class='resto__empty'>
+            <div class='restoEmpty'>
                 <img src='${notFound}' alt="No data found">
                 <p>No data found</p>
             </div>
@@ -45,7 +45,7 @@ export default class RestoContainer extends CommonElement {
 
     renderAllRestaurants(data: Restaurant[]): TemplateResult {
         return html`
-            <div class='resto__items'>
+            <div class='restoItems'>
                 ${data.map(res => html`<resto-card .data=${res}></resto-card>`)}
             </div>
         `;
@@ -53,8 +53,8 @@ export default class RestoContainer extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='resto__container'>
-                <h1 tabindex='0' class='resto__title'>${this.title}</h1>
+            <div class='restoContainer'>
+                <h1 tabindex='0' class='restoTitle'>${this.title}</h1>
                 ${this.data ? (this.data.restaurants.length > 0 ? this.renderAllRestaurants(this.data.restaurants) : this.renderEmpty()) : this.renderShimmer()}
             </div>
         `;
