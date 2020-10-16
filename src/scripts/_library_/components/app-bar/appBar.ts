@@ -111,7 +111,6 @@ export default class AppBar extends CommonElement implements IScrollEffect {
             window.document.body.classList.add('dark');
             Utils.setLCS(AppConfig.LCS_THEME, 'dark');
         }
-        // input.blur();
     }
 
     hideHeader(): void {
