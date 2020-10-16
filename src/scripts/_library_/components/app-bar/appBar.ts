@@ -111,7 +111,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
             window.document.body.classList.add('dark');
             Utils.setLCS(AppConfig.LCS_THEME, 'dark');
         }
-        input.blur();
+        // input.blur();
     }
 
     hideHeader(): void {
@@ -152,16 +152,14 @@ export default class AppBar extends CommonElement implements IScrollEffect {
 
     renderToggle(): TemplateResult {
         return html`
-            <div class='toggleContainer'>
-                <label class='toggleLabel'>
-                    <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isThemeLight}>
-                    <span class='slider round'></span>
-                    <div class='toggleIcon'>
-                        <i class='fas fa-sun'></i>
-                        <i class='fas fa-moon'></i>
-                    </div>
-                </label>
-            </div>
+            <label class='toggleLabel'>
+                <input aria-label='This input for Toggle Dark or Light Mode' @change='${this._onSwitchChangeHandler}' type='checkbox' ?checked=${this._isThemeLight}>
+                <span class='slider round'></span>
+                <div class='toggleIcon'>
+                    <i class='fas fa-sun'></i>
+                    <i class='fas fa-moon'></i>
+                </div>
+            </label>
         `;
     }
 

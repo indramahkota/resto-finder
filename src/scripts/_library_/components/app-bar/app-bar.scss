@@ -1,10 +1,7 @@
 .headerContainer {
   width: 100%;
   z-index: 1000;
-  display: flex;
   position: fixed;
-  align-items: center;
-  justify-content: center;
   transition: transform 0.2s ease-out;
   border-bottom: 1px solid var(--color-page-background);
   background-color: var(--color-article-background);
@@ -16,8 +13,8 @@
   }
 
   .header {
-    width: 100%;
-    padding: 0 20px;
+    padding: 0 8px;
+    margin: 0 auto;
     max-width: 1350px;
     height: 60px;
     display: flex;
@@ -33,84 +30,74 @@
       font-family: "Pacifico", cursive;
     }
 
-    .toggleContainer {
+    .toggleLabel {
+      width: 84px;
+      height: 38px;
+      position: relative;
+
       display: flex;
       margin-left: auto;
       align-items: center;
       justify-content: space-between;
 
-      .toggleLabel {
-        width: 84px;
-        height: 38px;
-        position: relative;
+      input {
+        width: 0;
+        height: 0;
 
-        input {
-          width: 0;
-          height: 0;
-          opacity: 0;
-
-          &:checked + .slider {
-            background-color: #2196f3;
-          }
-
-          &:checked + .slider:before {
-            -webkit-transform: translateX(46px);
-            -ms-transform: translateX(46px);
-            transform: translateX(46px);
-          }
-
-          &:focus + .slider {
-            background-color: lawngreen;
-          }
+        &:checked + .slider {
+          background-color: #2196f3;
         }
 
-        .toggleIcon {
-          display: flex;
-          justify-content: space-between;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 84px;
-          padding: 7px;
+        &:checked + .slider:before {
+          -webkit-transform: translateX(46px);
+          -ms-transform: translateX(46px);
+          transform: translateX(46px);
+        }
+      }
 
-          i {
-            font-size: 24px;
-            color: yellow;
-            z-index: 1;
-          }
+      .toggleIcon {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        padding: 7px;
+        width: inherit;
+        height: inherit;
+
+        i {
+          font-size: 24px;
+          color: yellow;
+          z-index: 1;
+        }
+      }
+
+      .slider {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        cursor: pointer;
+        -webkit-transition: transform 0.4s;
+        transition: transform 0.4s;
+        border: 2px solid white;
+
+        &:before {
+          content: "";
+          position: absolute;
+          margin: 4px;
+          right: 46px;
+          width: 26px;
+          height: 26px;
+          z-index: 2;
+          background-color: white;
+          -webkit-transition: transform 0.4s ease-out;
+          transition: transform 0.4s ease-out;
         }
 
-        .slider {
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          position: absolute;
-          cursor: pointer;
-          -webkit-transition: transform 0.4s;
-          transition: transform 0.4s;
-          border: 2px solid white;
+        &.round {
+          border-radius: 34px;
+        }
 
-          &:before {
-            content: "";
-            position: absolute;
-            margin: 4px;
-            right: 46px;
-            width: 26px;
-            height: 26px;
-            z-index: 2;
-            background-color: white;
-            -webkit-transition: transform 0.4s ease-out;
-            transition: transform 0.4s ease-out;
-          }
-
-          &.round {
-            border-radius: 34px;
-          }
-
-          &.round:before {
-            border-radius: 50%;
-          }
+        &.round:before {
+          border-radius: 50%;
         }
       }
     }
@@ -238,12 +225,12 @@
 @media screen and (min-width: 768px) {
   .headerContainer {
     .header {
-      .headerButton {
-        display: none;
+      .toggleLabel {
+        margin-left: 0;
       }
 
-      .toggleContainer {
-        margin-left: 0;
+      .headerButton {
+        display: none;
       }
 
       .headerNavigation {
