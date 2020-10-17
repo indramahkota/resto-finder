@@ -31,7 +31,8 @@ module.exports = {
   entry: resolve(__dirname, 'src/index.ts'),
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash:8].js'
+    filename: '[name].[contenthash:8].js',
+    publicPath: './',
   },
   module: {
     rules: [

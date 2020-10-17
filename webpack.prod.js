@@ -14,13 +14,14 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new TerserPlugin({
+        test: /\.(ts|js)x?$/i,
         terserOptions: {
           compress: {
             drop_console: true
           },
+          sourceMap: false,
           mangle: true
         },
-        sourceMap: false,
         extractComments: true
       }),
       new OptimizeCssAssetsPlugin({

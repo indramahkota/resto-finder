@@ -11,6 +11,7 @@ module.exports = [
     new workboxPlugin.InjectManifest({
         swSrc: resolve(__dirname, 'service-worker.js'),
         swDest: 'sw.js',
+        exclude: [/types/],
         maximumFileSizeToCacheInBytes: 5000000
     })
 ];
