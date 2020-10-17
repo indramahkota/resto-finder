@@ -1,20 +1,22 @@
-.restocard__shimmer {
-    padding: 30px 40px;
+.restoCardShimmer {
+    width: 100%;
+    height: 360px;
     border-radius: 8px;
     box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
     background-color: var(--color-article-background);
 
     .wrapper {
         .pic {
-            height: 65px;
-            width: 65px;
-            padding: 50px;
-            border-radius: 50%;
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
         }
 
         .comment {
             height: 10px;
             margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         .animate {

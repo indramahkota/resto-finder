@@ -15,7 +15,7 @@ export default class SocialMedia extends CommonElement {
     renderSocialMediaButton(data: ISocialMedia): TemplateResult {
         return html`
             <li>
-                <a style='background-color: ${data.color}' aria-label='This is the ${data.isEmail ? 'Email' : 'Social media page' } who created this website.' href='${data.url}' target='_blank' rel='noopener noreferrer'>
+                <a style='background-color: ${data.color}' aria-label='This is the ${data.isEmail ? 'Email' : 'Social media page'} who created this website.' href='${data.url}' target='_blank' rel='noopener noreferrer'>
                     <i class='${data.icon}'></i>
                 </a>
             </li>
@@ -24,9 +24,9 @@ export default class SocialMedia extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='social__media'>
+            <div class='socialMedia'>
                 <ul>
-                    ${ this.data.map((sm) => this.renderSocialMediaButton(sm)) }
+                    ${this.data.map((sm) => this.renderSocialMediaButton(sm))}
                 </ul>
             </div>
         `;

@@ -16,13 +16,13 @@ export default class RestoCard extends LazyLoadElement {
     @property({ type: Object })
     data: Restaurant | null = null;
 
-    private _onButtonClickHandler() {
+    _onButtonClickHandler() {
         this._dispatchData({ id: this.data?.id, name: this.data?.name }, EventType.DELETE_FAVORITE);
     }
 
     firstUpdated(): void {
         const pictId = this.data?.pictureId;
-        if(pictId === undefined)
+        if (pictId === undefined)
             return;
         const image = <HTMLImageElement>document.getElementById(pictId);
         this._setupImageLazy(image);
@@ -30,7 +30,7 @@ export default class RestoCard extends LazyLoadElement {
 
     renderDeleteButton(): TemplateResult {
         return html`
-            <div class='card__delete'>
+            <div class='cardDelete'>
                 <button @click='${this._onButtonClickHandler}'><i class='fas fa-trash-alt'></i></button>
             </div>
         `;
@@ -48,22 +48,20 @@ export default class RestoCard extends LazyLoadElement {
 
     render(): TemplateResult {
         return html`
-            <div class='card__container'>
+            <div class='cardContainer'>
                 <a href='#/details/${this.data?.id}'>
-                    <span class='card__rating'>⭐ ${this.data?.rating}</span>
-                    ${
-                        this.renderCardImage()
-                    }
-                    <div class='card__content'>
-                        <p tabindex='0' class='card__city'>${this.data?.city.toUpperCase()}</p>
-                        <p tabindex='0' class='card__name'><b>${this.data?.name}</b></p>
-                        <p tabindex='0' class='card__description'>${this.data?.description}</p>
+                    <span class='cardRating'>⭐ ${this.data?.rating}</span>
+
+                    ${this.renderCardImage()}
+                    
+                    <div class='cardContent'>
+                        <p tabindex='0' class='cardCity'>${this.data?.city.toUpperCase()}</p>
+                        <p tabindex='0' class='cardName'><b>${this.data?.name}</b></p>
+                        <p tabindex='0' class='cardDescription'>${this.data?.description}</p>
                     </div>
                 </a>
 
-                ${
-                    this.data?.isFavorite ? this.renderDeleteButton() : nothing
-                }
+                ${this.data?.isFavorite ? this.renderDeleteButton() : nothing}
             </div>
         `;
     }

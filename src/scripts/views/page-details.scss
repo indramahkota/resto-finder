@@ -1,49 +1,58 @@
-.pagedetails__container {
+.pageDetailsContainer {
     width: 100%;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
+    padding: 20px;
 
-    .pagedetails__detailscard {
+    .pageDetails {
         display: flex;
         flex-direction: column;
-    }
+        margin: 0 auto;
 
-    .pagedetails__reviewcard {
-        margin-top: 20px;
-
-        .pagedetails__favorite__container {
+        .pageDetailsDescriptionCard {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border-radius: 8px;
-            color: var(--color-text);
-            box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
-            background-color: var(--color-article-background);
+            flex-direction: column;
+        }
 
-            h1 {
-                margin-right: auto;
+        .pageDetailsReviewCard {
+            margin-top: 20px;
+
+            .pageDetailsFavoriteContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                border-radius: 8px;
+                color: var(--color-text);
+                box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
+                background-color: var(--color-article-background);
+
+                h1 {
+                    margin-right: auto;
+                }
             }
         }
     }
 }
 
 @media screen and (min-width: 768px) {
-    .pagedetails__container {
-        flex-direction: row;
-
-        .pagedetails__detailscard {
-            width: 60%;
-            margin-right: 8px;
+    .pageDetailsContainer {
+        .pageDetails {
             display: flex;
-            flex-direction: column;
-        }
+            flex-direction: row;
+            max-width: 1350px;
 
-        .pagedetails__reviewcard {
-            width: 40%;
-            margin-top: 0;
-            margin-left: 8px;
+            .pageDetailsDescriptionCard {
+                width: 60%;
+                margin-right: 8px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .pageDetailsReviewCard {
+                width: 40%;
+                margin-top: 0;
+                margin-left: 8px;
+            }
         }
     }
 }

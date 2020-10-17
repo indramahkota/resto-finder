@@ -1,18 +1,18 @@
-.profile__container {
+.profileContainer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    .profile__title {
+    .profileTitle {
         margin: 10px 0;
         padding: 20px;
         font-size: 1.5em;
         color: var(--color-text);
     }
 
-    .profile__content {
+    .profileContent {
         width: 90%;
         margin: 8px 0;
         padding: 20px 0;
@@ -25,35 +25,35 @@
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
         background-color: var(--color-article-background);
 
-        .profile__desc_container {
+        .profileDescriptionContainer {
             order: 2;
 
-            .profile__name {
+            .profileName {
                 margin: 10px 0;
                 color: var(--color-text);
             }
 
-            .profile__location {
+            .profileLocation {
                 margin: 10px 0;
                 color: var(--color-text);
             }
 
-            .profile__hirable {
+            .profileHirable {
                 margin: 10px 0;
                 color: var(--color-text);
             }
 
-            .profile__mediasocial {
+            .profileMediaSocial {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
         }
 
-        .profile__image_container {
+        .profileImageContainer {
             order: 1;
 
-            .profile__image {
+            .profileImage {
                 max-width: 200px;
                 height: auto;
                 border-radius: 50%;
@@ -64,19 +64,19 @@
 }
 
 @media screen and (min-width: 768px) {
-    .profile__container {
-        .profile__content {
+    .profileContainer {
+        .profileContent {
             flex-direction: row;
             justify-content: space-between;
             padding: 20px 5%;
             max-width: 1400px;
             text-align: left;
 
-            .profile__desc_container {
+            .profileDescriptionContainer {
                 order: 1;
             }
 
-            .profile__image_container {
+            .profileImageContainer {
                 order: 2;
                 margin-left: auto;
             }
@@ -85,8 +85,8 @@
 }
 
 @media (hover: hover) {
-    .profile__container {
-        .profile__content {
+    .profileContainer {
+        .profileContent {
             &:hover {
                 transition: transform 0.3s ease-out;
                 -webkit-transform: translateY(-8px);
@@ -94,8 +94,8 @@
                 transform: translateY(-8px);
                 box-shadow: 0 4px 16px -8px var(--color-background-shadow);
             }
-            .profile__image_container {
-                .profile__image {
+            .profileImageContainer {
+                .profileImage {
                     &:hover {
                         box-shadow: 0 4px 16px -8px var(--color-background-shadow);
                         transition: box-shadow 0.3s ease-out;

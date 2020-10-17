@@ -32,14 +32,14 @@ export default class HeroElement extends CommonElement {
     @property({ type: String })
     name = AppConfig.APP_NAME;
 
-    private _onButtonClickHandler(): void {
+    _onButtonClickHandler(): void {
         document.getElementById('find-button')?.blur();
         this._dispatchData({ message: 'Let\'s Find' }, EventType.LETS_FIND);
     }
 
     render(): TemplateResult {
         return html`
-            <div class='hero__container'>
+            <div class='heroContainer'>
                 <picture>
                     <img
                         sizes="(max-width: 1350px) 100vw, 1350px"
@@ -63,9 +63,9 @@ export default class HeroElement extends CommonElement {
                         src="${hero_356}"
                     alt="Hero Image">
                 </picture>
-                <div id='hero-greeting' class='hero__placeholder'>
-                    <h1>${this.greeting}<br><span class='herotext__logo'>${this.name}</span></h1>
-                    <button id='find-button' aria-label="Let's Find Button" class='hero__button' @click='${this._onButtonClickHandler}'>Let's Find Resto</button>
+                <div id='hero-greeting' class='heroPlaceholder'>
+                    <h1>${this.greeting}<br><span class='heroTextLogo'>${this.name}</span></h1>
+                    <button id='find-button' aria-label="Let's Find Button" class='heroButton' @click='${this._onButtonClickHandler}'>Let's Find Resto</button>
                 </div>
             </div>
         `;

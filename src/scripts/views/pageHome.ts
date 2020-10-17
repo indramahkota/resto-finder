@@ -12,11 +12,11 @@ import '../_library_/components/go-top/goTop';
 @customElement('rstf-home')
 export default class PageHome extends ServiceElement {
     @internalProperty()
-    private _restoListData: RestaurantResponse | null = null;
+    _restoListData: RestaurantResponse | null = null;
 
-    private _focusOnTopRestaurantsHandler = () => {
+    _focusOnTopRestaurantsHandler = () => {
         document.querySelector('app-bar')?.hideHeader();
-        document.getElementById('top-resto')?.scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('resto-container')?.scrollIntoView({ behavior: 'smooth' });
     }
 
     connectedCallback(): void {
@@ -44,12 +44,8 @@ export default class PageHome extends ServiceElement {
 
     render(): TemplateResult {
         return html`
-            <section id='greeting'>
-                <hero-element></hero-element>
-            </section>
-            <section id='top-resto'>
-                <resto-container title='TOP RESTAURANTS' .data=${this._restoListData} totalShimmerItem=20></resto-container>
-            </section>
+            <hero-element></hero-element>
+            <resto-container title='TOP RESTAURANTS' .data=${this._restoListData} totalShimmerItem=20></resto-container>
             <go-top></go-top>
         `;
     }

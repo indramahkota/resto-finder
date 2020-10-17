@@ -5,13 +5,13 @@ import Utils from './globals/appUtilities';
 
 import './views/RstfApp';
 
-window.addEventListener('DOMContentLoaded', () => {
-    if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
-        window.document.body.classList.add('dark');
-    } else {
-        window.document.body.classList.remove('dark');
-    }
+if (Utils.getLCS(AppConfig.LCS_THEME) === 'dark') {
+    window.document.body.classList.add('dark');
+} else {
+    window.document.body.classList.remove('dark');
+}
 
+window.addEventListener('DOMContentLoaded', () => {
     render(html`
         <a id='skip-to-content' class='skip-link' href='#content'>Skip to Content</a>
         <rstf-app></rstf-app>

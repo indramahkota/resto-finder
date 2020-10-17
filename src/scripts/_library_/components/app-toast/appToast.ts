@@ -12,7 +12,7 @@ export default class AppToast extends CommonElement {
 
     render(): TemplateResult {
         return html`
-            <div class='toast__container'>
+            <div class='toastContainer'>
                 <p>${this.message}</p>
             </div>
         `;

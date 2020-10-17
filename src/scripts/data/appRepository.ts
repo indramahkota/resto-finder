@@ -8,8 +8,8 @@ import ClientDatabase from './sources/local/clientDatabase';
 import NetworkServer from './sources/network/networkServer';
 
 export default class AppRepository implements DbService, ApiService {
-    private _net: NetworkServer;
-    private _db: ClientDatabase;
+    _net: NetworkServer;
+    _db: ClientDatabase;
 
     constructor(
         networkServer: NetworkServer,

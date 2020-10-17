@@ -1,4 +1,4 @@
-.reviewcard__container {
+.reviewCardContainer {
     display: flex;
     padding: 10px;
     border-radius: 8px;
@@ -6,17 +6,19 @@
     box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
     background-color: var(--color-article-background);
 
-    .reviewcard__image {
-        width: 48px;
-        padding: 2px;
-        border-radius: 50%;
-        background-color: var(--color-text);
+    .reviewCardImageContainer {
+        .reviewCardImage {
+            width: 48px;
+            padding: 2px;
+            border-radius: 50%;
+            background-color: var(--color-text);
+        }
     }
 
-    .reviewcard__content {
+    .reviewCardContent {
         margin-left: 8px;
 
-        .reviecard__name {
+        .reviewCardName {
             font-weight: bold;
 
             /* These are technically the same, but use both */
@@ -36,12 +38,12 @@
             hyphens: auto;
         }
 
-        .reviewcard__time {
+        .reviewCardTime {
             font-size: 95%;
             padding-bottom: 4px;
         }
 
-        .reviewcard__message {
+        .reviewCardMessage {
             /* These are technically the same, but use both */
             overflow-wrap: break-word;
             word-wrap: break-word;
@@ -62,7 +64,7 @@
 }
 
 @media (hover: hover) {
-    .reviewcard__container {
+    .reviewCardContainer {
         &:hover {
             transition: transform 0.3s ease-out;
             -webkit-transform: translateY(-8px);
@@ -74,8 +76,8 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .reviewcard__container {
-        .reviewcard__image {
+    .reviewCardContainer {
+        .reviewCardImage {
             width: 64px;
         }
     }

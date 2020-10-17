@@ -9,16 +9,16 @@ import CommonElement from '../_base_/commonElement';
 export default class RatingElement extends CommonElement {
     @property({ type: Number })
     rating = 0;
-    
+
     render(): TemplateResult {
         return html`
-            <div class='rating__container'>
+            <div class='ratingContainer'>
                 <i class='fas fa-star'></i>
                 <i class='fas fa-star'></i>
                 <i class='fas fa-star'></i>
                 <i class='fas fa-star'></i>
                 <i class='fas fa-star'></i>
-                <div class='gold__rating__item' style='width: ${(this.rating/5)*100}%;'>
+                <div class='goldRatingItem' style='width: ${(this.rating / 5) * 100}%;'>
                     <i class='fas fa-star'></i>
                     <i class='fas fa-star'></i>
                     <i class='fas fa-star'></i>

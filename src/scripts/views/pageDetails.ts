@@ -22,42 +22,42 @@ export default class PageDetails extends ServiceElement {
     detailsId: string | null = null;
 
     @internalProperty()
-    private _restodetailsData: RestaurantDetailsResponse | null = null;
+    _restoDetailsData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
-    private _reviewListData: ConsumerReview[] = [];
+    _reviewListData: ConsumerReview[] = [];
 
     @internalProperty()
-    private _isFavorite = false;
+    _isFavorite = false;
 
-    private _addFavoriteHandler = async () => {
-        if(!this.detailsId || !this._restodetailsData) return;
+    _addFavoriteHandler = async () => {
+        if (!this.detailsId || !this._restoDetailsData) return;
 
         try {
-            const newFavoriteData = Object.assign(this._restodetailsData.restaurant, { isFavorite: true });
+            const newFavoriteData = Object.assign(this._restoDetailsData.restaurant, { isFavorite: true });
             await this._repository.putFavorite(newFavoriteData);
             this._isFavorite = true;
             Utils.incrementFavoriteCounter();
-            this._dispatchData({ message: `Add ${this._restodetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Add ${this._restoDetailsData?.restaurant.name} to favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
     }
 
-    private _deleteFavoriteHandler = async () => {
-        if(!this.detailsId) return;
+    _deleteFavoriteHandler = async () => {
+        if (!this.detailsId) return;
 
         try {
             await this._repository.deleteFavorite(this.detailsId);
             this._isFavorite = false;
             Utils.decrementFavoriteCounter();
-            this._dispatchData({ message: `Remove ${this._restodetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
+            this._dispatchData({ message: `Remove ${this._restoDetailsData?.restaurant.name} from favorite` }, EventType.SHOW_TOAST);
         } catch (error) {
             this._dispatchData({ message: error }, EventType.SHOW_TOAST);
         }
     }
 
-    private _submitReviewHandler = async (event: Event) => {
+    _submitReviewHandler = async (event: Event) => {
         if (!this.detailsId) return;
 
         const details = (event as CustomEvent).detail;
@@ -95,7 +95,7 @@ export default class PageDetails extends ServiceElement {
     }
 
     async setRestaurantDetailsData(restodetailsData: RestaurantDetailsResponse): Promise<void> {
-        this._restodetailsData = restodetailsData;
+        this._restoDetailsData = restodetailsData;
         await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
     }
 
@@ -106,7 +106,7 @@ export default class PageDetails extends ServiceElement {
     async firstUpdated(): Promise<void> {
         if (!this.detailsId) return;
         document.querySelector('app-bar')?.dataShouldUpdate(window.location.hash);
-        
+
         try {
             const favoriteData = await this._repository.getFavoriteById(this.detailsId);
             if (favoriteData !== undefined)
@@ -126,17 +126,19 @@ export default class PageDetails extends ServiceElement {
 
     renderPageDetailsContent(data: RestaurantDetailsResponse): TemplateResult {
         return html`
-            <div class='pagedetails__container'>
-                <div class='pagedetails__detailscard'>
-                    <details-card .data=${data.restaurant}></details-card>
-                </div>
-                <div class='pagedetails__reviewcard'>
-                    <div class='pagedetails__favorite__container'>
-                        <h1 tabindex='0'>Save as favorite</h1>
-                        <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
+            <div class='pageDetailsContainer'>
+                <div class='pageDetails'>
+                    <div class='pageDetailsDescriptionCard'>
+                        <details-card .data=${data.restaurant}></details-card>
                     </div>
-                    <review-container .data=${this._reviewListData}></review-container>
-                    <review-form></review-form>
+                    <div class='pageDetailsReviewCard'>
+                        <div class='pageDetailsFavoriteContainer'>
+                            <h1 tabindex='0'>Save as favorite</h1>
+                            <favorite-button ?isfavorite=${this._isFavorite}></favorite-button>
+                        </div>
+                        <review-container .data=${this._reviewListData}></review-container>
+                        <review-form></review-form>
+                    </div>
                 </div>
             </div>
         `;
@@ -144,9 +146,7 @@ export default class PageDetails extends ServiceElement {
 
     render(): TemplateResult {
         return html`
-            ${
-                !this._restodetailsData ? this.renderShimmer() : this.renderPageDetailsContent(this._restodetailsData)
-            }
+            ${!this._restoDetailsData ? this.renderShimmer() : this.renderPageDetailsContent(this._restoDetailsData)}
         `;
     }
 }

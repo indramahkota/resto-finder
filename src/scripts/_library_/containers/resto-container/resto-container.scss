@@ -1,30 +1,29 @@
-.resto__container {
+.restoContainer {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
-    .resto__title {
+    .restoTitle {
         margin: 10px 0;
         padding: 20px;
         font-size: 1.5em;
+        text-align: center;
         color: var(--color-text);
     }
 
-    .resto__items {
-        margin: 8px auto 8px auto;
+    .restoItems {
+        margin: 8px auto;
         width: 90%;
-        max-width: 1400px;
+        max-width: 1350px;
         display: grid;
         grid-template-columns: 1fr;
         gap: 16px;
     }
 
-    .resto__empty {
+    .restoEmpty {
+        max-width: 200px;
         text-align: center;
         border-radius: 8px;
         padding: 20px;
+        margin: auto;
         color: var(--color-text);
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.2);
         background-color: var(--color-article-background);
@@ -36,32 +35,32 @@
 }
 
 @media screen and (min-width: 650px) {
-    .resto__container {
-        .resto__items {
+    .restoContainer {
+        .restoItems {
             grid-template-columns: 1fr 1fr;
         }
     }
 }
 
 @media screen and (min-width: 970px) {
-    .resto__container {
-        .resto__items {
+    .restoContainer {
+        .restoItems {
             grid-template-columns: repeat(3, 1fr);
         }
     }
 }
 
 @media screen and (min-width: 1400px) {
-    .resto__container {
-        .resto__items {
+    .restoContainer {
+        .restoItems {
             grid-template-columns: repeat(4, 1fr);
         }
     }
 }
 
 @media (hover: hover) {
-    .resto__container {
-        .resto__empty {
+    .restoContainer {
+        .restoEmpty {
             &:hover {
                 transition: all 0.3s ease-out;
                 transition-property: transform, box-shadow;
