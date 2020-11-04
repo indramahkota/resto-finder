@@ -2,7 +2,7 @@ import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import CommonElement from '../../components/_base_/commonElement';
-import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
+import { CustomerReview } from '../../../data/entity/CustomerReviewEntity';
 
 import '../../components/review-card/reviewCard';
 
@@ -14,7 +14,7 @@ export default class ReviewContainer extends CommonElement {
     title = 'LATEST REVIEWS';
 
     @property({ type: Array })
-    data: ConsumerReview[] = [];
+    data: CustomerReview[] = [];
 
     render(): TemplateResult {
         return html`
