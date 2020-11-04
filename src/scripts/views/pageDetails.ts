@@ -3,7 +3,6 @@ import { customElement, internalProperty, property } from 'lit-element';
 
 import { RestaurantDetailsResponse } from '../data/entity/RestaurantResponse';
 import { CustomerReview } from '../data/entity/CustomerReviewEntity';
-import { ConsumerReview } from '../data/entity/RestaurantEntity';
 import Utils from '../globals/appUtilities';
 import EventType from '../globals/eventType';
 import ServiceElement from '../_library_/components/_base_/serviceElement';
@@ -25,7 +24,7 @@ export default class PageDetails extends ServiceElement {
     _restoDetailsData: RestaurantDetailsResponse | null = null;
 
     @internalProperty()
-    _reviewListData: ConsumerReview[] = [];
+    _reviewListData: CustomerReview[] = [];
 
     @internalProperty()
     _isFavorite = false;
@@ -96,10 +95,10 @@ export default class PageDetails extends ServiceElement {
 
     async setRestaurantDetailsData(restodetailsData: RestaurantDetailsResponse): Promise<void> {
         this._restoDetailsData = restodetailsData;
-        await this.setConsumerReviewListData(restodetailsData.restaurant.consumerReviews);
+        await this.setConsumerReviewListData(restodetailsData.restaurant.customerReviews);
     }
 
-    async setConsumerReviewListData(reviewData: ConsumerReview[]): Promise<void> {
+    async setConsumerReviewListData(reviewData: CustomerReview[]): Promise<void> {
         this._reviewListData = reviewData;
     }
 

@@ -11,8 +11,8 @@
     "build:analyzer": "webpack --config webpack.prod~analyzer.js",
     "build:pwa": "webpack --config webpack.prod~pwa.js",
     "build:pwa:imagemin": "webpack --config webpack.prod~pwa~imagemin.js",
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "start:pwa": "webpack-dev-server --config webpack.dev~pwa.js",
+    "start": "webpack serve --config webpack.dev.js",
+    "start:pwa": "webpack serve --config webpack.dev~pwa.js",
     "test:karma": "karma start",
     "test:e2e": "codeceptjs run --steps"
   },

@@ -1,4 +1,4 @@
-import { html, TemplateResult } from 'lit-html';
+import { html, nothing, TemplateResult } from 'lit-html';
 import { customElement, property } from 'lit-element';
 
 import CommonElement from '../../components/_base_/commonElement';
@@ -21,7 +21,11 @@ export default class ReviewContainer extends CommonElement {
             <div class='reviewContainer'>
                 <h1 tabindex='0' class='reviewTitle'>${this.title}</h1>
                     <div class='reviewItems'>
-                        ${this.data.slice(Math.max(this.data.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`)}
+                        ${
+                            this.data ?
+                                this.data.slice(Math.max(this.data.length - 5, 0)).reverse().map(res => html`<review-card .data=${res}></review-card>`) :
+                                    nothing
+                        }
                     </div>
                 </div>
             </div>

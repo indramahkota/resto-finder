@@ -1,3 +1,5 @@
+import { CustomerReview } from "./CustomerReviewEntity";
+
 export interface Restaurant {
     id: string;
     name: string;
@@ -12,7 +14,7 @@ export interface RestaurantDetails extends Restaurant {
     address: string;
     categories: Category[];
     menus: Menus;
-    consumerReviews: ConsumerReview[];
+    customerReviews: CustomerReview[];
 }
 
 export interface Category {
@@ -30,10 +32,4 @@ export interface Drink {
 export interface Menus {
     foods: Food[];
     drinks: Drink[];
-}
-
-export interface ConsumerReview {
-    name: string;
-    review: string;
-    date: string;
 }
