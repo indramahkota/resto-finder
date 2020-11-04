@@ -3,14 +3,14 @@ import { customElement, property } from 'lit-element';
 import anonymous from '../../../../assets/images/avatars/anonymous_avatar.svg';
 
 import CommonElement from '../_base_/commonElement';
-import { ConsumerReview } from '../../../data/entity/RestaurantEntity';
+import { CustomerReview } from '../../../data/entity/CustomerReviewEntity';
 
 // import './review-card.scss';
 
 @customElement('review-card')
 export default class ReviewCard extends CommonElement {
     @property({ type: Object })
-    data: ConsumerReview | null = null;
+    data: CustomerReview | null = null;
 
     render(): TemplateResult {
         return html`
