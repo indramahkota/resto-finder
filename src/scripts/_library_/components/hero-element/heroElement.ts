@@ -65,7 +65,7 @@ export default class HeroElement extends CommonElement {
                 </picture>
                 <div id='hero-greeting' class='heroPlaceholder'>
                     <h1>${this.greeting}<br><span class='heroTextLogo'>${this.name}</span></h1>
-                    <button id='find-button' aria-label="Let's Find Button" class='heroButton' @click='${this._onButtonClickHandler}'>Let's Find Resto</button>
+                    <button id='find-button' aria-label="Let's Find Button" class='heroButton' @click='${this._onButtonClickHandler}'>Let's Find</button>
                 </div>
             </div>
         `;
