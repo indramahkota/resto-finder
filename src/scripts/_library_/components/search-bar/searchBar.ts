@@ -10,7 +10,7 @@ export default class SearchBar extends CommonElement implements IScrollEffect {
     _ticking = false;
     _currentScrollPosition = 0;
     _lastScrollPosition = 0;
-    _onScrollHandler = () => {
+    _onScrollHandler = (): void => {
         this._currentScrollPosition = window.scrollY;
         window.setTimeout(() => {
             this._lastScrollPosition = window.scrollY;

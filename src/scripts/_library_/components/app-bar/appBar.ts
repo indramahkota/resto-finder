@@ -14,7 +14,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     _ticking = false;
     _currentScrollPosition = 0;
     _lastScrollPosition = 0;
-    _onScrollHandler = () => {
+    _onScrollHandler = (): void => {
         this._currentScrollPosition = window.scrollY;
         window.setTimeout(() => {
             this._lastScrollPosition = window.scrollY;
@@ -52,7 +52,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
     @internalProperty()
     _darkMode = AppConfig.SUPPORT_DARK_MODE;
 
-    _onResizeHandler = () => {
+    _onResizeHandler = (): void => {
         this._hideOrShowHeader();
         this._isDrawerOpen = false;
         Utils.setLCS(AppConfig.LCS_DRAWER, 'close');
@@ -73,7 +73,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         }
     }
 
-    _onIconNavClickHandler() {
+    _onIconNavClickHandler(): void {
         this.dataShouldUpdate(this.iconNavData.url);
         this._iconNavFocus = true;
         if (this._isDrawerOpen) {
@@ -81,7 +81,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         }
     }
 
-    _onHamburgerClickHandler() {
+    _onHamburgerClickHandler(): void {
         this._isDrawerOpen = !this._isDrawerOpen;
         if (this._isDrawerOpen) {
             Utils.setLCS(AppConfig.LCS_DRAWER, 'open');
@@ -90,7 +90,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         }
     }
 
-    _onNavigationClickHandler(event: Event) {
+    _onNavigationClickHandler(event: Event): void {
         const path = event.composedPath();
         const { hash } = path[0] as HTMLAnchorElement;
         this.dataShouldUpdate(hash);
@@ -101,7 +101,7 @@ export default class AppBar extends CommonElement implements IScrollEffect {
         }
     }
 
-    _onSwitchChangeHandler(event: Event) {
+    _onSwitchChangeHandler(event: Event): void {
         const path = event.composedPath();
         const input = path[0] as HTMLInputElement;
         if (input.checked) {

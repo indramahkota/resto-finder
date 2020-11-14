@@ -14,7 +14,7 @@ export default class PageHome extends ServiceElement {
     @internalProperty()
     _restoListData: RestaurantResponse | null = null;
 
-    _focusOnTopRestaurantsHandler = () => {
+    _focusOnTopRestaurantsHandler = (): void => {
         document.querySelector('app-bar')?.hideHeader();
         document.querySelector('resto-container')?.scrollIntoView({ behavior: 'smooth' });
     }

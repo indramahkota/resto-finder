@@ -22,13 +22,13 @@ export default class RestoFinderApp extends CommonElement {
     
     _timeOutId: number | null = null;
 
-    _forceUpdateHandler = async () => {
+    _forceUpdateHandler = async (): Promise<void> => {
         if(window.location.hash === '#content')
             return;
         await this.requestUpdate();
     }
 
-    _showToastHandler = (event: Event) => {
+    _showToastHandler = (event: Event): void => {
         const details = (event as CustomEvent).detail;
         if (details.message === undefined || details.message === '')
             return;

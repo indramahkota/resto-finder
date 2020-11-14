@@ -20,7 +20,7 @@ export default class PageFavorites extends ServiceElement {
         return (!counter || counter === '0') ? 0 : Number(counter);
     }
 
-    _deleteFavoritedHandler = async (event: Event) => {
+    _deleteFavoritedHandler = async (event: Event): Promise<void> => {
         const details = (event as CustomEvent).detail;
         if(!details.id || details.id === '') return;
 
@@ -34,7 +34,7 @@ export default class PageFavorites extends ServiceElement {
         }
     }
 
-    async _loadFavoriteData() {
+    async _loadFavoriteData(): Promise<void> {
         try {
             const restoData = await this._repository.getAllFavorites();
             await this.setRestaurantListData({

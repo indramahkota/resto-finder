@@ -29,7 +29,7 @@ export default class PageDetails extends ServiceElement {
     @internalProperty()
     _isFavorite = false;
 
-    _addFavoriteHandler = async () => {
+    _addFavoriteHandler = async (): Promise<void> => {
         if (!this.detailsId || !this._restoDetailsData) return;
 
         try {
@@ -43,7 +43,7 @@ export default class PageDetails extends ServiceElement {
         }
     }
 
-    _deleteFavoriteHandler = async () => {
+    _deleteFavoriteHandler = async (): Promise<void> => {
         if (!this.detailsId) return;
 
         try {
@@ -56,7 +56,7 @@ export default class PageDetails extends ServiceElement {
         }
     }
 
-    _submitReviewHandler = async (event: Event) => {
+    _submitReviewHandler = async (event: Event): Promise<void> => {
         if (!this.detailsId) return;
 
         const details = (event as CustomEvent).detail;
